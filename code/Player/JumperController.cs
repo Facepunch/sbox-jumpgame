@@ -1,22 +1,21 @@
 ﻿
-using static Sandbox.Easing;
-
-internal class JumperController : PawnController
+internal partial class JumperController : PawnController
 {
 
-	public Vector3 Mins { get; private set; }
-	public Vector3 Maxs { get; private set; }
+	[Net, Predicted]
+	public float TimeSinceJumpDown { get; set; }
 
-	public bool Grounded => GroundEntity.IsValid();
-	float EyeHeight => 64.0f;
-	float BodyGirth => 32.0f;
-	float BodyHeight => 72.0f;
+	Vector3 Mins => new Vector3( -8, -8, 0 );
+	Vector3 Maxs => new Vector3( 8, 8, 72 );
+	bool Grounded => GroundEntity.IsValid();
 	float WalkSpeed => 200.0f;
 	float GroundAngle => 45.0f;
 	float Gravity => 800.0f;
 	float StopSpeed => 100.0f;
 	float GroundFriction => 10.0f;
 	float GroundAcceleration => 150.0f;
+	float TimeUntilMaxJump => 5.0f;
+	float MaxJumpStrength => 825.0f;
 
 	public override void Simulate()
 	{
@@ -27,6 +26,7 @@ internal class JumperController : PawnController
 		if( Grounded )
 		{
 			GroundMove();
+			TryJump();
 		}
 		else
 		{
@@ -36,8 +36,36 @@ internal class JumperController : PawnController
 		StepMove();
 	}
 
+	private void TryJump()
+	{
+		if( !Input.Down( InputButton.Jump ) )
+		{
+			if( TimeSinceJumpDown > 0 )
+			{
+				var jumpAlpha = 0.25f + TimeSinceJumpDown / TimeUntilMaxJump;
+				jumpAlpha = Math.Min( jumpAlpha, 1.0f );
+				jumpAlpha = Easing.EaseOut( jumpAlpha );
+
+				Velocity = Rotation.Forward * jumpAlpha * MaxJumpStrength * .5f;
+				Velocity = Velocity.WithZ( jumpAlpha * MaxJumpStrength );
+				AddEvent( "jump" );
+			}
+			TimeSinceJumpDown = 0;
+			return;
+		}
+
+		SetTag( "ducked" );
+		TimeSinceJumpDown += Time.Delta;
+	}
+
 	private void GroundMove()
 	{
+		if( TimeSinceJumpDown > 0 )
+		{
+			Velocity = 0;
+			return;
+		}
+
 		var wishVel = GetWishVelocity( true );
 		var wishdir = wishVel.Normal;
 		var wishspeed = wishVel.Length;
@@ -66,12 +94,6 @@ internal class JumperController : PawnController
 		{
 			SetGroundEntity( pm.Entity );
 		}
-	}
-
-	public void SetBBox( Vector3 mins, Vector3 maxs )
-	{
-		Mins = mins;
-		Maxs = maxs;
 	}
 
 	Vector3 GetWishVelocity( bool zeroPitch = false )
