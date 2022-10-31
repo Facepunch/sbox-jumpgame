@@ -1,0 +1,23 @@
+# Sandbox
+code/accesslist.txt
+Properties
+.intermediate
+tools_asset_info.bin
+*.csproj
+*.los
+.vs/*
+*.generated.*
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.blend
+*.blend1
+
+# Build results
+[Oo]bj/
+*_bakeresourcecache
+*_source
