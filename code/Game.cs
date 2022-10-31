@@ -1,4 +1,5 @@
-﻿using Sandbox;
+﻿
+using Sandbox;
 using Sandbox.UI.Construct;
 using System;
 using System.IO;
@@ -21,10 +22,9 @@ public partial class JumpingSausage : Sandbox.Game
 {
 	public JumpingSausage()
 	{
-
 		if ( IsClient )
 		{
-			new JumpingSausageHud();
+			new JumpHud();
 		}
 	}
 
