@@ -14,7 +14,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		SetModel( "models/citizen/citizen.vmdl" );
 
-		Controller = new WalkController();
+		Controller = new JumperController();
 		Animator = new JumperAnimator();
 		CameraMode = new JumperCamera();
 
