@@ -1,26 +1,6 @@
 ﻿
+@import "jumperhud.scss";
+
 JumpHud {
     color: white;
-}
-
-text.height {
-    font-family: Poppins;
-    font-size: 20px;
-    font-weight: 900;
-    color: white;
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-text.maxheight {
-    font-family: Poppins;
-    font-size: 20px;
-    font-weight: 900;
-    color: white;
-    position: absolute;
-    bottom: 3%;
-    left: 50%;
-    transform: translateX(-50%);
 }

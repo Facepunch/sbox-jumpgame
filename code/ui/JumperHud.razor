@@ -1,16 +1,15 @@
 ﻿
-@attribute [StyleSheet("/UI/JumpHud.scss")]
+@inherits Panel;
 
 <root>
-	<text>@Height</text>
-	<text>@MaxHeight</text>
+	<label class="height">@Height</label>
+	<label class="maxheight">@MaxHeight</label>
 </root>
 
 @code
 {
-	public float Height { get; set; }
-	public float MaxHeight { get; set; }
-	bool Active = true;
+	private float Height;
+	private float MaxHeight;
 
 	public override void Tick()
 	{
@@ -19,11 +18,13 @@
 		if (Local.Pawn is not JumperPawn pawn)
 			return;
 
-		if (Height > MaxHeight)
-		{
-			MaxHeight = Height;
-		}
-		else
-			Height = pawn.Height;
+		MaxHeight = Math.Max(Height, MaxHeight);
+		Height = pawn.Height;
 	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine(Height, MaxHeight);
+	}
+
 }
