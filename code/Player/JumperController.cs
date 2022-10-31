@@ -31,6 +31,7 @@ internal partial class JumperController : PawnController
 		else
 		{
 			Velocity += Vector3.Down * Gravity * Time.Delta;
+			TryBounce();
 		}
 
 		StepMove();
@@ -45,13 +46,13 @@ internal partial class JumperController : PawnController
 		}
 
 		var jumpAlpha = TimeSinceJumpDown / TimeUntilMaxJump;
-		jumpAlpha = Math.Min( jumpAlpha, 1.0f );
 
-		if ( jumpAlpha >= 1 || !Input.Down( InputButton.Jump ) && jumpAlpha > 0 )
+		if ( jumpAlpha >= 1 || ( !Input.Down( InputButton.Jump ) && jumpAlpha > 0 ) )
 		{
-			jumpAlpha = Math.Max( jumpAlpha, 0.25f );
+			jumpAlpha = Math.Min( 0.45f + jumpAlpha, 1.0f );
 			Velocity = Rotation.Forward * jumpAlpha * MaxJumpStrength * .5f;
 			Velocity = Velocity.WithZ( jumpAlpha * MaxJumpStrength );
+			ClearGroundEntity();
 			AddEvent( "jump" );
 		}
 
@@ -59,6 +60,16 @@ internal partial class JumperController : PawnController
 		{
 			TimeSinceJumpDown = 0;
 		}
+	}
+
+	private void TryBounce()
+	{
+		var tr = TraceBBox( Position, Position + Velocity * Time.Delta );
+		if ( !tr.Hit || tr.Normal.Angle( Vector3.Up ) < 80.0f ) return;
+
+		var bounce = -tr.Normal * Velocity.Dot( tr.Normal );
+		Velocity = ClipVelocity( Velocity, tr.Normal );
+		Velocity += bounce;
 	}
 
 	private void GroundMove()
@@ -119,12 +130,6 @@ internal partial class JumperController : PawnController
 		MoveHelper mover = new MoveHelper( Position, Velocity );
 		mover.Trace = mover.Trace.Size( Mins, Maxs ).Ignore( Pawn ).WithoutTags( "Platplayer" ); ;
 		mover.MaxStandableAngle = groundAngle;
-
-		if ( !Grounded )
-		{
-			mover.WallBounce = 1.5f;
-		}
-
 		mover.TryMoveWithStep( Time.Delta, stepSize );
 
 		Position = mover.Position;
@@ -211,6 +216,23 @@ internal partial class JumperController : PawnController
 
 		tr.EndPosition -= TraceOffset;
 		return tr;
+	}
+
+	Vector3 ClipVelocity( Vector3 vel, Vector3 norm, float overbounce = 1.0f )
+	{
+		var backoff = Vector3.Dot( vel, norm ) * overbounce;
+		var o = vel - (norm * backoff);
+
+		// garry: I don't totally understand how we could still
+		//		  be travelling towards the norm, but the hl2 code
+		//		  does another check here, so we're going to too.
+		var adjust = Vector3.Dot( o, norm );
+		if ( adjust >= 1.0f ) return o;
+
+		adjust = MathF.Min( adjust, -1.0f );
+		o -= norm * adjust;
+
+		return o;
 	}
 
 	public override void FrameSimulate()
