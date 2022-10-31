@@ -1,11 +1,5 @@
-﻿@using System
-@using System.Threading.Tasks
-@using Sandbox;
-@using Sandbox.UI;
-@using SandboxEditor;
-
+﻿
 @attribute [StyleSheet("/UI/JumpHud.scss")]
-@namespace JumpingSausage.UI
 
 <root>
 	<text>@Height</text>
@@ -22,7 +16,7 @@
 	{
 		base.Tick();
 
-		if (Local.Pawn is not JumpingSausagePawn player)
+		if (Local.Pawn is not JumperPawn pawn)
 			return;
 
 		if (Height > MaxHeight)
@@ -30,7 +24,6 @@
 			MaxHeight = Height;
 		}
 		else
-
-			Height = player.Height;
+			Height = pawn.Height;
 	}
 }

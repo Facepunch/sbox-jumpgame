@@ -1,13 +1,4 @@
 ﻿
-using SandboxEditor;
-using Sandbox;
-using System.ComponentModel.DataAnnotations;
-using System;
-using System.Collections.Generic;
-using System.Numerics;
-
-namespace JumpingSausage;
-
 [Library( "js_ground", Description = "Ground Level" )]
 [EditorSprite( "materials/editor/assault_rally.vmat" )]
 [Display( Name = "Ground Level", GroupName = "Jumper", Description = "Ground Level" ), Category( "Gameplay" ), Icon( "grass" )]
@@ -42,29 +33,16 @@ partial class MusicBoxTweaker : ModelEntity
 	[Event.Frame]
 	public void OnFrame()
 	{
-		var pos = CurrentView.Position;
-		if ( Local.Pawn.IsValid() )
-		{
-			pos = Local.Pawn.Position;
-		}
+		if ( Local.Pawn is not JumperPawn p )
+			return;
 
+		var pos = Local.Pawn.Position;
 		var bbox = Outer;
 
 		var dist = ShortestDistanceToSurface( bbox, pos );
-		var vol = dist.Clamp( 0, 1 );
-
 		var btw = Vector3.DistanceBetween( dist, pos );
 
-		var pawn = Local.Pawn as JumpingSausagePawn;
-
-		pawn.Height = btw.CeilToInt();
-
-		if ( BasePlayerController.Debug )
-		{
-
-			DebugOverlay.Box( bbox, Color.Green );
-			DebugOverlay.Text( vol.ToString(), bbox.Center, 0, 3000 );
-		}
+		p.Height = btw.CeilToInt();
 	}
 
 	private Vector3 ShortestDistanceToSurface( BBox bbox, Vector3 position )
@@ -80,11 +58,7 @@ partial class MusicBoxTweaker : ModelEntity
 			DebugOverlay.Text( result.ToString(), bbox.Center, 0, 3000 );
 			DebugOverlay.Sphere( outerclosetsPoint1, 3f, Color.Blue, 0, false );
 			DebugOverlay.Sphere( position, 3f, Color.Cyan, 0, false );
-
-
 			DebugOverlay.Line( outerclosetsPoint1, position, 0f, false );
-
-
 			DebugOverlay.Box( Outer, Color.Green );
 		}
 

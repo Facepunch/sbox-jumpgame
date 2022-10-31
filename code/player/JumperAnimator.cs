@@ -1,20 +1,13 @@
 ﻿
-using Sandbox;
-using System;
-
-namespace JumpingSausage;
-
-public class JumpingSausageLookAnimator : PawnAnimator
+public class JumperAnimator : PawnAnimator
 {
+
 	TimeSince TimeSinceFootShuffle = 60;
-
-	public bool LookAtMe;
-
 	float duck;
 
 	public override void Simulate()
 	{
-		var player = Pawn as JumpingSausagePawn;
+		var player = Pawn as Player;
 		var idealRotation = player.Rotation;
 
 		DoRotation( idealRotation );
@@ -38,25 +31,22 @@ public class JumpingSausageLookAnimator : PawnAnimator
 			SetAnimParameter( "voice", Client.TimeSinceLastVoice < 0.5f ? Client.VoiceLevel : 0.0f );
 		}
 
-		if ( LookAtMe )
-		{
-			Vector3 aimPos = Pawn.EyePosition + Rotation.Forward * 200;
-			Vector3 lookPos = aimPos;
+		Vector3 aimPos = Pawn.EyePosition + Rotation.Forward * 200;
+		Vector3 lookPos = aimPos;
 
-			//
-			// Look in the direction what the player's input is facing
-			//
-			SetLookAt( "aim_eyes", lookPos );
-			SetLookAt( "aim_head", lookPos );
-			SetLookAt( "aim_body", aimPos );
-		}
+		//
+		// Look in the direction what the player's input is facing
+		//
+		SetLookAt( "aim_eyes", lookPos );
+		SetLookAt( "aim_head", lookPos );
+		SetLookAt( "aim_body", aimPos );
 
 		if ( HasTag( "ducked" ) ) duck = duck.LerpTo( 1.0f, Time.Delta * 10.0f );
 		else duck = duck.LerpTo( 0.0f, Time.Delta * 5.0f );
 
 		SetAnimParameter( "duck", duck );
 
-		if ( player is not JumpingSausagePawn p ) return;
+		if ( player is not JumperPawn p ) return;
 		var holdtype = p.HeldBody.IsValid() ? 4 : 0;
 
 		p.SetAnimParameter( "holdtype", holdtype );
