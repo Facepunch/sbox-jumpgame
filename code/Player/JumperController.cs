@@ -117,6 +117,11 @@ internal partial class JumperController : PawnController
 		mover.Trace = mover.Trace.Size( Mins, Maxs ).Ignore( Pawn ).WithoutTags( "Platplayer" ); ;
 		mover.MaxStandableAngle = groundAngle;
 
+		if ( !Grounded )
+		{
+			mover.WallBounce = 1.5f;
+		}
+
 		mover.TryMoveWithStep( Time.Delta, stepSize );
 
 		Position = mover.Position;
