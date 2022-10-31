@@ -23,7 +23,7 @@ internal partial class JumperController : PawnController
 
 		CheckGrounded();
 
-		if( Grounded )
+		if ( Grounded )
 		{
 			GroundMove();
 			TryJump();
@@ -38,29 +38,32 @@ internal partial class JumperController : PawnController
 
 	private void TryJump()
 	{
-		if( !Input.Down( InputButton.Jump ) )
+		if ( Input.Down( InputButton.Jump ) )
 		{
-			if( TimeSinceJumpDown > 0 )
-			{
-				var jumpAlpha = 0.25f + TimeSinceJumpDown / TimeUntilMaxJump;
-				jumpAlpha = Math.Min( jumpAlpha, 1.0f );
-				jumpAlpha = Easing.EaseOut( jumpAlpha );
-
-				Velocity = Rotation.Forward * jumpAlpha * MaxJumpStrength * .5f;
-				Velocity = Velocity.WithZ( jumpAlpha * MaxJumpStrength );
-				AddEvent( "jump" );
-			}
-			TimeSinceJumpDown = 0;
-			return;
+			SetTag( "ducked" );
+			TimeSinceJumpDown += Time.Delta;
 		}
 
-		SetTag( "ducked" );
-		TimeSinceJumpDown += Time.Delta;
+		var jumpAlpha = TimeSinceJumpDown / TimeUntilMaxJump;
+		jumpAlpha = Math.Min( jumpAlpha, 1.0f );
+
+		if ( jumpAlpha >= 1 || !Input.Down( InputButton.Jump ) && jumpAlpha > 0 )
+		{
+			jumpAlpha = Math.Max( jumpAlpha, 0.25f );
+			Velocity = Rotation.Forward * jumpAlpha * MaxJumpStrength * .5f;
+			Velocity = Velocity.WithZ( jumpAlpha * MaxJumpStrength );
+			AddEvent( "jump" );
+		}
+
+		if ( !Input.Down( InputButton.Jump ) )
+		{
+			TimeSinceJumpDown = 0;
+		}
 	}
 
 	private void GroundMove()
 	{
-		if( TimeSinceJumpDown > 0 )
+		if ( TimeSinceJumpDown > 0 )
 		{
 			Velocity = 0;
 			return;
