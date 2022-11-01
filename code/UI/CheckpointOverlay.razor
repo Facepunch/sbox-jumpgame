@@ -1,0 +1,30 @@
+﻿
+@inherits Panel;
+
+<root class=@(Visible ? "visible" : "")>
+    @Message
+</root>
+
+@code {
+    public string Message { get; set; } = "pissing";
+
+    private bool Visible => TimeSinceDisplayed < 7;
+    private TimeSince TimeSinceDisplayed;
+    private static CheckpointOverlay Instance;
+
+    public CheckpointOverlay()
+    {
+        Instance = this;
+    }
+
+    public static void Display(string message)
+    {
+        Instance.Message = message;
+        Instance.TimeSinceDisplayed = 0f;
+    }
+
+    protected override int BuildHash()
+    {
+        return Visible ? 1 : 0;
+    }
+}

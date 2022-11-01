@@ -26,7 +26,7 @@ public partial class CheckPoint : TriggerMultiple
 	[ClientRpc]
 	public static void NewCheckPoint( string Title )
 	{
-		JumperCheckPoint.ShowCheckPoint( Title );
+		CheckpointOverlay.Display( Title );
 	}
 
 }
