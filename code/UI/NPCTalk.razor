@@ -1,0 +1,59 @@
+﻿
+@inherits Panel;
+
+<root class=@(Visible ? "visible" : "")>
+        <label class="message">@OutputText</label>
+</root>
+
+@code {
+    public string Message { get; set; } = "pissing";
+
+    private bool Visible => TimeSinceDisplayed < 7;
+    private TimeSince TimeSinceDisplayed;
+    private static NPCTalk Instance;
+
+    public string OutputText { get; set; }
+    public float Delay { get; set; } = .1f;
+
+    public NPCTalk()
+    {
+        Instance = this;
+    }
+
+    public static void Display(string message)
+    {
+        Instance.TimeSinceDisplayed = 0f;
+        Instance.Message = message;
+        Instance.OutputText = null;
+    }
+
+    private async Task RevealTextAsync(string message)
+    {
+        foreach (char c in message)
+        {
+            Instance.OutputText += c;
+            
+            await Task.DelaySeconds(Delay);
+            Sound.FromScreen("beep1");
+        }
+    }
+
+    public override void Tick()
+    {
+        if (OutputText == Message)
+        {
+			return;
+		}
+	
+        if (OutputText == null)
+        {
+            Instance.RevealTextAsync(Message);
+        }
+        Instance.Message = OutputText;
+    }
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(OutputText, Visible ? 1 : 0);
+    }
+}
