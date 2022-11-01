@@ -51,7 +51,8 @@ internal partial class JumperController : PawnController
 		{
 			TimeSinceJumpDown = 0;
 
-			jumpAlpha = Math.Min( 0.45f + jumpAlpha, 1.0f );
+			jumpAlpha = Math.Min( 0.4f + jumpAlpha, 1.0f );
+			jumpAlpha = ((int)(jumpAlpha * 10.0f)) / 10.0f;
 
 			if ( GetWishVelocity().Length > 0 )
 				Velocity = Rotation.Forward * jumpAlpha * MaxJumpStrength * .5f;
