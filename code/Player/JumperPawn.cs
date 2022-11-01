@@ -45,11 +45,6 @@ internal partial class JumperPawn : Sandbox.Player
 	public override void Simulate( Client cl )
 	{
 		base.Simulate( cl );
-
-		if ( Input.Pressed( InputButton.Drop ) || Input.Pressed( InputButton.Reload ) )
-		{
-			Game.Current.DoPlayerSuicide( cl );
-		}
 	}
 
 	[Event.Frame]
