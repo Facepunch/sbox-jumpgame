@@ -74,12 +74,6 @@ internal partial class JumperController : PawnController
 
 	private void GroundMove()
 	{
-		if ( TimeSinceJumpDown > 0 )
-		{
-			Velocity = 0;
-			return;
-		}
-
 		var wishVel = GetWishVelocity( true );
 		var wishdir = wishVel.Normal;
 		var wishspeed = wishVel.Length;
@@ -88,6 +82,12 @@ internal partial class JumperController : PawnController
 		{
 			var targetRot = Rotation.LookAt( wishdir ).Angles().WithPitch( 0 ).WithRoll( 0 );
 			Rotation = Rotation.Slerp( Rotation, Rotation.From( targetRot ), 8f * Time.Delta );
+		}
+
+		if ( TimeSinceJumpDown > 0 )
+		{
+			Velocity = 0;
+			return;
 		}
 
 		Velocity = Velocity.WithZ( 0 );
