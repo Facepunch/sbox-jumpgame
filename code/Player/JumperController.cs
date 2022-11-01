@@ -1,6 +1,4 @@
 ﻿
-using Sandbox.Internal;
-
 internal partial class JumperController : PawnController
 {
 
@@ -66,7 +64,11 @@ internal partial class JumperController : PawnController
 
 			ClearGroundEntity();
 			AddEvent( "jump" );
-			Sound.FromEntity( "jumper.jump", Pawn ).SetPitch( 1.0f - (0.5f * jumpAlpha ));
+
+			if( Prediction.FirstTime )
+			{
+				Sound.FromEntity( "jumper.jump", Pawn ).SetPitch( 1.0f - (0.5f * jumpAlpha) );
+			}
 		}
 
 		if ( !Input.Down( InputButton.Jump ) )
@@ -84,9 +86,12 @@ internal partial class JumperController : PawnController
 		Velocity = ClipVelocity( Velocity, tr.Normal );
 		Velocity += bounce;
 
-		var hiteffect = Particles.Create( "particles/player/impact/jumper.impact.wall.vpcf", tr.EndPosition );
-		hiteffect.SetForward( 0, tr.Normal );
-		Sound.FromEntity( "jumper.impact.wall", Pawn );
+		if ( Host.IsServer || Prediction.FirstTime )
+		{
+			var hiteffect = Particles.Create( "particles/player/impact/jumper.impact.wall.vpcf", tr.EndPosition );
+			hiteffect.SetForward( 0, tr.Normal );
+			Sound.FromEntity( "jumper.impact.wall", Pawn );
+		}
 	}
 
 	private void GroundMove()
@@ -130,9 +135,13 @@ internal partial class JumperController : PawnController
 		}
 		else
 		{
+			if( !Grounded && (Host.IsServer || Prediction.FirstTime) )
+			{
+				Sound.FromWorld( "player.land", Position );
+				AddEvent( "landed" );
+			}
+
 			SetGroundEntity( pm.Entity );
-			GroundLand();
-			timesincelanded = 0;
 		}
 	}
 
@@ -218,20 +227,6 @@ internal partial class JumperController : PawnController
 			BaseVelocity = GroundEntity.Velocity;
 		}
 	}
-	private TimeSince timesincelanded;
-	public virtual void GroundLand( )
-	{
-		
-		if ( GroundEntity != null )
-		{
-			if ( timesincelanded > 0.2f )
-			{
-				Sound.FromEntity( "player.land", Pawn );
-
-			}
-		}
-	}
-
 
 	TraceResult TraceBBox( Vector3 start, Vector3 end, float liftFeet = 0.0f )
 	{

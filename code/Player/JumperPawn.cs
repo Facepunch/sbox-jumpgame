@@ -42,11 +42,6 @@ internal partial class JumperPawn : Sandbox.Player
 		CameraMode = new RagdollCamera();
 	}
 
-	public override void Simulate( Client cl )
-	{
-		base.Simulate( cl );
-	}
-
 	[Event.Frame]
 	private void UpdateRenderAlpha()
 	{
