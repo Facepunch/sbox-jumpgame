@@ -107,6 +107,12 @@ internal partial class JumperController : PawnController
 		if ( pm.Entity == null || Vector3.GetAngle( Vector3.Up, pm.Normal ) > GroundAngle )
 		{
 			ClearGroundEntity();
+
+			var dot = Velocity.Dot( pm.Normal );
+			if( dot < 0 )
+			{
+				Velocity = 0;
+			}
 		}
 		else
 		{
