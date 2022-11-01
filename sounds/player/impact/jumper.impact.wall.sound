@@ -1,0 +1,26 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		UI = false
+		Volume = 1
+		VolumeRandom = 0
+		Pitch = 1
+		PitchRandom = 0.07
+		Decibels = 70
+		Sounds = 
+		[
+			resource:"sounds/physics/bullet_impacts/cardboard_01.vsnd",
+			resource:"sounds/physics/bullet_impacts/cardboard_03.vsnd",
+			resource:"sounds/physics/bullet_impacts/cardboard_05.vsnd",
+			resource:"sounds/physics/bullet_impacts/cardboard_07.vsnd",
+			resource:"sounds/physics/bullet_impacts/dirt_01.vsnd",
+			resource:"sounds/physics/bullet_impacts/dirt_02.vsnd",
+			resource:"sounds/physics/bullet_impacts/dirt_03.vsnd",
+			resource:"sounds/physics/bullet_impacts/dirt_04.vsnd",
+		]
+		SelectionMode = "Random"
+		MaximumDistance = 1143.9335
+		MinimumDistance = 57.196674
+	}
+}

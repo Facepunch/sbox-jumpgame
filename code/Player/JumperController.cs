@@ -1,4 +1,6 @@
 ﻿
+using Sandbox.Internal;
+
 internal partial class JumperController : PawnController
 {
 
@@ -29,6 +31,7 @@ internal partial class JumperController : PawnController
 		{
 			GroundMove();
 			TryJump();
+
 		}
 		else
 		{
@@ -79,6 +82,10 @@ internal partial class JumperController : PawnController
 		var bounce = -tr.Normal * Velocity.Dot( tr.Normal );
 		Velocity = ClipVelocity( Velocity, tr.Normal );
 		Velocity += bounce;
+
+		var hiteffect = Particles.Create( "particles/player/impact/jumper.impact.wall.vpcf", tr.EndPosition );
+		hiteffect.SetForward( 0, tr.Normal );
+		Sound.FromEntity( "jumper.impact.wall", Pawn );
 	}
 
 	private void GroundMove()
@@ -113,8 +120,8 @@ internal partial class JumperController : PawnController
 		if ( pm.Entity == null || Vector3.GetAngle( Vector3.Up, pm.Normal ) > GroundAngle )
 		{
 			ClearGroundEntity();
-
 			var dot = Velocity.Dot( pm.Normal );
+			
 			if( dot < 0 )
 			{
 				Velocity = 0;
@@ -123,6 +130,8 @@ internal partial class JumperController : PawnController
 		else
 		{
 			SetGroundEntity( pm.Entity );
+			GroundLand();
+			timesincelanded = 0;
 		}
 	}
 
@@ -195,7 +204,7 @@ internal partial class JumperController : PawnController
 		if ( GroundEntity == null ) return;
 
 		GroundEntity = null;
-		GroundNormal = Vector3.Up;
+		GroundNormal = Vector3.Up;	
 	}
 
 	void SetGroundEntity( Entity entity )
@@ -206,9 +215,22 @@ internal partial class JumperController : PawnController
 		{
 			Velocity = Velocity.WithZ( 0 );
 			BaseVelocity = GroundEntity.Velocity;
-
 		}
 	}
+	private TimeSince timesincelanded;
+	public virtual void GroundLand( )
+	{
+		
+		if ( GroundEntity != null )
+		{
+			if ( timesincelanded > 0.2f )
+			{
+				Sound.FromEntity( "player.land", Pawn );
+
+			}
+		}
+	}
+
 
 	TraceResult TraceBBox( Vector3 start, Vector3 end, float liftFeet = 0.0f )
 	{

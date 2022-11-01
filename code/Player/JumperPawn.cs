@@ -72,4 +72,41 @@ internal partial class JumperPawn : Sandbox.Player
 		}
 	}
 
+	TimeSince timeSinceLastFootstep = 0;
+	public override void OnAnimEventFootstep( Vector3 pos, int foot, float volume )
+	{
+		if ( LifeState != LifeState.Alive )
+			return;
+
+		if ( !IsServer )
+			return;
+
+		if ( foot == 0 )
+		{
+			//var lfoot = Particles.Create( "particles/gameplay/player/footsteps/footstep_l.vpcf", pos );
+			//lfoot.SetOrientation( 0, Transform.Rotation );
+		}
+		else
+		{
+			//var rfoot = Particles.Create( "particles/gameplay/player/footsteps/footstep_r.vpcf", pos );
+			//rfoot.SetOrientation( 0, Transform.Rotation );
+		}
+
+		if ( timeSinceLastFootstep < 0.2f )
+			return;
+
+		volume *= FootstepVolume();
+
+		timeSinceLastFootstep = 0;
+
+		var tr = Trace.Ray( pos, pos + Vector3.Down * 20 )
+			.Radius( 1 )
+			.Ignore( this )
+			.Run();
+
+		if ( !tr.Hit ) return;
+
+		tr.Surface.DoFootstep( this, tr, foot, volume * 10 );
+	}
+
 }
