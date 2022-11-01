@@ -66,6 +66,7 @@ internal partial class JumperController : PawnController
 
 			ClearGroundEntity();
 			AddEvent( "jump" );
+			Sound.FromEntity( "jumper.jump", Pawn ).SetPitch( 1.0f - (0.5f * jumpAlpha ));
 		}
 
 		if ( !Input.Down( InputButton.Jump ) )
