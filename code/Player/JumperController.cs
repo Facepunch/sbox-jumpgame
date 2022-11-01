@@ -37,6 +37,8 @@ internal partial class JumperController : PawnController
 			TryBounce();
 		}
 
+		Rotation = Rotation.Slerp( Rotation, Rotation.From( TargetAngles ), 8f * Time.Delta );
+
 		StepMove();
 	}
 
@@ -85,6 +87,7 @@ internal partial class JumperController : PawnController
 		var bounce = -tr.Normal * Velocity.Dot( tr.Normal );
 		Velocity = ClipVelocity( Velocity, tr.Normal );
 		Velocity += bounce;
+		TargetAngles = Rotation.LookAt( tr.Normal ).Angles();
 
 		if ( Host.IsServer || Prediction.FirstTime )
 		{
@@ -104,8 +107,6 @@ internal partial class JumperController : PawnController
 		{
 			TargetAngles = Rotation.LookAt( wishdir ).Angles().WithPitch( 0 ).WithRoll( 0 );
 		}
-
-		Rotation = Rotation.Slerp( Rotation, Rotation.From( TargetAngles ), 8f * Time.Delta );
 
 		if ( TimeSinceJumpDown > 0 )
 		{
