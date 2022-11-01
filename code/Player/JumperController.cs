@@ -5,8 +5,8 @@ internal partial class JumperController : PawnController
 	[Net, Predicted]
 	public float TimeSinceJumpDown { get; set; }
 
-	Vector3 Mins => new Vector3( -8, -8, 0 );
-	Vector3 Maxs => new Vector3( 8, 8, 72 );
+	Vector3 Mins => new Vector3( -16, -16, 0 );
+	Vector3 Maxs => new Vector3( 16, 16, 72 );
 	bool Grounded => GroundEntity.IsValid();
 	float WalkSpeed => 200.0f;
 	float GroundAngle => 45.0f;
