@@ -4,12 +4,11 @@
     position: absolute;
     left: 0;
     top: 0;
-    text-shadow: 4px 4px #ff0000;
+    text-shadow: 3px 3px #000000, -3px -3px #fab003;
 
     .height {
-        
         font-family: "PressStart";
-        font-size: 50px;
+        font-size: 40px;
         font-weight: 900;
         color: white;
         position: absolute;
@@ -20,7 +19,7 @@
 
     .maxheight {
         font-family: "PressStart";
-        font-size: 30px;
+        font-size: 20px;
         font-weight: 900;
         color: white;
         position: absolute;
