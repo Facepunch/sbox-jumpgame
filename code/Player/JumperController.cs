@@ -50,8 +50,12 @@ internal partial class JumperController : PawnController
 		if ( jumpAlpha >= 1 || ( !Input.Down( InputButton.Jump ) && jumpAlpha > 0 ) )
 		{
 			jumpAlpha = Math.Min( 0.45f + jumpAlpha, 1.0f );
-			Velocity = Rotation.Forward * jumpAlpha * MaxJumpStrength * .5f;
+
+			if ( GetWishVelocity().Length > 0 )
+				Velocity = Rotation.Forward * jumpAlpha * MaxJumpStrength * .5f;
+
 			Velocity = Velocity.WithZ( jumpAlpha * MaxJumpStrength );
+
 			ClearGroundEntity();
 			AddEvent( "jump" );
 		}
