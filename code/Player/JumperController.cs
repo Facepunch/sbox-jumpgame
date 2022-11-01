@@ -49,6 +49,8 @@ internal partial class JumperController : PawnController
 
 		if ( jumpAlpha >= 1 || ( !Input.Down( InputButton.Jump ) && jumpAlpha > 0 ) )
 		{
+			TimeSinceJumpDown = 0;
+
 			jumpAlpha = Math.Min( 0.45f + jumpAlpha, 1.0f );
 
 			if ( GetWishVelocity().Length > 0 )
