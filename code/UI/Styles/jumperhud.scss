@@ -4,26 +4,28 @@
     position: absolute;
     left: 0;
     top: 0;
+    text-shadow: 4px 4px #ff0000;
 
     .height {
-        font-family: Poppins;
-        font-size: 20px;
+        
+        font-family: "PressStart";
+        font-size: 50px;
         font-weight: 900;
         color: white;
         position: absolute;
-        bottom: 5%;
-        left: 50%;
+        top: 5%;
+        left: 5%;
         transform: translateX(-50%);
     }
 
     .maxheight {
-        font-family: Poppins;
-        font-size: 20px;
+        font-family: "PressStart";
+        font-size: 30px;
         font-weight: 900;
         color: white;
         position: absolute;
-        bottom: 3%;
-        left: 50%;
+        top: 10%;
+        left: 5%;
         transform: translateX(-50%);
     }
 }
