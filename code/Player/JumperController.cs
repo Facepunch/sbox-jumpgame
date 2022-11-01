@@ -105,8 +105,10 @@ internal partial class JumperController : PawnController
 
 		if ( wishdir.Length > 0 && GroundEntity != null )
 		{
-			TargetAngles = Rotation.LookAt( wishdir ).Angles().WithPitch( 0 ).WithRoll( 0 );
+			TargetAngles = Rotation.LookAt( wishdir ).Angles();
 		}
+
+		TargetAngles = TargetAngles.WithPitch( 0 ).WithRoll( 0 );
 
 		if ( TimeSinceJumpDown > 0 )
 		{
