@@ -16,7 +16,7 @@ internal partial class JumperController : PawnController
 	float StopSpeed => 100.0f;
 	float GroundFriction => 10.0f;
 	float GroundAcceleration => 150.0f;
-	float TimeUntilMaxJump => 5.0f;
+	float TimeUntilMaxJump => 4.0f;
 	float MaxJumpStrength => 825.0f;
 
 	public override void Simulate()
