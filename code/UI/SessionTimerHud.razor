@@ -1,0 +1,25 @@
+﻿
+@inherits Panel;
+
+<root>
+	<label class="sessiontimetext">@SessionTime</label>
+</root>
+
+@code
+{
+	private string SessionTime;
+
+	public override void Tick()
+	{
+		base.Tick();
+	
+		SessionTime = TimeSpan.FromSeconds((JumperGame.Current.SessionTimer * 60).Clamp(0, float.MaxValue)).ToString(@"dd\:hh\:mm\:ss");
+		
+	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine(SessionTime);
+	}
+
+}

@@ -1,8 +1,15 @@
 ﻿
-public class JumperGame : Game
+public partial class JumperGame : Game
 {
+	public new static JumperGame Current;
+	
+	[Net]
+	public RealTimeSince SessionTimer { get; set; } = 0f;
+
 	public JumperGame()
 	{
+		Current = this;
+		
 		if ( IsClient )
 		{
 			new JumperRootPanel();
