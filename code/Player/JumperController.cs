@@ -4,6 +4,8 @@ internal partial class JumperController : PawnController
 
 	[Net, Predicted]
 	public float TimeSinceJumpDown { get; set; }
+	[Net, Predicted]
+	public Angles TargetAngles { get; set; }
 
 	Vector3 Mins => new Vector3( -16, -16, 0 );
 	Vector3 Maxs => new Vector3( 16, 16, 72 );
@@ -87,9 +89,10 @@ internal partial class JumperController : PawnController
 
 		if ( wishdir.Length > 0 && GroundEntity != null )
 		{
-			var targetRot = Rotation.LookAt( wishdir ).Angles().WithPitch( 0 ).WithRoll( 0 );
-			Rotation = Rotation.Slerp( Rotation, Rotation.From( targetRot ), 8f * Time.Delta );
+			TargetAngles = Rotation.LookAt( wishdir ).Angles().WithPitch( 0 ).WithRoll( 0 );
 		}
+
+		Rotation = Rotation.Slerp( Rotation, Rotation.From( TargetAngles ), 8f * Time.Delta );
 
 		if ( TimeSinceJumpDown > 0 )
 		{
