@@ -33,6 +33,8 @@ internal partial class JumperPawn : Sandbox.Player
 			clothing.LoadFromClient( Client );
 			clothing.DressEntity( this );
 		}
+
+		Tags.Add( "JumpPlayer" );
 	}
 
 	public override void OnKilled()

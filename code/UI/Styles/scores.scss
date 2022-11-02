@@ -7,18 +7,13 @@ Scores {
     font-family: $font-family-title;
     font-size: $font-size-small;
     color: $white;
-    width: 400px;
+    width: 350px;
     right: 100px;
     top: 75px;
     height: 100%;
     transition: all 0.1s ease-out;
     transform: scale( 1 );
     text-shadow: 1px 1px $red;
-
-    &.open {
-        top: 150px;
-        transform: scale( 1.1 );
-    }
 
     .score, .ping, .name {
         width: 100px;
