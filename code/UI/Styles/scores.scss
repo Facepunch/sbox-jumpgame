@@ -1,65 +1,48 @@
-﻿.scoreboard {
+﻿
+Scores {
     position: absolute;
-    z-index: 100;
     flex-direction: column;
     font-family: "PressStart";
     font-size: 10px;
     color: white;
-    width: 100%;
+    width: 400px;
+    right: 50px;
+    top: 100px;
     height: 100%;
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
     transition: all 0.1s ease-out;
     transform: scale( 1.05 );
-    transform-origin: 50% 50%;
-    left: 38%;
-    bottom: 20%;
 
     &.open {
-        opacity: 1;
         transform: scale( 1 );
     }
 
-    .name, .player-name {
-        flex-grow: 1;
-    }
-
-    .kills, .ping, .player-name {
-        width: 80px;
-        text-align: center;
+    .score, .ping, .name {
+        width: 100px;
         text-transform: uppercase;
+        justify-content: center;
     }
 
-    .player-name {
-        text-align: left;
+    .name {
+        flex-grow: 1;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
 
-    .kills {
+    .score {
         padding-right: 20px;
     }
 
     .header {
         font-weight: 200;
-        min-width: 20%;
-        margin-left: 40px;
         margin-bottom: 20px;
         text-shadow: 2px 2px #ff0000;
     }
 
-    .canvas {
+    .entries {
         flex-direction: column;
-        min-height: 20%;
-        min-width: 20%;
 
         .entry {
-            padding: 8px;
-            padding-left: 20px;
-            padding-right: 20px;
             text-shadow: 1px 1px #ff0000;
-
-            &:nth-child(even) {
-            }
 
             &:not( :first-child ) {
                 margin-top: 4px;
@@ -76,27 +59,16 @@
 
             .you {
                 position: absolute;
-                left: -30px;
-                color: rgba( black, 1 );
+                left: -50px;
+                color: linear-gradient( to top, #df4a64, #d72e4c );
                 text-transform: uppercase;
                 height: 100%;
                 align-self: center;
+                opacity: 0;
             }
 
-            &.me {
-
-                .you {
-                    color: linear-gradient( to top, #df4a64, #d72e4c );
-                }
-            }
-
-            &:hover {
-                cursor: pointer;
-                background-color: rgba( #FAB002, 0.2 );
-            }
-
-            &:active {
-                background-color: rgba( #FAB002, 0.4 );
+            &.me .you {
+                opacity: 1;
             }
         }
     }

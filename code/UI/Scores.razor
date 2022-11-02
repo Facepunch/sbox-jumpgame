@@ -1,0 +1,35 @@
+﻿
+@inherits Panel
+
+<root class=@(Input.Down(InputButton.Score) ? "open" : "closed")>
+    <div class="header">
+        <label class="name">Name</label>
+        <label class="score">Height</label>
+        <label class="ping">Ping</label>
+    </div>
+    <div class="entries">
+        @foreach (var player in Client.All)
+        {
+            @if (player.Pawn is not JumperPawn p) continue;
+            <div class=@(p.IsLocalPawn ? "entry me" : "entry")>
+                <label class="you">You</label>
+                <label class="name">@player.GetClientName()</label>
+                <label class="score">@p.MaxHeight</label>
+                <label class="ping">@player.Ping</label>
+            </div>
+        }
+    </div>
+</root>
+
+@code {
+    protected override int BuildHash()
+    {
+        var result = Input.Down(InputButton.Score).GetHashCode();
+        foreach(var cl in Client.All)
+        {
+            if (cl.Pawn is not JumperPawn p) continue;
+            result = HashCode.Combine(result, p.MaxHeight, cl.Ping);
+        }
+        return result;
+    }
+}
