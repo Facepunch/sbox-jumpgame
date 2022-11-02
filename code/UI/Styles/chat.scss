@@ -1,0 +1,59 @@
+﻿
+@import "_vars.scss";
+
+Chat {
+    font-family: $font-family-title;
+    color: $white;
+    flex-direction: column;
+    width: 500px;
+    height: 350px;
+    position: absolute;
+    bottom: 200px;
+    left: 200px;
+    pointer-events: all;
+    z-index: 1000;
+
+    .entries {
+        overflow: scroll;
+        flex-direction: column;
+        flex-grow: 1;
+
+        ChatEntry {
+            min-height: 20px;
+            text-shadow: $text-shadow-black;
+            transition: all .15s ease;
+
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+
+            .name {
+                color: $orange;
+            }
+
+            &:intro {
+                transform: scale(1);
+            }
+
+            &:outro {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+    }
+
+    textentry {
+        padding: 8px;
+        margin-top: 8px;
+        color: $white;
+        min-height: 32px;
+        border-bottom: 0px solid $red;
+        padding-bottom: 4px;
+        transition: all .15s ease;
+    }
+
+    &.open textentry {
+        border-bottom: 4px solid $black;
+        padding-bottom: 0;
+    }
+}

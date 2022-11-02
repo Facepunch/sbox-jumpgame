@@ -2,14 +2,14 @@
 public partial class JumperGame : Game
 {
 	public new static JumperGame Current;
-	
+
 	[Net]
 	public RealTimeSince SessionTimer { get; set; } = 0f;
 
 	public JumperGame()
 	{
 		Current = this;
-		
+
 		if ( IsClient )
 		{
 			new JumperRootPanel();
@@ -33,4 +33,19 @@ public partial class JumperGame : Game
 			client.Pawn.Transform = tx;
 		}
 	}
+
+	[ConCmd.Server]
+	public static void SendChat( string message )
+	{
+		var caller = ConsoleSystem.Caller;
+
+		ReceiveChat( To.Everyone, caller.Name, message );
+	}
+
+	[ConCmd.Client( "receive_chat", CanBeCalledFromServer = true )]
+	public static void ReceiveChat( string name, string message )
+	{
+		Event.Run( "chat.received", name, message );
+	}
+
 }

@@ -1,0 +1,67 @@
+﻿@inherits Panel
+
+<root class=@RootClass>
+    <div @ref="Entries" class="entries">
+        <div style="flex-grow: 1;"></div>
+    </div>
+    <textentry @onblur=@InputBlurred @onsubmit=@InputSubmitted @ref="TextEntry"></textentry>
+</root>
+
+@code {
+    public Panel Entries { get; set; }
+    public TextEntry TextEntry { get; set; }
+
+    private bool IsOpen { get; set; }
+    private string RootClass => IsOpen ? "open" : string.Empty;
+
+    protected override void OnAfterTreeRender(bool firstTime)
+    {
+        base.OnAfterTreeRender(firstTime);
+
+        Entries.PreferScrollToBottom = true;
+    }
+
+    private void InputBlurred()
+    {
+        IsOpen = false;
+        StateHasChanged();
+    }
+
+    private void InputSubmitted()
+    {
+        var msg = TextEntry.Text;
+        TextEntry.Text = string.Empty;
+
+        if (string.IsNullOrWhiteSpace(msg))
+            return;
+
+        msg = msg.Trim();
+        JumperGame.SendChat(msg);
+    }
+
+    [Event("chat.received")]
+    private async void AddChatEntry(string name, string message)
+    {
+        var entry = new ChatEntry()
+            {
+                Name = name,
+                Message = message
+            };
+        Entries.AddChild(entry);
+
+        await Task.Delay(8000);
+
+        entry.Delete();
+    }
+
+    [Event.BuildInput]
+    private void OnBuildInput(InputBuilder b)
+    {
+        if (b.Pressed(InputButton.Chat))
+        {
+            IsOpen = true;
+            TextEntry.Focus();
+            StateHasChanged();
+        }
+    }
+}
