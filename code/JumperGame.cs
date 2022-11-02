@@ -1,7 +1,4 @@
 ﻿
-using Sandbox;
-using Sandbox.Hooks;
-
 public partial class JumperGame : Game
 {
 	public new static JumperGame Current;
@@ -12,7 +9,7 @@ public partial class JumperGame : Game
 	public JumperGame()
 	{
 		Current = this;
-
+		
 		if ( IsClient )
 		{
 			new JumperRootPanel();
@@ -39,13 +36,11 @@ public partial class JumperGame : Game
 		}
 	}
 
-
 	public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
 	{
 		base.ClientDisconnect( cl, reason );
 
 		ReceiveChat( To.Everyone, cl.Name, reason.ToString() );
-
 	}
 
 	[ConCmd.Server]
@@ -61,5 +56,4 @@ public partial class JumperGame : Game
 	{
 		Event.Run( "chat.received", name, message );
 	}
-
 }

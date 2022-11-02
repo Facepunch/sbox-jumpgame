@@ -2,57 +2,38 @@
 @inherits Panel
 
 <root class=@(Input.Down(InputButton.Score) ? "open" : "closed")>
-    <label class="title">JUMPER</label>
-    <label class="stats">STATS</label>
     <div class="header">
-        <label class="name">NAME</label>
-        <label class="jumps">JUMPS</label>
-        <label class="maxheight">MAX HEIGHT</label>
-        <label class="falls">FALLS</label>
-	</div>
-    <div class="entries">
-        <div class="entry">
-        <label class="name">@PlayerName</label>
-        <label class="jumps">@TotalJumps</label>
-        <label class="maxheight">@MaxHeight</label>
-        <label class="falls">@TotalFalls</label>
-     </div>
-     </div>
+        <label class="title">JUMPER</label>
+        <label class="stats">STATS</label>
+    </div>
+    <div class="rows">
+        <div class="row">
+            <label class="title">NAME</label>
+            <label class="stat">@Local.Client?.Name</label>
+        </div>
+        <div class="row">
+            <label class="title">JUMPS</label>
+            <label class="stat">@Jumps</label>
+        </div>
+        <div class="row">
+            <label class="title">MAX HEIGHT</label>
+            <label class="stat">@MaxHeight</label>
+        </div>
+        <div class="row">
+            <label class="title">FALLS</label>
+            <label class="stat">@Falls</label>
+        </div>
+    </div>
 </root>
 
 @code {
+    private int? Jumps => (Local.Pawn as JumperPawn)?.TotalJumps;
+    private int? Falls => (Local.Pawn as JumperPawn)?.TotalFalls;
+    private float? MaxHeight => (Local.Pawn as JumperPawn)?.MaxHeight;
 
-    private int TotalJumps { get; set; }
-    private int TotalFalls { get; set; }
-    private float MaxHeight { get; set; }
-    private string PlayerName { get; set; }
-
-	public Stats()
-    {
-		if (Local.Pawn is not JumperPawn pawn)
-			return;
-
-		PlayerName = pawn.Client.Name;
-    }
-	
-    public override void Tick()
-    {
-        base.Tick();
-
-        if (Local.Pawn is not JumperPawn pawn)
-            return;
-
-        MaxHeight = pawn.MaxHeight;
-        TotalJumps = pawn.TotalJumps;
-        TotalFalls = pawn.TotalFalls;
-    }
     protected override int BuildHash()
     {
-        var result = Input.Down(InputButton.Score).GetHashCode();
-
-        result = HashCode.Combine(result, TotalJumps, MaxHeight, TotalFalls);
-     
-        return result;
+        return HashCode.Combine(Input.Down(InputButton.Score), Jumps, Falls, MaxHeight);
     }
 }
 
