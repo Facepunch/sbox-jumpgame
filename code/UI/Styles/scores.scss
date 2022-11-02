@@ -1,19 +1,23 @@
 ﻿
+@import "_vars.scss";
+
 Scores {
     position: absolute;
     flex-direction: column;
-    font-family: "PressStart";
-    font-size: 10px;
-    color: white;
+    font-family: $font-family-title;
+    font-size: $font-size-small;
+    color: $white;
     width: 400px;
     right: 50px;
     top: 100px;
     height: 100%;
     transition: all 0.1s ease-out;
-    transform: scale( 1.05 );
+    transform: scale( 1 );
+    text-shadow: 1px 1px $red;
 
     &.open {
-        transform: scale( 1 );
+        top: 150px;
+        transform: scale( 1.1 );
     }
 
     .score, .ping, .name {
@@ -33,37 +37,21 @@ Scores {
     }
 
     .header {
-        font-weight: 200;
         margin-bottom: 20px;
-        text-shadow: 2px 2px #ff0000;
     }
 
     .entries {
         flex-direction: column;
 
         .entry {
-            text-shadow: 1px 1px #ff0000;
-
             &:not( :first-child ) {
                 margin-top: 4px;
-            }
-
-            .friend {
-                right: 16px;
-                top: 8px;
-                position: absolute;
-                font-family: Material Icons;
-                font-size: 24px;
-                color: lightgreen;
             }
 
             .you {
                 position: absolute;
                 left: -50px;
-                color: linear-gradient( to top, #df4a64, #d72e4c );
-                text-transform: uppercase;
-                height: 100%;
-                align-self: center;
+                color: $red;
                 opacity: 0;
             }
 
