@@ -1,7 +1,7 @@
 {
   "Title": "Jumper Game",
   "Type": "game",
-  "Org": "local",
+  "Org": "facepunch",
   "Ident": "jumper_game",
   "Tags": "",
   "Schema": 1,
@@ -65,6 +65,25 @@
           "r": "Ignore"
         }
       ]
-    }
+    },
+    "Physics": {
+      "SubSteps": 1,
+      "TimeScale": 1,
+      "Gravity": "0,0,-800",
+      "AirDensity": 1.2,
+      "SleepingEnabled": true,
+      "SimulationMode": "Continuous",
+      "PositionIterations": 2,
+      "VelocityIterations": 8,
+      "SoftBodyIterations": 1,
+      "SoftBodySubsteps": 1
+    },
+    "ControlModes": {
+      "Keyboard": true,
+      "Gamepad": true
+    },
+    "GeneralExtensions": false,
+    "TargettedExtensions": false,
+    "ExtensionApiVersion": 1001
   }
 }
