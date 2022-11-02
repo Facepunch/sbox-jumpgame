@@ -8,10 +8,7 @@
 
 @code
 {
-	[Net]
 	private float Height { get; set; }
-
-	[Net]
 	private float MaxHeight { get; set; }
 
 	public override void Tick()
@@ -21,14 +18,12 @@
 		if (Local.Pawn is not JumperPawn pawn)
 			return;
 
-		MaxHeight = Math.Max(Height, MaxHeight);
+		MaxHeight = pawn.MaxHeight;
 		Height = pawn.Height;
-		pawn.MaxHeight = MaxHeight;
 	}
 
 	protected override int BuildHash()
 	{
 		return HashCode.Combine(Height, MaxHeight);
 	}
-
 }
