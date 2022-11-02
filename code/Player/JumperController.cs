@@ -43,9 +43,13 @@ internal partial class JumperController : PawnController
 
 		if ( GroundEntity == null || prevGrounded ) return;
 		var fall = GetFallDamage( prevFallSpeed );
-		if ( Local.Pawn is JumperPawn pl && fall > 0 )
+		
+		if ( Prediction.FirstTime )
 		{
-			pl.TotalFalls++;
+			if ( Pawn is JumperPawn pl && fall > 0 )
+			{
+				pl.TotalFalls += 1;
+			}
 		}
 	}
 
@@ -73,12 +77,15 @@ internal partial class JumperController : PawnController
 
 			ClearGroundEntity();
 			AddEvent( "jump" );
-			if ( Local.Pawn is JumperPawn pl )
-			{
-				pl.TotalJumps++;
-			}
+
+
+
 			if ( Prediction.FirstTime )
 			{
+				if ( Pawn is JumperPawn pl )
+				{
+					pl.TotalJumps++;
+				}
 				Sound.FromEntity( "jumper.jump", Pawn ).SetPitch( 1.0f - (0.5f * jumpAlpha) );
 			}
 	
