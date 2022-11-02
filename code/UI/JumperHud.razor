@@ -8,8 +8,11 @@
 
 @code
 {
-	private float Height;
-	private float MaxHeight;
+	[Net]
+	private float Height { get; set; }
+
+	[Net]
+	private float MaxHeight { get; set; }
 
 	public override void Tick()
 	{
@@ -20,6 +23,7 @@
 
 		MaxHeight = Math.Max(Height, MaxHeight);
 		Height = pawn.Height;
+		pawn.MaxHeight = MaxHeight;
 	}
 
 	protected override int BuildHash()

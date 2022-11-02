@@ -3,7 +3,9 @@ internal partial class JumperPawn : Sandbox.Player
 {
 
 	public const float MaxRenderDistance = 128f;
+
 	public float Height { get; set; }
+	public float MaxHeight { get; set; }
 
 	[Net]
 	public PropCarriable HeldBody { get; set; }
@@ -40,6 +42,12 @@ internal partial class JumperPawn : Sandbox.Player
 		EnableDrawing = false;
 
 		CameraMode = new RagdollCamera();
+	}
+	[Event.Tick]
+	public void Tick()
+	{
+		MaxHeight = Math.Max( Height, MaxHeight );
+		Client.SetInt( "kills", (int)MaxHeight );
 	}
 
 	[Event.Frame]
