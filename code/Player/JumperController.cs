@@ -7,6 +7,8 @@ internal partial class JumperController : PawnController
 	[Net, Predicted]
 	public Angles TargetAngles { get; set; }
 
+	private bool HasBounced { get; set; }
+
 	Vector3 Mins => new Vector3( -16, -16, 0 );
 	Vector3 Maxs => new Vector3( 16, 16, 72 );
 	bool Grounded => GroundEntity.IsValid();
@@ -46,10 +48,13 @@ internal partial class JumperController : PawnController
 		
 		if ( Prediction.FirstTime )
 		{
-			if ( Pawn is JumperPawn pl && fall > 0 )
+			if ( Pawn is JumperPawn pl && fall > 0 && HasBounced )
 			{
 				pl.TotalFalls += 1;
+				Particles.Create( "particles/player/jump/jumper.jump.vpcf", Position );
+			
 			}
+			HasBounced = false;
 		}
 	}
 
@@ -78,8 +83,6 @@ internal partial class JumperController : PawnController
 			ClearGroundEntity();
 			AddEvent( "jump" );
 
-
-
 			if ( Prediction.FirstTime )
 			{
 				if ( Pawn is JumperPawn pl )
@@ -87,6 +90,7 @@ internal partial class JumperController : PawnController
 					pl.TotalJumps++;
 				}
 				Sound.FromEntity( "jumper.jump", Pawn ).SetPitch( 1.0f - (0.5f * jumpAlpha) );
+				Particles.Create( "particles/player/jump/jumper.jump.vpcf", Position );
 			}
 	
 		}
@@ -113,6 +117,8 @@ internal partial class JumperController : PawnController
 			hiteffect.SetForward( 0, tr.Normal );
 			Sound.FromEntity( "jumper.impact.wall", Pawn );
 		}
+
+		HasBounced = true;
 	}
 
 	private void GroundMove()
