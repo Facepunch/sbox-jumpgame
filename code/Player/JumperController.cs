@@ -7,8 +7,6 @@ internal partial class JumperController : PawnController
 	[Net, Predicted]
 	public Angles TargetAngles { get; set; }
 
-	private bool HasBounced { get; set; }
-
 	Vector3 Mins => new Vector3( -16, -16, 0 );
 	Vector3 Maxs => new Vector3( 16, 16, 72 );
 	bool Grounded => GroundEntity.IsValid();
@@ -42,20 +40,6 @@ internal partial class JumperController : PawnController
 		Rotation = Rotation.Slerp( Rotation, Rotation.From( TargetAngles ), 8f * Time.Delta );
 
 		StepMove();
-
-		if ( GroundEntity == null || prevGrounded ) return;
-		var fall = GetFallDamage( prevFallSpeed );
-		
-		if ( Prediction.FirstTime )
-		{
-			if ( Pawn is JumperPawn pl && fall > 0 && HasBounced )
-			{
-				pl.TotalFalls += 1;
-				Particles.Create( "particles/player/jump/jumper.jump.vpcf", Position );
-			
-			}
-			HasBounced = false;
-		}
 	}
 
 	private void TryJump()
@@ -83,16 +67,16 @@ internal partial class JumperController : PawnController
 			ClearGroundEntity();
 			AddEvent( "jump" );
 
+			if( Pawn is JumperPawn p )
+			{
+				p.TotalJumps++;
+			}
+
 			if ( Prediction.FirstTime )
 			{
-				if ( Pawn is JumperPawn pl )
-				{
-					pl.TotalJumps++;
-				}
 				Sound.FromEntity( "jumper.jump", Pawn ).SetPitch( 1.0f - (0.5f * jumpAlpha) );
 				Particles.Create( "particles/player/jump/jumper.jump.vpcf", Position );
 			}
-	
 		}
 
 		if ( !Input.Down( InputButton.Jump ) )
@@ -117,8 +101,6 @@ internal partial class JumperController : PawnController
 			hiteffect.SetForward( 0, tr.Normal );
 			Sound.FromEntity( "jumper.impact.wall", Pawn );
 		}
-
-		HasBounced = true;
 	}
 
 	private void GroundMove()
@@ -162,13 +144,33 @@ internal partial class JumperController : PawnController
 		}
 		else
 		{
-			if( !Grounded && (Host.IsServer || Prediction.FirstTime) )
+			if( !Grounded )
 			{
-				Sound.FromWorld( "player.land", Position );
 				AddEvent( "landed" );
+
+				if ( Host.IsServer || Prediction.FirstTime )
+					Sound.FromWorld( "player.land", Position );
+
+				if( GetFallDamage( Velocity.z ) > 0 )
+				{
+					DoFall();
+				}
 			}
 
 			SetGroundEntity( pm.Entity );
+		}
+	}
+
+	void DoFall()
+	{
+		if ( Pawn is not JumperPawn p ) 
+			return;
+
+		p.TotalFalls++;
+
+		if( Prediction.FirstTime || Host.IsServer )
+		{
+			Particles.Create( "particles/player/jump/jumper.jump.vpcf", Position );
 		}
 	}
 
@@ -300,26 +302,12 @@ internal partial class JumperController : PawnController
 	{
 		fallspeed = Math.Abs( fallspeed );
 
-
 		if ( fallspeed < 700 ) return 0;
 		if ( fallspeed < 1000 ) return 1;
 		if ( fallspeed < 1300 ) return 2;
 		if ( fallspeed < 1600 ) return 3;
 
 		return 4;
-	}
-
-	private float prevFallSpeed;
-	private bool prevGrounded;
-
-	public override void FrameSimulate()
-	{
-		base.FrameSimulate();
-
-		EyeRotation = Input.Rotation;
-
-		prevGrounded = GroundEntity != null;
-		prevFallSpeed = Velocity.z;
 	}
 
 }

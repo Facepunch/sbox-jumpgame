@@ -8,8 +8,9 @@ internal partial class JumperPawn : Sandbox.Player
 	public float Height { get; set; }
 	[Net]
 	public float MaxHeight { get; set; }
-
+	[Net, Predicted]
 	public int TotalJumps { get; set; }
+	[Net, Predicted]
 	public int TotalFalls { get; set; }
 
 	[Net]
