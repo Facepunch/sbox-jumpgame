@@ -40,6 +40,13 @@ internal partial class JumperController : PawnController
 		Rotation = Rotation.Slerp( Rotation, Rotation.From( TargetAngles ), 8f * Time.Delta );
 
 		StepMove();
+
+		if ( GroundEntity == null || prevGrounded ) return;
+		var fall = GetFallDamage( prevFallSpeed );
+		if ( Local.Pawn is JumperPawn pl && fall > 0 )
+		{
+			pl.TotalFalls++;
+		}
 	}
 
 	private void TryJump()
@@ -66,11 +73,15 @@ internal partial class JumperController : PawnController
 
 			ClearGroundEntity();
 			AddEvent( "jump" );
-
-			if( Prediction.FirstTime )
+			if ( Local.Pawn is JumperPawn pl )
+			{
+				pl.TotalJumps++;
+			}
+			if ( Prediction.FirstTime )
 			{
 				Sound.FromEntity( "jumper.jump", Pawn ).SetPitch( 1.0f - (0.5f * jumpAlpha) );
 			}
+	
 		}
 
 		if ( !Input.Down( InputButton.Jump ) )
@@ -166,7 +177,7 @@ internal partial class JumperController : PawnController
 	void StepMove( float groundAngle = 46f, float stepSize = 18f )
 	{
 		MoveHelper mover = new MoveHelper( Position, Velocity );
-		mover.Trace = mover.Trace.Size( Mins, Maxs ).Ignore( Pawn ).WithoutTags( "Platplayer" ); ;
+		mover.Trace = mover.Trace.Size( Mins, Maxs ).Ignore( Pawn ).WithoutTags( "JumpPlayer" ); ;
 		mover.MaxStandableAngle = groundAngle;
 		mover.TryMoveWithStep( Time.Delta, stepSize );
 
@@ -272,11 +283,30 @@ internal partial class JumperController : PawnController
 		return o;
 	}
 
+	private int GetFallDamage( float fallspeed )
+	{
+		fallspeed = Math.Abs( fallspeed );
+
+
+		if ( fallspeed < 700 ) return 0;
+		if ( fallspeed < 1000 ) return 1;
+		if ( fallspeed < 1300 ) return 2;
+		if ( fallspeed < 1600 ) return 3;
+
+		return 4;
+	}
+
+	private float prevFallSpeed;
+	private bool prevGrounded;
+
 	public override void FrameSimulate()
 	{
 		base.FrameSimulate();
 
 		EyeRotation = Input.Rotation;
+
+		prevGrounded = GroundEntity != null;
+		prevFallSpeed = Velocity.z;
 	}
 
 }

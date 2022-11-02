@@ -1,0 +1,71 @@
+﻿
+@import "_vars.scss";
+
+Stats {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 20%;
+    height: 40%;
+    transform: translate( -50% -50% );
+    flex-direction: row;
+    font-family: $font-family-title;
+    font-size: $font-size-medium;
+    color: $white;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-out;
+    text-shadow: 1px 1px $red;
+    opacity: 0;
+    border-image: url( /ui/border.png ) 50 fill stretch;
+    border: 20px solid transparent;
+    min-width: 400px;
+
+    &.open {
+        opacity: 1;
+        transition: all 0.2s ease-in;
+    }
+
+    .title {
+        position: absolute;
+        left: 0%;
+        top: 10%;
+        margin-left: 20px;
+        font-size: $font-size-large;
+    }
+
+    .stats {
+        position: absolute;
+        top: 15%;
+        left: 0%;
+        margin-left: 25px;
+        font-size: $font-size-medium;
+    }
+
+    .jumps, .falls, .name, .maxheight {
+        flex-direction: column;
+        width: 150px;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .name {
+        flex-grow: 1;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .header {
+        flex-direction: column;
+        margin-left: 20px;
+        margin-top: 50px;
+    }
+
+    .entries {
+        margin-top: 50px;
+
+        .entry {
+            flex-direction: column;
+        }
+    }
+}

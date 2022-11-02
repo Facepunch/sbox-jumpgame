@@ -9,6 +9,9 @@ internal partial class JumperPawn : Sandbox.Player
 	[Net]
 	public float MaxHeight { get; set; }
 
+	public int TotalJumps { get; set; }
+	public int TotalFalls { get; set; }
+
 	[Net]
 	public PropCarriable HeldBody { get; set; }
 
