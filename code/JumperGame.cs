@@ -1,4 +1,7 @@
 ﻿
+using Sandbox;
+using Sandbox.Hooks;
+
 public partial class JumperGame : Game
 {
 	public new static JumperGame Current;
@@ -26,12 +29,23 @@ public partial class JumperGame : Game
 		var spawnpoints = All.OfType<SpawnPoint>();
 		var randomSpawnPoint = spawnpoints.OrderBy( x => Rand.Int( 999 ) ).FirstOrDefault();
 
+		ReceiveChat( To.Everyone, client.Name, " has joined the game" );
+
 		if ( randomSpawnPoint != null )
 		{
 			var tx = randomSpawnPoint.Transform;
 			tx.Position += Vector3.Up * 50.0f;
 			client.Pawn.Transform = tx;
 		}
+	}
+
+
+	public override void ClientDisconnect( Client cl, NetworkDisconnectionReason reason )
+	{
+		base.ClientDisconnect( cl, reason );
+
+		ReceiveChat( To.Everyone, cl.Name, reason.ToString() );
+
 	}
 
 	[ConCmd.Server]

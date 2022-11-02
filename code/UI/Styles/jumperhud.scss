@@ -10,20 +10,21 @@ JumperHud {
         flex-direction: column;
         left: 100px;
         top: 75px;
-        text-shadow: $text-shadow-black-orange;
+        text-shadow: $text-shadow-red;
         color: $white;
 
         .height {
             font-family: $font-family-title;
             font-size: 40px;
-            justify-content: flex-end;
+            justify-content: flex-start;
             margin-bottom: 10px;
         }
 
         .maxheight {
             font-family: $font-family-title;
             font-size: 20px;
-            justify-content: flex-end;
+            justify-content: flex-start;
+            margin-left: 10px;
         }
     }
 }
