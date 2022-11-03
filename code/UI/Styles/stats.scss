@@ -6,7 +6,7 @@ Stats {
     left: 50%;
     top: 50%;
     height: 40%;
-    width: 400px;
+    width: 450px;
     transform: translate( -50% -50% );
     font-family: $font-family-title;
     font-size: $font-size-medium;
@@ -34,12 +34,12 @@ Stats {
         margin-top: 50px;
 
         .title {
-            margin-left: 20px;
+            margin-left: 30px;
             font-size: $font-size-large;
         }
 
         .stats {
-            margin-left: 25px;
+            margin-left: 35px;
             font-size: $font-size-medium;
         }
     }
@@ -47,10 +47,10 @@ Stats {
     .row {
         padding: 8px;
         margin-bottom: 10px;
-        margin-left: 25px;
+        margin-left: 30px;
 
         .title {
-            min-width: 150px;
+            min-width: 170px;
         }
     }
 }

@@ -12,6 +12,7 @@ JumperHud {
         top: 75px;
         text-shadow: $text-shadow-red;
         color: $white;
+        opacity: 0;
 
         .height {
             font-family: $font-family-title;
@@ -25,6 +26,74 @@ JumperHud {
             font-size: 20px;
             justify-content: flex-start;
             margin-left: 10px;
+        }
+    }
+
+    .bar {
+        position: absolute;
+        flex-direction: column-reverse;
+        background-color: $black;
+        width: 8px;
+        height: 80%;
+        bottom: 5%;
+        left: 8%;
+        align-content: center;
+        align-items: center;
+
+        .flag {
+            position: absolute;
+            top: -48px;
+            right: -29.5px;
+            
+            background-image: url("ui/hud/flag.png");
+            background-size: 100%;
+            width: 48px;
+            height: 48px;
+        }
+
+        .heightbar {
+            position: absolute;
+            height: 100%;
+            border-bottom: 4px solid $black;
+            border-top: 4px solid $black;
+            width: 20px;
+        }
+
+        .heightbarpos {
+            position: absolute;
+            width: 20px;
+            height: 0%;
+            border-top: 4px solid white;
+
+            .heighttext {
+                left: 10px;
+                bottom: 11px;
+                text-shadow: $text-shadow-red;
+                color: $white;
+                width: 200px;
+                font-family: $font-family-title;
+                font-size: 20px;
+                flex-shrink: 0;
+            }
+        }
+
+        .maxheightbarpos {
+            position: absolute;
+            width: 20px;
+            height: 0%;
+            border-top: 4px solid $red;
+
+            .maxheighttext {
+                right: 170px;
+                bottom: 9px;
+                color: $red;
+                width: 200px;
+                text-align: right;
+                font-family: $font-family-title;
+                font-size: 16px;
+                flex-shrink: 0;
+                padding-right: 20px;
+            }
         }
     }
 }
