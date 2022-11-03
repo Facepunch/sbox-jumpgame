@@ -12,6 +12,7 @@ NPCTalk {
     transition: opacity .1s linear;
     text-align: center;
     align-content: center;
+    z-index: 12;
 
     &.visible {
         opacity: 1;

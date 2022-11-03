@@ -1,7 +1,7 @@
 ﻿
 @inherits Panel
 
-<root>
+<root class=@(IsOpen ? "open" : "closed")>
     <div class="bar">
         <label class="heightbar"></label>
         <label class="flag"></label>
@@ -23,9 +23,14 @@
     public float MaxHeight => (Local.Pawn as JumperPawn)?.MaxHeight ?? 0;
     public float HeightFraction => Height / EndHeight;
     public float MaxHeightFraction => MaxHeight / EndHeight;
-
+    bool IsOpen { get; set; }
+	
     protected override int BuildHash()
     {
-        return HashCode.Combine(Height, MaxHeight);
+        //var result = Input.Pressed(InputButton.Slot1).GetHashCode();
+		
+        IsOpen ^= Input.Pressed(InputButton.Slot1);
+
+        return HashCode.Combine(IsOpen, Height, MaxHeight);
     }
 }

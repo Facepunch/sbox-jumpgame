@@ -11,9 +11,15 @@ Scores {
     right: 100px;
     top: 75px;
     height: 100%;
-    transition: all 0.1s ease-out;
     transform: scale( 1 );
     text-shadow: 1px 1px $red;
+    opacity: 1;
+    transition: all 1s ease-out;
+    transition: opacity .1s linear;
+
+    &.open {
+        opacity: 0;
+    }
 
     .score, .ping, .name {
         width: 100px;

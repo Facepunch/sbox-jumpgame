@@ -1,14 +1,15 @@
 ﻿
 @inherits Panel;
 
-<root>
+<root class=@(IsOpen ? "open" : "closed")>
 	<label class="sessiontimetext">@SessionTime</label>
 </root>
 
 @code
 {
 	private string SessionTime;
-
+	bool IsOpen { get; set; }
+	
 	public override void Tick()
 	{
 		base.Tick();
@@ -19,7 +20,8 @@
 
 	protected override int BuildHash()
 	{
-		return HashCode.Combine(SessionTime);
+		IsOpen ^= Input.Pressed(InputButton.Slot2);
+		return HashCode.Combine(IsOpen, SessionTime);
 	}
 
 }

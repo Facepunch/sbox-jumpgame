@@ -12,6 +12,11 @@ SessionTimerHud {
     transition: opacity .1s linear;
     text-align: center;
     align-content: center;
+    opacity: 1;
+
+    &.open {
+        opacity: 0;
+    }
 
     .sessiontimetext {
         font-family: $font-family-title;

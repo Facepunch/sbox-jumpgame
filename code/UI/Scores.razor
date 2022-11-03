@@ -1,7 +1,7 @@
 ﻿
 @inherits Panel
 
-<root>
+<root class=@(IsOpen ? "open" : "closed")>
     <div class="header">
         <label class="name">Name</label>
         <label class="score">Height</label>
@@ -22,14 +22,16 @@
 </root>
 
 @code {
+    bool IsOpen { get; set; }
     protected override int BuildHash()
     {
+        IsOpen ^= Input.Pressed(InputButton.Slot3);
         var result = Input.Down(InputButton.Score).GetHashCode();
         foreach(var cl in Client.All)
         {
             if (cl.Pawn is not JumperPawn p) continue;
             result = HashCode.Combine(result, p.MaxHeight, cl.Ping);
         }
-        return result;
+        return HashCode.Combine(IsOpen, result);
     }
 }
