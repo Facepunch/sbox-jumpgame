@@ -1,7 +1,7 @@
 ﻿
 [Library( "js_start", Description = "Start Level" )]
-[EditorSprite( "materials/editor/assault_rally.vmat" )]
-[Display( Name = "Start Level", GroupName = "Jumper", Description = "Start Level" ), Category( "Gameplay" ), Icon( "grass" )]
+[EditorModel( "models/editor/startfinish/start.vmdl" )]
+[Display( Name = "Start Level", GroupName = "Jumper", Description = "Start Level" ), Category( "Gameplay" ), Icon( "vertical_align_bottom" )]
 [HammerEntity]
 partial class StartPoint : Entity
 {

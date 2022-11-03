@@ -1,7 +1,7 @@
 ﻿
 [Library( "js_end", Description = "End Level" )]
-[EditorSprite( "materials/editor/assault_rally.vmat" )]
-[Display( Name = "End Level", GroupName = "Jumper", Description = "End Level" ), Category( "Gameplay" ), Icon( "grass" )]
+[EditorModel( "models/editor/startfinish/finish.vmdl" )]
+[Display( Name = "End Level", GroupName = "Jumper", Description = "End Level" ), Category( "Gameplay" ), Icon( "vertical_align_top" )]
 [HammerEntity]
 partial class EndPoint : Entity
 {

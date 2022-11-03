@@ -5,7 +5,7 @@
 [Library( "js_npctalk" )]
 [AutoApplyMaterial( "materials/editor/landmark/landmark.vmat" )]
 [Solid]
-[Display( Name = "NPCTalk", GroupName = "Jumper", Description = "NPCTalk" ), Category( "Triggers" ), Icon( "landscape" )]
+[Display( Name = "NPCTalk", GroupName = "Jumper", Description = "NPCTalk" ), Category( "Triggers" ), Icon( "text_fields" )]
 [HammerEntity]
 public partial class NPCTalkEnt : TriggerOnce
 {
