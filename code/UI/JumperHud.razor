@@ -6,24 +6,29 @@
         <label class="heightbar"></label>
         <label class="flag"></label>
 
-        <div class="heightbarpos" style="height:@(HeightFraction * 100)%;">
-            <label class="heighttext" text="< @Height" />
+        <div class="heightbarpos" style="height:@(CalculateProgress(Height) * 100)%;">
+            <label class="heighttext" text="< @(CalculateProgress(Height) * TotalHeight)" />
         </div>
 
-        <div class="maxheightbarpos" style="height:@(MaxHeightFraction * 100)%;">
-            <label class="maxheighttext" text="@MaxHeight >" />
+        <div class="maxheightbarpos" style="height:@(CalculateProgress(MaxHeight) * 100)%;">
+            <label class="maxheighttext" text="@(CalculateProgress(MaxHeight) * TotalHeight) >" />
         </div>
     </div>
 </root>
 
 @code
 {
+    public float StartHeight => JumperGame.Current.StartHeight;
     public float EndHeight => JumperGame.Current.EndHeight;
+    public float TotalHeight => Math.Abs( EndHeight - StartHeight );
     public float Height => (Local.Pawn as JumperPawn)?.Height ?? 0;
     public float MaxHeight => (Local.Pawn as JumperPawn)?.MaxHeight ?? 0;
-    public float HeightFraction => Height / EndHeight;
-    public float MaxHeightFraction => MaxHeight / EndHeight;
     bool IsOpen { get; set; }
+
+    private float CalculateProgress(float height)
+    {
+        return height.LerpInverse(StartHeight, EndHeight);
+    }
 	
     protected override int BuildHash()
     {
