@@ -40,6 +40,11 @@ Controls {
         }
     }
 
+    .stats {
+        margin-top: 10px;
+        font-size: $font-size-small;
+    }
+
     .row {
         padding: 8px;
         flex-direction: row;
