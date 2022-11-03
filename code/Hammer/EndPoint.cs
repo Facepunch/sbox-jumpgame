@@ -5,12 +5,10 @@
 [HammerEntity]
 partial class EndPoint : Entity
 {
-
 	public override void ClientSpawn()
 	{
 		base.ClientSpawn();
-		Transmit = TransmitType.Always;
 
-		JumperGame.EndDistance = (int)Position.z;
+		Transmit = TransmitType.Always;
 	}
 }

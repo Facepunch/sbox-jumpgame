@@ -1,60 +1,62 @@
-﻿
-@inherits Panel;
+﻿@inherits Panel;
 
 <root>
-	<div class="stats">
-		<label class="height">@Height</label>
-		<label class="maxheight">@MaxHeight</label>
-	</div>
+    <div class="stats">
+        <label class="height">@Height</label>
+        <label class="maxheight">@MaxHeight</label>
+    </div>
 
-	<div class="bar">
-				<label class="heightbar"></label>
-				<label class="flag"></label>
-				
-				<div class="heightbarpos"style="height:@IntOut;">
-						<label class="heighttext" text="< @Height"</label>
-					</div>
-					
-				<div class="maxheightbarpos" style="height:@MaxIntOut;">
-						<label class="maxheighttext" text="@MaxHeight >"</label>
-					</div>
-		</div>
-		
-	</div>
-	
+    <div class="bar">
+        <label class="heightbar"></label>
+        <label class="flag"></label>
+
+        <div class="heightbarpos" style="height:@IntOut;">
+            <label class="heighttext" text="< @Height"</label>
+        </div>
+
+        <div class="maxheightbarpos" style="height:@MaxIntOut;">
+            <label class="maxheighttext" text="@MaxHeight >"</label>
+        </div>
+    </div>
+
+    </div>
+
 </root>
 
 @code
 {
-	private float Height { get; set; }
-	private float MaxHeight { get; set; }
+    private float Height { get; set; }
+    private float MaxHeight { get; set; }
 
-	public int IntValue{ get; set; }
-	public string IntOut{ get; set; }
+    public int IntValue { get; set; }
+    public string IntOut { get; set; }
 
-	public int MaxIntValue { get; set; }
-	public string MaxIntOut { get; set; }
+    public int MaxIntValue { get; set; }
+    public string MaxIntOut { get; set; }
 
-	public override void Tick()
-	{
-		base.Tick();
-		if (Local.Pawn is not JumperPawn pawn)
-			return;
-		if (JumperGame.EndDistance == 0)
-			return;
-		IntValue = (int)Height * 100 / JumperGame.EndDistance;
-		IntValue = IntValue.Clamp(0, 100);
-		IntOut = $"{IntValue}%";
+    public override void Tick()
+    {
+        base.Tick();
 
-		MaxIntValue = Math.Max(IntValue, MaxIntValue);
-		MaxIntOut = $"{MaxIntValue}%";
-		
-		MaxHeight = pawn.MaxHeight;
-		Height = pawn.Height;
-	}
+        if (Local.Pawn is not JumperPawn pawn)
+            return;
 
-	protected override int BuildHash()
-	{
-		return HashCode.Combine(Height, MaxHeight, IntOut, MaxIntOut);
-	}
+        if (JumperGame.Current.EndHeight == 0)
+            return;
+
+        IntValue = (int)Height * 100 / JumperGame.Current.EndHeight;
+        IntValue = IntValue.Clamp(0, 100);
+        IntOut = $"{IntValue}%";
+
+        MaxIntValue = Math.Max(IntValue, MaxIntValue);
+        MaxIntOut = $"{MaxIntValue}%";
+
+        MaxHeight = pawn.MaxHeight;
+        Height = pawn.Height;
+    }
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(Height, MaxHeight, IntOut, MaxIntOut);
+    }
 }

@@ -1,15 +1,15 @@
 ﻿
 public partial class JumperGame : Game
 {
+
 	public new static JumperGame Current;
 
 	[Net]
 	public RealTimeSince SessionTimer { get; set; } = 0f;
-
-
 	[Net]
-	public static int EndDistance { get; set; } 
-	
+	public int EndHeight { get; set; }
+	[Net]
+	public int StartHeight { get; set; }
 
 	public JumperGame()
 	{
@@ -21,6 +21,22 @@ public partial class JumperGame : Game
 		}
 	}
 
+	public override void PostLevelLoaded()
+	{
+		base.PostLevelLoaded();
+
+		var endpoint = Entity.All.OfType<EndPoint>().FirstOrDefault();
+		if( endpoint != null )
+		{
+			EndHeight = (int)endpoint.Position.z;
+		}
+
+		var startpoint = Entity.All.OfType<StartPoint>().FirstOrDefault();
+		if ( startpoint != null )
+		{
+			StartHeight = (int)startpoint.Position.z;
+		}
+	}
 
 	public override void ClientJoined( Client client )
 	{
