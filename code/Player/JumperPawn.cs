@@ -58,7 +58,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		if ( IsServer )
 		{
-			Height = MathX.CeilToInt( Position.z );
+			Height = MathX.CeilToInt( Position.z - JumperGame.Current.StartHeight );
 			MaxHeight = Math.Max( Height, MaxHeight );
 		}
 	}
