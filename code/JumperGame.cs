@@ -6,15 +6,21 @@ public partial class JumperGame : Game
 	[Net]
 	public RealTimeSince SessionTimer { get; set; } = 0f;
 
+
+	[Net]
+	public static int EndDistance { get; set; } 
+	
+
 	public JumperGame()
 	{
 		Current = this;
-		
+
 		if ( IsClient )
 		{
 			new JumperRootPanel();
 		}
 	}
+
 
 	public override void ClientJoined( Client client )
 	{

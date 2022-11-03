@@ -38,10 +38,11 @@
 	public override void Tick()
 	{
 		base.Tick();
-
 		if (Local.Pawn is not JumperPawn pawn)
 			return;
-		IntValue = (int)Height * 100 / 3265;
+		if (JumperGame.EndDistance == 0)
+			return;
+		IntValue = (int)Height * 100 / JumperGame.EndDistance;
 		IntValue = IntValue.Clamp(0, 100);
 		IntOut = $"{IntValue}%";
 
