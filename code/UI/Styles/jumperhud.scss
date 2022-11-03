@@ -6,29 +6,6 @@ JumperHud {
     height: 100%;
     position: absolute;
 
-    .stats {
-        flex-direction: column;
-        left: 100px;
-        top: 75px;
-        text-shadow: $text-shadow-red;
-        color: $white;
-        opacity: 0;
-
-        .height {
-            font-family: $font-family-title;
-            font-size: 40px;
-            justify-content: flex-start;
-            margin-bottom: 10px;
-        }
-
-        .maxheight {
-            font-family: $font-family-title;
-            font-size: 20px;
-            justify-content: flex-start;
-            margin-left: 10px;
-        }
-    }
-
     .bar {
         position: absolute;
         flex-direction: column-reverse;
