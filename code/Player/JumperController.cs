@@ -11,7 +11,7 @@ internal partial class JumperController : PawnController
 	Vector3 Maxs => new Vector3( 16, 16, 72 );
 	bool Grounded => GroundEntity.IsValid();
 	float WalkSpeed => 200.0f;
-	float GroundAngle => 45.0f;
+	float GroundAngle => 40.0f;
 	float Gravity => 800.0f;
 	float StopSpeed => 100.0f;
 	float GroundFriction => 10.0f;
