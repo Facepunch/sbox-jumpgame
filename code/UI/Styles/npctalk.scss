@@ -4,6 +4,7 @@
 NPCTalk {
     position: absolute;
     bottom: 10%;
+    left: 50%;
     opacity: 0;
     width: 500px;
     flex-direction: column;
@@ -26,7 +27,6 @@ NPCTalk {
         color: $white;
         font-size: 18px;
         position: absolute;
-        left: 140%;
         transform: translateX(-50%);
     }
 }

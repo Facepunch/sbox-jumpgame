@@ -24,6 +24,7 @@
     private void InputBlurred()
     {
         IsOpen = false;
+        RemoveClass("open");
         StateHasChanged();
     }
 
@@ -48,10 +49,23 @@
                 Message = message
             };
         Entries.AddChild(entry);
+    }
 
-        await Task.Delay(8000);
+    [ConCmd.Admin("jump_debug_chat_msg")]
+    public static void DebugMsg()
+    {
+        var cl = ConsoleSystem.Caller;
 
-        entry.Delete();
+        JumperGame.ReceiveChat(To.Everyone, cl.Name, "has joined the game");
+        JumperGame.ReceiveChat(To.Everyone, cl.Name, "We get it almost every night And when that moon gets big and bright");
+    }
+
+    [ConCmd.Admin("jump_debug_chat_other")]
+    public static void DebugMsgOther()
+    {
+        JumperGame.ReceiveChat(To.Everyone, "Eagle One Development Team", "has joined the game");
+        JumperGame.ReceiveChat(To.Everyone, "Eagle One Development Team", "what's up");
+        JumperGame.ReceiveChat(To.Everyone, "Eagle One Development Team", "We get it almost every night And when that moon gets big and bright");
     }
 
     [Event.BuildInput]
@@ -62,6 +76,7 @@
             IsOpen = true;
             TextEntry.Focus();
             StateHasChanged();
+			AddClass( "open" );
         }
     }
 }

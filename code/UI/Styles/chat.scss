@@ -5,12 +5,14 @@ Chat {
     font-family: $font-family-title;
     color: $white;
     flex-direction: column;
-    width: 500px;
-    height: 350px;
+    width: 800px;
+    height: 550px;
     position: absolute;
     bottom: 200px;
-    left: 200px;
+    left: 240px;
     z-index: 1000;
+
+
 
     .entries {
         overflow: scroll;
@@ -26,7 +28,12 @@ Chat {
                 margin-bottom: 10px;
             }
 
+            &.faded {
+                opacity: 0;
+            }
+
             .name {
+                flex-shrink: 0;
                 color: $orange;
             }
 
@@ -37,6 +44,10 @@ Chat {
             &:outro {
                 transform: scale(0);
                 opacity: 0;
+            }
+
+            &.me .you {
+                color: red;
             }
         }
     }
@@ -54,5 +65,21 @@ Chat {
     &.open textentry {
         border-bottom: 4px solid $black;
         padding-bottom: 0;
+    }
+
+    &.open {
+        pointer-events: all;
+
+        .entries {
+            ChatEntry {
+                opacity: 1;
+                backdrop-filter: blur( 10px );
+                cursor: text;
+            }
+
+            .faded {
+                opacity: 1;
+            }
+        }
     }
 }
