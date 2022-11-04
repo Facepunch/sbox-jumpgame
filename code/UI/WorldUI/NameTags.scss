@@ -1,0 +1,22 @@
+﻿@import "ui/styles/_vars.scss";
+
+NameTag {
+	justify-content: center;
+	align-items: center;
+
+	.title {
+		font-family: $font-family-title;
+		font-size: $font-size-large;
+		text-shadow: $text-shadow-red;
+		white-space: nowrap;
+		color: white;
+	}
+
+	.avatar {
+		width: 56px;
+		height: 56px;
+		margin-right: 15px;
+		background-size: cover;
+		box-shadow: $text-shadow-red;
+	}
+}
