@@ -12,8 +12,6 @@ Chat {
     left: 240px;
     z-index: 1000;
 
-
-
     .entries {
         overflow: scroll;
         flex-direction: column;
@@ -44,10 +42,6 @@ Chat {
             &:outro {
                 transform: scale(0);
                 opacity: 0;
-            }
-
-            &.me .you {
-                color: red;
             }
         }
     }
