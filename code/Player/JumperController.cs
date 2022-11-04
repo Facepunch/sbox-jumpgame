@@ -156,10 +156,10 @@ internal partial class JumperController : PawnController
 					DoFall();
 				}
 			}
-
 			SetGroundEntity( pm.Entity );
 		}
 	}
+
 
 	void DoFall()
 	{
@@ -167,10 +167,11 @@ internal partial class JumperController : PawnController
 			return;
 
 		p.TotalFalls++;
-
-		if( Prediction.FirstTime || Host.IsServer )
+				
+		if ( Prediction.FirstTime || Host.IsServer )
 		{
 			Particles.Create( "particles/player/jump/jumper.jump.vpcf", Position );
+			JumperGame.SendTease( GetRandomFallMessage() );
 		}
 	}
 
@@ -310,4 +311,32 @@ internal partial class JumperController : PawnController
 		return 4;
 	}
 
+	private int lastFallMessage;
+	private string GetRandomFallMessage()
+	{
+		var idx = Rand.Int( 0, fallMessages.Count - 1 );
+		while ( idx == lastFallMessage )
+			idx = Rand.Int( 0, fallMessages.Count - 1 );
+
+		lastFallMessage = idx;
+		return string.Format( fallMessages[idx] );
+	}
+
+	private List<string> fallMessages = new()
+	{
+		"Thats a big fall!!",
+		"Try not to fall so much next time!",
+		"Ouch! That looked painful!",
+		"Are you ok?",
+		"What a fall!",
+		"Don't fall again!",
+		"Don't give up!",
+		"Keep trying!",
+		"Try again!",
+		"It's like starting a new book...",
+		"One day you will be a winner!",
+		"One day you will look back to this and ask why...",
+		"It's a new day!"
+
+	};
 }

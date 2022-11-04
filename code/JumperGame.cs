@@ -88,4 +88,18 @@ public partial class JumperGame : Game
 	{
 		Event.Run( "chat.received", name, message );
 	}
+
+	[ConCmd.Server]
+	public static void SendTease( string message )
+	{
+		var caller = ConsoleSystem.Caller;
+
+		TeasePlayer( To.Single( caller ), message );
+	}
+
+	[ConCmd.Client( "tease_player", CanBeCalledFromServer = true )]
+	public static void TeasePlayer( string message )
+	{
+		NPCTalk.Display( message );
+	}
 }

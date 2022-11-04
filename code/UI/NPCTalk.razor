@@ -22,6 +22,8 @@
 
     public static void Display(string message)
     {
+        if (Instance.Visible) return;
+		
         Instance.TimeSinceDisplayed = 0f;
         Instance.Message = message;
         Instance.OutputText = null;
@@ -44,7 +46,7 @@
         {
 			return;
 		}
-	
+
         if (OutputText == null)
         {
             Instance.RevealTextAsync(Message);
