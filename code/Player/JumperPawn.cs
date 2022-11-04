@@ -5,9 +5,9 @@ internal partial class JumperPawn : Sandbox.Player
 	public const float MaxRenderDistanceOther = 256f;
 	public const float MaxRenderDistanceSelf = 256f;
 
-	[Net]
+	[Net, Predicted]
 	public float Height { get; set; }
-	[Net]
+	[Net, Predicted]
 	public float MaxHeight { get; set; }
 	[Net, Predicted]
 	public int TotalJumps { get; set; }
@@ -42,6 +42,16 @@ internal partial class JumperPawn : Sandbox.Player
 		Tags.Add( "JumpPlayer" );
 	}
 
+	public override void ClientSpawn()
+	{
+		base.ClientSpawn();
+
+		var progress = Progress.Current;
+		if ( progress.TimePlayed == 0 ) return;
+
+		SetPosition( progress.Position, progress.Angles );
+	}
+
 	public override void OnKilled()
 	{
 		base.OnKilled();
@@ -53,14 +63,31 @@ internal partial class JumperPawn : Sandbox.Player
 		CameraMode = new RagdollCamera();
 	}
 
+	private TimeSince TimeSinceProgressSaved = 0f;
 	public override void Simulate( Client cl )
 	{
 		base.Simulate( cl );
 
-		if ( IsServer )
+		Height = MathX.CeilToInt( Position.z - JumperGame.Current.StartHeight );
+		MaxHeight = Math.Max( Height, MaxHeight );
+
+		if ( !IsClient ) return;
+
+		var progress = Progress.Current;
+
+		progress.BestHeight = MaxHeight;
+		progress.TimePlayed += Time.Delta;
+
+		if ( GroundEntity.IsValid() )
 		{
-			Height = MathX.CeilToInt( Position.z - JumperGame.Current.StartHeight );
-			MaxHeight = Math.Max( Height, MaxHeight );
+			progress.Position = Position;
+			progress.Angles = Rotation.Angles();
+		}
+
+		if( IsClient && TimeSinceProgressSaved > 5f )
+		{
+			TimeSinceProgressSaved = 0f;
+			progress.Save();
 		}
 	}
 
@@ -137,6 +164,16 @@ internal partial class JumperPawn : Sandbox.Player
 		if ( !tr.Hit ) return;
 
 		tr.Surface.DoFootstep( this, tr, foot, volume * 10 );
+	}
+
+	[ConCmd.Server]
+	public static void SetPosition( Vector3 position, Angles angles )
+	{
+		var caller = ConsoleSystem.Caller;
+		if ( caller?.Pawn is not JumperPawn p ) return;
+
+		p.Position = position + Vector3.Up;
+		p.Rotation = Rotation.From( angles );
 	}
 
 }

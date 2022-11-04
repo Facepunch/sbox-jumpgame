@@ -21,6 +21,16 @@ public partial class JumperGame : Game
 		}
 	}
 
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+
+		if ( IsClient )
+		{
+			Progress.Current.Save();
+		}
+	}
+
 	public override void PostLevelLoaded()
 	{
 		base.PostLevelLoaded();
