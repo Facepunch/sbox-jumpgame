@@ -19,6 +19,8 @@ internal partial class JumperController : PawnController
 	float TimeUntilMaxJump => 2.0f;
 	float MaxJumpStrength => 825.0f;
 
+	public Particles jumpeffect { get; private set; }
+
 	public override void Simulate()
 	{
 		base.Simulate();
@@ -38,10 +40,16 @@ internal partial class JumperController : PawnController
 		}
 
 		Rotation = Rotation.Slerp( Rotation, Rotation.From( TargetAngles ), 8f * Time.Delta );
+		if ( jumpeffect != null)
+		{
+			jumpeffect.SetPosition( 0, Pawn.Position );
+		}
 
 		StepMove();
 	}
 
+
+	
 	private void TryJump()
 	{
 		if ( Input.Down( InputButton.Jump ) )
@@ -74,8 +82,9 @@ internal partial class JumperController : PawnController
 
 			if ( Prediction.FirstTime )
 			{
-				Sound.FromEntity( "jumper.jump", Pawn ).SetPitch( 1.0f - (0.5f * jumpAlpha) );
-				Particles.Create( "particles/player/jump/jumper.jump.vpcf", Position );
+				Sound.FromEntity( "jumper.jump", Pawn ).SetPitch( 1.0f - (0.5f * jumpAlpha) );		
+				jumpeffect = Particles.Create( "particles/player/jump/jumper.jump.vpcf" );
+				Particles.Create( "particles/player/land/jumper.land.vpcf", Position );
 			}
 		}
 

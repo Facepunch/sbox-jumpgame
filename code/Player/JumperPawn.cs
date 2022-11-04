@@ -17,6 +17,8 @@ internal partial class JumperPawn : Sandbox.Player
 	[Net]
 	public PropCarriable HeldBody { get; set; }
 
+	public Particles falleffect { get; private set; }
+
 	public override void Respawn()
 	{
 		base.Respawn();
@@ -38,7 +40,7 @@ internal partial class JumperPawn : Sandbox.Player
 			clothing.LoadFromClient( Client );
 			clothing.DressEntity( this );
 		}
-
+		
 		Tags.Add( "JumpPlayer" );
 	}
 
@@ -62,7 +64,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		CameraMode = new RagdollCamera();
 	}
-
+	public float TimePlayed;
 	private TimeSince TimeSinceProgressSaved = 0f;
 	public override void Simulate( Client cl )
 	{
@@ -78,6 +80,23 @@ internal partial class JumperPawn : Sandbox.Player
 		progress.BestHeight = MaxHeight;
 		progress.TimePlayed += Time.Delta;
 
+		TimePlayed = progress.TimePlayed;
+
+		if ( falleffect == null)
+		{
+			falleffect = Particles.Create( "particles/player/falling/jumper.falling.vpcf", this );
+		}
+
+		if ( Velocity.z < -700 )
+		{
+			falleffect.SetPosition( 1, new Vector3(0,0, Velocity.z) );
+
+		}
+		else
+		{
+			falleffect.SetPosition( 1, new Vector3( 0, 0, 0 ) );
+		}
+		
 		if ( GroundEntity.IsValid() )
 		{
 			progress.Position = Position;
