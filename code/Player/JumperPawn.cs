@@ -2,7 +2,8 @@
 internal partial class JumperPawn : Sandbox.Player
 {
 
-	public const float MaxRenderDistance = 128f;
+	public const float MaxRenderDistanceOther = 256f;
+	public const float MaxRenderDistanceSelf = 256f;
 
 	[Net]
 	public float Height { get; set; }
@@ -66,11 +67,29 @@ internal partial class JumperPawn : Sandbox.Player
 	[Event.Frame]
 	private void UpdateRenderAlpha()
 	{
+
+		var dist = CameraMode.Position.Distance( Position );
+		var a = 1f - dist.LerpInverse( MaxRenderDistanceSelf, MaxRenderDistanceSelf * .1f );
+		a = Math.Max( a, .15f );
+		a = Easing.EaseOut( a );
+
+		RenderColor = RenderColor.WithAlpha( a );
+
+		foreach ( var child in Children )
+		{
+			if ( child is not ModelEntity m || !child.IsValid() ) continue;
+			m.RenderColor = m.RenderColor.WithAlpha( a );
+		}
+	}
+
+	[Event.Frame]
+	private void UpdateRenderAlphaOthers()
+	{
 		if ( !Local.Pawn.IsValid() || Local.Pawn == this )
 			return;
 
 		var dist = Local.Pawn.Position.Distance( Position );
-		var a = 1f - dist.LerpInverse( MaxRenderDistance, MaxRenderDistance * .1f );
+		var a = 1f - dist.LerpInverse( MaxRenderDistanceOther, MaxRenderDistanceOther * .1f );
 		a = Math.Max( a, .15f );
 		a = Easing.EaseOut( a );
 
