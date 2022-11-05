@@ -176,11 +176,14 @@ internal partial class JumperController : PawnController
 			return;
 
 		p.TotalFalls++;
-				
+
 		if ( Prediction.FirstTime || Host.IsServer )
 		{
 			Particles.Create( "particles/player/jump/jumper.jump.vpcf", Position );
-			JumperGame.SendTease( GetRandomFallMessage() );
+			if ( GetFallDamage( Velocity.z ) >= 2 )
+			{
+				JumperGame.SendTease( GetRandomFallMessage() );
+			}
 		}
 	}
 
@@ -345,6 +348,24 @@ internal partial class JumperController : PawnController
 		"It's like starting a new book...",
 		"One day you will be a winner!",
 		"One day you will look back to this and ask why...",
+		"Try to be more careful next time!",
+		"Where is your parachute?!",
+		"Can't you fly?!",
+		"Where are your wings?!",
+		"Do you like falling?!",
+		"And you call yourself a jumper?!",
+		"And where do you think you are going?!",
+		"Please don't fall again!",
+		"You remind me of a cat!",
+		"Try to visit a doctor!",
+		"Pain is temporary, glory is forever!",
+		"Peddle to the metal!",
+		"Uh oh!",
+		"Uh that wasn't good!",
+		"When can we expect you to be back?",
+		"When can we provide you with a new body?",
+		"When can we process your insurance claim?",
+		"One small step for man, one giant fall for mankind!",
 		"It's a new day!"
 
 	};
