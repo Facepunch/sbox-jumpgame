@@ -2,6 +2,20 @@
 internal partial class JumperPawn : Sandbox.Player
 {
 
+	[Net]
+	public AnimatedEntity Citizen { get; set; }
+
+	[Net] public Entity LookTarget { get; set; }
+
+	[Net]
+	public bool TalkingToNPC { get; set; }
+
+	[Net]
+	public Entity NPCCameraTarget { get; set; }
+
+	[Net]
+	public Vector3 NPCCamera { get; set; }
+
 	public const float MaxRenderDistanceOther = 256f;
 	public const float MaxRenderDistanceSelf = 256f;
 
@@ -24,6 +38,8 @@ internal partial class JumperPawn : Sandbox.Player
 		base.Respawn();
 
 		SetModel( "models/citizen/citizen.vmdl" );
+
+		Citizen = this;
 
 		Controller = new JumperController();
 		Animator = new JumperAnimator();
@@ -70,6 +86,9 @@ internal partial class JumperPawn : Sandbox.Player
 	{
 		base.Simulate( cl );
 
+		if ( TalkingToNPC )
+			return;
+
 		Height = MathX.CeilToInt( Position.z - JumperGame.Current.StartHeight );
 		MaxHeight = Math.Max( Height, MaxHeight );
 
@@ -81,6 +100,29 @@ internal partial class JumperPawn : Sandbox.Player
 		progress.TimePlayed += Time.Delta;
 
 		TimePlayed = progress.TimePlayed;
+
+		if ( LookTarget.IsValid() )
+		{
+			if ( Animator is JumperAnimator animator )
+			{
+				animator.LookAtMe = true;
+
+				SetAnimLookAt( "aim_eyes", LookTarget.Position + Vector3.Up  );
+				SetAnimLookAt( "aim_head", LookTarget.Position + Vector3.Up  );
+				SetAnimLookAt( "aim_body", LookTarget.Position + Vector3.Up  );
+			}
+			//CameraMode = new LookAtCamera();
+
+			//if ( CameraMode is LookAtCamera lookAtCamera )
+			//{
+			//	lookAtCamera.TargetEntity = NPCCameraTarget;
+			//	lookAtCamera.TargetOffset = new Vector3( 0, 0, 64 );
+			//	lookAtCamera.FieldOfView = 70;
+			//	lookAtCamera.MaxFov = 70;
+			//	lookAtCamera.MinFov = 50;
+			//	lookAtCamera.Origin = NPCCamera;
+			//}
+		}
 
 		if ( falleffect == null)
 		{

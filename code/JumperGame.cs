@@ -90,7 +90,7 @@ public partial class JumperGame : Game
 	}
 
 	[ConCmd.Server]
-	public static void SendTease( string message )
+	public static void SendTease( string message)
 	{
 		var caller = ConsoleSystem.Caller;
 
@@ -100,6 +100,20 @@ public partial class JumperGame : Game
 	[ConCmd.Client( "tease_player", CanBeCalledFromServer = true )]
 	public static void TeasePlayer( string message )
 	{
-		NPCTalk.Display( message );
+		NPCTalk.Display( message);
+	}
+
+	[ConCmd.Server]
+	public static void NPCTalking( string message, string Voice, string npcname )
+	{
+		var caller = ConsoleSystem.Caller;
+
+		NPCTalker( To.Single( caller ), message, Voice, npcname );
+	}
+
+	[ConCmd.Client( "npc_talker", CanBeCalledFromServer = true )]
+	public static void NPCTalker( string message, String Voice, string npcname )
+	{
+		NPCCharacter.Display( message, Voice, npcname );
 	}
 }

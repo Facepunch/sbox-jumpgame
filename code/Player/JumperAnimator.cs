@@ -3,6 +3,9 @@ public class JumperAnimator : PawnAnimator
 {
 
 	TimeSince TimeSinceFootShuffle = 60;
+
+	public bool LookAtMe;
+
 	float duck;
 
 	public override void Simulate()
@@ -31,15 +34,18 @@ public class JumperAnimator : PawnAnimator
 			SetAnimParameter( "voice", Client.TimeSinceLastVoice < 0.5f ? Client.VoiceLevel : 0.0f );
 		}
 
-		Vector3 aimPos = Pawn.EyePosition + Rotation.Forward * 200;
-		Vector3 lookPos = aimPos;
+		if ( LookAtMe )
+		{
+			Vector3 aimPos = Pawn.EyePosition + Rotation.Forward * 200;
+			Vector3 lookPos = aimPos;
 
-		//
-		// Look in the direction what the player's input is facing
-		//
-		SetLookAt( "aim_eyes", lookPos );
-		SetLookAt( "aim_head", lookPos );
-		SetLookAt( "aim_body", aimPos );
+			//
+			// Look in the direction what the player's input is facing
+			//
+			SetLookAt( "aim_eyes", lookPos );
+			SetLookAt( "aim_head", lookPos );
+			SetLookAt( "aim_body", aimPos );
+		}
 
 		if ( HasTag( "ducked" ) ) duck = duck.LerpTo( 1.0f, Time.Delta * 10.0f );
 		else duck = duck.LerpTo( 0.0f, Time.Delta * 5.0f );

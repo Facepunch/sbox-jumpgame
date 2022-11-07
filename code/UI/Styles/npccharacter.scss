@@ -1,0 +1,58 @@
+﻿
+@import "_vars.scss";
+
+NPCCharacter {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    opacity: 0;
+    width: 500px;
+    flex-direction: column;
+    font-weight: 100;
+    transition: all 1s ease-out;
+    transition: opacity .1s linear;
+    text-align: center;
+    align-content: center;
+    z-index: 12;
+    justify-content: center;
+
+
+    &.visible {
+        opacity: 1;
+        transition: all .1s ease-in;
+    }
+
+    .background {
+        position: absolute;
+        transform: translateX(-50%);
+        width: 600px;
+        height: 100px;
+        border-image: url( /ui/border.png ) 50 fill stretch;
+        border: 20px solid transparent;
+        z-index: 1;
+    }
+
+    .name {
+        font-family: $font-family-title;
+        text-shadow: $text-shadow-red;
+        color: $white;
+        font-size: $font-size-medium;
+        bottom: 12%;
+        right: 400%;
+        transform: translateX(-50%);
+        width: 150px;
+        border-image: url( /ui/border.png ) 50 fill stretch;
+        border: 20px solid transparent;
+        z-index: 2;
+    }
+
+    .message {
+        font-family: $font-family-title;
+        text-shadow: $text-shadow-red;
+        color: $white;
+        font-size: $font-size-large;
+        position: absolute;
+        transform: translateX(-50%);
+        z-index: 2;
+    }
+}

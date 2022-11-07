@@ -26,7 +26,7 @@ public partial class NPCTalkEnt : TriggerOnce
 	[ClientRpc]
 	public static void NewCheckPoint( string Title )
 	{
-		NPCTalk.Display( Title );
+		NPCTalk.Display( Title);
 	}
 
 }

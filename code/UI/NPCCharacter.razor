@@ -3,7 +3,8 @@
 
 <root class=@(Visible ? "visible" : "")>
         <label class="message">@OutputText</label>
-
+        <label class="name">@NPCName</label>
+        <label class="background"></label>
 </root>
 
 @code {
@@ -11,15 +12,17 @@
 
     private bool Visible => TimeSinceDisplayed < 4;
     private TimeSince TimeSinceDisplayed;
-    private static NPCTalk Instance;
+    private static NPCCharacter Instance;
 
     public string OutputText { get; set; }
     public float Delay { get; set; } = .1f;
+    public string NPCName { get; set; } = "Joe";
+    public string Voice { get; set; } = "beep1";
 
-
-    public NPCTalk()
+    public NPCCharacter()
     {
         Instance = this;
+        Instance.TimeSinceDisplayed = 4;
     }
 
     public static bool IsTalking()
@@ -27,12 +30,14 @@
         return true;
     }
 
-    public static void Display(string message)
+    public static void Display(string message, string voicesound, string npcname)
     {
         if (Instance.Visible) return;
 
         Instance.Message = message;
         Instance.OutputText = null;
+        Instance.Voice = voicesound;
+		Instance.NPCName = npcname;
     }
 
     private async Task RevealTextAsync(string message)
@@ -44,7 +49,7 @@
             Instance.OutputText += c;
             Instance.TimeSinceDisplayed = 0f;
             await Task.DelaySeconds((float)GetRandomNumber(0.05f, 0.2f));
-            Sound.FromScreen("beep1");
+            Sound.FromScreen(Voice);
         }
     }
 
@@ -71,7 +76,7 @@
 
     protected override int BuildHash()
     {
-        return HashCode.Combine(OutputText, Visible ? 1 : 0);
+        return HashCode.Combine(OutputText, Visible ? 1 : 0, NPCName);
     }
 
 }
