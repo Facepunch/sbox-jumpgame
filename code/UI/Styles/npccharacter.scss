@@ -33,12 +33,13 @@ NPCCharacter {
     }
 
     .name {
+
         font-family: $font-family-title;
         text-shadow: $text-shadow-red;
         color: $white;
         font-size: $font-size-medium;
         bottom: 12%;
-        right: 400%;
+        right: 380%;
         transform: translateX(-50%);
         width: 150px;
         border-image: url( /ui/border.png ) 50 fill stretch;
