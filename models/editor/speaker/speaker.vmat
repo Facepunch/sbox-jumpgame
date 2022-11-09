@@ -1,0 +1,16 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "generic.vfx"
+
+	//---- Lighting ----
+	F_UNLIT 1
+
+	//---- Color ----
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	TextureColor "models/editor/speaker/speaker_color.png"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+}
