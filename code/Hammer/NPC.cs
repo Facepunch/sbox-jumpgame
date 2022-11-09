@@ -37,6 +37,10 @@ public partial class NPC : AnimatedEntity
 	[Property, ResourceType( "npct" )]
 	public string AssetPath { get; set; }
 
+	[Property]
+	[MinMax( 0.8f, 1.2f )]
+	public float NpcSize { get; set; } = 1f;
+
 	[Net]
 	protected NPCTextGameResource Resource { get; set; }
 
@@ -48,25 +52,37 @@ public partial class NPC : AnimatedEntity
 	public override void Spawn()
 	{
 		Animator = new JumperAnimator();
-		SetModel("models/citizen/citizen.vmdl");
+		SetModel( "models/citizen/citizen.vmdl" );
+		//SetModel( "models/frogfella/frog_test_subject_01a.vmdl" );
 
-		Resource = ResourceLibrary.Get<NPCTextGameResource>( AssetPath );
-
+		//Resource = ResourceLibrary.Get<NPCTextGameResource>( AssetPath );
+		//System.Random rnd = new System.Random();
+		//if ( rnd.Next(2) == 0 )
+		//{
+		//	SetMaterialGroup( "ORANGE" );
+		//}
+		
 		EnableTouch = true;
 
 		SetupPhysicsFromModel( PhysicsMotionType.Static );
 
 		EnableTouch = true;
-
+		
 		var trigger = new BaseTrigger();
 		trigger.SetParent( this, null, Transform.Zero );
 		trigger.SetupPhysicsFromOBB( PhysicsMotionType.Static, Mins, Maxs );
 		trigger.Transmit = TransmitType.Always;
 		trigger.EnableTouchPersists = true;
-
+		
 		base.Spawn();
 	}
 
+	[Event.Entity.PostSpawn]
+	public void PostSpawn()
+	{
+		SetAnimParameter( "scale_height", NpcSize );
+	}
+	
 	public override void Touch( Entity other )
 	{
 		base.Touch( other );
@@ -74,18 +90,21 @@ public partial class NPC : AnimatedEntity
 		if ( !IsServer ) return;
 		
 		if ( other is not JumperPawn pl ) return;
-
+		
 		LookTarget = pl;
 		LookAtPlayer( LookTarget );
 		pl.NPCCameraTarget = this;
 		pl.LookTarget = this;
-
 	}
 
 	public override void StartTouch( Entity other )
 	{
 		base.StartTouch( other );
 
+		if ( !IsServer ) return;
+
+		if ( other is not JumperPawn pl ) return;
+	
 		TalkToPlayer( GetRandomMessage() );
 	}
 
@@ -119,7 +138,7 @@ public partial class NPC : AnimatedEntity
 
 				var defaultPosition = Rotation.LookAt( pl.Position - Position ).Angles();
 				
-				Rotation = Rotation.Slerp( Rotation, Rotation.From( defaultPosition ), Time.Delta * .5f);
+				Rotation = Rotation.Slerp( Rotation.Angles().WithRoll( 0f ).WithPitch( 0f ).ToRotation(), Rotation.From( defaultPosition ), Time.Delta * .5f);
 
 				SetAnimParameter( "b_shuffle", Rotation != Rotation.From( defaultPosition ) );
 			}
