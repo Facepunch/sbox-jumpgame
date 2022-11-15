@@ -11,6 +11,7 @@ internal partial class JumperController : PawnController
 	Vector3 Maxs => new Vector3( 16, 16, 72 );
 	bool Grounded => GroundEntity.IsValid();
 	float WalkSpeed => 200.0f;
+	float SlowSpeed => 100f;
 	float GroundAngle => 40.0f;
 	float Gravity => 800.0f;
 	float StopSpeed => 100.0f;
@@ -40,19 +41,27 @@ internal partial class JumperController : PawnController
 		}
 
 		Rotation = Rotation.Slerp( Rotation, Rotation.From( TargetAngles ), 8f * Time.Delta );
-		if ( jumpeffect != null)
+		if ( jumpeffect != null )
 		{
 			jumpeffect.SetPosition( 0, Pawn.Position );
 		}
 
 		StepMove();
+
 	}
 
-
+	bool CanJump;
 	
 	private void TryJump()
 	{
-		if ( Input.Down( InputButton.Jump ) )
+		if(Input.Down( InputButton.Reload ) )
+		{
+			TimeSinceJumpDown = 0;
+			CanJump = false;
+			return;
+		}
+
+		if ( Input.Down( InputButton.Jump ) && CanJump )
 		{
 			SetTag( "ducked" );
 			TimeSinceJumpDown += Time.Delta;
@@ -60,8 +69,9 @@ internal partial class JumperController : PawnController
 
 		var jumpAlpha = TimeSinceJumpDown / TimeUntilMaxJump;
 
-		if ( jumpAlpha >= 1 || ( !Input.Down( InputButton.Jump ) && jumpAlpha > 0 ) )
+		if ( jumpAlpha >= 1|| ( !Input.Down( InputButton.Jump ) && jumpAlpha > 0 ) )
 		{
+
 			TimeSinceJumpDown = 0;
 
 			jumpAlpha = Math.Min( 0.4f + jumpAlpha, 1.0f );
@@ -87,10 +97,11 @@ internal partial class JumperController : PawnController
 				Particles.Create( "particles/player/land/jumper.land.vpcf", Position );
 			}
 		}
-
+		DebugOverlay.Text( $"BABY:{jumpAlpha}", Pawn.Position );
 		if ( !Input.Down( InputButton.Jump ) )
 		{
 			TimeSinceJumpDown = 0;
+			CanJump = true;
 		}
 	}
 
@@ -110,6 +121,12 @@ internal partial class JumperController : PawnController
 			hiteffect.SetForward( 0, tr.Normal );
 			Sound.FromEntity( "jumper.impact.wall", Pawn );
 		}
+	}
+	public float GetWishSpeed()
+	{
+		if ( Input.Down( InputButton.Duck ) ) return SlowSpeed;
+
+		return WalkSpeed;
 	}
 
 	private void GroundMove()
@@ -197,7 +214,7 @@ internal partial class JumperController : PawnController
 			result.z = 0;
 
 		result = result.Normal * inSpeed;
-		result *= WalkSpeed;
+		result *= GetWishSpeed();
 
 		return result;
 	}
