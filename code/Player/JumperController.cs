@@ -97,7 +97,7 @@ internal partial class JumperController : PawnController
 				Particles.Create( "particles/player/land/jumper.land.vpcf", Position );
 			}
 		}
-		DebugOverlay.Text( $"BABY:{jumpAlpha}", Pawn.Position );
+
 		if ( !Input.Down( InputButton.Jump ) )
 		{
 			TimeSinceJumpDown = 0;

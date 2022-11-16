@@ -14,7 +14,11 @@ public partial class JumperGame : Game
 	public JumperGame()
 	{
 		Current = this;
-
+		if ( IsServer)
+		{
+			AddToPrecache();
+		}
+		
 		if ( IsClient )
 		{
 			new JumperRootPanel();
