@@ -7,11 +7,11 @@
         <label class="flag"></label>
 
         <div class="heightbarpos" style="height:@(CalculateProgress(Height) * 100)%;">
-            <label class="heighttext" text="< @(CalculateProgress(Height) * TotalHeight)" />
+            <label class="heighttext" text="< @(Height)" />
         </div>
 
         <div class="maxheightbarpos" style="height:@(CalculateProgress(MaxHeight) * 100)%;">
-            <label class="maxheighttext" text="@(CalculateProgress(MaxHeight) * TotalHeight) >" />
+            <label class="maxheighttext" text="@(MaxHeight) >" />
         </div>
     </div>
 </root>
@@ -20,14 +20,14 @@
 {
     public float StartHeight => JumperGame.Current.StartHeight;
     public float EndHeight => JumperGame.Current.EndHeight;
-    public float TotalHeight => Math.Abs( EndHeight - StartHeight );
+    public float TotalHeight => JumperGame.Current.MapLength;
     public float Height => (Local.Pawn as JumperPawn)?.Height ?? 0;
     public float MaxHeight => (Local.Pawn as JumperPawn)?.MaxHeight ?? 0;
     bool IsOpen { get; set; }
 
     private float CalculateProgress(float height)
     {
-        return height.LerpInverse(StartHeight, EndHeight);
+        return height.LerpInverse(0, TotalHeight);
     }
 	
     protected override int BuildHash()

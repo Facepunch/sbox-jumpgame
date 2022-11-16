@@ -11,6 +11,9 @@ public partial class JumperGame : Game
 	[Net]
 	public int StartHeight { get; set; }
 
+	[Net]
+	public int MapLength { get; set; }
+
 	public JumperGame()
 	{
 		Current = this;
@@ -50,6 +53,8 @@ public partial class JumperGame : Game
 		{
 			StartHeight = (int)startpoint.Position.z;
 		}
+		var distanceBetween = Vector3.DistanceBetween( new Vector3(0,0, StartHeight ), new Vector3( 0, 0, EndHeight) );
+		MapLength = (int)distanceBetween;
 	}
 
 	public override void ClientJoined( Client client )

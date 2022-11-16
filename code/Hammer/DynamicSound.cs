@@ -2,8 +2,8 @@
 
 [GameResource( "Dynamic Sound", "dyns", "dynamic_sound", Icon = "speaker_group", IconBgColor = "#fcba03", IconFgColor = "#363324" )]
 public class DynamicSoundResource : GameResource
-{	
-	[Property, ResourceType("sound")]
+{
+	[Property, ResourceType( "sound" )]
 	[Title( "Background Song" )]
 	[Category( "Background" )]
 	public string BackgroundSong { get; set; }
@@ -60,7 +60,7 @@ public partial class DynamicSound : Entity
 	public override void Spawn()
 	{
 		Transmit = TransmitType.Always;
-		
+
 		Resource = ResourceLibrary.Get<DynamicSoundResource>( AssetPath );
 
 		TerminalSong = Resource.TerminalSong;
@@ -72,13 +72,14 @@ public partial class DynamicSound : Entity
 	{
 		base.ClientSpawn();
 
-		BackgroundSound = PlaySound( Resource.BackgroundSong ).SetVolume(1);
+		BackgroundSound = PlaySound( Resource.BackgroundSong ).SetVolume( 1 );
 	}
-	
+
+	//Single check for player is in the air.
 	bool IsFlying;
 
 	[Event.Tick.Client]
-	public void SoundTick( )
+	public void SoundTick()
 	{
 
 		if ( Local.Pawn is not Player player )
@@ -88,45 +89,57 @@ public partial class DynamicSound : Entity
 		{
 			for ( int i = 0; i < Resource.FlyingSong.Count; i++ )
 			{
-				FlyingSound.Add( Sound.FromEntity( Resource.FlyingSong[i], player ).SetVolume( 0 ));
+				FlyingSound.Add( Sound.FromEntity( Resource.FlyingSong[i], player ).SetVolume( 0 ) );
 			}
 		}
 
 		if ( player.Velocity.Length > 10 )
 		{
-			if ( player.Controller.GroundEntity == null  )
+			if ( player.Controller.GroundEntity == null )
 			{
 				if ( !IsFlying )
-				{				
+				{
 					StartFly();
-				}	
+				}
 			}
 		}
-		
-		if ( player.Controller.GroundEntity != null && IsPlaying )
+
+		if ( player.Controller.GroundEntity != null )
 		{
-			FlyingSound[lastflySong].SetVolume( 0 );
-			IsFlying = false;
-			BackgroundSound.SetVolume( MathX.LerpTo( 1f, 0.25f, Time.Delta ) );
-		}	
-		
-		if(!IsPlaying )
+			StartGrounded();
+		}
+
+		if ( !IsPlaying )
 		{
-			BackgroundSound.SetVolume(0);
-			FlyingSound[lastflySong].SetVolume( 0 );
-			IsFlying = false;
+			MuteAllSound();
 		}
 	}
-	
+
+	public void MuteAllSound()
+	{
+		BackgroundSound.SetVolume( 0 );
+		FlyingSound[lastflySong].SetVolume( 0 );
+		IsFlying = false;
+	}
+
+	public void StartGrounded()
+	{
+		if ( !IsPlaying ) return;
+
+		FlyingSound[lastflySong].SetVolume( 0 );
+		IsFlying = false;
+		BackgroundSound.SetVolume( MathX.LerpTo( 1f, 0.25f, Time.Delta ) );
+	}
+
 	public void StartFly()
 	{
-		if ( IsPlaying )
-		{
-			IsFlying = true;
-			GetRandomFlySong();
-			FlyingSound[lastflySong].SetVolume( 2 );
-			BackgroundSound.SetVolume( MathX.LerpTo( .25f, 1f, Time.Delta ) );
-		}
+		if ( !IsPlaying ) return;
+
+		IsFlying = true;
+		GetRandomFlySong();
+		FlyingSound[lastflySong].SetVolume( 2 );
+		BackgroundSound.SetVolume( MathX.LerpTo( .25f, 1f, Time.Delta ) );
+
 	}
 
 	private int lastflySong;
@@ -174,7 +187,7 @@ public partial class DynamicSoundlocal : Entity
 {
 	[Net, Property, FGDType( "target_destination" )] public string TargetDynamicSound { get; set; } = "";
 	[Net, Property] public int SoundSelection { get; set; }
-	
+
 	[Net, Property]
 	[Title( "Use Velocity for Volume" )]
 	public bool VelocityVolume { get; set; }
@@ -182,7 +195,6 @@ public partial class DynamicSoundlocal : Entity
 	[Net, Property]
 	[Title( "StartOn" )]
 	public bool StartOn { get; set; }
-
 
 	private DynamicSound DynamicSound;
 
@@ -206,7 +218,7 @@ public partial class DynamicSoundlocal : Entity
 	[Event.Tick.Client]
 	public void Tick()
 	{
-		if( VelocityVolume )
+		if ( VelocityVolume )
 		{
 			LocalSound.SetVolume( 1 * (Velocity.Length / 1000) );
 		}
@@ -216,7 +228,7 @@ public partial class DynamicSoundlocal : Entity
 	[ClientRpc]
 	public void StartPlayingSound()
 	{
-		if( StartOn )
+		if ( StartOn )
 		{
 			LocalSound = Sound.FromEntity( DynamicSound.TerminalSong[SoundSelection], this ).SetVolume( 1 );
 		}
@@ -229,7 +241,7 @@ public partial class DynamicSoundlocal : Entity
 	[ClientRpc]
 	public void OnPlaySound()
 	{
-		LocalSound.SetVolume(1);
+		LocalSound.SetVolume( 1 );
 	}
 
 
@@ -244,7 +256,7 @@ public partial class DynamicSoundlocal : Entity
 	{
 		OnPlaySound();
 	}
-	
+
 	[Input]
 	public void StopSound()
 	{
@@ -275,7 +287,7 @@ public partial class DynamicSoundBoxlocal : Entity
 
 
 	private DynamicSound DynamicSound;
-	
+
 	[Net]
 	public BBox Inner { get; private set; }
 	public Sound LocalSound { get; set; }
@@ -285,7 +297,7 @@ public partial class DynamicSoundBoxlocal : Entity
 		Transmit = TransmitType.Always;
 
 		Inner = new BBox( Position + Mins, Position + Maxs );
-		
+
 		base.Spawn();
 	}
 	public override void ClientSpawn()
@@ -302,7 +314,7 @@ public partial class DynamicSoundBoxlocal : Entity
 
 		SndPos = innerclosetsPoint;
 	}
-	
+
 	[Event.Tick.Client]
 	public void Tick()
 	{
