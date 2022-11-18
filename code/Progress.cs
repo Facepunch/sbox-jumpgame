@@ -10,9 +10,11 @@ internal class Progress
 	public int TotalFalls { get; set; }//never reset this
 	public int NumberCompletions { get; set; }//never reset this
 
+	static string CookieName => $"{Global.MapName}.JumperProgress";
+
 	public void Save()
 	{
-		Cookie.Set( "JumperProgress", this );
+		Cookie.Set( CookieName, this );
 	}
 
 	private static Progress current;
@@ -20,7 +22,7 @@ internal class Progress
 	{
 		get
 		{
-			current ??= Cookie.Get<Progress>( "JumperProgress", new() );
+			current ??= Cookie.Get<Progress>( CookieName, new() );
 			return current;
 		}
 	}
