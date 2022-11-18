@@ -1,8 +1,8 @@
 {
-  "Title": "Jumper Game",
+  "Title": "Jumper",
   "Type": "game",
   "Org": "facepunch",
-  "Ident": "jumper_game",
+  "Ident": "jumper",
   "Tags": "",
   "Schema": 1,
   "HasAssets": true,
@@ -15,9 +15,9 @@
     "MaxPlayers": 64,
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
-    "MapSelect": "Unrestricted",
+    "MapSelect": "Hidden",
     "MapList": [
-      "facepunch.flatgrass"
+      "baks.jumpermap"
     ],
     "RankType": "None",
     "PerMapRanking": false,
