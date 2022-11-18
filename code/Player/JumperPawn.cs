@@ -23,9 +23,7 @@ internal partial class JumperPawn : Sandbox.Player
 	public float Height { get; set; }
 	[Net, Predicted]
 	public float MaxHeight { get; set; }
-	[Net, Predicted]
 	public int TotalJumps { get; set; }
-	[Net, Predicted]
 	public int TotalFalls { get; set; }
 
 	[Net]
@@ -65,8 +63,12 @@ internal partial class JumperPawn : Sandbox.Player
 		base.ClientSpawn();
 
 		var progress = Progress.Current;
-		if ( progress.TimePlayed == 0 ) return;
 
+		TotalFalls = progress.TotalFalls;
+		TotalJumps = progress.TotalJumps;
+
+		if ( progress.TimePlayed == 0 ) return;
+		
 		SetPosition( progress.Position, progress.Angles );
 	}
 
@@ -98,6 +100,9 @@ internal partial class JumperPawn : Sandbox.Player
 
 		progress.BestHeight = MaxHeight;
 		progress.TimePlayed += Time.Delta;
+
+		progress.TotalFalls = TotalFalls;
+		progress.TotalJumps = TotalJumps;
 
 		TimePlayed = progress.TimePlayed;
 

@@ -12,6 +12,10 @@
             <label class="stat">@Local.Client?.Name</label>
         </div>
         <div class="row">
+            <label class="title">PLAYTIME</label>
+            <label class="stat">@YourSessionTime</label>
+        </div>
+        <div class="row">
             <label class="title">JUMPS</label>
             <label class="stat">@Jumps</label>
         </div>
@@ -31,9 +35,18 @@
     private int? Falls => (Local.Pawn as JumperPawn)?.TotalFalls;
     private float? MaxHeight => (Local.Pawn as JumperPawn)?.MaxHeight;
 
+    private string YourSessionTime;
+	
+    public override void Tick()
+    {
+        base.Tick();
+
+        YourSessionTime = TimeSpan.FromSeconds((Progress.Current.TimePlayed * 60).Clamp(0, float.MaxValue)).ToString(@"dd\:hh\:mm\:ss");
+    }
+
     protected override int BuildHash()
     {
-        return HashCode.Combine(Input.Down(InputButton.Score), Jumps, Falls, MaxHeight);
+        return HashCode.Combine(Input.Down(InputButton.Score), Jumps, Falls, MaxHeight, YourSessionTime);
     }
 }
 
