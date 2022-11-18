@@ -27,12 +27,17 @@
             <label class="title">FALLS</label>
             <label class="stat">@Falls</label>
         </div>
+        <div class="row">
+            <label class="title">COMPLETIONS</label>
+            <label class="stat">@Completions</label>
+        </div>
     </div>
 </root>
 
 @code {
     private int? Jumps => (Local.Pawn as JumperPawn)?.TotalJumps;
     private int? Falls => (Local.Pawn as JumperPawn)?.TotalFalls;
+    private int? Completions => (Local.Pawn as JumperPawn)?.Completions;
     private float? MaxHeight => (Local.Pawn as JumperPawn)?.MaxHeight;
 
     private string YourSessionTime;
@@ -46,7 +51,7 @@
 
     protected override int BuildHash()
     {
-        return HashCode.Combine(Input.Down(InputButton.Score), Jumps, Falls, MaxHeight, YourSessionTime);
+        return HashCode.Combine(Input.Down(InputButton.Score), Jumps, Falls, MaxHeight, YourSessionTime, Completions);
     }
 }
 

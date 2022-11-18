@@ -25,6 +25,7 @@ internal partial class JumperPawn : Sandbox.Player
 	public float MaxHeight { get; set; }
 	public int TotalJumps { get; set; }
 	public int TotalFalls { get; set; }
+	public int Completions { get; set; }
 
 	[Net]
 	public PropCarriable HeldBody { get; set; }
@@ -66,6 +67,8 @@ internal partial class JumperPawn : Sandbox.Player
 
 		TotalFalls = progress.TotalFalls;
 		TotalJumps = progress.TotalJumps;
+
+		Completions = progress.NumberCompletions;
 
 		if ( progress.TimePlayed == 0 ) return;
 		

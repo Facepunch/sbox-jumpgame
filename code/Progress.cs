@@ -6,8 +6,9 @@ internal class Progress
 	public Angles Angles { get; set; }
 	public float TimePlayed { get; set; }
 	public float BestHeight { get; set; }
-	public int TotalJumps { get; set; }
-	public int TotalFalls { get; set; }
+	public int TotalJumps { get; set; }//never reset this
+	public int TotalFalls { get; set; }//never reset this
+	public int NumberCompletions { get; set; }//never reset this
 
 	public void Save()
 	{

@@ -52,15 +52,14 @@ public partial class NPC : AnimatedEntity
 	public override void Spawn()
 	{
 		Animator = new JumperAnimator();
-		SetModel( "models/citizen/citizen.vmdl" );
-		//SetModel( "models/frogfella/frog_test_subject_01a.vmdl" );
+		SetModel( "models/frogfella/frog_test_subject_01a.vmdl" );
 
-		//Resource = ResourceLibrary.Get<NPCTextGameResource>( AssetPath );
-		//System.Random rnd = new System.Random();
-		//if ( rnd.Next(2) == 0 )
-		//{
-		//	SetMaterialGroup( "ORANGE" );
-		//}
+		Resource = ResourceLibrary.Get<NPCTextGameResource>( AssetPath );
+		System.Random rnd = new System.Random();
+		if ( rnd.Next(2) == 0 )
+		{
+			SetMaterialGroup( "ORANGE" );
+		}
 		
 		EnableTouch = true;
 
