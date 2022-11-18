@@ -89,7 +89,7 @@ public partial class NPC : AnimatedEntity
 		if ( !IsServer ) return;
 		
 		if ( other is not JumperPawn pl ) return;
-		
+
 		LookTarget = pl;
 		LookAtPlayer( LookTarget );
 		pl.NPCCameraTarget = this;
@@ -104,7 +104,7 @@ public partial class NPC : AnimatedEntity
 
 		if ( other is not JumperPawn pl ) return;
 	
-		TalkToPlayer( GetRandomMessage() );
+		TalkToPlayer(To.Single(pl.Client), GetRandomMessage() );
 	}
 
 	[ClientRpc]
