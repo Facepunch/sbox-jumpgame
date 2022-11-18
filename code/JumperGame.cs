@@ -83,6 +83,15 @@ public partial class JumperGame : Game
 
 		ReceiveChat( To.Everyone, cl.Name, reason.ToString() );
 	}
+	public override void DoPlayerNoclip( Client client )
+	{
+		// Do nothing. The player can't noclip in this mode.
+	}
+
+	public override void DoPlayerSuicide( Client client )
+	{
+		// Do nothing. The player can't suicide in this mode.
+	}
 
 	[ConCmd.Server]
 	public static void SendChat( string message )
