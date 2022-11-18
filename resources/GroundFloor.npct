@@ -1,0 +1,17 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		NPCName = "Joe"
+		NPCText = 
+		[
+			"It\'s quite a long way up! Good luck!",
+			"Hopefully you aren\'t just hanging around here...",
+			"There is a nice breeze up there.",
+			"Get them legs moving.",
+			"Up up and away!",
+			"You should probably get a move on...",
+		]
+		NPCVoice = resource:"sounds/npc/voice.frog.sound"
+	}
+}

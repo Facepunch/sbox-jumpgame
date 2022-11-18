@@ -1,0 +1,49 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "eyeball.vfx"
+
+	//---- Specular ----
+	F_SPECULAR_CUBE_MAP 1 // In-game Cube Map
+
+	//---- Color ----
+	g_flModelTintAmount "1.000"
+	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	TextureColor "models/frogfella/materials/frog_test_subject_01_eyes_color.png"
+
+	//---- Fade ----
+	g_flFadeExponent "1.000"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Iris ----
+	g_flIrisBumpStrength "1.000"
+	g_flParallaxStrength "0.035"
+	IrisNormal "[0.501961 0.501961 1.000000 0.000000]"
+	IrisRoughness "models/frogfella/materials/frog_test_subject_01_eyes_rough.png"
+	TextureIrisMask "models/frogfella/materials/frog_test_subject_01_eyes_rough.png"
+
+	//---- Lighting ----
+	g_vReflectanceRange "[0.000 1.000]"
+	TextureReflectance "materials/default/default_refl.tga"
+
+	//---- Normal ----
+	g_flCorneaScleraBumpStrength "1.000"
+	g_flScleraDiffuseExponent "1.500"
+	g_flScleraDiffuseWrap "0.300"
+	TextureNormal "[0.501961 0.501961 1.000000 0.000000]"
+
+	//---- Occlusion ----
+	g_flOcclusionStrength "0.750"
+	g_flOcclusionWidth "3.000"
+	TextureOcclusion "materials/default/default_color.tga"
+
+	//---- Texture Coordinates ----
+	g_nScaleTexCoordUByModelScaleAxis "0"
+	g_nScaleTexCoordVByModelScaleAxis "0"
+	g_vTexCoordOffset "[0.000 0.000]"
+	g_vTexCoordScale "[1.000 1.000]"
+	g_vTexCoordScrollSpeed "[0.000 0.000]"
+}
