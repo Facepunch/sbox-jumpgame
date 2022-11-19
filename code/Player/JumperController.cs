@@ -92,7 +92,7 @@ internal partial class JumperController : PawnController
 
 			if ( Prediction.FirstTime )
 			{
-				Sound.FromEntity( "jumper.jump", Pawn ).SetPitch( 1.0f - (0.5f * jumpAlpha) );		
+				Sound.FromWorld( "jumper.jump", Position ).SetPitch( 1.0f - (0.5f * jumpAlpha) );		
 				jumpeffect = Particles.Create( "particles/player/jump/jumper.jump.vpcf" );
 				Particles.Create( "particles/player/land/jumper.land.vpcf", Position );
 			}
@@ -114,12 +114,12 @@ internal partial class JumperController : PawnController
 		Velocity = ClipVelocity( Velocity, tr.Normal );
 		Velocity += bounce;
 		TargetAngles = Rotation.LookAt( tr.Normal ).Angles();
-
+		
 		if ( Host.IsServer || Prediction.FirstTime )
 		{
 			var hiteffect = Particles.Create( "particles/player/impact/jumper.impact.wall.vpcf", tr.EndPosition );
 			hiteffect.SetForward( 0, tr.Normal );
-			Sound.FromEntity( "jumper.impact.wall", Pawn );
+			Sound.FromWorld( "jumper.impact.wall", Position );
 		}
 	}
 	public float GetWishSpeed()
