@@ -60,10 +60,8 @@ public partial class NPC : AnimatedEntity
 		{
 			SetMaterialGroup( "ORANGE" );
 		}
-		
-		EnableTouch = true;
 
-		SetupPhysicsFromModel( PhysicsMotionType.Static );
+		//SetupPhysicsFromModel( PhysicsMotionType.Static );
 
 		EnableTouch = true;
 		
@@ -72,7 +70,7 @@ public partial class NPC : AnimatedEntity
 		trigger.SetupPhysicsFromOBB( PhysicsMotionType.Static, Mins, Maxs );
 		trigger.Transmit = TransmitType.Always;
 		trigger.EnableTouchPersists = true;
-		
+
 		base.Spawn();
 	}
 
