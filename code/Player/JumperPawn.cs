@@ -71,8 +71,11 @@ internal partial class JumperPawn : Sandbox.Player
 		Completions = progress.NumberCompletions;
 
 		if ( progress.TimePlayed == 0 ) return;
-		
-		SetPosition( progress.Position, progress.Angles );
+
+		if ( !JumperGame.Current.IsEditorMode )
+		{
+			SetPosition( progress.Position, progress.Angles );
+		}
 	}
 
 	public override void OnKilled()
@@ -100,14 +103,17 @@ internal partial class JumperPawn : Sandbox.Player
 		if ( !IsClient ) return;
 
 		var progress = Progress.Current;
+		
+		if ( !JumperGame.Current.IsEditorMode )
+		{
+			progress.BestHeight = MaxHeight;
+			progress.TimePlayed += Time.Delta;
 
-		progress.BestHeight = MaxHeight;
-		progress.TimePlayed += Time.Delta;
+			progress.TotalFalls = TotalFalls;
+			progress.TotalJumps = TotalJumps;
 
-		progress.TotalFalls = TotalFalls;
-		progress.TotalJumps = TotalJumps;
-
-		TimePlayed = progress.TimePlayed;
+			TimePlayed = progress.TimePlayed;
+		}
 
 		if ( LookTarget.IsValid() )
 		{
@@ -147,7 +153,7 @@ internal partial class JumperPawn : Sandbox.Player
 			falleffect.SetPosition( 1, new Vector3( 0, 0, 0 ) );
 		}
 		
-		if ( GroundEntity.IsValid() )
+		if ( GroundEntity.IsValid() && !JumperGame.Current.IsEditorMode )
 		{
 			progress.Position = Position;
 			progress.Angles = Rotation.Angles();

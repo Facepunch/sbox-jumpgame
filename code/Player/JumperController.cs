@@ -47,7 +47,6 @@ internal partial class JumperController : PawnController
 		}
 
 		StepMove();
-
 	}
 
 	bool CanJump;

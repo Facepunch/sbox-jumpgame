@@ -4,7 +4,7 @@
 <root class=@(Input.Down(InputButton.Score) ? "open" : "closed")>
     <div class="header">
         <label class="title">JUMPER</label>
-        <label class="stats">STATS</label>
+        <label class="stats">@(JumperGame.Current.IsEditorMode ? "EDITOR MODE PROGRESS NOT SAVED" : "STATS")</label>
     </div>
     <div class="rows">
         <div class="row">
@@ -51,7 +51,7 @@
 
     protected override int BuildHash()
     {
-        return HashCode.Combine(Input.Down(InputButton.Score), Jumps, Falls, MaxHeight, YourSessionTime, Completions);
+        return HashCode.Combine(Input.Down(InputButton.Score), Jumps, Falls, MaxHeight, YourSessionTime, Completions, JumperGame.Current.IsEditorMode);
     }
 }
 

@@ -14,6 +14,11 @@ public partial class JumperGame : Game
 	[Net]
 	public int MapLength { get; set; }
 
+	[Net]
+	public bool IsEditorMode { get; set; }
+
+	private bool _hasCheated;
+
 	public JumperGame()
 	{
 		Current = this;
@@ -25,6 +30,10 @@ public partial class JumperGame : Game
 		if ( IsClient )
 		{
 			new JumperRootPanel();
+		}
+		else
+		{
+			IsEditorMode = Host.IsToolsEnabled;
 		}
 	}
 
@@ -55,6 +64,11 @@ public partial class JumperGame : Game
 		}
 		var distanceBetween = Vector3.DistanceBetween( new Vector3(0,0, StartHeight ), new Vector3( 0, 0, EndHeight) );
 		MapLength = (int)distanceBetween;
+
+		if(IsEditorMode)
+		{
+			Log.Info( "You are in editor mode, you can't save progress" );
+		}
 	}
 
 	public override void ClientJoined( Client client )
@@ -92,7 +106,7 @@ public partial class JumperGame : Game
 	{
 		// Do nothing. The player can't suicide in this mode.
 	}
-
+	
 	[ConCmd.Server]
 	public static void SendChat( string message )
 	{

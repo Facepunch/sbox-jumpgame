@@ -5,7 +5,7 @@ Chat {
     font-family: $font-family-title;
     color: $white;
     flex-direction: column;
-    width: 800px;
+    width: 600px;
     height: 550px;
     position: absolute;
     bottom: 200px;
@@ -15,12 +15,15 @@ Chat {
     .entries {
         overflow: scroll;
         flex-direction: column;
-        flex-grow: 1;
+        flex-grow: 0;
 
         ChatEntry {
             min-height: 20px;
             text-shadow: $text-shadow-black;
             transition: all .15s ease;
+            margin-bottom: 10px;
+            flex-grow: 1;
+            flex-shrink: 0;
 
             &:not(:last-child) {
                 margin-bottom: 10px;
@@ -67,8 +70,8 @@ Chat {
         .entries {
             ChatEntry {
                 opacity: 1;
-                backdrop-filter: blur( 10px );
                 cursor: text;
+                flex-grow: 1;
             }
 
             .faded {
