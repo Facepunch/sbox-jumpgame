@@ -10,7 +10,7 @@
 		Decibels = 70
 		Sounds = 
 		[
-			resource:"sounds/kenney/ui/select_005.vsnd",
+			resource:"sounds/player/jump/sounds/jump.1.vsnd",
 		]
 		SelectionMode = "Random"
 		MaximumDistance = 1143.9335

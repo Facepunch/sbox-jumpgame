@@ -20,7 +20,7 @@
             <label class="stat">@Jumps</label>
         </div>
         <div class="row">
-            <label class="title">MAX HEIGHT</label>
+            <label class="title">BEST HEIGHT</label>
             <label class="stat">@MaxHeight</label>
         </div>
         <div class="row">
@@ -38,7 +38,7 @@
     private int? Jumps => (Local.Pawn as JumperPawn)?.TotalJumps;
     private int? Falls => (Local.Pawn as JumperPawn)?.TotalFalls;
     private int? Completions => (Local.Pawn as JumperPawn)?.Completions;
-    private float? MaxHeight => (Local.Pawn as JumperPawn)?.MaxHeight;
+    private float? MaxHeight => Progress.Current?.BestHeight;
 
     private string YourSessionTime;
 	

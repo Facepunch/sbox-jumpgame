@@ -1,5 +1,4 @@
-﻿
-internal partial class JumperPawn : Sandbox.Player
+﻿internal partial class JumperPawn : Sandbox.Player
 {
 
 	[Net]
@@ -26,6 +25,9 @@ internal partial class JumperPawn : Sandbox.Player
 	public int TotalJumps { get; set; }
 	public int TotalFalls { get; set; }
 	public int Completions { get; set; }
+
+	[Net, Predicted]
+	public float BestHeight { get; set; }
 
 	[Net]
 	public PropCarriable HeldBody { get; set; }
@@ -70,11 +72,26 @@ internal partial class JumperPawn : Sandbox.Player
 
 		Completions = progress.NumberCompletions;
 
+		if ( MaxHeight < progress.BestHeight )
+		{
+			MaxHeight = progress.BestHeight;
+			BestHeight = progress.BestHeight;
+		}
+
 		if ( progress.TimePlayed == 0 ) return;
 
 		if ( !JumperGame.Current.IsEditorMode )
 		{
 			SetPosition( progress.Position, progress.Angles );
+		}
+	}
+
+	[Event.Tick.Server]
+	public void UpdateBestHeight()
+	{
+		if ( IsClient )
+		{
+			BestHeight = Progress.Current.BestHeight;
 		}
 	}
 
@@ -90,12 +107,20 @@ internal partial class JumperPawn : Sandbox.Player
 	}
 	public float TimePlayed;
 	private TimeSince TimeSinceProgressSaved = 0f;
+	private TimeSince TimeSinceSubmitSaved = 0f;
 	public override void Simulate( Client cl )
 	{
 		base.Simulate( cl );
 
 		if ( TalkingToNPC )
 			return;
+
+		if (IsServer && TimeSinceSubmitSaved > 10f && !JumperGame.Current.IsEditorMode )
+		{
+			TimeSinceSubmitSaved = 0f;
+			JumperGame.SubmitScore( "Current_Height", Client, (int)MaxHeight );
+			JumperGame.SubmitScore( "Current_Height_Distance", Client, (int)MaxHeight );
+		}
 
 		Height = MathX.CeilToInt( Position.z - JumperGame.Current.StartHeight );
 		MaxHeight = Math.Max( Height, MaxHeight );
@@ -106,7 +131,12 @@ internal partial class JumperPawn : Sandbox.Player
 		
 		if ( !JumperGame.Current.IsEditorMode )
 		{
-			progress.BestHeight = MaxHeight;
+			if( progress.BestHeight < MaxHeight)
+			{
+				progress.BestHeight = MaxHeight;
+
+			}
+
 			progress.TimePlayed += Time.Delta;
 
 			progress.TotalFalls = TotalFalls;
@@ -163,6 +193,7 @@ internal partial class JumperPawn : Sandbox.Player
 		{
 			TimeSinceProgressSaved = 0f;
 			progress.Save();
+
 		}
 	}
 
@@ -250,5 +281,4 @@ internal partial class JumperPawn : Sandbox.Player
 		p.Position = position + Vector3.Up;
 		p.Rotation = Rotation.From( angles );
 	}
-
 }

@@ -22,12 +22,12 @@
     "MapList": [
       "baks.jumpermap"
     ],
-    "RankType": "None",
+    "RankType": "Best",
     "PerMapRanking": false,
-    "LeaderboardType": "None",
+    "LeaderboardType": "Descending",
     "ProjectTemplate": null,
     "ParentPackage": "",
-    "GameCategory": "None",
+    "GameCategory": "Parkour",
     "Collision": {
       "Defaults": {
         "solid": "Collide",
@@ -87,6 +87,10 @@
     },
     "GeneralExtensions": false,
     "TargettedExtensions": false,
-    "ExtensionApiVersion": 1001
+    "ExtensionApiVersion": 1001,
+    "DefaultLeaderboards": [
+      "Current_Height",
+      "Current_Height_Distance"
+    ]
   }
 }

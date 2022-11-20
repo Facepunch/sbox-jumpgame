@@ -10,14 +10,14 @@
 		Decibels = 70
 		Sounds = 
 		[
-			resource:"sounds/physics/bullet_impacts/cardboard_01.vsnd",
-			resource:"sounds/physics/bullet_impacts/cardboard_03.vsnd",
-			resource:"sounds/physics/bullet_impacts/cardboard_05.vsnd",
-			resource:"sounds/physics/bullet_impacts/cardboard_07.vsnd",
-			resource:"sounds/physics/bullet_impacts/dirt_01.vsnd",
-			resource:"sounds/physics/bullet_impacts/dirt_02.vsnd",
-			resource:"sounds/physics/bullet_impacts/dirt_03.vsnd",
-			resource:"sounds/physics/bullet_impacts/dirt_04.vsnd",
+			resource:"sounds/player/impact/sounds/impact.8.vsnd",
+			resource:"sounds/player/impact/sounds/impact.7.vsnd",
+			resource:"sounds/player/impact/sounds/impact.6.vsnd",
+			resource:"sounds/player/impact/sounds/impact.5.vsnd",
+			resource:"sounds/player/impact/sounds/impact.4.vsnd",
+			resource:"sounds/player/impact/sounds/impact.3.vsnd",
+			resource:"sounds/player/impact/sounds/impact.2.vsnd",
+			resource:"sounds/player/impact/sounds/impact.1.vsnd",
 		]
 		SelectionMode = "Random"
 		MaximumDistance = 1143.9335

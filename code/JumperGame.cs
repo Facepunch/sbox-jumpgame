@@ -1,4 +1,7 @@
 ﻿
+using Sandbox;
+using System.Numerics;
+
 public partial class JumperGame : Game
 {
 
@@ -46,7 +49,7 @@ public partial class JumperGame : Game
 			Progress.Current.Save();
 		}
 	}
-
+	
 	public override void PostLevelLoaded()
 	{
 		base.PostLevelLoaded();
@@ -115,6 +118,12 @@ public partial class JumperGame : Game
 		ReceiveChat( To.Everyone, caller.Name, message );
 	}
 
+	[ConCmd.Server]
+	public static void Submit( Client cl, float score)
+	{
+		SubmitScore( "BestHeight", cl, (int)score );
+	}
+
 	[ConCmd.Client( "receive_chat", CanBeCalledFromServer = true )]
 	public static void ReceiveChat( string name, string message )
 	{
@@ -148,4 +157,16 @@ public partial class JumperGame : Game
 	{
 		NPCCharacter.Display( message, Voice, npcname );
 	}
+	private bool CanSubmitScore( JumperPawn player )
+	{
+		return !Host.IsToolsEnabled && player.Client != null;
+	}
+	public static async void SubmitScore( string bucket, Client client, int score )
+	{
+		var leaderboard = await Leaderboard.FindOrCreate( bucket, false );
+
+		await leaderboard.Value.Submit( client, score );
+
+	}
+
 }
