@@ -18,7 +18,7 @@
     "MaxPlayers": 64,
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
-    "MapSelect": "Hidden",
+    "MapSelect": "Official",
     "MapList": [
       "baks.jumpermap"
     ],
