@@ -1,5 +1,6 @@
 ﻿
 using Sandbox;
+using Sandbox.Internal;
 using System.Numerics;
 
 public partial class JumperGame : Game
@@ -109,7 +110,24 @@ public partial class JumperGame : Game
 	{
 		// Do nothing. The player can't suicide in this mode.
 	}
-	
+
+	[ConCmd.Admin]
+	public static void ResetPlayer( )
+	{
+		if ( ConsoleSystem.Caller.Pawn is JumperPawn player )
+		{
+			var spawnpoints = All.OfType<SpawnPoint>();
+			var randomSpawnPoint = spawnpoints.OrderBy( x => Rand.Int( 999 ) ).FirstOrDefault();
+
+			if ( randomSpawnPoint != null )
+			{
+				var tx = randomSpawnPoint.Transform;
+				tx.Position += Vector3.Up * 50.0f;
+				player.Transform = tx;
+			}
+		}
+	}
+
 	[ConCmd.Server]
 	public static void SendChat( string message )
 	{
