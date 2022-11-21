@@ -101,9 +101,29 @@ public partial class JumperGame : Game
 
 		ReceiveChat( To.Everyone, cl.Name, reason.ToString() );
 	}
-	public override void DoPlayerNoclip( Client client )
+	public override void DoPlayerNoclip( Client player )
 	{
 		// Do nothing. The player can't noclip in this mode.
+
+		if(IsEditorMode)
+		{
+			if ( !player.HasPermission( "noclip" ) )
+				return;
+
+			if ( player.Pawn is Player basePlayer )
+			{
+				if ( basePlayer.DevController is NoclipController )
+				{
+					Log.Info( "Noclip Mode Off" );
+					basePlayer.DevController = null;
+				}
+				else
+				{
+					Log.Info( "Noclip Mode On" );
+					basePlayer.DevController = new NoclipController();
+				}
+			}
+		}
 	}
 
 	public override void DoPlayerSuicide( Client client )
@@ -139,7 +159,7 @@ public partial class JumperGame : Game
 	[ConCmd.Server]
 	public static void Submit( Client cl, float score)
 	{
-		SubmitScore( "BestHeight", cl, (int)score );
+		SubmitScore( cl, (int)score );
 	}
 
 	[ConCmd.Client( "receive_chat", CanBeCalledFromServer = true )]
@@ -175,16 +195,23 @@ public partial class JumperGame : Game
 	{
 		NPCCharacter.Display( message, Voice, npcname );
 	}
+
+	private static string GetMapBucket()
+	{
+		var map = Global.MapName;
+
+		return $"Map-{map}-Current-Height";
+	}
+	
 	private bool CanSubmitScore( JumperPawn player )
 	{
 		return !Host.IsToolsEnabled && player.Client != null;
 	}
-	public static async void SubmitScore( string bucket, Client client, int score )
+	public static async void SubmitScore( Client client, int score )
 	{
-		var leaderboard = await Leaderboard.FindOrCreate( bucket, false );
+		var leaderboard = await Leaderboard.FindOrCreate( GetMapBucket(), false );
 
 		await leaderboard.Value.Submit( client, score );
 
 	}
-
 }

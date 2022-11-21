@@ -90,7 +90,8 @@
     "ExtensionApiVersion": 1001,
     "DefaultLeaderboards": [
       "Current_Height",
-      "Current_Height_Distance"
+      "Current_Height_Distance",
+      "Map-{map}-Current-Height"
     ]
   }
 }

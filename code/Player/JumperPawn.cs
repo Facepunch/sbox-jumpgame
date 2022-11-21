@@ -1,4 +1,6 @@
-﻿internal partial class JumperPawn : Sandbox.Player
+﻿using Sandbox;
+
+internal partial class JumperPawn : Sandbox.Player
 {
 
 	[Net]
@@ -118,8 +120,8 @@
 		if (IsServer && TimeSinceSubmitSaved > 10f && !JumperGame.Current.IsEditorMode )
 		{
 			TimeSinceSubmitSaved = 0f;
-			JumperGame.SubmitScore( "Current_Height", Client, (int)MaxHeight );
-			JumperGame.SubmitScore( "Current_Height_Distance", Client, (int)MaxHeight );
+			JumperGame.SubmitScore(Client, (int)MaxHeight );
+			//JumperGame.SubmitScore(Client, (int)MaxHeight );
 		}
 
 		Height = MathX.CeilToInt( Position.z - JumperGame.Current.StartHeight );

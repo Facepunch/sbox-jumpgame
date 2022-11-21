@@ -1,0 +1,18 @@
+﻿
+@inherits Panel;
+
+<root class=@(IsOpen ? "closed" : "open")>
+	<label class="editortext">Editor Mode</label>
+	<label class="subeditortext">Progress will not be saved, Noclip is enabled.</label>
+</root>
+
+@code
+{
+	bool IsOpen { get; set; }
+	
+	protected override int BuildHash()
+	{
+		IsOpen = JumperGame.Current.IsEditorMode;
+		return HashCode.Combine(IsOpen);
+	}
+}
