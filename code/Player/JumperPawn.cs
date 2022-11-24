@@ -82,7 +82,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		if ( progress.TimePlayed == 0 ) return;
 
-		if ( !JumperGame.Current.IsEditorMode )
+		if ( !Host.IsToolsEnabled )
 		{
 			SetPosition( progress.Position, progress.Angles );
 		}
@@ -117,7 +117,7 @@ internal partial class JumperPawn : Sandbox.Player
 		if ( TalkingToNPC )
 			return;
 
-		if (IsServer && TimeSinceSubmitSaved > 10f && !JumperGame.Current.IsEditorMode )
+		if (IsServer && TimeSinceSubmitSaved > 10f && !Host.IsToolsEnabled )
 		{
 			TimeSinceSubmitSaved = 0f;
 			JumperGame.SubmitScore(Client, (int)MaxHeight );
@@ -131,7 +131,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		var progress = Progress.Current;
 		
-		if ( !JumperGame.Current.IsEditorMode )
+		if ( !Host.IsToolsEnabled )
 		{
 			if( progress.BestHeight < MaxHeight)
 			{
@@ -185,7 +185,7 @@ internal partial class JumperPawn : Sandbox.Player
 			falleffect.SetPosition( 1, new Vector3( 0, 0, 0 ) );
 		}
 		
-		if ( GroundEntity.IsValid() && !JumperGame.Current.IsEditorMode )
+		if ( GroundEntity.IsValid() && !Host.IsToolsEnabled )
 		{
 			progress.Position = Position;
 			progress.Angles = Rotation.Angles();
