@@ -22,6 +22,8 @@ internal partial class JumperController : PawnController
 
 	public Particles jumpeffect { get; private set; }
 
+	public JumperPawn Player => Pawn as JumperPawn;
+
 	public override void Simulate()
 	{
 		base.Simulate();
@@ -205,9 +207,9 @@ internal partial class JumperController : PawnController
 
 	Vector3 GetWishVelocity( bool zeroPitch = false )
 	{
-		var result = new Vector3( Input.Forward, Input.Left, 0 );
+		var result = new Vector3( Player.InputDirection.x, Player.InputDirection.y, 0 );
 		var inSpeed = result.Length.Clamp( 0, 1 );
-		result *= Input.Rotation;
+		result *= Player.ViewAngles.ToRotation();
 
 		if ( zeroPitch )
 			result.z = 0;

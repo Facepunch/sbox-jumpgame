@@ -19,9 +19,11 @@ public class JumperCamera : CameraMode
 		distance = distance.LerpTo( targetDistance, 5f * Time.Delta );
 		targetPosition = Vector3.Lerp( targetPosition, pawn.Position, 8f * Time.Delta );
 
+		var playerRotation = pawn.ViewAngles.ToRotation();
+
 		var height = 48f.LerpTo( 96f, distanceA );
-		var center = targetPosition + Vector3.Up * height + Input.Rotation.Backward * 8f;
-		var targetPos = center + Input.Rotation.Backward * targetDistance;
+		var center = targetPosition + Vector3.Up * height + playerRotation.Backward * 8f;
+		var targetPos = center + playerRotation.Backward * targetDistance;
 
 		var tr = Trace.Ray( center, targetPos )
 			.Ignore( pawn )
@@ -35,8 +37,8 @@ public class JumperCamera : CameraMode
 			distance = Math.Min( distance, tr.Distance );
 		}
 
-		Position = center + Input.Rotation.Backward * distance;
-		Rotation = Input.Rotation;
+		Position = center + playerRotation.Backward * distance;
+		Rotation = playerRotation;
 		Rotation *= Rotation.FromPitch( distanceA * 10f );
 
 		var spd = pawn.Velocity.WithZ( 0 ).Length / 350f;
@@ -55,9 +57,9 @@ public class JumperCamera : CameraMode
 		targetPosition = Local.Pawn.Position;
 	}
 
-	public override void BuildInput( InputBuilder input )
+	public override void BuildInput()
 	{
-		base.BuildInput( input );
+		base.BuildInput();
 
 		if ( Input.MouseWheel != 0 )
 		{

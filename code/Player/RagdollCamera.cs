@@ -15,19 +15,19 @@ public class RagdollCamera : CameraMode
 
 	public override void Update()
 	{
-		var player = Local.Client;
+		var player = Local.Pawn as Player;
 		if ( !player.IsValid() ) return;
 
 		// lerp the focus point
 		FocusPoint = Vector3.Lerp( FocusPoint, GetSpectatePoint(), Time.Delta * 5.0f );
 		var tr = Trace.Ray( FocusPoint + Vector3.Up * 12, FocusPoint + GetViewOffset() )
 			.WorldOnly()
-			.Ignore( player.Pawn )
+			.Ignore( player )
 			.Radius( 6 )
 			.Run();
 
 		Position = tr.EndPosition;
-		Rotation = Input.Rotation;
+		Rotation = player.EyeRotation;
 		FieldOfView = FieldOfView.LerpTo( 65, Time.Delta * 3.0f );
 
 		Viewer = null;
@@ -45,9 +45,9 @@ public class RagdollCamera : CameraMode
 
 	public virtual Vector3 GetViewOffset()
 	{
-		var player = Local.Client;
+		var player = Local.Pawn as Player;
 		if ( player == null ) return Vector3.Zero;
 
-		return Input.Rotation.Forward * (-350 * 1) + Vector3.Up * (20 * 1);
+		return player.ViewAngles.ToRotation().Forward * (-350 * 1) + Vector3.Up * (20 * 1);
 	}
 }
