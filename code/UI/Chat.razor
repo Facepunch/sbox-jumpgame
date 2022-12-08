@@ -68,7 +68,7 @@
         JumperGame.ReceiveChat(To.Everyone, "Eagle One Development Team", "We get it almost every night And when that moon gets big and bright");
     }
 
-    [Event.BuildInput]
+    [Event.Client.BuildInput]
     private void OnBuildInput()
     {
         if ( Sandbox.Input.Pressed( InputButton.Chat ) )

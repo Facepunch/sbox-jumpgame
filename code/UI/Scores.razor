@@ -13,7 +13,7 @@
             @if (player.Pawn is not JumperPawn p) continue;
             <div class=@(p.IsLocalPawn ? "entry me" : "entry")>
                 <label class="you">You</label>
-                <label class="name">@player.GetClientName()</label>
+                <label class="name">@player.Name</label>
                 <label class="score">@p.MaxHeight</label>
                 <label class="ping">@player.Ping</label>
             </div>

@@ -36,6 +36,9 @@ internal partial class JumperPawn : Sandbox.Player
 
 	public Particles falleffect { get; private set; }
 
+	private JumperAnimator Animator;
+	private JumperCamera JumperCamera = new();
+
 	public override void Respawn()
 	{
 		base.Respawn();
@@ -45,8 +48,6 @@ internal partial class JumperPawn : Sandbox.Player
 		Citizen = this;
 
 		Controller = new JumperController();
-		Animator = new JumperAnimator();
-		CameraMode = new JumperCamera();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
@@ -105,7 +106,7 @@ internal partial class JumperPawn : Sandbox.Player
 		EnableAllCollisions = false;
 		EnableDrawing = false;
 
-		CameraMode = new RagdollCamera();
+		//CameraMode = new RagdollCamera();
 	}
 	public float TimePlayed;
 	private TimeSince TimeSinceProgressSaved = 0f;
@@ -116,6 +117,9 @@ internal partial class JumperPawn : Sandbox.Player
 
 		if ( TalkingToNPC )
 			return;
+
+		Animator ??= new( this );
+		Animator.Simulate();
 
 		if (IsServer && TimeSinceSubmitSaved > 10f && !Host.IsToolsEnabled )
 		{
@@ -151,11 +155,11 @@ internal partial class JumperPawn : Sandbox.Player
 		{
 			if ( Animator is JumperAnimator animator )
 			{
-				animator.LookAtMe = true;
+				//animator.LookAtMe = true;
 
-				SetAnimLookAt( "aim_eyes", LookTarget.Position + Vector3.Up  );
-				SetAnimLookAt( "aim_head", LookTarget.Position + Vector3.Up  );
-				SetAnimLookAt( "aim_body", LookTarget.Position + Vector3.Up  );
+				SetAnimLookAt( "aim_eyes", EyePosition, LookTarget.Position + Vector3.Up  );
+				SetAnimLookAt( "aim_head", EyePosition, LookTarget.Position + Vector3.Up  );
+				SetAnimLookAt( "aim_body", EyePosition, LookTarget.Position + Vector3.Up  );
 			}
 			//CameraMode = new LookAtCamera();
 
@@ -199,11 +203,20 @@ internal partial class JumperPawn : Sandbox.Player
 		}
 	}
 
-	[Event.Frame]
+	public override void FrameSimulate( Client cl )
+	{
+		base.FrameSimulate( cl );
+
+		if ( !cl.IsOwnedByLocalClient ) return;
+
+		JumperCamera?.Update();
+	}
+
+	[Event.Client.Frame]
 	private void UpdateRenderAlpha()
 	{
 
-		var dist = CameraMode.Position.Distance( Position );
+		var dist = Camera.Position.Distance( Position );
 		var a = 1f - dist.LerpInverse( MaxRenderDistanceSelf, MaxRenderDistanceSelf * .1f );
 		a = Math.Max( a, .15f );
 		a = Easing.EaseOut( a );
@@ -217,7 +230,7 @@ internal partial class JumperPawn : Sandbox.Player
 		}
 	}
 
-	[Event.Frame]
+	[Event.Client.Frame]
 	private void UpdateRenderAlphaOthers()
 	{
 		if ( !Local.Pawn.IsValid() || Local.Pawn == this )

@@ -320,10 +320,10 @@ public partial class DynamicSoundBoxlocal : Entity
 	{
 		LocalSound.SetPosition( SndPos );
 
-		var pos = CurrentView.Position;
-		if ( Local.Pawn.IsValid() )
+		var pos = Camera.Position;
+		if ( Local.Pawn is JumperPawn p )
 		{
-			pos = Local.Pawn.EyePosition;
+			pos = p.EyePosition;
 
 		}
 		ShortestDistanceToSurface( pos );

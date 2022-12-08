@@ -1,5 +1,5 @@
 ﻿
-public class JumperCamera : CameraMode
+public class JumperCamera
 {
 
 	private float distance;
@@ -10,7 +10,7 @@ public class JumperCamera : CameraMode
 	public float MaxDistance => 350.0f;
 	public float DistanceStep => 60.0f;
 
-	public override void Update()
+	public void Update()
 	{
 		if ( Local.Pawn is not JumperPawn pawn )
 			return;
@@ -37,30 +37,21 @@ public class JumperCamera : CameraMode
 			distance = Math.Min( distance, tr.Distance );
 		}
 
-		Position = center + playerRotation.Backward * distance;
-		Rotation = playerRotation;
-		Rotation *= Rotation.FromPitch( distanceA * 10f );
+		Camera.Position = center + playerRotation.Backward * distance;
+		Camera.Rotation = playerRotation;
+		Camera.Rotation *= Rotation.FromPitch( distanceA * 10f );
 
 		var spd = pawn.Velocity.WithZ( 0 ).Length / 350f;
 		var fov = 70f.LerpTo( 80f, spd );
 
-		FieldOfView = FieldOfView.LerpTo( fov, Time.Delta );
+		Camera.FieldOfView = Camera.FieldOfView.LerpTo( fov, Time.Delta );
+		Camera.ZNear = 6;
+		Camera.FirstPersonViewer = null;
 	}
 
-	public override void Activated()
+	[Event.Client.BuildInput]
+	public void BuildInput()
 	{
-		base.Activated();
-
-		Viewer = null;
-		ZNear = 6;
-		FieldOfView = 70;
-		targetPosition = Local.Pawn.Position;
-	}
-
-	public override void BuildInput()
-	{
-		base.BuildInput();
-
 		if ( Input.MouseWheel != 0 )
 		{
 			targetDistance += -Input.MouseWheel * DistanceStep;

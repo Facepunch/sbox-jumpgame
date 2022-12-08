@@ -3,7 +3,7 @@ using Sandbox;
 using Sandbox.Internal;
 using System.Numerics;
 
-public partial class JumperGame : Game
+public partial class JumperGame : GameManager
 {
 
 	public new static JumperGame Current;
@@ -91,7 +91,8 @@ public partial class JumperGame : Game
 		{
 			var tx = randomSpawnPoint.Transform;
 			tx.Position += Vector3.Up * 50.0f;
-			client.Pawn.Transform = tx;
+			client.Pawn.Position = tx.Position;
+			client.Pawn.Rotation = tx.Rotation;
 		}
 	}
 
@@ -124,11 +125,6 @@ public partial class JumperGame : Game
 				}
 			}
 		}
-	}
-
-	public override void DoPlayerSuicide( Client client )
-	{
-		// Do nothing. The player can't suicide in this mode.
 	}
 
 	[ConCmd.Admin]

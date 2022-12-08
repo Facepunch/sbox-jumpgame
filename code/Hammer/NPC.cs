@@ -46,12 +46,12 @@ public partial class NPC : AnimatedEntity
 
 	[Net] 
 	public Entity LookTarget { get; set; }
-	public JumperAnimator Animator { get; private set; }
+	//public JumperAnimator Animator { get; private set; }
 	public Vector3 WishVelocity { get; set; }
 
 	public override void Spawn()
 	{
-		Animator = new JumperAnimator();
+		//Animator = new JumperAnimator();
 		SetModel( "models/frogfella/frog_test_subject_01a.vmdl" );
 
 		Resource = ResourceLibrary.Get<NPCTextGameResource>( AssetPath );
@@ -123,22 +123,22 @@ public partial class NPC : AnimatedEntity
 	{
 		if ( LookTarget.IsValid() )
 		{
-			if ( Animator is JumperAnimator animator )
-			{
-				animator.LookAtMe = true;
+			//if ( Animator is JumperAnimator animator )
+			//{
+			//	//animator.LookAtMe = true;
 
-				WishVelocity = Velocity;
+			//	WishVelocity = Velocity;
 
-				SetAnimLookAt( "aim_eyes", pl.Position + Vector3.Up * 2f );
-				SetAnimLookAt( "aim_head", pl.Position + Vector3.Up * 2f );
-				SetAnimLookAt( "aim_body", pl.Position + Vector3.Up * 2f );
+			//	SetAnimLookAt( "aim_eyes", Position + Vector3.Up * 48, pl.Position + Vector3.Up * 2f );
+			//	SetAnimLookAt( "aim_head", Position + Vector3.Up * 48, pl.Position + Vector3.Up * 2f );
+			//	SetAnimLookAt( "aim_body", Position + Vector3.Up * 48, pl.Position + Vector3.Up * 2f );
 
-				var defaultPosition = Rotation.LookAt( pl.Position - Position ).Angles();
+			//	var defaultPosition = Rotation.LookAt( pl.Position - Position ).Angles();
 				
-				Rotation = Rotation.Slerp( Rotation.Angles().WithRoll( 0f ).WithPitch( 0f ).ToRotation(), Rotation.From( defaultPosition ), Time.Delta * .5f);
+			//	Rotation = Rotation.Slerp( Rotation.Angles().WithRoll( 0f ).WithPitch( 0f ).ToRotation(), Rotation.From( defaultPosition ), Time.Delta * .5f);
 
-				SetAnimParameter( "b_shuffle", Rotation != Rotation.From( defaultPosition ) );
-			}
+			//	SetAnimParameter( "b_shuffle", Rotation != Rotation.From( defaultPosition ) );
+			//}
 		}
 	}
 
