@@ -1,6 +1,6 @@
 ﻿
 global using Sandbox;
-global using SandboxEditor;
+global using Editor;
 global using Sandbox.UI;
 global using System;
 global using System.Linq;

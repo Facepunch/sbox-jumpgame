@@ -219,7 +219,7 @@ internal partial class JumperPawn : Sandbox.Player
 		var dist = Camera.Position.Distance( Position );
 		var a = 1f - dist.LerpInverse( MaxRenderDistanceSelf, MaxRenderDistanceSelf * .1f );
 		a = Math.Max( a, .15f );
-		a = Easing.EaseOut( a );
+		a = Sandbox.Utility.Easing.EaseOut( a );
 
 		RenderColor = RenderColor.WithAlpha( a );
 
@@ -239,7 +239,7 @@ internal partial class JumperPawn : Sandbox.Player
 		var dist = Local.Pawn.Position.Distance( Position );
 		var a = 1f - dist.LerpInverse( MaxRenderDistanceOther, MaxRenderDistanceOther * .1f );
 		a = Math.Max( a, .15f );
-		a = Easing.EaseOut( a );
+		a = Sandbox.Utility.Easing.EaseOut( a );
 
 		RenderColor = RenderColor.WithAlpha( a );
 

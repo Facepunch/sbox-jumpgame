@@ -35,7 +35,7 @@ public class JumperAnimator
 		Pawn.SetAnimParameter( "b_noclip", noclip );
 		Pawn.SetAnimParameter( "b_sit", sitting );
 		Pawn.SetAnimParameter( "skid", skidding ? 1.0f : 0f );
-		Pawn.SetAnimParameter( "b_swim", Pawn.WaterLevel > 0.5f && !sitting );
+		Pawn.SetAnimParameter( "b_swim", Pawn.GetWaterLevel() > 0.5f && !sitting );
 
 		if ( Host.IsClient && Pawn.Client.IsValid() )
 		{
