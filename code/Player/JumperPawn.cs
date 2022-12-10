@@ -92,7 +92,7 @@ internal partial class JumperPawn : Sandbox.Player
 	[Event.Tick.Server]
 	public void UpdateBestHeight()
 	{
-		if ( IsClient )
+		if ( Game.IsClient )
 		{
 			BestHeight = Progress.Current.BestHeight;
 		}
@@ -121,7 +121,7 @@ internal partial class JumperPawn : Sandbox.Player
 		Animator ??= new( this );
 		Animator.Simulate();
 
-		if (IsServer && TimeSinceSubmitSaved > 10f && !Game.IsToolsEnabled )
+		if ( Game.IsServer && TimeSinceSubmitSaved > 10f && !Game.IsToolsEnabled )
 		{
 			TimeSinceSubmitSaved = 0f;
 			//JumperGame.SubmitScore(Client, (int)MaxHeight );
@@ -131,7 +131,7 @@ internal partial class JumperPawn : Sandbox.Player
 		Height = MathX.CeilToInt( Position.z - JumperGame.Current.StartHeight );
 		MaxHeight = Math.Max( Height, MaxHeight );
 
-		if ( !IsClient ) return;
+		if ( !Game.IsClient ) return;
 
 		var progress = Progress.Current;
 		
@@ -195,7 +195,7 @@ internal partial class JumperPawn : Sandbox.Player
 			progress.Angles = Rotation.Angles();
 		}
 
-		if( IsClient && TimeSinceProgressSaved > 5f )
+		if( Game.IsClient && TimeSinceProgressSaved > 5f )
 		{
 			TimeSinceProgressSaved = 0f;
 			progress.Save();
@@ -256,7 +256,7 @@ internal partial class JumperPawn : Sandbox.Player
 		if ( LifeState != LifeState.Alive )
 			return;
 
-		if ( !IsServer )
+		if ( !Game.IsServer )
 			return;
 
 		if ( foot == 0 )

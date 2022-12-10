@@ -84,7 +84,7 @@ public partial class NPC : AnimatedEntity
 	{
 		base.Touch( other );
 
-		if ( !IsServer ) return;
+		if ( !Game.IsServer ) return;
 		
 		if ( other is not JumperPawn pl ) return;
 
@@ -98,7 +98,7 @@ public partial class NPC : AnimatedEntity
 	{
 		base.StartTouch( other );
 
-		if ( !IsServer ) return;
+		if ( !Game.IsServer ) return;
 
 		if ( other is not JumperPawn pl ) return;
 	

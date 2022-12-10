@@ -17,7 +17,7 @@ public partial class NPCTalkEnt : TriggerOnce
 	{
 		base.OnTouchStart( other );
 
-		if ( !IsServer ) return;
+		if ( !Game.IsServer ) return;
 		if ( other is not JumperPawn pawn ) return;
 
 		NewCheckPoint( To.Single( other ), $"{NPCText}" );

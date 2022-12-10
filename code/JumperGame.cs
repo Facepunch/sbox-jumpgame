@@ -26,12 +26,12 @@ public partial class JumperGame : GameManager
 	public JumperGame()
 	{
 		Current = this;
-		if ( IsServer)
+		if ( Game.IsServer )
 		{
 			AddToPrecache();
 		}
 		
-		if ( IsClient )
+		if ( Game.IsClient )
 		{
 			new JumperRootPanel();
 		}
@@ -45,7 +45,7 @@ public partial class JumperGame : GameManager
 	{
 		base.OnDestroy();
 
-		if ( IsClient )
+		if ( Game.IsClient )
 		{
 			Progress.Current.Save();
 		}
