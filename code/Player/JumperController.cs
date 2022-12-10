@@ -116,7 +116,7 @@ internal partial class JumperController : PawnController
 		Velocity += bounce;
 		TargetAngles = Rotation.LookAt( tr.Normal ).Angles();
 		
-		if ( Host.IsServer || Prediction.FirstTime )
+		if ( Game.IsServer || Prediction.FirstTime )
 		{
 			var hiteffect = Particles.Create( "particles/player/impact/jumper.impact.wall.vpcf", tr.EndPosition );
 			hiteffect.SetForward( 0, tr.Normal );
@@ -175,7 +175,7 @@ internal partial class JumperController : PawnController
 			{
 				AddEvent( "landed" );
 
-				if ( Host.IsServer || Prediction.FirstTime )
+				if ( Game.IsServer || Prediction.FirstTime )
 					Sound.FromWorld( "player.land", Position );
 
 				if( GetFallDamage( Velocity.z ) > 0 )
@@ -195,7 +195,7 @@ internal partial class JumperController : PawnController
 
 		p.TotalFalls++;
 
-		if ( Prediction.FirstTime || Host.IsServer )
+		if ( Prediction.FirstTime || Game.IsServer )
 		{
 			Particles.Create( "particles/player/jump/jumper.jump.vpcf", Position );
 			if ( GetFallDamage( Velocity.z ) >= 2 )
@@ -344,9 +344,9 @@ internal partial class JumperController : PawnController
 	private int lastFallMessage;
 	private string GetRandomFallMessage()
 	{
-		var idx = Rand.Int( 0, fallMessages.Count - 1 );
+		var idx = Game.Random.Int( 0, fallMessages.Count - 1 );
 		while ( idx == lastFallMessage )
-			idx = Rand.Int( 0, fallMessages.Count - 1 );
+			idx = Game.Random.Int( 0, fallMessages.Count - 1 );
 
 		lastFallMessage = idx;
 		return string.Format( fallMessages[idx] );

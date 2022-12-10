@@ -21,8 +21,8 @@
     public float StartHeight => JumperGame.Current.StartHeight;
     public float EndHeight => JumperGame.Current.EndHeight;
     public float TotalHeight => JumperGame.Current.MapLength;
-    public float Height => (Local.Pawn as JumperPawn)?.Height ?? 0;
-    public float MaxHeight => (Local.Pawn as JumperPawn)?.MaxHeight ?? 0;
+    public float Height => (Game.LocalPawn as JumperPawn)?.Height ?? 0;
+    public float MaxHeight => (Game.LocalPawn as JumperPawn)?.MaxHeight ?? 0;
     bool IsOpen { get; set; }
 
     private float CalculateProgress(float height)

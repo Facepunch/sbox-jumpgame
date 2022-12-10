@@ -9,7 +9,7 @@
     <div class="rows">
         <div class="row">
             <label class="title">NAME</label>
-            <label class="stat">@Local.Client?.Name</label>
+            <label class="stat">@Game.LocalClient?.Name</label>
         </div>
         <div class="row">
             <label class="title">PLAYTIME</label>
@@ -35,9 +35,9 @@
 </root>
 
 @code {
-    private int? Jumps => (Local.Pawn as JumperPawn)?.TotalJumps;
-    private int? Falls => (Local.Pawn as JumperPawn)?.TotalFalls;
-    private int? Completions => (Local.Pawn as JumperPawn)?.Completions;
+    private int? Jumps => (Game.LocalPawn as JumperPawn)?.TotalJumps;
+    private int? Falls => (Game.LocalPawn as JumperPawn)?.TotalFalls;
+    private int? Completions => (Game.LocalPawn as JumperPawn)?.Completions;
     private float? MaxHeight => Progress.Current?.BestHeight;
 
     private string YourSessionTime;

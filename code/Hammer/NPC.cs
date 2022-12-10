@@ -145,9 +145,9 @@ public partial class NPC : AnimatedEntity
 	private int lastFallMessage;
 	private string GetRandomMessage()
 	{
-		var idx = Rand.Int( 0, Resource.NPCText.Count - 1 );
+		var idx = Game.Random.Int( 0, Resource.NPCText.Count - 1 );
 		while ( idx == lastFallMessage )
-			idx = Rand.Int( 0, Resource.NPCText.Count - 1 );
+			idx = Game.Random.Int( 0, Resource.NPCText.Count - 1 );
 
 		lastFallMessage = idx;
 		return string.Format( Resource.NPCText[idx] );

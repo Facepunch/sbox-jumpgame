@@ -12,7 +12,7 @@ public class JumperCamera
 
 	public void Update()
 	{
-		if ( Local.Pawn is not JumperPawn pawn )
+		if ( Game.LocalPawn is not JumperPawn pawn )
 			return;
 
 		var distanceA = distance.LerpInverse( MinDistance, MaxDistance );
@@ -44,7 +44,7 @@ public class JumperCamera
 		var spd = pawn.Velocity.WithZ( 0 ).Length / 350f;
 		var fov = 70f.LerpTo( 80f, spd );
 
-		Camera.FieldOfView = Camera.FieldOfView.LerpTo( fov, Time.Delta );
+		Camera.FieldOfView = 90f;
 		Camera.ZNear = 6;
 		Camera.FirstPersonViewer = null;
 	}

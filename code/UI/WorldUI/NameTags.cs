@@ -51,7 +51,7 @@ internal class NameTagComponent : EntityComponent<JumperPawn>
 				continue;
 			}
 
-			var shouldRemove = player.Position.Distance( Local.Pawn.Position ) > 250;
+			var shouldRemove = player.Position.Distance( Game.LocalPawn.Position ) > 250;
 			shouldRemove = shouldRemove || player.LifeState != LifeState.Alive;
 			shouldRemove = shouldRemove || player.IsDormant;
 

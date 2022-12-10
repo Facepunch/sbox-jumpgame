@@ -83,7 +83,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		if ( progress.TimePlayed == 0 ) return;
 
-		if ( !Host.IsToolsEnabled )
+		if ( !Game.IsToolsEnabled )
 		{
 			SetPosition( progress.Position, progress.Angles );
 		}
@@ -111,7 +111,7 @@ internal partial class JumperPawn : Sandbox.Player
 	public float TimePlayed;
 	private TimeSince TimeSinceProgressSaved = 0f;
 	private TimeSince TimeSinceSubmitSaved = 0f;
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		base.Simulate( cl );
 
@@ -121,13 +121,13 @@ internal partial class JumperPawn : Sandbox.Player
 		Animator ??= new( this );
 		Animator.Simulate();
 
-		if (IsServer && TimeSinceSubmitSaved > 10f && !Host.IsToolsEnabled )
+		if (IsServer && TimeSinceSubmitSaved > 10f && !Game.IsToolsEnabled )
 		{
 			TimeSinceSubmitSaved = 0f;
-			JumperGame.SubmitScore(Client, (int)MaxHeight );
+			//JumperGame.SubmitScore(Client, (int)MaxHeight );
 			//JumperGame.SubmitScore(Client, (int)MaxHeight );
 		}
-
+		
 		Height = MathX.CeilToInt( Position.z - JumperGame.Current.StartHeight );
 		MaxHeight = Math.Max( Height, MaxHeight );
 
@@ -135,7 +135,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		var progress = Progress.Current;
 		
-		if ( !Host.IsToolsEnabled )
+		if ( !Game.IsToolsEnabled )
 		{
 			if( progress.BestHeight < MaxHeight)
 			{
@@ -189,7 +189,7 @@ internal partial class JumperPawn : Sandbox.Player
 			falleffect.SetPosition( 1, new Vector3( 0, 0, 0 ) );
 		}
 		
-		if ( GroundEntity.IsValid() && !Host.IsToolsEnabled )
+		if ( GroundEntity.IsValid() && !Game.IsToolsEnabled )
 		{
 			progress.Position = Position;
 			progress.Angles = Rotation.Angles();
@@ -203,7 +203,7 @@ internal partial class JumperPawn : Sandbox.Player
 		}
 	}
 
-	public override void FrameSimulate( Client cl )
+	public override void FrameSimulate( IClient cl )
 	{
 		base.FrameSimulate( cl );
 
@@ -233,10 +233,10 @@ internal partial class JumperPawn : Sandbox.Player
 	[Event.Client.Frame]
 	private void UpdateRenderAlphaOthers()
 	{
-		if ( !Local.Pawn.IsValid() || Local.Pawn == this )
+		if ( !Game.LocalPawn.IsValid() || Game.LocalPawn == this )
 			return;
 
-		var dist = Local.Pawn.Position.Distance( Position );
+		var dist = Game.LocalPawn.Position.Distance( Position );
 		var a = 1f - dist.LerpInverse( MaxRenderDistanceOther, MaxRenderDistanceOther * .1f );
 		a = Math.Max( a, .15f );
 		a = Sandbox.Utility.Easing.EaseOut( a );

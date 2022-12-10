@@ -44,7 +44,7 @@
             Instance.OutputText += c;
             Instance.TimeSinceDisplayed = 0f;
             await Task.DelaySeconds((float)GetRandomNumber(0.05f, 0.2f));
-            Sound.FromScreen("beep1");
+            Sound.FromScreen("beep1").SetPitch((float)GetRandomNumber(1.1f, 0.9f));
         }
     }
 

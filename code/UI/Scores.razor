@@ -8,7 +8,7 @@
         <label class="ping">Ping</label>
     </div>
     <div class="entries">
-        @foreach (var player in Client.All)
+        @foreach (var player in Game.Clients)
         {
             @if (player.Pawn is not JumperPawn p) continue;
             <div class=@(p.IsLocalPawn ? "entry me" : "entry")>
@@ -27,7 +27,7 @@
     {
         IsOpen ^= Input.Pressed(InputButton.Slot3);
         var result = Input.Down(InputButton.Score).GetHashCode();
-        foreach(var cl in Client.All)
+        foreach(var cl in Game.Clients)
         {
             if (cl.Pawn is not JumperPawn p) continue;
             result = HashCode.Combine(result, p.MaxHeight, cl.Ping);

@@ -10,7 +10,7 @@ internal class Progress
 	public int TotalFalls { get; set; }//never reset this
 	public int NumberCompletions { get; set; }//never reset this
 
-	static string CookieName => $"{Global.MapName}.JumperProgress";
+	static string CookieName => $"{Game.Server.MapIdent}.JumperProgress";
 
 	public void Save()
 	{

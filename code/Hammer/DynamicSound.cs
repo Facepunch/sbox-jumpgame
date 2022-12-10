@@ -82,7 +82,7 @@ public partial class DynamicSound : Entity
 	public void SoundTick()
 	{
 
-		if ( Local.Pawn is not Player player )
+		if ( Game.LocalPawn is not JumperPawn player )
 			return;
 
 		if ( FlyingSound.Count <= 0 )
@@ -145,9 +145,9 @@ public partial class DynamicSound : Entity
 	private int lastflySong;
 	private string GetRandomFlySong()
 	{
-		var idx = Rand.Int( 0, Resource.FlyingSong.Count - 1 );
+		var idx = Game.Random.Int( 0, Resource.FlyingSong.Count - 1 );
 		while ( idx == lastflySong )
-			idx = Rand.Int( 0, Resource.FlyingSong.Count - 1 );
+			idx = Game.Random.Int( 0, Resource.FlyingSong.Count - 1 );
 
 		lastflySong = idx;
 		return string.Format( Resource.FlyingSong[idx] );
@@ -321,7 +321,7 @@ public partial class DynamicSoundBoxlocal : Entity
 		LocalSound.SetPosition( SndPos );
 
 		var pos = Camera.Position;
-		if ( Local.Pawn is JumperPawn p )
+		if ( Game.LocalPawn is JumperPawn p )
 		{
 			pos = p.EyePosition;
 
