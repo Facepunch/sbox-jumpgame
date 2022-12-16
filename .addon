@@ -19,7 +19,7 @@
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Official",
     "MapList": [
-      "baks.jumpermap"
+      "facepunch.jumpermap"
     ],
     "RankType": "Best",
     "PerMapRanking": false,
