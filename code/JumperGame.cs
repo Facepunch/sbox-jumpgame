@@ -2,6 +2,7 @@
 using Sandbox;
 using Sandbox.Internal;
 using System.Numerics;
+using static Sandbox.Event;
 
 public partial class JumperGame : GameManager
 {
@@ -50,18 +51,17 @@ public partial class JumperGame : GameManager
 			Progress.Current.Save();
 		}
 	}
-	
 	public override void PostLevelLoaded()
 	{
 		base.PostLevelLoaded();
 
-		var endpoint = Entity.All.OfType<EndPoint>().FirstOrDefault();
+		var endpoint = Sandbox.Entity.All.OfType<EndPoint>().FirstOrDefault();
 		if( endpoint != null )
 		{
 			EndHeight = (int)endpoint.Position.z;
 		}
 
-		var startpoint = Entity.All.OfType<StartPoint>().FirstOrDefault();
+		var startpoint = Sandbox.Entity.All.OfType<StartPoint>().FirstOrDefault();
 		if ( startpoint != null )
 		{
 			StartHeight = (int)startpoint.Position.z;
@@ -102,30 +102,10 @@ public partial class JumperGame : GameManager
 
 		ReceiveChat( To.Everyone, cl.Name, reason.ToString() );
 	}
-	//public override void DoPlayerNoclip( Client player )
-	//{
-	//	// Do nothing. The player can't noclip in this mode.
-
-	//	if(IsEditorMode)
-	//	{
-	//		if ( !player.HasPermission( "noclip" ) )
-	//			return;
-
-	//		if ( player.Pawn is Player basePlayer )
-	//		{
-	//			if ( basePlayer.DevController is NoclipController )
-	//			{
-	//				Log.Info( "Noclip Mode Off" );
-	//				basePlayer.DevController = null;
-	//			}
-	//			else
-	//			{
-	//				Log.Info( "Noclip Mode On" );
-	//				basePlayer.DevController = new NoclipController();
-	//			}
-	//		}
-	//	}
-	//}
+	public override void DoPlayerDevCam( IClient client )
+	{
+		// do nothing
+	}
 
 	[ConCmd.Admin]
 	public static void ResetPlayer( )
@@ -218,5 +198,31 @@ public partial class JumperGame : GameManager
 
 	//	await leaderboard.Value.Submit( client, score );
 
+	//}
+
+	//[ConCmd.Server( "noclip" )]
+	//static void NoclipCommand()
+	//{
+	//	if ( ConsoleSystem.Caller == null ) return;
+
+	//	Current?.DoPlayerNoclip( ConsoleSystem.Caller );
+	//}
+
+	//public virtual void DoPlayerNoclip( IClient player )
+	//{
+
+	//	if ( player.Pawn is JumperPawn basePlayer )
+	//	{
+	//		if ( basePlayer.DevController is NoclipController )
+	//		{
+	//			Log.Info( "Noclip Mode Off" );
+	//			basePlayer.DevController = null;
+	//		}
+	//		else
+	//		{
+	//			Log.Info( "Noclip Mode On" );
+	//			basePlayer.DevController = new NoclipController();
+	//		}
+	//	}
 	//}
 }
