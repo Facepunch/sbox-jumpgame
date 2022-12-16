@@ -55,7 +55,22 @@ public class JumperAnimator
 			Pawn.SetAnimLookAt( "aim_body", Pawn.EyePosition, aimPos );
 		}
 
-		Pawn.SetAnimParameter( "duck", Input.Down( InputButton.Jump ) ? 1.0f : 0 );
+		if ( Input.Down( InputButton.Jump ) )
+		{
+			if ( Pawn.Controller is JumperController ctrl )
+			{
+				var alpha = ctrl.TimeSinceJumpDown.LerpInverse( 0, ctrl.TimeUntilMaxJump );
+				Pawn.SetAnimParameter( "duck", alpha );
+			}
+			else
+			{
+				Pawn.SetAnimParameter( "duck", 1.0f );
+			}
+		}
+		else
+		{
+			Pawn.SetAnimParameter( "duck", 0 );
+		}
 
 		var holdtype = Pawn.HeldBody.IsValid() ? 4 : 0;
 

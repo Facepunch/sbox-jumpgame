@@ -17,7 +17,7 @@ internal partial class JumperController : PawnController
 	float StopSpeed => 100.0f;
 	float GroundFriction => 10.0f;
 	float GroundAcceleration => 150.0f;
-	float TimeUntilMaxJump => 2.0f;
+	public float TimeUntilMaxJump => 2.0f;
 	float MaxJumpStrength => 825.0f;
 
 	public Particles jumpeffect { get; private set; }
