@@ -7,8 +7,8 @@ internal partial class JumperController : PawnController
 	[Net, Predicted]
 	public Angles TargetAngles { get; set; }
 
-	Vector3 Mins => new Vector3( -12, -12, 0 );
-	Vector3 Maxs => new Vector3( 12, 12, 72 );
+	Vector3 Mins => new Vector3( -16, -16, 0 );
+	Vector3 Maxs => new Vector3( 16, 16, 72 );
 	bool Grounded => GroundEntity.IsValid();
 	float WalkSpeed => 200.0f;
 	float SlowSpeed => 100f;
@@ -226,6 +226,11 @@ internal partial class JumperController : PawnController
 		mover.Trace = mover.Trace.Size( Mins, Maxs ).Ignore( Pawn ).WithoutTags( "JumpPlayer" ); ;
 		mover.MaxStandableAngle = groundAngle;
 		mover.TryMoveWithStep( Time.Delta, stepSize );
+
+		if( TraceBBox( mover.Position, mover.Position ).StartedSolid )
+		{
+			return;
+		}
 
 		Position = mover.Position;
 		Velocity = mover.Velocity;
