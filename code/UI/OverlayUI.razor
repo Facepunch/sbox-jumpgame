@@ -1,0 +1,38 @@
+﻿
+@inherits Panel
+
+<root class="@(Open ? "open" : "closed")">
+    <button onclick="@Restart">Restart</button>
+    <button onclick="@GoToTop">Go to top</button>
+</root>
+
+@code {
+    public bool Open { get; set; }
+
+    protected override int BuildHash()
+    {
+        return Open ? 1 : 0;
+    }
+
+    private void Restart()
+    {
+        var spawnpoint = Entity.All.OfType<SpawnPoint>().FirstOrDefault();
+        if( spawnpoint != null )
+        {
+            JumperGame.SetPlayerPosition(spawnpoint.Position + Vector3.Up * 10);
+        }
+    }
+
+    private void GoToTop()
+    {
+        var uitrig = Entity.All.OfType<UiOverlayTrigger>().FirstOrDefault();
+        if (uitrig != null)
+        {
+            var ent = Entity.FindByName(uitrig.TopEntity);
+            if(ent != null)
+            {
+                JumperGame.SetPlayerPosition(ent.Position + Vector3.Up * 10);
+            }
+        }
+    }
+}

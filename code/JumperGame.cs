@@ -33,7 +33,7 @@ public partial class JumperGame : GameManager
 		
 		if ( Game.IsClient )
 		{
-			new JumperRootPanel();
+			Game.RootPanel = new JumperRootPanel();
 		}
 		else
 		{
@@ -192,13 +192,22 @@ public partial class JumperGame : GameManager
 		NPCCharacter.Display( message, Voice, npcname );
 	}
 
+	[ConCmd.Server]
+	public static void SetPlayerPosition( Vector3 position )
+	{
+		if ( !(ConsoleSystem.Caller?.Pawn.IsValid() ?? false) ) 
+			return;
+
+		ConsoleSystem.Caller.Pawn.Position = position;
+	}
+
 	//private static string GetMapBucket()
 	//{
 	//	var map = Game.MapName;
 
 	//	return $"Map-{map}-Current-Height";
 	//}
-	
+
 	//private bool CanSubmitScore( JumperPawn player )
 	//{
 	//	return !Host.IsToolsEnabled && player.Client != null;
