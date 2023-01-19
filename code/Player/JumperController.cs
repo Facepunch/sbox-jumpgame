@@ -51,11 +51,11 @@ internal partial class JumperController : PawnController
 		StepMove();
 	}
 
+
 	bool CanJump;
-	
 	private void TryJump()
 	{
-		if(Input.Down( InputButton.Reload ) )
+		if ( Input.Down( InputButton.Reload ) )
 		{
 			TimeSinceJumpDown = 0;
 			CanJump = false;
@@ -70,7 +70,7 @@ internal partial class JumperController : PawnController
 
 		var jumpAlpha = TimeSinceJumpDown / TimeUntilMaxJump;
 
-		if ( jumpAlpha >= 1|| ( !Input.Down( InputButton.Jump ) && jumpAlpha > 0 ) )
+		if ( jumpAlpha >= 1 || (!Input.Down( InputButton.Jump ) && jumpAlpha > 0) )
 		{
 
 			TimeSinceJumpDown = 0;
@@ -86,14 +86,14 @@ internal partial class JumperController : PawnController
 			ClearGroundEntity();
 			AddEvent( "jump" );
 
-			if( Pawn is JumperPawn p )
+			if ( Pawn is JumperPawn p )
 			{
 				p.TotalJumps++;
 			}
 
 			if ( Prediction.FirstTime )
 			{
-				Sound.FromWorld( "jumper.jump", Position ).SetPitch( 1.0f - (0.5f * jumpAlpha) );		
+				Sound.FromWorld( "jumper.jump", Position ).SetPitch( 1.0f - (0.5f * jumpAlpha) );
 				jumpeffect = Particles.Create( "particles/player/jump/jumper.jump.vpcf" );
 				Particles.Create( "particles/player/land/jumper.land.vpcf", Position );
 			}
@@ -115,7 +115,7 @@ internal partial class JumperController : PawnController
 		Velocity = ClipVelocity( Velocity, tr.Normal );
 		Velocity += bounce;
 		TargetAngles = Rotation.LookAt( tr.Normal ).Angles();
-		
+
 		if ( Game.IsServer || Prediction.FirstTime )
 		{
 			var hiteffect = Particles.Create( "particles/player/impact/jumper.impact.wall.vpcf", tr.EndPosition );
@@ -163,22 +163,22 @@ internal partial class JumperController : PawnController
 		{
 			ClearGroundEntity();
 			var dot = Velocity.Dot( pm.Normal );
-			
-			if( dot < 0 )
+
+			if ( dot < 0 )
 			{
 				Velocity = 0;
 			}
 		}
 		else
 		{
-			if( !Grounded )
+			if ( !Grounded )
 			{
 				AddEvent( "landed" );
 
 				if ( Game.IsServer || Prediction.FirstTime )
 					Sound.FromWorld( "player.land", Position );
 
-				if( GetFallDamage( Velocity.z ) > 0 )
+				if ( GetFallDamage( Velocity.z ) > 0 )
 				{
 					DoFall();
 				}
@@ -190,7 +190,7 @@ internal partial class JumperController : PawnController
 
 	void DoFall()
 	{
-		if ( Pawn is not JumperPawn p ) 
+		if ( Pawn is not JumperPawn p )
 			return;
 
 		p.TotalFalls++;
@@ -227,7 +227,7 @@ internal partial class JumperController : PawnController
 		mover.MaxStandableAngle = groundAngle;
 		mover.TryMoveWithStep( Time.Delta, stepSize );
 
-		if( TraceBBox( mover.Position, mover.Position ).StartedSolid )
+		if ( TraceBBox( mover.Position, mover.Position ).StartedSolid )
 		{
 			return;
 		}
@@ -279,7 +279,7 @@ internal partial class JumperController : PawnController
 		if ( GroundEntity == null ) return;
 
 		GroundEntity = null;
-		GroundNormal = Vector3.Up;	
+		GroundNormal = Vector3.Up;
 	}
 
 	void SetGroundEntity( Entity entity )

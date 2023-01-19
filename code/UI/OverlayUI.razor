@@ -50,7 +50,7 @@
     private void Restart()
     {
         var spawnpoint = Entity.All.OfType<SpawnPoint>().FirstOrDefault();
-        if( spawnpoint != null )
+        if (spawnpoint != null)
         {
             JumperGame.SetPlayerPosition(spawnpoint.Position + Vector3.Up * 10);
             Pawn.ResetStats();
@@ -59,14 +59,18 @@
 
     private void GoToTop()
     {
-        var uitrig = Entity.All.OfType<UiOverlayTrigger>().FirstOrDefault();
+        var uitrig = Entity.All.OfType<UiOverlayTrigger>().First();
         if (uitrig != null)
         {
             var ent = Entity.FindByName(uitrig.TopEntity);
-            if(ent != null)
-            {
-                JumperGame.SetPlayerPosition(ent.Position + Vector3.Up * 10);
-            }
+            if (ent != null)
+                {
+                    JumperGame.SetPlayerPosition(ent.Position + Vector3.Up * 10);
+                }
+                else if (Game.LocalPawn is JumperPawn pl)
+                {
+                    pl.ResetLast();
+                }
         }
     }
 }

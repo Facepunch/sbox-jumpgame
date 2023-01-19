@@ -93,6 +93,12 @@ internal partial class JumperPawn : Sandbox.Player
 			SetPosition( progress.Position, progress.Angles );
 		}
 	}
+	
+	public void ResetLast()
+	{
+		var progress = Progress.Current;
+		SetPosition( progress.Position, progress.Angles );
+	}
 
 	[Event.Tick.Server]
 	public void UpdateBestHeight()
