@@ -267,33 +267,20 @@ internal partial class JumperPawn : Sandbox.Player
 
 		FakeShadowParticle.SetPosition( 0, tr.EndPosition );
 	}
+	
 
 	TimeSince timeSinceLastFootstep = 0;
 	public override void OnAnimEventFootstep( Vector3 pos, int foot, float volume )
 	{
-		if ( LifeState != LifeState.Alive )
-			return;
-
-		if ( !Game.IsServer )
-			return;
-
-		if ( foot == 0 )
-		{
-			//var lfoot = Particles.Create( "particles/gameplay/player/footsteps/footstep_l.vpcf", pos );
-			//lfoot.SetOrientation( 0, Transform.Rotation );
-		}
-		else
-		{
-			//var rfoot = Particles.Create( "particles/gameplay/player/footsteps/footstep_r.vpcf", pos );
-			//rfoot.SetOrientation( 0, Transform.Rotation );
-		}
-
-		if ( timeSinceLastFootstep < 0.2f )
-			return;
-
-		volume *= FootstepVolume();
+		if ( LifeState != LifeState.Alive ) return;
+		if ( !Game.IsClient ) return;
+		if ( timeSinceLastFootstep < 0.2f ) return;
 
 		timeSinceLastFootstep = 0;
+
+		var footletter = foot == 0 ? "l" : "r";
+		var particle = Particles.Create( $"particles/player/footsteps/footstep_{footletter}.vpcf", pos );
+		particle.SetOrientation( 0, Transform.Rotation );
 
 		var tr = Trace.Ray( pos, pos + Vector3.Down * 20 )
 			.Radius( 1 )
@@ -302,7 +289,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		if ( !tr.Hit ) return;
 
-		tr.Surface.DoFootstep( this, tr, foot, volume * 10 );
+		tr.Surface.DoFootstep( this, tr, foot, volume * 2 );
 	}
 
 	[ConCmd.Server]
