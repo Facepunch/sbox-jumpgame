@@ -2,16 +2,17 @@
 @import "_vars.scss";
 
 Chat {
+    position: absolute;
     font-family: $font-family-title;
     color: $white;
-    flex-direction: column;
     width: 600px;
     height: 550px;
-    position: absolute;
-    bottom: 200px;
+    bottom: 100px;
     left: 240px;
     z-index: 1000;
-
+    flex-direction: column-reverse;
+    flex-grow:1;
+    
     .entries {
         overflow: scroll;
         flex-direction: column;
