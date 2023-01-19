@@ -35,7 +35,6 @@ public partial class UiOverlayTrigger : BaseTrigger
 			p.AtEnding();
 		}
 
-
 		p.EnableDrawing = false;
 
 		foreach ( var child in p.Children )

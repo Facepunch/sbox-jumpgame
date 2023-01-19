@@ -1,4 +1,5 @@
 ﻿using Sandbox;
+using Sandbox.Component;
 
 internal partial class JumperPawn : Sandbox.Player
 {
@@ -66,7 +67,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		Tags.Add( "JumpPlayer" );
 	}
-
+	Glow glow;
 	public override void ClientSpawn()
 	{
 		base.ClientSpawn();
@@ -91,6 +92,23 @@ internal partial class JumperPawn : Sandbox.Player
 		if ( !Game.IsEditor )
 		{
 			SetPosition( progress.Position, progress.Angles );
+		}
+
+		glow = Components.GetOrCreate<Glow>();
+
+		glow.Enabled = true;
+		glow.Width = 0.25f;
+		glow.Color = new Color( 0.0f, 0.0f, 0.0f, 0.0f );
+		glow.ObscuredColor = Color.Transparent;
+		glow.InsideObscuredColor = Color.Black.WithAlpha( 0.2f );
+
+		foreach ( var child in Children.OfType<ModelEntity>() )
+		{
+			glow = child.Components.GetOrCreate<Glow>();
+			glow.Enabled = true;
+			glow.Color = new Color( 0.0f, 0.0f, 0.0f, 0.0f );
+			glow.ObscuredColor = Color.Transparent;
+			glow.InsideObscuredColor = Color.Black.WithAlpha( 0.2f );
 		}
 	}
 	
