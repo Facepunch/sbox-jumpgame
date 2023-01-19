@@ -1,7 +1,7 @@
 ﻿@inherits Panel
 
 <root class=@RootClass>
-    <textentry @onblur=@InputBlurred @onsubmit=@InputSubmitted @ref="TextEntry"></textentry>
+    <textentry @onblur=@InputBlurred @onsubmit=@InputSubmitted @ref="TextEntry" placeholder=@(IsOpen?"Type Here To Chat... ESC to close.":"")></textentry>
     <div @ref="Entries" class="entries">
         <div style="flex-grow: 1;"></div>
     </div>
@@ -33,7 +33,7 @@
     {
         var msg = TextEntry.Text;
         TextEntry.Text = string.Empty;
-
+				
         if (string.IsNullOrWhiteSpace(msg))
             return;
 

@@ -11,8 +11,8 @@ Chat {
     left: 240px;
     z-index: 1000;
     flex-direction: column-reverse;
-    flex-grow:1;
-    
+    flex-grow: 1;
+
     .entries {
         overflow: scroll;
         flex-direction: column;
@@ -58,6 +58,30 @@ Chat {
         border-bottom: 0px solid $red;
         padding-bottom: 4px;
         transition: all .15s ease;
+
+        .placeholder {
+            opacity: 0.2;
+            pointer-events: none;
+            display: none;
+            text-shadow: $text-shadow-red;
+            right:10px;
+        }
+
+        .placeholder {
+            overflow: hidden;
+        }
+
+        &.has-placeholder {
+            .placeholder {
+                display: flex;
+            }
+        }
+
+        &:hover {
+            .placeholder {
+                display: none;
+            }
+        }
     }
 
     &.open textentry {
