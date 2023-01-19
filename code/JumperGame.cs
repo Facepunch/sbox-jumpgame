@@ -38,7 +38,7 @@ public partial class JumperGame : GameManager
 		}
 		else
 		{
-			IsEditorMode = Game.IsToolsEnabled;
+			IsEditorMode = Game.IsEditor;
 		}
 	}
 
@@ -185,49 +185,4 @@ public partial class JumperGame : GameManager
 
 		ConsoleSystem.Caller.Pawn.Position = position;
 	}
-
-	//private static string GetMapBucket()
-	//{
-	//	var map = Game.MapName;
-
-	//	return $"Map-{map}-Current-Height";
-	//}
-
-	//private bool CanSubmitScore( JumperPawn player )
-	//{
-	//	return !Host.IsToolsEnabled && player.Client != null;
-	//}
-	//public static async void SubmitScore( IClient client, int score )
-	//{
-	//	var leaderboard = await Leaderboard.FindOrCreate( GetMapBucket(), false );
-
-	//	await leaderboard.Value.Submit( client, score );
-
-	//}
-
-	//[ConCmd.Server( "noclip" )]
-	//static void NoclipCommand()
-	//{
-	//	if ( ConsoleSystem.Caller == null ) return;
-
-	//	Current?.DoPlayerNoclip( ConsoleSystem.Caller );
-	//}
-
-	//public virtual void DoPlayerNoclip( IClient player )
-	//{
-
-	//	if ( player.Pawn is JumperPawn basePlayer )
-	//	{
-	//		if ( basePlayer.DevController is NoclipController )
-	//		{
-	//			Log.Info( "Noclip Mode Off" );
-	//			basePlayer.DevController = null;
-	//		}
-	//		else
-	//		{
-	//			Log.Info( "Noclip Mode On" );
-	//			basePlayer.DevController = new NoclipController();
-	//		}
-	//	}
-	//}
 }
