@@ -135,16 +135,4 @@ public class JumperAnimator
 			Pawn.SetAnimParameter( "wish_z", Pawn.Velocity.z );
 		}
 	}
-
-	//public override void OnEvent( string name )
-	//{
-	//	// DebugOverlay.Text( Pos + Vector3.Up * 100, name, 5.0f );
-
-	//	if ( name == "jump" )
-	//	{
-	//		Trigger( "b_jump" );
-	//	}
-
-	//	base.OnEvent( name );
-	//}
 }
