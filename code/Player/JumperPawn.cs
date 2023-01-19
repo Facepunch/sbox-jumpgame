@@ -27,6 +27,7 @@ internal partial class JumperPawn : Sandbox.Player
 	public int TotalJumps { get; set; }
 	public int TotalFalls { get; set; }
 	public int Completions { get; set; }
+	public bool ReachedEnd { get; set; }
 
 	[Net, Predicted]
 	public float BestHeight { get; set; }
@@ -38,7 +39,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 	private JumperAnimator Animator;
 	private JumperCamera JumperCamera = new();
-
+	
 	public override void Respawn()
 	{
 		base.Respawn();
@@ -77,6 +78,8 @@ internal partial class JumperPawn : Sandbox.Player
 
 		Completions = progress.NumberCompletions;
 
+		ReachedEnd = progress.HasCompleted;
+
 		if ( MaxHeight < progress.BestHeight )
 		{
 			MaxHeight = progress.BestHeight;
@@ -85,7 +88,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		if ( progress.TimePlayed == 0 ) return;
 
-		if ( !Game.IsToolsEnabled )
+		if ( !Game.IsEditor )
 		{
 			SetPosition( progress.Position, progress.Angles );
 		}
@@ -122,7 +125,7 @@ internal partial class JumperPawn : Sandbox.Player
 		Animator ??= new( this );
 		Animator.Simulate();
 
-		if ( Game.IsServer && TimeSinceSubmitSaved > 10f && !Game.IsToolsEnabled )
+		if ( Game.IsServer && TimeSinceSubmitSaved > 10f && !Game.IsEditor )
 		{
 			TimeSinceSubmitSaved = 0f;
 			//JumperGame.SubmitScore(Client, (int)MaxHeight );
@@ -136,7 +139,7 @@ internal partial class JumperPawn : Sandbox.Player
 
 		var progress = Progress.Current;
 		
-		if ( !Game.IsToolsEnabled )
+		if ( !Game.IsEditor )
 		{
 			if( progress.BestHeight < MaxHeight)
 			{
@@ -177,7 +180,7 @@ internal partial class JumperPawn : Sandbox.Player
 			falleffect.SetPosition( 1, new Vector3( 0, 0, 0 ) );
 		}
 		
-		if ( GroundEntity.IsValid() && !Game.IsToolsEnabled )
+		if ( GroundEntity.IsValid() && !Game.IsEditor )
 		{
 			progress.Position = Position;
 			progress.Angles = Rotation.Angles();
@@ -187,8 +190,24 @@ internal partial class JumperPawn : Sandbox.Player
 		{
 			TimeSinceProgressSaved = 0f;
 			progress.Save();
-
 		}
+	}
+	public void ResetStats()
+	{
+		if ( !Game.IsClient ) return;
+
+
+		Log.Info( "Resetting stats" );
+		
+		var progress = Progress.Current;
+		progress.HasCompleted = false;
+		ReachedEnd = false;
+		progress.NumberCompletions = progress.NumberCompletions + 1;
+	}
+	public void AtEnding()
+	{
+		ReachedEnd = true;
+		Completions++;
 	}
 
 	public override void FrameSimulate( IClient cl )
