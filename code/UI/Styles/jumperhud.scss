@@ -64,7 +64,8 @@ JumperHud {
             position: absolute;
             width: 20px;
             height: 0%;
-            border-top: 4px solid $red;
+            
+            z-index: 10;
 
             .maxheighttext {
                 right: 170px;
@@ -76,6 +77,28 @@ JumperHud {
                 font-size: 16px;
                 flex-shrink: 0;
                 padding-right: 20px;
+            }
+        }
+
+
+        .maxheightotherbarpos {
+            position: absolute;
+            width: 20px;
+            height: 0%;
+            border-top: 4px solid $orange;
+            z-index: 1;
+            opacity: .2;
+
+            .maxheightothertext {
+                right: 35px;
+                bottom: 18px;
+                flex-shrink: 0;
+                padding-right: 20px;
+                max-height: 32px;
+                width: 32px;
+                z-index: 1;
+                aspect-ratio: 1;
+               
             }
         }
     }
