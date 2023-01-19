@@ -212,6 +212,8 @@ internal partial class JumperPawn : Sandbox.Player
 	}
 	public void AtEnding()
 	{
+		if ( Game.IsEditor ) return;
+
 		ReachedEnd = true;
 		Completions++;
 	}
