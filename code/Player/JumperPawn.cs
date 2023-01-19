@@ -34,6 +34,9 @@ internal partial class JumperPawn : Sandbox.Player
 	[Net]
 	public PropCarriable HeldBody { get; set; }
 
+	[Net]
+	public string rndColor { get; set; } = "#eb4034";
+
 	public Particles falleffect { get; private set; }
 
 	private JumperAnimator Animator;
@@ -60,7 +63,9 @@ internal partial class JumperPawn : Sandbox.Player
 			clothing.LoadFromClient( Client );
 			clothing.DressEntity( this );
 		}
-		
+
+		rndColor = $"{Color.Random.Hex}";
+
 		Tags.Add( "JumpPlayer" );
 	}
 
