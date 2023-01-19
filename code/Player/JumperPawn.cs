@@ -254,6 +254,19 @@ internal partial class JumperPawn : Sandbox.Player
 			m.RenderColor = m.RenderColor.WithAlpha( a );
 		}
 	}
+	Particles FakeShadowParticle;
+	
+	[Event.Client.Frame]
+	void UpdatePlayerShadow()
+	{
+		FakeShadowParticle ??= Particles.Create( "particles/player/fake_shadow/fake_shadow.vpcf" );
+
+		var tr = Trace.Ray( Position, Position + Vector3.Down * 2000 )
+			.WorldOnly()
+			.Run();
+
+		FakeShadowParticle.SetPosition( 0, tr.EndPosition );
+	}
 
 	TimeSince timeSinceLastFootstep = 0;
 	public override void OnAnimEventFootstep( Vector3 pos, int foot, float volume )

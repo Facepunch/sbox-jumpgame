@@ -1,0 +1,16 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "projected_decals.shader"
+
+	//---- Decal ----
+	F_BLEND_MODE 1 // Mod2X
+	F_TRIPLANAR_MAPPING 1
+
+	//---- Color ----
+	TextureColor "particles/gameplay/fake_shadow/fakshadow_color.tga"
+
+	//---- Translucent ----
+	TextureTranslucency "particles/gameplay/fake_shadow/fakshadow_trans.tga"
+}
