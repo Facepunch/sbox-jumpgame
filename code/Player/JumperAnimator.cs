@@ -39,7 +39,7 @@ public class JumperAnimator
 
 		if ( Game.IsClient && Pawn.Client.IsValid() )
 		{
-			//Pawn.SetAnimParameter( "voice", Pawn.Client.TimeSinceLastVoice < 0.5f ? Pawn.Client.VoiceLevel : 0.0f );
+			Pawn.SetAnimParameter( "voice",Pawn.Client.Voice.LastHeard < 0.5f ? Pawn.Client.Voice.CurrentLevel : 0.0f );
 		}
 
 		if ( LookAtMe )
