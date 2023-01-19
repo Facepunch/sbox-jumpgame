@@ -389,7 +389,22 @@ internal partial class JumperController : PawnController
 		"When can we provide you with a new body?",
 		"When can we process your insurance claim?",
 		"One small step for man, one giant fall for mankind!",
-		"It's a new day!"
-
+		"It's a new day!",
+		"Hello darkness my old friend!",
+		"Could you please stop falling?",
+		"Do you want to be a winner?",
+		"Are you a winner?",
+		"Are you a loser?",
+		"Are you a winner or a loser?",
+		"Damn it!",
+		"Damn it all!",
+		"Damn it all to hell!",
+		"Damn it all to hell and back!",
+		"Damn it all to hell and back again!",
+		"Use the jump button to jump!",
+		"I'll scratch your back if you scratch mine!",
+		"I'll be back!",
+		"Awoooo awoooo awoooo!",
+		"3 bags of rice,5 carrots and 2 apples!"
 	};
 }
