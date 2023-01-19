@@ -14,6 +14,8 @@ public partial class UiOverlayTrigger : BaseTrigger
 		base.Spawn();
 
 		Transmit = TransmitType.Always;
+
+		EnableTouchPersists = true;
 	}
 
 	public override void StartTouch( Entity other )
@@ -22,7 +24,21 @@ public partial class UiOverlayTrigger : BaseTrigger
 
 		if ( !Game.IsClient ) return;
 		if ( other is not JumperPawn p ) return;
+		if ( !p.IsLocalPawn ) return;
 
+		if ( !p.ReachedEnd )
+		{
+			p.AtEnding();
+		}
+
+		p.EnableDrawing = false;
+
+		foreach ( var child in p.Children )
+		{
+			if ( child is not ModelEntity m || !child.IsValid() ) continue;
+			m.EnableDrawing = false;
+		}
+		
 		var overlayui = Game.RootPanel.ChildrenOfType<OverlayUI>()?.FirstOrDefault();
 		if ( overlayui != null )
 		{
@@ -36,6 +52,14 @@ public partial class UiOverlayTrigger : BaseTrigger
 
 		if ( !Game.IsClient ) return;
 		if ( other is not JumperPawn p ) return;
+
+		p.EnableDrawing = true;
+
+		foreach ( var child in p.Children )
+		{
+			if ( child is not ModelEntity m || !child.IsValid() ) continue;
+			m.EnableDrawing = true;
+		}
 
 		var overlayui = Game.RootPanel.ChildrenOfType<OverlayUI>()?.FirstOrDefault();
 		if ( overlayui != null )
