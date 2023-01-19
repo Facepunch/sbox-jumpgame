@@ -75,6 +75,11 @@ public partial class JumperGame : GameManager
 		}
 	}
 
+	public override void OnVoicePlayed( IClient cl )
+	{
+		VoiceChatList.Current?.OnVoicePlayed( cl.SteamId, cl.Voice.CurrentLevel );
+	}
+
 	public override void ClientJoined( IClient client )
 	{
 		base.ClientJoined( client );
