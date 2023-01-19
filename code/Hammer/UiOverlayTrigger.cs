@@ -9,6 +9,8 @@ public partial class UiOverlayTrigger : BaseTrigger
 	[Net, Property]
 	public string TopEntity { get; set; }
 
+	public Entity topent { get; set; }
+
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -16,6 +18,8 @@ public partial class UiOverlayTrigger : BaseTrigger
 		Transmit = TransmitType.Always;
 
 		EnableTouchPersists = true;
+
+		topent = Entity.FindByName( TopEntity );
 	}
 
 	public override void StartTouch( Entity other )
@@ -25,11 +29,12 @@ public partial class UiOverlayTrigger : BaseTrigger
 		if ( !Game.IsClient ) return;
 		if ( other is not JumperPawn p ) return;
 		if ( !p.IsLocalPawn ) return;
-
+		
 		if ( !p.ReachedEnd )
 		{
 			p.AtEnding();
 		}
+
 
 		p.EnableDrawing = false;
 
@@ -44,6 +49,16 @@ public partial class UiOverlayTrigger : BaseTrigger
 		{
 			overlayui.Open = true;
 		}
+	}
+
+	//This is hacky but I can't work correctly :(
+	public override void Touch( Entity other )
+	{
+		base.Touch( other );
+
+		if ( other is not JumperPawn p ) return;
+
+		p.Velocity = Vector3.Up * 45;
 	}
 
 	public override void EndTouch( Entity other )
@@ -67,5 +82,4 @@ public partial class UiOverlayTrigger : BaseTrigger
 			overlayui.Open = false;
 		}
 	}
-
 }
