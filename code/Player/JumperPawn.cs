@@ -32,9 +32,6 @@ internal partial class JumperPawn : Sandbox.Player
 	public float BestHeight { get; set; }
 
 	[Net]
-	public PropCarriable HeldBody { get; set; }
-
-	[Net]
 	public string rndColor { get; set; } = "#eb4034";
 
 	public Particles falleffect { get; private set; }
@@ -111,7 +108,6 @@ internal partial class JumperPawn : Sandbox.Player
 		EnableAllCollisions = false;
 		EnableDrawing = false;
 
-		//CameraMode = new RagdollCamera();
 	}
 	public float TimePlayed;
 	private TimeSince TimeSinceProgressSaved = 0f;

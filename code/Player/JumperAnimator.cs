@@ -71,10 +71,6 @@ public class JumperAnimator
 		{
 			Pawn.SetAnimParameter( "duck", 0 );
 		}
-
-		var holdtype = Pawn.HeldBody.IsValid() ? 4 : 0;
-
-		Pawn.SetAnimParameter( "holdtype", holdtype );
 	}
 
 	public virtual void DoRotation( Rotation idealRotation )
