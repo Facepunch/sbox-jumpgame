@@ -6,7 +6,6 @@
 
 @code
 {
-	private string SessionTime;
 	bool IsOpen { get; set; }
 	public TimeUntil Timer { get; set; }
 
@@ -49,7 +48,7 @@
 	protected override int BuildHash()
 	{
 		IsOpen ^= Input.Pressed(InputButton.Slot4);
-		return HashCode.Combine(IsOpen, SessionTime, GetTimeLeftLabel());
+		return HashCode.Combine(IsOpen, GetTimeLeftLabel());
 	}
 
 }

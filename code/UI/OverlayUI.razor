@@ -13,7 +13,7 @@
 @code {
     public bool Open { get; set; }
     private int? Completions => (Game.LocalPawn as JumperPawn)?.Completions;
-    private JumperPawn? Pawn => (Game.LocalPawn as JumperPawn);
+    private JumperPawn Pawn => (Game.LocalPawn as JumperPawn);
     private string imageSequence { get; set; }
     private TimeSince sinceLastFrame { get; set; }
     private int frame { get; set; }

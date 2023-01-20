@@ -13,8 +13,6 @@ public class JumperAnimator
 
 	public bool LookAtMe;
 
-	float duck;
-
 	public void Simulate()
 	{
 		if ( !Pawn.IsValid() ) return;

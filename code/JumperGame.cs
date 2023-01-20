@@ -22,8 +22,6 @@ public partial class JumperGame : GameManager
 	[Net]
 	public bool IsEditorMode { get; set; }
 
-	private bool _hasCheated;
-
 	public JumperGame()
 	{
 		Current = this;

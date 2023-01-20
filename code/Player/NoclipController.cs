@@ -6,7 +6,7 @@ namespace Jumper
 	{
 		public override void Simulate()
 		{
-			var pl = Pawn as Player;
+			var pl = Pawn as JumperPawn;
 
 			var fwd = pl.InputDirection.x.Clamp( -1f, 1f );
 			var left = pl.InputDirection.y.Clamp( -1f, 1f );

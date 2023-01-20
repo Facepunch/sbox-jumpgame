@@ -45,7 +45,7 @@
 	
     private string YourSessionTime;
 
-    private JumperPawn? Pawn => (Game.LocalPawn as JumperPawn);
+    private JumperPawn Pawn => (Game.LocalPawn as JumperPawn);
 	
     [Event.Client.BuildInput]
     public void OnBuildInput()

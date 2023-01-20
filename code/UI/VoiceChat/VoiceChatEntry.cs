@@ -4,8 +4,7 @@ public class VoiceChatEntry : Panel
 {
 	public Friend Friend;
 	readonly Image Avatar;
-
-	private float VoiceLevel = 0.0f;
+	
 	private float TargetVoiceLevel = 0;
 
 	RealTimeSince timeSincePlayed;
@@ -43,10 +42,6 @@ public class VoiceChatEntry : Panel
 			return;
 		}
 
-		//VoiceLevel = VoiceLevel.LerpTo( TargetVoiceLevel, Time.Delta * 40.0f );
-		//var tr = new PanelTransform();
-		//tr.AddScale( 1.0f.LerpTo( 1.2f, VoiceLevel ) );
-		//Style.Transform = tr;
 		Style.Dirty();
 	}
 }
