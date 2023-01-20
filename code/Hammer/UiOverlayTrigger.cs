@@ -30,7 +30,7 @@ public partial class UiOverlayTrigger : BaseTrigger
 		if ( other is not JumperPawn p ) return;
 		if ( !p.IsLocalPawn ) return;
 		
-		if ( !p.ReachedEnd )
+		if ( !p.ReachedEnd  )
 		{
 			p.AtEnding();
 		}
@@ -47,6 +47,12 @@ public partial class UiOverlayTrigger : BaseTrigger
 		if ( overlayui != null )
 		{
 			overlayui.Open = true;
+		}
+		var speedruntimer = Game.RootPanel.ChildrenOfType<SpeedRunTimer>()?.FirstOrDefault();
+		if ( speedruntimer != null )
+		{
+			speedruntimer.TimerStarted = false;
+			speedruntimer.ReachedEnd();
 		}
 	}
 

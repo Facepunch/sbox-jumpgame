@@ -13,7 +13,7 @@ OverlayUI {
     opacity: 0;
     transition: opacity .15s ease;
     color: white;
-    z-index: 101;
+    z-index: 1001;
 
     .header {
         font-family: $font-family-title;

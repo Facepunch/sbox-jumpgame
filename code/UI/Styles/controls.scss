@@ -4,7 +4,7 @@
 Controls {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 45%;
     width: 450px;
     transform: translate( -50% 40% );
     font-family: $font-family-title;
@@ -22,6 +22,10 @@ Controls {
     &.open {
         opacity: 1;
         transition: all 0.2s ease-in;
+
+        &.cursor {
+            pointer-events: all;
+        }
     }
 
     .rows {

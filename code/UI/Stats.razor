@@ -1,7 +1,7 @@
 ﻿
 @inherits Panel
 
-<root class=@(Input.Down(InputButton.Score) ? "open" : "closed")>
+<root>
     <div class="header">
         <label class="title">JUMPER</label>
         <label class="stats">@(JumperGame.Current.IsEditorMode ? "EDITOR MODE PROGRESS NOT SAVED" : "STATS")</label>
@@ -31,7 +31,10 @@
             <label class="title">COMPLETIONS</label>
             <label class="stat">@Completions</label>
         </div>
+
+        
     </div>
+    <button onclick="@Restart">Restart</button>
 </root>
 
 @code {
@@ -39,8 +42,39 @@
     private int? Falls => (Game.LocalPawn as JumperPawn)?.TotalFalls;
     private int? Completions => (Game.LocalPawn as JumperPawn)?.Completions;
     private float? MaxHeight => Progress.Current?.BestHeight;
-
+	
     private string YourSessionTime;
+
+    private JumperPawn? Pawn => (Game.LocalPawn as JumperPawn);
+	
+    [Event.Client.BuildInput]
+    public void OnBuildInput()
+    {
+        SetClass("open", Input.Down(InputButton.Score));
+
+        if (!HasClass("open"))
+        {
+            RemoveClass("cursor");
+        }
+        else
+        {
+            if (Input.Down(InputButton.PrimaryAttack) || Input.Down(InputButton.SecondaryAttack))
+            {
+                AddClass("cursor");
+            }
+        }
+    }
+	
+	 private void Restart()
+    {
+        var spawnpoint = Entity.All.OfType<SpawnPoint>().FirstOrDefault();
+        if (spawnpoint != null)
+        {
+            JumperGame.SetPlayerPosition(spawnpoint.Position + Vector3.Up * 10);
+            Pawn.ResetStats();
+        }
+    }
+	
 	
     public override void Tick()
     {
@@ -48,10 +82,10 @@
 
         YourSessionTime = TimeSpan.FromSeconds((Progress.Current.TimePlayed * 60).Clamp(0, float.MaxValue)).ToString(@"dd\:hh\:mm\:ss");
     }
-
+	
     protected override int BuildHash()
     {
-        return HashCode.Combine(Input.Down(InputButton.Score), Jumps, Falls, MaxHeight, YourSessionTime, Completions, JumperGame.Current.IsEditorMode);
+        return HashCode.Combine(Jumps, Falls, MaxHeight, YourSessionTime, Completions, JumperGame.Current.IsEditorMode);
     }
 }
 
