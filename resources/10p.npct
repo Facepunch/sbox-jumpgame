@@ -12,6 +12,6 @@
 			"Got a new car today, hopefully it works better than the last one.",
 			"Eye spy with my little eye...",
 		]
-		NPCVoice = null
+		NPCVoice = resource:"sounds/npc/voice.frog.sound"
 	}
 }

@@ -11,6 +11,6 @@
 			"Dropped my pen earlier...",
 			"Could go for a nap around now.",
 		]
-		NPCVoice = null
+		NPCVoice = resource:"sounds/npc/voice.frog.sound"
 	}
 }

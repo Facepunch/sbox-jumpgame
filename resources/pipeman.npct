@@ -11,6 +11,6 @@
 			"Please it\'s not safe here...",
 			"Just keep climbing",
 		]
-		NPCVoice = null
+		NPCVoice = resource:"sounds/npc/voice.frog.sound"
 	}
 }

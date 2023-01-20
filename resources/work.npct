@@ -11,6 +11,6 @@
 			"I heard they are having construct done up there.",
 			"Why are there so many stairs...",
 		]
-		NPCVoice = null
+		NPCVoice = resource:"sounds/npc/voice.frog.sound"
 	}
 }
