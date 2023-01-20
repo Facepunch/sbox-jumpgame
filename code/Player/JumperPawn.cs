@@ -219,21 +219,21 @@ internal partial class JumperPawn : Sandbox.Player
 	public void ResetStats()
 	{
 		if ( !Game.IsClient ) return;
-
+		if ( Game.IsEditor ) return;
 
 		Log.Info( "Resetting stats" );
 		
 		var progress = Progress.Current;
 		progress.HasCompleted = false;
-		ReachedEnd = false;
-		progress.NumberCompletions = progress.NumberCompletions + 1;
+		ReachedEnd = false;		
 	}
 	public void AtEnding()
 	{
 		if ( Game.IsEditor ) return;
-
+		var progress = Progress.Current;
 		ReachedEnd = true;
 		Completions++;
+		progress.NumberCompletions = progress.NumberCompletions + 1;
 	}
 
 	public override void FrameSimulate( IClient cl )
