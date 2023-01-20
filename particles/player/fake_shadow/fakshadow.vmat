@@ -9,8 +9,8 @@ Layer0
 	F_TRIPLANAR_MAPPING 1
 
 	//---- Color ----
-	TextureColor "particles/gameplay/fake_shadow/fakshadow_color.tga"
+	TextureColor "[0.000000 0.000000 0.000000 0.000000]"
 
 	//---- Translucent ----
-	TextureTranslucency "particles/gameplay/fake_shadow/fakshadow_trans.tga"
+	TextureTranslucency "particles/player/fake_shadow/fakshadow_trans.tga"
 }

@@ -432,7 +432,7 @@
 		{
 			_class = "C_OP_RenderProjected"
 			m_bProjectCharacter = true
-			m_hProjectedMaterial = resource:"particles/gameplay/fake_shadow/fakshadow.vmat"
+			m_hProjectedMaterial = resource:"particles/player/fake_shadow/fakshadow.vmat"
 			m_bOrientToNormal = true
 		},
 	]

@@ -230,7 +230,7 @@
 	[
 		{
 			_class = "C_OP_RenderProjected"
-			m_hProjectedMaterial = resource:"particles/gameplay/player/footsteps/footstep.vmat"
+			m_hProjectedMaterial = resource:"particles/player/footsteps/footstep.vmat"
 			m_bOrientToNormal = true
 		},
 	]
