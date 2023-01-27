@@ -36,7 +36,6 @@ internal partial class JumperController : PawnController
 		{
 			GroundMove();
 			TryJump();
-
 		}
 		else
 		{
@@ -134,6 +133,15 @@ internal partial class JumperController : PawnController
 
 	private void GroundMove()
 	{
+		if ( Pawn is not JumperPawn p )
+			return;
+
+		if ( TimeSinceJumpDown > 0 && !p.TouchingMoveable )
+		{
+			Velocity = 0;
+			return;
+		}
+
 		var wishVel = GetWishVelocity( true );
 		var wishdir = wishVel.Normal;
 		var wishspeed = wishVel.Length;
@@ -144,12 +152,6 @@ internal partial class JumperController : PawnController
 		}
 
 		TargetAngles = TargetAngles.WithPitch( 0 ).WithRoll( 0 );
-
-		if ( TimeSinceJumpDown > 0 )
-		{
-			Velocity = 0;
-			return;
-		}
 
 		Velocity = Velocity.WithZ( 0 );
 		Velocity += BaseVelocity;
@@ -209,6 +211,9 @@ internal partial class JumperController : PawnController
 
 	Vector3 GetWishVelocity( bool zeroPitch = false )
 	{
+
+		if ( TimeSinceJumpDown > 0 && Player.TouchingMoveable ) return Vector3.Zero;
+
 		var result = new Vector3( Player.InputDirection.x, Player.InputDirection.y, 0 );
 		var inSpeed = result.Length.Clamp( 0, 1 );
 		result *= Player.ViewAngles.ToRotation();

@@ -1,0 +1,39 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "shaders/generic.shader"
+
+	//---- Per-Instance Tint Mask ----
+	F_TINT_MASK 1
+
+	//---- Translucent ----
+	F_TRANSLUCENT 1
+
+	//---- Color ----
+	g_vColorTint "[0.003922 0.270588 1.000000 0.000000]"
+	TextureColor "materials/default/default_color.tga"
+	TextureTintMask "materials/default/default_mask.tga"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Lighting ----
+	g_flDirectionalLightmapMinZ "0.050"
+	g_flDirectionalLightmapStrength "1.000"
+
+	//---- Normal ----
+	TextureNormal "materials/default/default_normal.tga"
+
+	//---- Normal Map ----
+	g_flBumpStrength "1.000"
+
+	//---- Translucent ----
+	g_flOpacityScale "0.500"
+	TextureTranslucency "materials/dev/wind/dev_wind_color.png"
+
+	Attributes
+	{
+		tools.toolsmaterial "1"
+	}
+}

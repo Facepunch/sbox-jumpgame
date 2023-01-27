@@ -40,7 +40,9 @@ internal partial class JumperPawn : Sandbox.Player
 
 	private JumperAnimator Animator;
 	private JumperCamera JumperCamera = new();
-	
+
+	public bool TouchingMoveable;
+
 	public override void Respawn()
 	{
 		base.Respawn();
