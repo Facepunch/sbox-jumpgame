@@ -227,7 +227,8 @@ internal partial class JumperPawn : Sandbox.Player
 		
 		var progress = Progress.Current;
 		progress.HasCompleted = false;
-		ReachedEnd = false;		
+		ReachedEnd = false;
+		FakeShadowParticle?.Destroy();
 	}
 	public void AtEnding()
 	{
