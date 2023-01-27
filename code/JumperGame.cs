@@ -6,7 +6,6 @@ using static Sandbox.Event;
 
 public partial class JumperGame : GameManager
 {
-
 	public new static JumperGame Current;
 
 	[Net]

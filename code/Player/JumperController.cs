@@ -30,6 +30,8 @@ internal partial class JumperController : PawnController
 
 		CheckGrounded();
 
+		UpdateBaseVelocity();
+
 		if ( Grounded )
 		{
 			GroundMove();
@@ -332,6 +334,36 @@ internal partial class JumperController : PawnController
 		o -= norm * adjust;
 
 		return o;
+	}
+
+	//Copied from Super Tumble only here for now to help someone test their map.
+	private Transform LastGroundTx;
+	private Entity LastGroundEntity;
+	private void UpdateBaseVelocity()
+	{
+		var prevtx = LastGroundTx;
+		var prevground = LastGroundEntity;
+		LastGroundEntity = GroundEntity;
+		LastGroundTx = GroundEntity?.Transform ?? default;
+		BaseVelocity = 0;
+
+		if ( GroundEntity == null ) return;
+		if ( GroundEntity != prevground ) return;
+		if ( prevtx == GroundEntity.Transform ) return;
+
+		var newPosition = Position;
+
+		if ( prevtx.Rotation != GroundEntity.Transform.Rotation )
+		{
+			var rotdelta = Rotation.Difference( prevtx.Rotation, GroundEntity.Rotation );
+			newPosition = newPosition.RotateAroundPivot( GroundEntity.Position, rotdelta );
+		}
+
+		var posdelta = GroundEntity.Position - prevtx.Position;
+		newPosition += posdelta;
+
+		Position = Position.WithZ( newPosition.z );
+		BaseVelocity = (newPosition - Position) / Time.Delta;
 	}
 
 	private int GetFallDamage( float fallspeed )
