@@ -2,6 +2,7 @@
 @inherits Panel
 
 <root>
+    <div class="container">
     <div class="header">
         <label class="title">JUMPER</label>
         <label class="stats">@(JumperGame.Current.IsEditorMode ? "EDITOR MODE PROGRESS NOT SAVED" : "STATS")</label>
@@ -30,11 +31,10 @@
         <div class="row">
             <label class="title">COMPLETIONS</label>
             <label class="stat">@Completions</label>
-        </div>
-
-        
+        </div>        
     </div>
     <button onclick="@Restart">Restart</button>
+     </div>
 </root>
 
 @code {
