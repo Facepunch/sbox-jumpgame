@@ -108,9 +108,7 @@ public partial class Wind : BaseTrigger
 	{
 		base.EndTouch( other );
 
-		if ( !Game.IsClient ) return;
 		if ( other is not JumperPawn pawn ) return;
-		if ( !pawn.IsLocalPawn ) return;
 
 		pawn.TouchingMoveable = false;
 		ActiveSystem?.Destroy();

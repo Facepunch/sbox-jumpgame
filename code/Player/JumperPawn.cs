@@ -41,7 +41,7 @@ internal partial class JumperPawn : Sandbox.Player
 	private JumperAnimator Animator;
 	private JumperCamera JumperCamera = new();
 
-	public bool TouchingMoveable;
+	[Net, Predicted] public bool TouchingMoveable { get; set; }
 
 	public override void Respawn()
 	{
