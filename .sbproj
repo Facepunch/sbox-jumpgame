@@ -7,12 +7,12 @@
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
-  "ResourcePaths": [
-    "/fonts/*",
-    "/ui/*"
-  ],
+  "Resources": null,
+  "MenuResources": null,
   "HasCode": true,
   "CodePath": "/code/",
+  "PackageReferences": [],
+  "EditorReferences": null,
   "Metadata": {
     "MaxPlayers": 64,
     "MinPlayers": 1,
@@ -94,6 +94,8 @@
     ],
     "Summary": "Jumper is a challenging platformer style game where you must work your way to the top.",
     "Description": "Jumper is a challenging platformer style game where you must work your way to the top.\n\n\nScore and Progress only save in non-tools mode.",
-    "Public": true
+    "Public": true,
+    "CsProjName": "",
+    "HttpAllowList": null
   }
 }
