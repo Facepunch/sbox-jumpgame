@@ -3,6 +3,7 @@
 @using System.Threading.Tasks;
 @using Sandbox.Menu;
 @using Sandbox.UI;
+@implements Sandbox.Menu.IGameMenuPanel
 
 <root>
     <div class="game-title">
@@ -17,7 +18,8 @@
         else
         {
             <a class="button" href="/setup">Play</a>
-
+            <div class="button" onclick="@OpenServerList">Find Game</div>
+			
             @if ( Game.Menu.Package.SupportsSavedGames && Game.Menu.SavedGames.Any())
             {
                 <a class="button" href="/setup/save">Load Save</a>
@@ -33,5 +35,18 @@
     void LeaveGame()
     {
         Game.Menu.LeaveServer( "Leaving" );
+    }
+
+    void OpenServerList()
+    {
+        var options = new Sandbox.Modals.ServerListModalOptions();
+        options.ModalTitle = "Find Game";
+        options.TargetGame = "facepunch.platformer";
+        options.OnSelected = (server) =>
+        {
+            Game.Menu.ConnectToServer(server.SteamId);
+        };
+
+        Game.Overlay.ShowServerList(options);
     }
 }
