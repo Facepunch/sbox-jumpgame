@@ -8,7 +8,7 @@
   "HasAssets": true,
   "AssetsPath": "",
   "Resources": null,
-  "MenuResources": null,
+  "MenuResources": "\nfonts/*\nUI/mainmenu/*\nsounds/ui/*\nui/*\nsounds/test/*",
   "HasCode": true,
   "CodePath": "/code/",
   "PackageReferences": [],
@@ -96,6 +96,7 @@
     "Description": "Jumper is a challenging platformer style game where you must work your way to the top.\n\n\nScore and Progress only save in non-tools mode.",
     "Public": true,
     "CsProjName": "",
-    "HttpAllowList": null
+    "HttpAllowList": null,
+    "TickRate": 50
   }
 }
