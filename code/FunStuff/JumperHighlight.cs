@@ -17,7 +17,8 @@ public sealed class JumperHighlight : Component, Component.ExecuteInEditor
 		renderHook?.Dispose();
 
 		var cc = GameObject.Components.Get<CameraComponent>(FindMode.InSelf);
-		renderHook = cc.AddHookAfterTransparent( "Highlight", 1000, RenderEffect );
+		// FIXME
+		// renderHook = cc.AddHookAfterTransparent( "Highlight", 1000, RenderEffect );
 	}
 
 	protected override void OnDisabled()
