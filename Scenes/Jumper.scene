@@ -28,7 +28,7 @@
     {
       "Id": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
       "Name": "Citizen",
-      "Position": "0,0,1.333333",
+      "Position": "0,0,114.1872",
       "Tags": "player",
       "Enabled": true,
       "Components": [
@@ -38,7 +38,7 @@
           "Acceleration": 10,
           "GroundAngle": 45,
           "Height": 64,
-          "IgnoreLayers": "solid,world",
+          "IgnoreLayers": "player,trigger",
           "Radius": 16,
           "StepHeight": 18
         },
