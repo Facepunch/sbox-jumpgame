@@ -31,54 +31,6 @@
       "Position": "0,0,1.333333",
       "Tags": "player",
       "Enabled": true,
-      "Components": [
-        {
-          "__type": "JumperCharacterController",
-          "__enabled": true,
-          "Acceleration": 10,
-          "GroundAngle": 45,
-          "Height": 64,
-          "IgnoreLayers": "player,trigger",
-          "Radius": 16,
-          "StepHeight": 18
-        },
-        {
-          "__type": "JumperPlayerController",
-          "__enabled": true,
-          "AnimationHelper": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
-          "Body": "97241215-197d-493e-8970-02f3715ebbf0",
-          "Eye": "e6179300-2f9d-4ca8-a97b-d7e3f6db63d9",
-          "Gravity": "0,0,800",
-          "HitEffect": "jumper/prefabs/player/impact/wall_impact.object",
-          "JumpEffect": "jumper/prefabs/player/jump/jump_effect.object",
-          "PlayerStats": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
-          "TrailEffect": "jumper/prefabs/player/trail/jump_trail.object"
-        },
-        {
-          "__type": "JumperCitizenAnimation",
-          "__enabled": true,
-          "Height": 1,
-          "Target": "97241215-197d-493e-8970-02f3715ebbf0"
-        },
-        {
-          "__type": "JumperCamera",
-          "__enabled": true,
-          "CameraObject": "ea43c4af-4c86-4385-aae3-04fd036200fe",
-          "PlayerObject": "ead060a4-13b6-416a-8d09-cf8c86570eaa"
-        },
-        {
-          "__type": "DropObjectOnFootstep",
-          "__enabled": true,
-          "Prefab": "jumper/prefabs/player/footstep/footstep.object",
-          "Source": "97241215-197d-493e-8970-02f3715ebbf0"
-        },
-        {
-          "__type": "JumperPlayerStuff",
-          "__enabled": true,
-          "DistanceRuler": "99a0519c-6744-486f-8919-8ff76bf11a9c",
-          "Progress": "e0e95034-52bb-408a-afe1-f242d3f8432b"
-        }
-      ],
       "Children": [
         {
           "Id": "97241215-197d-493e-8970-02f3715ebbf0",
@@ -91,6 +43,7 @@
               "__type": "SkinnedModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551274,
+              "BoneMergeTarget": null,
               "CreateBoneObjects": false,
               "MaterialOverride": null,
               "Model": "models/citizen/citizen.vmdl",
@@ -106,10 +59,6 @@
               "Material": null,
               "ObscuredColor": "0,0,0,0.4",
               "Width": 0.25
-            },
-            {
-              "__type": "SoundListenerComponent",
-              "__enabled": true
             }
           ]
         },
@@ -185,10 +134,6 @@
               "Intensity": 0.8,
               "Roundness": 0,
               "Smoothness": 0.9
-            },
-            {
-              "__type": "JumperHighlight",
-              "__enabled": true
             }
           ]
         },
@@ -216,16 +161,6 @@
               "Model": "models/citizen_clothes/full_outfit/medieval_armour/models/medieval_armour.vmdl",
               "ShouldCastShadows": true,
               "Tint": "1,1,1,1"
-            },
-            {
-              "__type": "JumperHighlightOutline",
-              "__enabled": true,
-              "Color": "0,0,0,0",
-              "InsideColor": "0,0,0,0",
-              "InsideObscuredColor": "0,0,0,0.4",
-              "Material": null,
-              "ObscuredColor": "0,0,0,0",
-              "Width": 0.25
             }
           ]
         },
@@ -246,16 +181,6 @@
               "Model": "models/citizen_clothes/hat/bucket_helmet/models/bucket_helmet.vmdl",
               "ShouldCastShadows": true,
               "Tint": "1,1,1,1"
-            },
-            {
-              "__type": "JumperHighlightOutline",
-              "__enabled": true,
-              "Color": "0,0,0,0",
-              "InsideColor": "0,0,0,0",
-              "InsideObscuredColor": "0,0,0,0.4",
-              "Material": null,
-              "ObscuredColor": "0,0,0,0",
-              "Width": 0.25
             }
           ]
         },
@@ -290,37 +215,6 @@
               "Opacity": 1,
               "Scale": 1,
               "ZIndex": 100
-            },
-            {
-              "__type": "JumperHeightBar",
-              "__enabled": true,
-              "Player": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
-              "Ruler": "99a0519c-6744-486f-8919-8ff76bf11a9c"
-            },
-            {
-              "__type": "JumperFallMessage",
-              "__enabled": true
-            },
-            {
-              "__type": "JumperMenu",
-              "__enabled": true
-            },
-            {
-              "__type": "JumperControls",
-              "__enabled": true
-            },
-            {
-              "__type": "JumperSessionTimer",
-              "__enabled": true,
-              "JumperDistanceRuler": "99a0519c-6744-486f-8919-8ff76bf11a9c"
-            },
-            {
-              "__type": "JumperScoreboard",
-              "__enabled": true
-            },
-            {
-              "__type": "JumperEndUI",
-              "__enabled": true
             }
           ]
         },
@@ -329,13 +223,7 @@
           "Name": "Progress",
           "Position": "0,0,0",
           "Tags": "player",
-          "Enabled": true,
-          "Components": [
-            {
-              "__type": "JumperProgress",
-              "__enabled": true
-            }
-          ]
+          "Enabled": true
         }
       ]
     },
@@ -830,12 +718,6 @@
       "Enabled": true,
       "Components": [
         {
-          "__type": "JumperWindTunnel",
-          "__enabled": true,
-          "WindAirStrength": 15,
-          "WindGroundedStrength": 25
-        },
-        {
           "__type": "ColliderBoxComponent",
           "__enabled": true,
           "IsTrigger": true,
@@ -1001,16 +883,6 @@
               "Shadows": false,
               "SortMode": "Unsorted",
               "Texture": "materials/effects/lightcookies/blank.vtex"
-            },
-            {
-              "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
-              "Burst": 0,
-              "Delay": 0,
-              "Duration": 10,
-              "Loop": true,
-              "Radius": 63.46666,
-              "Rate": 100
             }
           ]
         }
@@ -1022,14 +894,6 @@
       "Position": "-0.0003073972,0,0",
       "Networked": true,
       "Enabled": true,
-      "Components": [
-        {
-          "__type": "JumperDistanceRuler",
-          "__enabled": true,
-          "EndObject": "79ab38f5-6a12-434e-a61b-88bcb093f916",
-          "StartObject": "84ee6cec-d996-4d19-8318-2553e9d47f8f"
-        }
-      ],
       "Children": [
         {
           "Id": "84ee6cec-d996-4d19-8318-2553e9d47f8f",
@@ -1071,13 +935,7 @@
       "Id": "9ce703a9-b71e-4183-afed-af3e9df33896",
       "Name": "StartingPoint",
       "Position": "-72.29654,-103.0429,24.26895",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "JumperSpawnPoint",
-          "__enabled": true
-        }
-      ]
+      "Enabled": true
     },
     {
       "Id": "e9e9ad8f-bf86-448b-8201-c296da5f02f6",
@@ -1093,11 +951,6 @@
           "Scale": "150,150,150",
           "Static": false,
           "Surface": null
-        },
-        {
-          "__type": "JumperFinishLine",
-          "__enabled": true,
-          "TopPosition": "4e410f9b-0637-4241-826a-af1d82ba7abd"
         }
       ]
     },
@@ -1109,13 +962,13 @@
     }
   ],
   "SceneProperties": {
-    "NetworkFrequency": 60,
-    "FixedUpdateFrequency": 50,
     "Lerping": true,
-    "MaxFixedUpdates": 5,
-    "TimeScale": 1,
+    "UseFixedUpdate": true,
     "ThreadedAnimation": true,
-    "UseFixedUpdate": true
+    "TimeScale": 1,
+    "MaxFixedUpdates": 5,
+    "FixedUpdateFrequency": 50,
+    "NetworkFrequency": 60
   },
   "Title": "jumper",
   "Description": "",
