@@ -53,6 +53,12 @@
           "JumpEffect": "prefabs/player/jump/jump_effect.object",
           "PlayerStats": "e0e95034-52bb-408a-afe1-f242d3f8432b",
           "TrailEffect": "prefabs/player/trail/jump_trail.object"
+        },
+        {
+          "__type": "JumperCamera",
+          "__enabled": true,
+          "CameraObject": "ea43c4af-4c86-4385-aae3-04fd036200fe",
+          "PlayerObject": "ead060a4-13b6-416a-8d09-cf8c86570eaa"
         }
       ],
       "Children": [
@@ -170,12 +176,6 @@
               "Intensity": 0.8,
               "Roundness": 0,
               "Smoothness": 0.9
-            },
-            {
-              "__type": "JumperCamera",
-              "__enabled": true,
-              "CameraObject": "ea43c4af-4c86-4385-aae3-04fd036200fe",
-              "PlayerObject": "ead060a4-13b6-416a-8d09-cf8c86570eaa"
             }
           ]
         },
