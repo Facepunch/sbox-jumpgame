@@ -1,0 +1,96 @@
+JumperMenu {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	font-family: "PressStart";
+	font-size: 14px;
+	color: white;
+	transition: all 0.2s ease-out;
+	text-shadow: 1px 1px #c73920;
+	opacity: 0;
+	z-index: 997;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+
+	button {
+		padding: 20px;
+		margin: 20px;
+		font-size: 20px;
+		font-family: "PressStart";
+		text-shadow: 3px 3px #c73920;
+		color: white;
+		border-image: url( ui/border.png ) 50 fill stretch;
+		border: 20px solid transparent;
+		cursor: pointer;
+		transition: all .08s ease;
+
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	&.open {
+		opacity: 1;
+		transition: all 0.2s ease-in;
+
+		&.cursor {
+			pointer-events: all;
+		}
+	}
+
+	.container {
+		position: absolute;
+		bottom: 45%;
+		height: 45%;
+		width: 450px;
+		flex-direction: column;
+		align-items: center;
+		border-image: url( ui/border.png ) 50 fill stretch;
+		border: 20px solid transparent;
+
+		.rows {
+			flex-direction: column;
+			padding: 8px;
+		}
+
+		.header {
+			flex-direction: column;
+			min-height: 60px;
+			margin-top: 50px;
+
+			.title {
+				font-size: 18px;
+			}
+
+			.stats {
+				margin-top: 10px;
+				font-size: 14px;
+			}
+		}
+
+		.row {
+			padding: 8px;
+			margin-bottom: 10px;
+
+			.title {
+				min-width: 170px;
+			}
+		}
+
+		.button {
+			font-size: 14px;
+			width: 50%;
+			padding: 2px;
+			align-items: center;
+			text-align: center;
+
+			&:hover {
+				transform: scale(1);
+				text-shadow: 3px 3px #fab003;
+			}
+		}
+	}
+}

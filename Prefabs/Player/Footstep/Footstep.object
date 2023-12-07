@@ -1,0 +1,60 @@
+{
+  "RootObject": {
+    "Id": "7cffedf7-aabc-403f-a35b-f0fce535ba75",
+    "Name": "footstep",
+    "Enabled": true,
+    "Components": [
+      {
+        "__type": "SoundEmitter",
+        "__enabled": true,
+        "SoundString": "sounds/footsteps/footstep-grass.sound"
+      },
+      {
+        "__type": "SelfDestructComponent",
+        "__enabled": true,
+        "Seconds": 10
+      },
+      {
+        "__type": "AlphaOverTime",
+        "__enabled": true,
+        "Alpha": [
+          {
+            "x": 0.30788177,
+            "y": 1
+          },
+          {
+            "x": 1,
+            "in": 1.1481483,
+            "out": -1.1481483
+          }
+        ],
+        "Time": 10
+      }
+    ],
+    "Children": [
+      {
+        "Id": "c555e1f3-7745-44a2-b17d-f45c1034d1d8",
+        "Name": "Object",
+        "Position": "-0.000001176846,0,6.139579",
+        "Enabled": true,
+        "Components": [
+          {
+            "__type": "DecalRenderer",
+            "__enabled": true,
+            "CutoffAngle": 60,
+            "CutoffAngleSoftness": 5,
+            "Material": "materials/decals/facepunch-legacy.vmat",
+            "Mod2XBlending": false,
+            "Size": "8,8,32",
+            "TintColor": "1,1,1,1",
+            "TriPlanar": false
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

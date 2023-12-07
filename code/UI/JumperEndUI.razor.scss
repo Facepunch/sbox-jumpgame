@@ -1,0 +1,56 @@
+JumperEndUI {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: black;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity .15s ease;
+	color: white;
+	z-index: 1001;
+
+	.header {
+		font-family: "PressStart";
+		text-shadow: 3px 3px #c73920;
+		color: white;
+		font-size: 32px;
+		font-weight: 900;
+		position: absolute;
+		top: 32%;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.dance {
+		position: absolute;
+		top: 10%;
+		width: 204px;
+		aspect-ratio: 1;
+		image-rendering: nearest-neighbor;
+	}
+}
+
+JumperEndUI.open {
+	opacity: 1;
+	pointer-events: all;
+}
+
+button {
+	padding: 20px;
+	margin: 20px;
+	font-size: 20px;
+	font-family: "PressStart";
+	text-shadow: 3px 3px #c73920;
+	color: white;
+	border-image: url( ui/border.png ) 50 fill stretch;
+	border: 20px solid transparent;
+	cursor: pointer;
+	transition: all .08s ease;
+
+	&:hover {
+		transform: scale(1.1);
+	}
+}

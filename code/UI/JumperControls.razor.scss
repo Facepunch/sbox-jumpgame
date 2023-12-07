@@ -1,0 +1,69 @@
+JumperControls {
+	position: absolute;
+	left: 50%;
+	top: 45%;
+	width: 450px;
+	transform: translate( -50% 40% );
+	font-family: "PressStart";
+	font-size: 14px;
+	color: white;
+	transition: all 0.2s ease-out;
+	text-shadow: 1px 1px #c73920;
+	opacity: 0;
+	border-image: url( ui/border.png ) 50 fill stretch;
+	border: 20px solid transparent;
+	flex-direction: column;
+	z-index: 69;
+	align-items: center;
+
+	&.open {
+		opacity: 1;
+		transition: all 0.2s ease-in;
+
+		&.cursor {
+			pointer-events: all;
+		}
+	}
+
+	.rows {
+		flex-direction: column;
+		padding: 8px;
+	}
+
+	.header {
+		flex-direction: column;
+		min-height: 20px;
+
+		.title {
+			margin-top: 20px;
+			margin-right: 180px;
+			font-size: 18px;
+		}
+	}
+
+	.stats {
+		margin-top: 10px;
+		font-size: 10px;
+	}
+
+	.row {
+		padding: 8px;
+		flex-direction: row;
+		align-items: center;
+
+		.title {
+			align-items: center;
+			justify-content: center;
+			padding-left: 30px;
+			width: 64px;
+			height: 64px;
+		}
+
+		.disablehud {
+			align-items: center;
+			justify-content: center;
+			width: 48px;
+			height: 48px;
+		}
+	}
+}

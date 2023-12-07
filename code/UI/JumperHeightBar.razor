@@ -1,0 +1,68 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root class=@(IsOpen ? "open" : "closed")>
+    <div class="bar">
+        <label class="heightbar"></label>
+        <label class="flag"></label>
+
+        <div class="heightbarpos" style="height:@(CalculateProgress(Height) * 100)%;">
+            <label class="heighttext" text="< @(Height)" />
+        </div>
+
+        <div class="maxheightbarpos" style="height:@(CalculateProgress(MaxHeight) * 100)%;">
+            <label class="maxheighttext" text="@(MaxHeight)>" />
+        </div>
+        
+        @foreach ( var player in Scene.GetAllComponents<JumperPlayerStuff>() )
+		{
+            <div class="maxheightotherbarpos" style="border-top: 4px solid @player.rndColor; height:@(player.Height.LerpInverse(0,TotalHeight) * 100)%">
+                <img class="maxheightothertext" style=" box-shadow: 3px 3px @player.rndColor" src=@($"{player.PlayerAvatar}")>
+			</div>
+        }
+    </div>
+</root>
+
+@code
+{
+    float TotalHeight { get; set; }
+    float Height { get; set; }
+    float MaxHeight { get; set; }
+    bool IsOpen { get; set; }
+    [Property] GameObject Player { get; set; }
+
+    // Find first player stats class that isn't owned by a proxy (is ours)
+    JumperPlayerStuff PlayerStats => Scene.GetAllComponents<JumperPlayerStuff>().FirstOrDefault(x => !x.Network.IsOwner);
+    [Property] JumperDistanceRuler Ruler { get; set; }
+
+    // public float StartHeight => JumperGame.Current.StartHeight;
+    // public float EndHeight => JumperGame.Current.EndHeight;
+    // public float TotalHeight => JumperGame.Current.MapLength;
+    // public float Height => (Game.LocalPawn as JumperPawn)?.Height ?? 0;
+    // public float MaxHeight => (Game.LocalPawn as JumperPawn)?.MaxHeight ?? 0;
+    // bool IsOpen { get; set; }
+    public Color32 rndColor = Color.Random;
+    public string hexColor;
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+
+        Height = PlayerStats.Height;
+        MaxHeight = PlayerStats.MaxHeight;
+    }
+
+    private float CalculateProgress(float height)
+    {
+        if (Ruler == null) return 0;
+
+        return height.LerpInverse(0, Ruler.Distance);
+    }
+    protected override int BuildHash()
+    {
+        IsOpen ^= Input.Pressed( "slot1" );
+
+        return HashCode.Combine( Time.Now );
+    }
+}

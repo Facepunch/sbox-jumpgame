@@ -1,0 +1,29 @@
+JumperFallMessage {
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	opacity: 0;
+	width: 500px;
+	flex-direction: column;
+	font-weight: 100;
+	transition: all 1s ease-out;
+	transition: opacity .1s linear;
+	text-align: center;
+	align-content: center;
+	z-index: 12;
+	justify-content: center;
+
+	&.visible {
+		opacity: 1;
+		transition: all .1s ease-in;
+	}
+
+	.message {
+		font-family: "PressStart";
+		text-shadow: 3px 3px #c73920;
+		color: white;
+		font-size: 18px;
+		position: absolute;
+		transform: translateX(-50%);
+	}
+}

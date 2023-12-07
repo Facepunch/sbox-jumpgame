@@ -1,0 +1,29 @@
+JumperSessionTimer {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	opacity: 1;
+	z-index: 100;
+	font-weight: 100;
+	transition: all 1s ease-out;
+	transition: opacity .1s linear;
+	text-align: center;
+	align-content: center;
+	opacity: 1;
+
+	&.open {
+		opacity: 0;
+	}
+
+	.sessiontimetext {
+		font-family: "PressStart";
+		text-shadow: 3px 3px #c73920;
+		color: white;
+		font-size: 18px;
+		font-weight: 900;
+		position: absolute;
+		top: 75px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}

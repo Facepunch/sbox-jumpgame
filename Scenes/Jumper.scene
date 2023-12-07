@@ -1,0 +1,1123 @@
+{
+  "GameObjects": [
+    {
+      "Id": "0e5eb49f-bc7e-47ac-8b3a-6a6ceefb4909",
+      "Name": "Plane",
+      "Scale": "10,10,10",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": null,
+          "Model": "sceneviewer/models/plane.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.196,0.46535,0.10136,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "sceneviewer/models/plane.vmdl",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
+      "Name": "Citizen",
+      "Position": "0,0,1.333333",
+      "Tags": "player",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "JumperCharacterController",
+          "__enabled": true,
+          "Acceleration": 10,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "player,trigger",
+          "Radius": 16,
+          "StepHeight": 18
+        },
+        {
+          "__type": "JumperPlayerController",
+          "__enabled": true,
+          "AnimationHelper": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
+          "Body": "97241215-197d-493e-8970-02f3715ebbf0",
+          "Eye": "e6179300-2f9d-4ca8-a97b-d7e3f6db63d9",
+          "Gravity": "0,0,800",
+          "HitEffect": "jumper/prefabs/player/impact/wall_impact.object",
+          "JumpEffect": "jumper/prefabs/player/jump/jump_effect.object",
+          "PlayerStats": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
+          "TrailEffect": "jumper/prefabs/player/trail/jump_trail.object"
+        },
+        {
+          "__type": "JumperCitizenAnimation",
+          "__enabled": true,
+          "Height": 1,
+          "Target": "97241215-197d-493e-8970-02f3715ebbf0"
+        },
+        {
+          "__type": "JumperCamera",
+          "__enabled": true,
+          "CameraObject": "ea43c4af-4c86-4385-aae3-04fd036200fe",
+          "PlayerObject": "ead060a4-13b6-416a-8d09-cf8c86570eaa"
+        },
+        {
+          "__type": "DropObjectOnFootstep",
+          "__enabled": true,
+          "Prefab": "jumper/prefabs/player/footstep/footstep.object",
+          "Source": "97241215-197d-493e-8970-02f3715ebbf0"
+        },
+        {
+          "__type": "JumperPlayerStuff",
+          "__enabled": true,
+          "DistanceRuler": "99a0519c-6744-486f-8919-8ff76bf11a9c",
+          "Progress": "e0e95034-52bb-408a-afe1-f242d3f8432b"
+        }
+      ],
+      "Children": [
+        {
+          "Id": "97241215-197d-493e-8970-02f3715ebbf0",
+          "Name": "Body",
+          "Position": "0,0,0",
+          "Tags": "player",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SkinnedModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551274,
+              "CreateBoneObjects": false,
+              "MaterialOverride": null,
+              "Model": "models/citizen/citizen.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "HighlightOutline",
+              "__enabled": true,
+              "Color": "1,1,1,1",
+              "InsideColor": "0,0,0,0",
+              "InsideObscuredColor": "0,0,0,0",
+              "Material": null,
+              "ObscuredColor": "0,0,0,0.4",
+              "Width": 0.25
+            },
+            {
+              "__type": "SoundListenerComponent",
+              "__enabled": true
+            }
+          ]
+        },
+        {
+          "Id": "ea43c4af-4c86-4385-aae3-04fd036200fe",
+          "Name": "Camera",
+          "Position": "-200,0,64",
+          "Tags": "player",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "CameraComponent",
+              "__enabled": true,
+              "BackgroundColor": "0.25292,0.26086,0.29703,1",
+              "ClearFlags": "All",
+              "FieldOfView": 69.32,
+              "Orthographic": false,
+              "OrthographicHeight": 1204,
+              "RenderExcludeTags": "",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "ZFar": 10000,
+              "ZNear": 1
+            },
+            {
+              "__type": "Sharpen",
+              "__enabled": true,
+              "Scale": 0.2
+            },
+            {
+              "__type": "Bloom",
+              "__enabled": true,
+              "BloomColor": {
+                "color": [
+                  {
+                    "c": "1,1,1,1"
+                  },
+                  {
+                    "t": 1,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "BloomCurve": {
+                "rangey": "0,106.45",
+                "frames": [
+                  {},
+                  {
+                    "x": 1,
+                    "y": 1
+                  }
+                ]
+              },
+              "Mode": "Screen",
+              "Strength": 0.2,
+              "Threshold": 0.23,
+              "ThresholdWidth": 0.96
+            },
+            {
+              "__type": "Tonemapping",
+              "__enabled": true,
+              "ExposureCompensation": 0,
+              "MaximumExposure": 2,
+              "MinimumExposure": 1.3,
+              "Rate": 0.69
+            },
+            {
+              "__type": "Vignette",
+              "__enabled": true,
+              "Center": "0.4999999,0.5",
+              "Color": "0,0,0,0.7",
+              "Intensity": 0.8,
+              "Roundness": 0,
+              "Smoothness": 0.9
+            },
+            {
+              "__type": "JumperHighlight",
+              "__enabled": true
+            }
+          ]
+        },
+        {
+          "Id": "e6179300-2f9d-4ca8-a97b-d7e3f6db63d9",
+          "Name": "EyePos",
+          "Position": "0,0,64",
+          "Tags": "player",
+          "Enabled": true
+        },
+        {
+          "Id": "9c3a63b0-293e-446f-8883-59b4ce5af726",
+          "Name": "Apron",
+          "Position": "0,0,0",
+          "Tags": "player",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SkinnedModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "BoneMergeTarget": "97241215-197d-493e-8970-02f3715ebbf0",
+              "CreateBoneObjects": false,
+              "MaterialOverride": null,
+              "Model": "models/citizen_clothes/full_outfit/medieval_armour/models/medieval_armour.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "JumperHighlightOutline",
+              "__enabled": true,
+              "Color": "0,0,0,0",
+              "InsideColor": "0,0,0,0",
+              "InsideObscuredColor": "0,0,0,0.4",
+              "Material": null,
+              "ObscuredColor": "0,0,0,0",
+              "Width": 0.25
+            }
+          ]
+        },
+        {
+          "Id": "6240f8d7-9f3b-4001-96f4-2ba814136d51",
+          "Name": "Apron",
+          "Position": "0,0,0",
+          "Tags": "player",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SkinnedModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "BoneMergeTarget": "97241215-197d-493e-8970-02f3715ebbf0",
+              "CreateBoneObjects": false,
+              "MaterialOverride": null,
+              "Model": "models/citizen_clothes/hat/bucket_helmet/models/bucket_helmet.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "JumperHighlightOutline",
+              "__enabled": true,
+              "Color": "0,0,0,0",
+              "InsideColor": "0,0,0,0",
+              "InsideObscuredColor": "0,0,0,0.4",
+              "Material": null,
+              "ObscuredColor": "0,0,0,0",
+              "Width": 0.25
+            }
+          ]
+        },
+        {
+          "Id": "ae02c727-223a-4cd5-85ea-7b9e7136c007",
+          "Name": "Player Collider",
+          "Position": "0,0,26.11092",
+          "Tags": "player",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ColliderSphereComponent",
+              "__enabled": true,
+              "IsTrigger": false,
+              "Radius": 25,
+              "Static": false,
+              "Surface": null
+            }
+          ]
+        },
+        {
+          "Id": "e009ae14-f685-4741-85d8-755b098aaeb2",
+          "Name": "Screen - UI",
+          "Position": "0,0,0",
+          "Tags": "player",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ScreenPanel",
+              "__enabled": true,
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            },
+            {
+              "__type": "JumperHeightBar",
+              "__enabled": true,
+              "Player": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
+              "Ruler": "99a0519c-6744-486f-8919-8ff76bf11a9c"
+            },
+            {
+              "__type": "JumperFallMessage",
+              "__enabled": true
+            },
+            {
+              "__type": "JumperMenu",
+              "__enabled": true
+            },
+            {
+              "__type": "JumperControls",
+              "__enabled": true
+            },
+            {
+              "__type": "JumperSessionTimer",
+              "__enabled": true,
+              "JumperDistanceRuler": "99a0519c-6744-486f-8919-8ff76bf11a9c"
+            },
+            {
+              "__type": "JumperScoreboard",
+              "__enabled": true
+            },
+            {
+              "__type": "JumperEndUI",
+              "__enabled": true
+            }
+          ]
+        },
+        {
+          "Id": "e0e95034-52bb-408a-afe1-f242d3f8432b",
+          "Name": "Progress",
+          "Position": "0,0,0",
+          "Tags": "player",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "JumperProgress",
+              "__enabled": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "92d05f50-f2af-49b5-8e9d-4120cf80aef3",
+      "Name": "2D Skybox",
+      "Position": "-35.36818,-0.000002108108,53.92188",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "SkyBox2D",
+          "__enabled": true,
+          "SkyMaterial": "materials/skybox/light_test_sky_sunny02.vmat",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "b583ca45-d72d-4515-9db1-8de4787df038",
+      "Name": "Sun",
+      "Position": "-42.05574,-0.0000121956,111.0407",
+      "Rotation": "-0.05473964,0.4024566,0.1231555,0.9054642",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "DirectionalLightComponent",
+          "__enabled": true,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Shadows": true,
+          "SkyColor": "0.05882,0.07451,0.08235,1"
+        }
+      ]
+    },
+    {
+      "Id": "60b2a3ea-6e53-495e-a514-c76dd3093b1a",
+      "Name": "Object",
+      "Position": "-50.94626,-187.9251,-10.99908",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "EnvmapComponent",
+          "__enabled": true,
+          "Bounds": {
+            "Mins": "-1024,-1024,-1024",
+            "Maxs": "1024,1024,1024"
+          },
+          "Projection": "Sphere",
+          "Texture": "textures/cubemaps/default2.vtex",
+          "TintColor": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "862759a7-22da-481a-8a34-e5fb6691685c",
+      "Name": "Cube",
+      "Position": "310.466,-32.98438,54.24805",
+      "Scale": "2.266668,2.266668,2.266668",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.07426,0.05498,0.02353,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Model": "models/dev/box.vmdl",
+          "Static": false,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "47d8988a-8444-47e8-b491-111408a2fd88",
+      "Name": "Cube (2)",
+      "Position": "310.466,-32.55965,159.7728",
+      "Scale": "2.266668,2.266668,2.266668",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.07426,0.05498,0.02353,1"
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "f7f74163-ceab-4023-88b3-9b35d6a5d4b8",
+      "Name": "Cube (3)",
+      "Position": "310.466,-32.55965,269.6328",
+      "Scale": "2.266668,2.266668,2.266668",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.07426,0.05498,0.02353,1"
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "127698f6-992d-4696-a87b-1c6da43674a3",
+      "Name": "Cube (4)",
+      "Position": "310.466,-32.55965,382.0012",
+      "Scale": "2.266668,2.266668,2.266668",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.07426,0.05498,0.02353,1"
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "4b01442d-f9e9-44f2-a1dd-b0e337914770",
+      "Name": "Cube (12)",
+      "Position": "310.466,-32.55965,438.6952",
+      "Scale": "0.55,0.55,0.55",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "sceneviewer/models/plane.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.16861,0.43564,0.10999,1"
+        }
+      ]
+    },
+    {
+      "Id": "ef902316-cd43-4661-afea-3f90c7783f99",
+      "Name": "Cube (5)",
+      "Position": "310.4658,317.5839,56.42096",
+      "Scale": "2.266668,2.266668,2.266668",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.07426,0.05498,0.02353,1"
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "a5dd0578-1bed-4e90-b420-8133c478173c",
+      "Name": "Cube (6)",
+      "Position": "310.4658,317.5839,162.6192",
+      "Scale": "2.266668,2.266668,2.266668",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.07426,0.05498,0.02353,1"
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "9c25e683-d423-4320-a311-804ed2467243",
+      "Name": "Cube (10)",
+      "Position": "310.4658,317.5839,220.1194",
+      "Scale": "0.55,0.55,0.55",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "sceneviewer/models/plane.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.16861,0.43564,0.10999,1"
+        }
+      ]
+    },
+    {
+      "Id": "bfc659c7-d2ae-4ba1-b4eb-0d207e5378d3",
+      "Name": "Cube (7)",
+      "Position": "25.23616,317.5839,162.6192",
+      "Scale": "2.266668,2.266668,2.266668",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.07426,0.05498,0.02353,1"
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "fd7d56af-484c-4841-9168-768dfa375c3e",
+      "Name": "Cube (11)",
+      "Position": "25.23616,317.5839,219.9303",
+      "Scale": "0.55,0.55,0.55",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "sceneviewer/models/plane.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.16861,0.43564,0.10999,1"
+        }
+      ]
+    },
+    {
+      "Id": "dfafbe9f-e954-40fa-84ca-adddd26d02cf",
+      "Name": "Cube (8)",
+      "Position": "25.23616,-371.0051,4.232259",
+      "Scale": "2.266668,2.266668,2.266668",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.07426,0.05498,0.02353,1"
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "f5f5cc99-d4c6-42cc-95bd-a70637f70138",
+      "Name": "Cube (1)",
+      "Position": "-488.6824,-464.9765,0.192086",
+      "Scale": "0.3333346,0.3333346,0.3333346",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/room.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.21782,0.21782,0.21782,1"
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": false,
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "31c30431-0250-48d7-a91c-7b9160be40ff",
+      "Name": "Cube (15)",
+      "Position": "-488.6824,-125.3851,0.192086",
+      "Scale": "0.3333346,0.3333346,0.3333346",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/room.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.5396,0.12288,0.12288,1"
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": false,
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "a365dc21-c3a2-4c5c-a9df-daf6971bee7b",
+      "Name": "Cube (14)",
+      "Position": "25.23616,-371.0051,61.32906",
+      "Scale": "0.55,0.55,0.55",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "sceneviewer/models/plane.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.16861,0.43564,0.10999,1"
+        }
+      ]
+    },
+    {
+      "Id": "009b922b-3c30-4d54-bcff-c0e45088ddb3",
+      "Name": "Cube (9)",
+      "Position": "232.5959,-371.0051,50.83407",
+      "Scale": "2.266668,2.266668,2.266668",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "models/dev/box.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.07426,0.05498,0.02353,1"
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": true,
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true,
+          "Surface": null
+        }
+      ]
+    },
+    {
+      "Id": "a1219788-5519-446b-9f24-82128768a21b",
+      "Name": "Cube (13)",
+      "Position": "232.5959,-371.0051,107.9382",
+      "Scale": "0.55,0.55,0.55",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default/white.vmat",
+          "Model": "sceneviewer/models/plane.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "0.16861,0.43564,0.10999,1"
+        }
+      ]
+    },
+    {
+      "Id": "3c36c0ee-eef5-4ba1-9415-f93e02c656db",
+      "Name": "tube",
+      "Position": "-17.96646,291.3698,53.24039",
+      "Rotation": "-0.7071065,-0.0000009161495,0.707107,-0.0000009161489",
+      "Scale": "3.875751,3.875751,3.875751",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": null,
+          "Model": "models/editor/tube.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "2611036b-6966-4139-b462-0cd5b540e766",
+      "Name": "tube (1)",
+      "Position": "18.22848,291.3698,53.24039",
+      "Rotation": "-0.7071065,-0.0000009161495,0.707107,-0.0000009161489",
+      "Scale": "3.875751,3.875751,3.875751",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": null,
+          "Model": "models/editor/tube.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "b43a1a3b-bc28-4cf8-853a-b6e7b7c0b423",
+      "Name": "tube (2)",
+      "Position": "61.54339,291.3698,53.24039",
+      "Rotation": "-0.7071065,-0.0000009161495,0.707107,-0.0000009161489",
+      "Scale": "3.875751,3.875751,3.875751",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__enabled": true,
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": null,
+          "Model": "models/editor/tube.vmdl",
+          "ShouldCastShadows": true,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "Id": "1032a1ad-8b52-4b01-842e-a1e3449be30e",
+      "Name": "Wind",
+      "Position": "-489.8358,-465.7298,144.6335",
+      "Rotation": "0,-0.707107,0,0.7071065",
+      "Tags": "trigger",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "JumperWindTunnel",
+          "__enabled": true,
+          "WindAirStrength": 15,
+          "WindGroundedStrength": 25
+        },
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": true,
+          "IsTrigger": true,
+          "Scale": "300,150,150",
+          "Static": false,
+          "Surface": null
+        }
+      ],
+      "Children": [
+        {
+          "Id": "5cf697f4-2ad3-4802-a0d9-c19e4ffc0650",
+          "Name": "Spray",
+          "Position": "-148.4125,-0.000001329584,0",
+          "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
+          "Tags": "trigger",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ParticleEffect",
+              "__enabled": true,
+              "Alpha": {
+                "Type": "Curve",
+                "CurveA": [
+                  {
+                    "y": 1
+                  },
+                  {
+                    "x": 0.48029557,
+                    "y": 1,
+                    "in": 1.5365853,
+                    "out": -1.5365853
+                  },
+                  {
+                    "x": 1,
+                    "in": 1.312303,
+                    "out": -1.312303
+                  }
+                ],
+                "Constants": "1,0,0,0"
+              },
+              "ApplyColor": true,
+              "ApplyRotation": false,
+              "ApplyShape": true,
+              "Bounce": {
+                "Constants": "1,0,0,0"
+              },
+              "Brightness": {
+                "Constants": "1,0,0,0"
+              },
+              "Bumpiness": {},
+              "Collision": false,
+              "CollisionIgnore": null,
+              "CollisionRadius": 1,
+              "Damping": {},
+              "DieOnCollisionChance": {},
+              "Force": false,
+              "ForceDirection": "0,0,-200",
+              "ForceScale": {
+                "Constants": "1,0,0,0"
+              },
+              "Friction": {
+                "Constants": "1,0,0,0"
+              },
+              "Gradient": {
+                "Type": "Range",
+                "Evaluation": "Particle",
+                "GradientA": {
+                  "color": [
+                    {
+                      "t": 0.5,
+                      "c": "1,1,1,1"
+                    }
+                  ],
+                  "alpha": []
+                },
+                "GradientB": {
+                  "color": [
+                    {
+                      "t": 0.5,
+                      "c": "1,1,1,1"
+                    }
+                  ],
+                  "alpha": []
+                },
+                "ConstantA": "1,1,1,1",
+                "ConstantB": "1,1,1,1"
+              },
+              "Lifetime": {
+                "Type": "Range",
+                "Evaluation": "Particle",
+                "Constants": "0.5,1,0,0"
+              },
+              "MaxParticles": 50,
+              "PerParticleTimeScale": {
+                "Constants": "1,0.4,0,0"
+              },
+              "PreWarm": 0,
+              "PushStrength": {},
+              "Roll": {
+                "Type": "Range",
+                "Evaluation": "Particle",
+                "Constants": "0,360,0,0"
+              },
+              "Scale": {
+                "Type": "Curve",
+                "CurveA": {
+                  "rangey": "0,3",
+                  "frames": [
+                    {
+                      "in": -9.333329,
+                      "out": 9.333329
+                    },
+                    {
+                      "x": 0.03325123,
+                      "y": 1,
+                      "in": -0.056075174,
+                      "out": 0.056075174
+                    },
+                    {
+                      "x": 1,
+                      "in": 2.9152544,
+                      "out": -2.9152544
+                    }
+                  ]
+                },
+                "Constants": "1,0,0,0"
+              },
+              "SequenceId": {},
+              "SequenceSpeed": {
+                "Constants": "1,0,0,0"
+              },
+              "SequenceTime": {
+                "Constants": "1,0,0,0"
+              },
+              "SheetSequence": false,
+              "Space": "World",
+              "StartVelocity": {
+                "Type": "Range",
+                "Evaluation": "Particle",
+                "Constants": "500,700,0,0"
+              },
+              "Stretch": {
+                "Constants": "1,0,0,0"
+              },
+              "TimeScale": 1,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "ParticleSpriteRenderer",
+              "__enabled": true,
+              "Additive": false,
+              "BlurAmount": 0.5,
+              "BlurOpacity": 0.91,
+              "BlurSpacing": 0.73,
+              "DepthFeather": 0,
+              "FaceVelocity": false,
+              "FogStrength": 1,
+              "LeadingTrail": true,
+              "MotionBlur": true,
+              "Opaque": false,
+              "RotationOffset": 90,
+              "Scale": 1,
+              "Shadows": false,
+              "SortMode": "Unsorted",
+              "Texture": "materials/effects/lightcookies/blank.vtex"
+            },
+            {
+              "__type": "ParticleCircleForwardEmitter",
+              "__enabled": true,
+              "Burst": 0,
+              "Delay": 0,
+              "Duration": 10,
+              "Loop": true,
+              "Radius": 63.46666,
+              "Rate": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "99a0519c-6744-486f-8919-8ff76bf11a9c",
+      "Name": "DistanceRuler",
+      "Position": "-0.0003073972,0,0",
+      "Networked": true,
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "JumperDistanceRuler",
+          "__enabled": true,
+          "EndObject": "79ab38f5-6a12-434e-a61b-88bcb093f916",
+          "StartObject": "84ee6cec-d996-4d19-8318-2553e9d47f8f"
+        }
+      ],
+      "Children": [
+        {
+          "Id": "84ee6cec-d996-4d19-8318-2553e9d47f8f",
+          "Name": "StartPoint",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": null,
+              "Model": "models/editor/axis_helper_thick.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        },
+        {
+          "Id": "79ab38f5-6a12-434e-a61b-88bcb093f916",
+          "Name": "EndPoint",
+          "Position": "0,0,2000",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": null,
+              "Model": "models/editor/axis_helper_thick.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Id": "9ce703a9-b71e-4183-afed-af3e9df33896",
+      "Name": "StartingPoint",
+      "Position": "-72.29654,-103.0429,24.26895",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "JumperSpawnPoint",
+          "__enabled": true
+        }
+      ]
+    },
+    {
+      "Id": "e9e9ad8f-bf86-448b-8201-c296da5f02f6",
+      "Name": "FinishLine",
+      "Position": "-489.6996,-124.9363,70.10055",
+      "Tags": "trigger",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ColliderBoxComponent",
+          "__enabled": true,
+          "IsTrigger": true,
+          "Scale": "150,150,150",
+          "Static": false,
+          "Surface": null
+        },
+        {
+          "__type": "JumperFinishLine",
+          "__enabled": true,
+          "TopPosition": "4e410f9b-0637-4241-826a-af1d82ba7abd"
+        }
+      ]
+    },
+    {
+      "Id": "4e410f9b-0637-4241-826a-af1d82ba7abd",
+      "Name": "ImATop",
+      "Position": "-444.3818,378.9225,88.17521",
+      "Enabled": true
+    }
+  ],
+  "SceneProperties": {
+    "NetworkFrequency": 60,
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "TimeScale": 1,
+    "ThreadedAnimation": true,
+    "UseFixedUpdate": true
+  },
+  "Title": "jumper",
+  "Description": "",
+  "__references": []
+}
