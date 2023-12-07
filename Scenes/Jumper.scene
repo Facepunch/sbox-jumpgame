@@ -11,7 +11,7 @@
           "__enabled": true,
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": null,
-          "Model": "sceneviewer/models/plane.vmdl",
+          "Model": "models/editor/prims/plane.vmdl",
           "ShouldCastShadows": true,
           "Tint": "0.196,0.46535,0.10136,1"
         },
@@ -19,7 +19,7 @@
           "__type": "ModelCollider",
           "__enabled": true,
           "IsTrigger": false,
-          "Model": "sceneviewer/models/plane.vmdl",
+          "Model": "models/editor/prims/plane.vmdl",
           "Static": true,
           "Surface": null
         }
@@ -31,6 +31,30 @@
       "Position": "0,0,1.333333",
       "Tags": "player",
       "Enabled": true,
+      "Components": [
+        {
+          "__type": "JumperCharacterController",
+          "__enabled": true,
+          "Acceleration": 10,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "solid,world",
+          "Radius": 16,
+          "StepHeight": 18
+        },
+        {
+          "__type": "JumperPlayerController",
+          "__enabled": true,
+          "AnimationHelper": "97241215-197d-493e-8970-02f3715ebbf0",
+          "Body": "97241215-197d-493e-8970-02f3715ebbf0",
+          "Eye": "e6179300-2f9d-4ca8-a97b-d7e3f6db63d9",
+          "Gravity": "0,0,800",
+          "HitEffect": "prefabs/player/impact/wall_impact.object",
+          "JumpEffect": "prefabs/player/jump/jump_effect.object",
+          "PlayerStats": "e0e95034-52bb-408a-afe1-f242d3f8432b",
+          "TrailEffect": "prefabs/player/trail/jump_trail.object"
+        }
+      ],
       "Children": [
         {
           "Id": "97241215-197d-493e-8970-02f3715ebbf0",
@@ -59,6 +83,18 @@
               "Material": null,
               "ObscuredColor": "0,0,0,0.4",
               "Width": 0.25
+            },
+            {
+              "__type": "JumperCitizenAnimation",
+              "__enabled": true,
+              "EyeSource": "e6179300-2f9d-4ca8-a97b-d7e3f6db63d9",
+              "Height": 1,
+              "IkLeftFoot": null,
+              "IkLeftHand": null,
+              "IkRightFoot": null,
+              "IkRightHand": null,
+              "LookAtObject": "e6179300-2f9d-4ca8-a97b-d7e3f6db63d9",
+              "Target": "97241215-197d-493e-8970-02f3715ebbf0"
             }
           ]
         },
@@ -134,6 +170,12 @@
               "Intensity": 0.8,
               "Roundness": 0,
               "Smoothness": 0.9
+            },
+            {
+              "__type": "JumperCamera",
+              "__enabled": true,
+              "CameraObject": "ea43c4af-4c86-4385-aae3-04fd036200fe",
+              "PlayerObject": "ead060a4-13b6-416a-8d09-cf8c86570eaa"
             }
           ]
         },
@@ -223,7 +265,15 @@
           "Name": "Progress",
           "Position": "0,0,0",
           "Tags": "player",
-          "Enabled": true
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "JumperPlayerStuff",
+              "__enabled": true,
+              "DistanceRuler": null,
+              "Progress": null
+            }
+          ]
         }
       ]
     },
@@ -249,7 +299,7 @@
       "Enabled": true,
       "Components": [
         {
-          "__type": "DirectionalLightComponent",
+          "__type": "DirectionalLight",
           "__enabled": true,
           "LightColor": "0.91373,0.98039,1,1",
           "Shadows": true,
@@ -264,7 +314,7 @@
       "Enabled": true,
       "Components": [
         {
-          "__type": "EnvmapComponent",
+          "__type": "EnvmapProbe",
           "__enabled": true,
           "Bounds": {
             "Mins": "-1024,-1024,-1024",
@@ -392,7 +442,7 @@
           "__enabled": true,
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/default/white.vmat",
-          "Model": "sceneviewer/models/plane.vmdl",
+          "Model": "models/editor/prims/plane.vmdl",
           "ShouldCastShadows": true,
           "Tint": "0.16861,0.43564,0.10999,1"
         }
@@ -462,7 +512,7 @@
           "__enabled": true,
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/default/white.vmat",
-          "Model": "sceneviewer/models/plane.vmdl",
+          "Model": "models/editor/prims/plane.vmdl",
           "ShouldCastShadows": true,
           "Tint": "0.16861,0.43564,0.10999,1"
         }
@@ -506,7 +556,7 @@
           "__enabled": true,
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/default/white.vmat",
-          "Model": "sceneviewer/models/plane.vmdl",
+          "Model": "models/editor/prims/plane.vmdl",
           "ShouldCastShadows": true,
           "Tint": "0.16861,0.43564,0.10999,1"
         }
@@ -602,7 +652,7 @@
           "__enabled": true,
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/default/white.vmat",
-          "Model": "sceneviewer/models/plane.vmdl",
+          "Model": "models/editor/prims/plane.vmdl",
           "ShouldCastShadows": true,
           "Tint": "0.16861,0.43564,0.10999,1"
         }
@@ -646,7 +696,7 @@
           "__enabled": true,
           "BodyGroups": 18446744073709551615,
           "MaterialOverride": "materials/default/white.vmat",
-          "Model": "sceneviewer/models/plane.vmdl",
+          "Model": "models/editor/prims/plane.vmdl",
           "ShouldCastShadows": true,
           "Tint": "0.16861,0.43564,0.10999,1"
         }
@@ -962,13 +1012,13 @@
     }
   ],
   "SceneProperties": {
-    "Lerping": true,
     "UseFixedUpdate": true,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "MaxFixedUpdates": 5,
     "FixedUpdateFrequency": 50,
-    "NetworkFrequency": 60
+    "NetworkFrequency": 60,
+    "Lerping": true
   },
   "Title": "jumper",
   "Description": "",

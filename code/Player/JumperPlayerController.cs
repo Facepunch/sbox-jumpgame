@@ -1,7 +1,4 @@
 using Sandbox;
-using System.ComponentModel;
-using System.Drawing;
-using System.Runtime;
 
 public class JumperPlayerController : Component, INetworkSerializable
 {
