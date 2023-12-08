@@ -14,7 +14,7 @@
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {
-    "MaxPlayers": 64,
+    "MaxPlayers": 2,
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Official",
@@ -97,6 +97,7 @@
     "Public": true,
     "CsProjName": "",
     "HttpAllowList": null,
-    "TickRate": 50
+    "TickRate": 50,
+    "StartupScene": "scenes/jumper.scene"
   }
 }

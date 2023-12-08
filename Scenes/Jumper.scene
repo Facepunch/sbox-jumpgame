@@ -3,7 +3,7 @@
     {
       "Id": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
       "Name": "Citizen",
-      "Position": "0,0,44.95437",
+      "Position": "0,0,-15865.2",
       "Tags": "player",
       "Enabled": true,
       "Components": [
@@ -59,7 +59,7 @@
             {
               "__type": "SkinnedModelRenderer",
               "__enabled": true,
-              "BodyGroups": 18446744073709551274,
+              "BodyGroups": 18446744073709551275,
               "BoneMergeTarget": null,
               "CreateBoneObjects": false,
               "MaterialOverride": null,
@@ -186,8 +186,8 @@
               "BodyGroups": 18446744073709551615,
               "BoneMergeTarget": "97241215-197d-493e-8970-02f3715ebbf0",
               "CreateBoneObjects": false,
-              "MaterialOverride": null,
-              "Model": "models/citizen_clothes/full_outfit/medieval_armour/models/medieval_armour.vmdl",
+              "MaterialOverride": "models/citizen_clothes/shirt/jumpsuit/textures/blue_jumpsuit.vmat",
+              "Model": "models/citizen_clothes/shirt/jumpsuit/models/jumpsuit.vmdl",
               "ShouldCastShadows": true,
               "Tint": "1,1,1,1"
             },
@@ -217,7 +217,65 @@
               "BoneMergeTarget": "97241215-197d-493e-8970-02f3715ebbf0",
               "CreateBoneObjects": false,
               "MaterialOverride": null,
-              "Model": "models/citizen_clothes/hat/bucket_helmet/models/bucket_helmet.vmdl",
+              "Model": "models/citizen_clothes/hair/hair_shortscruffy/models/hair_shortscruffy_black.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "JumperHighlightOutline",
+              "__enabled": false,
+              "Color": "0,0,0,0",
+              "InsideColor": "0,0,0,0",
+              "InsideObscuredColor": "0,0,0,0.4",
+              "Material": null,
+              "ObscuredColor": "0,0,0,0",
+              "Width": 0.25
+            }
+          ]
+        },
+        {
+          "Id": "be50bf8e-b506-43d6-8bc9-c49e6566541b",
+          "Name": "Apron (1)",
+          "Tags": "player",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SkinnedModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "BoneMergeTarget": "97241215-197d-493e-8970-02f3715ebbf0",
+              "CreateBoneObjects": false,
+              "MaterialOverride": null,
+              "Model": "models/citizen_clothes/gloves/rubber_gloves/models/rubber_gloves.vmdl",
+              "ShouldCastShadows": true,
+              "Tint": "1,1,1,1"
+            },
+            {
+              "__type": "JumperHighlightOutline",
+              "__enabled": false,
+              "Color": "0,0,0,0",
+              "InsideColor": "0,0,0,0",
+              "InsideObscuredColor": "0,0,0,0.4",
+              "Material": null,
+              "ObscuredColor": "0,0,0,0",
+              "Width": 0.25
+            }
+          ]
+        },
+        {
+          "Id": "035b61cf-b231-4716-bf5f-3c74e4ae82a8",
+          "Name": "Apron (1)",
+          "Tags": "player",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "SkinnedModelRenderer",
+              "__enabled": true,
+              "BodyGroups": 18446744073709551615,
+              "BoneMergeTarget": "97241215-197d-493e-8970-02f3715ebbf0",
+              "CreateBoneObjects": false,
+              "MaterialOverride": null,
+              "Model": "models/citizen_clothes/shoes/boots/models/black_boots.vmdl",
               "ShouldCastShadows": true,
               "Tint": "1,1,1,1"
             },
@@ -2857,7 +2915,8 @@
           "__enabled": true,
           "MapName": "facepunch.jumpermap"
         }
-      ]
+      ],
+      "Children": []
     },
     {
       "Id": "49f53d96-48f7-4c2d-b34e-88379c354173",
@@ -3355,13 +3414,13 @@
     }
   ],
   "SceneProperties": {
+    "Lerping": true,
     "UseFixedUpdate": true,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "MaxFixedUpdates": 5,
     "FixedUpdateFrequency": 50,
-    "NetworkFrequency": 60,
-    "Lerping": true
+    "NetworkFrequency": 60
   },
   "Title": "jumper",
   "Description": "",
