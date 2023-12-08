@@ -1,0 +1,94 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root>
+    <div class="container">
+        <div class="header">
+            <label class="title">JUMPER</label>
+        </div>
+        <div class="rows">
+            <div class="row">
+                <label class="title">NAME</label>
+                <label class="stat">@Name</label>
+            </div>
+            <div class="row">
+                <label class="title">PLAYTIME</label>
+                <label class="stat">@YourSessionTime</label>
+            </div>
+            <div class="row">
+                <label class="title">JUMPS</label>
+                <label class="stat">@Jumps</label>
+            </div>
+            <div class="row">
+                <label class="title">BEST HEIGHT</label>
+                <label class="stat">@MaxHeight</label>
+            </div>
+            <div class="row">
+                <label class="title">FALLS</label>
+                <label class="stat">@Falls</label>
+            </div>
+            <div class="row">
+                <label class="title">COMPLETIONS</label>
+                <label class="stat">@Completions</label>
+            </div>
+        </div>
+        <button onclick="@Restart">Restart</button>
+    </div>
+</root>
+
+@code {
+    private string Name => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors).PlayerName;
+    private float TimePlayed => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors).TimePlayed;
+    private int? Jumps => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors)?.TotalJumps;
+    private int? Falls => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors)?.TotalFalls;
+    private int? Completions => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors)?.Completions;
+    private float? MaxHeight => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors)?.MaxHeight;
+
+    private string YourSessionTime;
+
+    // private JumperPawn Pawn => (Game.LocalPawn as JumperPawn);
+
+
+    private void Restart()
+    {
+        
+		var spawnpoint = Scene.Components.GetAll<JumperSpawnPoint>().FirstOrDefault();
+            if (spawnpoint != null)
+            {
+            //Do some more stuff but for now just movew the play to spawn
+			GameObject.Parent.Transform.Position = spawnpoint.Transform.Position;
+			
+            //JumperGame.SetPlayerPosition(spawnpoint.Position + Vector3.Up * 10);
+            //Pawn.ResetStats();
+        }
+    
+
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+        
+        SetClass("open", Input.Down("menu"));
+
+        if (!HasClass("open"))
+        {
+            RemoveClass("cursor");
+        }
+        else
+        {
+            if (Input.Down("attack1") || Input.Down("attack2"))
+            {
+                AddClass("cursor");
+            }
+        }
+
+        YourSessionTime = TimeSpan.FromSeconds((TimePlayed * 60).Clamp(0, float.MaxValue)).ToString(@"dd\:hh\:mm\:ss");
+    }
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(Jumps, Falls, MaxHeight, YourSessionTime, Completions);
+    }
+}

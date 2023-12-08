@@ -1,0 +1,78 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root class="@(Open ? "open" : "closed")">
+    <image class="dance" src="@imageSequence" </image>
+    <label class="header">Congratulations!</label>
+    <label class="header" style="top: 37%; font-size:24px;">You made it to the top!</label>
+    <button onclick="@Restart">Restart</button>
+    <button onclick="@GoToTop">Go to top</button>
+    <label class="header" style="top: 60%; font-size:24px;">Completions @Completions</label>
+</root>
+
+@code
+{
+    public bool Open { get; set; }
+    private int? Completions => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors)?.Completions;
+    private string imageSequence { get; set; }
+    private TimeSince sinceLastFrame { get; set; }
+    private int frame { get; set; }
+    private float maxframe { get; set; } = 6f;
+    private float frameLength { get; set; } = .1f;
+
+    protected override void OnFixedUpdate()
+    {
+        base.OnFixedUpdate();
+        Animate();
+    }
+
+    public void Animate()
+    {
+        if (!Open) return;
+        if (sinceLastFrame > frameLength)
+        {
+            if (frame == maxframe)
+            {
+                sinceLastFrame = 1;
+                frame = 0;
+            }
+            else
+            {
+                frame++;
+                sinceLastFrame = 0;
+            }
+        }
+
+        imageSequence = "ui/ending/danduw_" + (int)frame + ".png";
+    }
+
+    private void Restart()
+    {
+        var spawnpoint = Scene.Components.GetAll<JumperSpawnPoint>().FirstOrDefault();
+        if (spawnpoint != null)
+        {
+            GameObject.Parent.Transform.Position = spawnpoint.Transform.Position;
+            var player = GameObject.Parent.Components.Get<JumperPlayerStuff>();
+            player.Completions++;
+            player.Restart();
+            Open = false;
+        }
+    }
+
+    private void GoToTop()
+    {
+        var toppos = Scene.Components.GetAll<JumperFinishLine>().FirstOrDefault();
+        if (toppos != null)
+        {
+            GameObject.Parent.Transform.Position = toppos.TopPosition.Transform.Position;
+			Log.Info(toppos);
+            Open = false;
+        }
+    }
+
+	/// <summary>
+    /// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+    /// </summary>
+    protected override int BuildHash() => System.HashCode.Combine(Open, imageSequence);
+}

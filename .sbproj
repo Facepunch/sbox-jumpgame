@@ -7,14 +7,14 @@
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
-  "Resources": null,
+  "Resources": "\nfonts/*\n*.scss",
   "MenuResources": "\nfonts/*\nUI/mainmenu/*\nsounds/ui/*\nui/*\nsounds/test/*",
   "HasCode": true,
   "CodePath": "/code/",
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {
-    "MaxPlayers": 64,
+    "MaxPlayers": 2,
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Official",
@@ -97,6 +97,7 @@
     "Public": true,
     "CsProjName": "",
     "HttpAllowList": null,
-    "TickRate": 50
+    "TickRate": 50,
+    "StartupScene": "scenes/jumper.scene"
   }
 }

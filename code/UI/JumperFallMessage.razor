@@ -1,0 +1,72 @@
+@using Sandbox;	
+@using System;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+@* <root class=@(Visible ? "visible" : "")> *@
+<root class=@(Visible ? "visible" : "")>
+	<label class="message">@OutputText</label>
+
+</root>
+
+@code
+{
+	public string Message { get; set; } = "";
+
+	private bool Visible => TimeSinceDisplayed < 4;
+	private TimeSince TimeSinceDisplayed;
+	public string OutputText { get; set; }
+	public float Delay { get; set; } = .1f;
+
+	public static bool IsTalking()
+	{
+		return true;
+	}
+
+	private async Task RevealTextAsync(string message)
+	{
+		Random rand = new Random();
+		foreach (char c in message)
+		{
+			IsTalking();
+			OutputText += c;
+			TimeSinceDisplayed = 0f;
+			await Task.DelaySeconds((float)GetRandomNumber(0.05f, 0.2f));
+			Sound.Play("beep1");
+		}
+	}
+
+	static Random random = new Random();
+	public double GetRandomNumber(double minimum, double maximum)
+	{
+		return random.NextDouble() * (maximum - minimum) + minimum;
+	}
+
+	public void DisplayMessage(string message)
+	{
+		Message = message;
+		OutputText = null;
+	}
+
+	protected override void OnUpdate()
+	{
+		base.OnUpdate();
+
+		if (OutputText == Message)
+		{
+			return;
+		}
+
+		if (OutputText == null)
+		{
+			RevealTextAsync(Message);
+		}
+		
+		Message = OutputText;
+	}
+
+	/// <summary>
+	/// the hash determines if the system should be rebuilt. If it changes, it will be rebuilt
+	/// </summary>
+	protected override int BuildHash() => System.HashCode.Combine(OutputText, Visible ? 1 : 0);
+}

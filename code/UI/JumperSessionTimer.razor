@@ -1,0 +1,34 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root class=@(IsOpen ? "open" : "closed")>
+	<label class="sessiontimetext" style="top:32px">Session Time</label>
+	<label class="sessiontimetext">@SessionTime</label>
+</root>
+
+@code
+{
+	[Property] JumperDistanceRuler JumperDistanceRuler { get; set; }
+	private string SessionTime;
+	bool IsOpen { get; set; }
+
+	protected override void OnUpdate()
+	{
+		if ( JumperDistanceRuler == null )
+		{
+			//Log.Warning("JumperSessiontimer - invalid distance ruler");
+			return;
+		}
+
+		SessionTime = TimeSpan.FromSeconds((JumperDistanceRuler.SessionTimer * 60).Clamp(0, float.MaxValue)).ToString(@"dd\:hh\:mm\:ss");
+		
+	}
+
+	protected override int BuildHash()
+	{
+		IsOpen ^= Input.Pressed("slot2");
+		return HashCode.Combine(IsOpen, SessionTime);
+	}
+
+}
