@@ -2,7 +2,7 @@ using Sandbox;
 [Title( "Jumper - Wind" )]
 [Category( "Jumper" )]
 [Icon( "wind_power" )]
-[EditorHandle( "icons/wind.png" )]
+
 public sealed class JumperWindTunnel : Component, Component.ITriggerListener
 {
 	[Property] public float WindGroundedStrength { get; set; } = 25.0f;

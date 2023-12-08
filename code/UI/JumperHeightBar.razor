@@ -14,13 +14,13 @@
         <div class="maxheightbarpos" style="height:@(CalculateProgress(MaxHeight) * 100)%;">
             <label class="maxheighttext" text="@(MaxHeight)>" />
         </div>
-        
+        @* 
         @foreach ( var player in Scene.GetAllComponents<JumperPlayerStuff>() )
 		{
             <div class="maxheightotherbarpos" style="border-top: 4px solid @player.rndColor; height:@(player.Height.LerpInverse(0,TotalHeight) * 100)%">
                 <img class="maxheightothertext" style=" box-shadow: 3px 3px @player.rndColor" src=@($"{player.PlayerAvatar}")>
 			</div>
-        }
+        } *@
     </div>
 </root>
 

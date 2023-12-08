@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "7cffedf7-aabc-403f-a35b-f0fce535ba75",
+    "Id": "3cd3de68-b796-405d-abc9-de9c76596155",
     "Name": "footstep",
     "Enabled": true,
     "Components": [
@@ -13,34 +13,18 @@
         "__type": "SelfDestructComponent",
         "__enabled": true,
         "Seconds": 10
-      },
-      {
-        "__type": "AlphaOverTime",
-        "__enabled": true,
-        "Alpha": [
-          {
-            "x": 0.30788177,
-            "y": 1
-          },
-          {
-            "x": 1,
-            "in": 1.1481483,
-            "out": -1.1481483
-          }
-        ],
-        "Time": 10
       }
     ],
     "Children": [
       {
-        "Id": "c555e1f3-7745-44a2-b17d-f45c1034d1d8",
+        "Id": "21cb3b04-8826-4d31-b8fd-3039cc3fba89",
         "Name": "Object",
         "Position": "-0.000001176846,0,6.139579",
         "Enabled": true,
         "Components": [
           {
             "__type": "DecalRenderer",
-            "__enabled": true,
+            "__enabled": false,
             "CutoffAngle": 60,
             "CutoffAngleSoftness": 5,
             "Material": "materials/decals/facepunch-legacy.vmat",
