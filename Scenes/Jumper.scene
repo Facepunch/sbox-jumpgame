@@ -24,10 +24,10 @@
           "Body": "97241215-197d-493e-8970-02f3715ebbf0",
           "Eye": "e6179300-2f9d-4ca8-a97b-d7e3f6db63d9",
           "Gravity": "0,0,800",
-          "HitEffect": "prefabs/player/impact/wall_impact.object",
-          "JumpEffect": "prefabs/player/jump/jump_effect.object",
+          "HitEffect": "prefabs/player/impact/wall_impact.prefab",
+          "JumpEffect": "prefabs/player/jump/jump_effect.prefab",
           "PlayerStats": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
-          "TrailEffect": "prefabs/jump_trail.object"
+          "TrailEffect": "prefabs/jump_trail.prefab"
         },
         {
           "__type": "JumperCamera",
@@ -44,7 +44,7 @@
         {
           "__type": "DropObjectOnFootstep",
           "__enabled": true,
-          "Prefab": "prefabs/player/footstep/footstep.object",
+          "Prefab": "prefabs/player/footstep/footstep.prefab",
           "Source": "97241215-197d-493e-8970-02f3715ebbf0"
         }
       ],
@@ -62,6 +62,7 @@
               "BodyGroups": 18446744073709551275,
               "BoneMergeTarget": null,
               "CreateBoneObjects": false,
+              "MaterialGroup": null,
               "MaterialOverride": null,
               "Model": "models/citizen/citizen.vmdl",
               "ShouldCastShadows": true,
@@ -186,6 +187,7 @@
               "BodyGroups": 18446744073709551615,
               "BoneMergeTarget": "97241215-197d-493e-8970-02f3715ebbf0",
               "CreateBoneObjects": false,
+              "MaterialGroup": null,
               "MaterialOverride": "models/citizen_clothes/shirt/jumpsuit/textures/blue_jumpsuit.vmat",
               "Model": "models/citizen_clothes/shirt/jumpsuit/models/jumpsuit.vmdl",
               "ShouldCastShadows": true,
@@ -216,6 +218,7 @@
               "BodyGroups": 18446744073709551615,
               "BoneMergeTarget": "97241215-197d-493e-8970-02f3715ebbf0",
               "CreateBoneObjects": false,
+              "MaterialGroup": null,
               "MaterialOverride": null,
               "Model": "models/citizen_clothes/hair/hair_shortscruffy/models/hair_shortscruffy_black.vmdl",
               "ShouldCastShadows": true,
@@ -236,6 +239,7 @@
         {
           "Id": "be50bf8e-b506-43d6-8bc9-c49e6566541b",
           "Name": "Apron (1)",
+          "Position": "0,0,0",
           "Tags": "player",
           "Enabled": true,
           "Components": [
@@ -245,6 +249,7 @@
               "BodyGroups": 18446744073709551615,
               "BoneMergeTarget": "97241215-197d-493e-8970-02f3715ebbf0",
               "CreateBoneObjects": false,
+              "MaterialGroup": null,
               "MaterialOverride": null,
               "Model": "models/citizen_clothes/gloves/rubber_gloves/models/rubber_gloves.vmdl",
               "ShouldCastShadows": true,
@@ -265,6 +270,7 @@
         {
           "Id": "035b61cf-b231-4716-bf5f-3c74e4ae82a8",
           "Name": "Apron (1)",
+          "Position": "0,0,0",
           "Tags": "player",
           "Enabled": true,
           "Components": [
@@ -274,6 +280,7 @@
               "BodyGroups": 18446744073709551615,
               "BoneMergeTarget": "97241215-197d-493e-8970-02f3715ebbf0",
               "CreateBoneObjects": false,
+              "MaterialGroup": null,
               "MaterialOverride": null,
               "Model": "models/citizen_clothes/shoes/boots/models/black_boots.vmdl",
               "ShouldCastShadows": true,
@@ -2394,6 +2401,7 @@
               "__type": "ModelRenderer",
               "__enabled": false,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": null,
               "Model": "models/editor/axis_helper_thick.vmdl",
               "ShouldCastShadows": true,
@@ -2411,6 +2419,7 @@
               "__type": "ModelRenderer",
               "__enabled": false,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": null,
               "Model": "models/editor/axis_helper_thick.vmdl",
               "ShouldCastShadows": true,
@@ -2455,6 +2464,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": null,
               "Model": "models/editor/tube.vmdl",
               "ShouldCastShadows": true,
@@ -2473,6 +2483,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/dev/box.vmdl",
               "ShouldCastShadows": true,
@@ -2499,6 +2510,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/dev/box.vmdl",
               "ShouldCastShadows": true,
@@ -2525,6 +2537,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/dev/box.vmdl",
               "ShouldCastShadows": true,
@@ -2551,6 +2564,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/dev/box.vmdl",
               "ShouldCastShadows": true,
@@ -2577,6 +2591,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/editor/prims/plane.vmdl",
               "ShouldCastShadows": true,
@@ -2595,6 +2610,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/dev/box.vmdl",
               "ShouldCastShadows": true,
@@ -2621,6 +2637,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/dev/box.vmdl",
               "ShouldCastShadows": true,
@@ -2647,6 +2664,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/editor/prims/plane.vmdl",
               "ShouldCastShadows": true,
@@ -2665,6 +2683,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/editor/prims/plane.vmdl",
               "ShouldCastShadows": true,
@@ -2683,6 +2702,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/dev/box.vmdl",
               "ShouldCastShadows": true,
@@ -2709,6 +2729,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/dev/box.vmdl",
               "ShouldCastShadows": true,
@@ -2735,6 +2756,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/room.vmdl",
               "ShouldCastShadows": true,
@@ -2761,6 +2783,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/room.vmdl",
               "ShouldCastShadows": true,
@@ -2787,6 +2810,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/editor/prims/plane.vmdl",
               "ShouldCastShadows": true,
@@ -2805,6 +2829,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/dev/box.vmdl",
               "ShouldCastShadows": true,
@@ -2831,6 +2856,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": "materials/default/white.vmat",
               "Model": "models/editor/prims/plane.vmdl",
               "ShouldCastShadows": true,
@@ -2850,6 +2876,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": null,
               "Model": "models/editor/tube.vmdl",
               "ShouldCastShadows": true,
@@ -2869,6 +2896,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": null,
               "Model": "models/editor/tube.vmdl",
               "ShouldCastShadows": true,
@@ -2887,6 +2915,7 @@
               "__type": "ModelRenderer",
               "__enabled": true,
               "BodyGroups": 18446744073709551615,
+              "MaterialGroup": null,
               "MaterialOverride": null,
               "Model": "models/editor/prims/plane.vmdl",
               "ShouldCastShadows": true,
@@ -2911,7 +2940,7 @@
       "Enabled": true,
       "Components": [
         {
-          "__type": "MapComponent",
+          "__type": "MapInstance",
           "__enabled": true,
           "MapName": "facepunch.jumpermap"
         }
@@ -3295,9 +3324,7 @@
         {
           "__type": "LegacyParticleSystem",
           "__enabled": true,
-          "ControlPoint1": null,
-          "ControlPoint2": null,
-          "ControlPoint3": null,
+          "ControlPoints": null,
           "Looped": false,
           "Particles": "particles/clouds/clouds_2.vpcf",
           "PlaybackSpeed": 1
@@ -3313,9 +3340,7 @@
         {
           "__type": "LegacyParticleSystem",
           "__enabled": true,
-          "ControlPoint1": null,
-          "ControlPoint2": null,
-          "ControlPoint3": null,
+          "ControlPoints": null,
           "Looped": false,
           "Particles": "particles/clouds/clouds_2.vpcf",
           "PlaybackSpeed": 1
@@ -3331,9 +3356,7 @@
         {
           "__type": "LegacyParticleSystem",
           "__enabled": true,
-          "ControlPoint1": null,
-          "ControlPoint2": null,
-          "ControlPoint3": null,
+          "ControlPoints": null,
           "Looped": false,
           "Particles": "particles/clouds/clouds_2.vpcf",
           "PlaybackSpeed": 1
@@ -3349,9 +3372,7 @@
         {
           "__type": "LegacyParticleSystem",
           "__enabled": true,
-          "ControlPoint1": null,
-          "ControlPoint2": null,
-          "ControlPoint3": null,
+          "ControlPoints": null,
           "Looped": false,
           "Particles": "particles/clouds/clouds_2.vpcf",
           "PlaybackSpeed": 1
@@ -3367,9 +3388,7 @@
         {
           "__type": "LegacyParticleSystem",
           "__enabled": true,
-          "ControlPoint1": null,
-          "ControlPoint2": null,
-          "ControlPoint3": null,
+          "ControlPoints": null,
           "Looped": false,
           "Particles": "particles/clouds/clouds_2.vpcf",
           "PlaybackSpeed": 1
@@ -3385,9 +3404,7 @@
         {
           "__type": "LegacyParticleSystem",
           "__enabled": true,
-          "ControlPoint1": null,
-          "ControlPoint2": null,
-          "ControlPoint3": null,
+          "ControlPoints": [],
           "Looped": false,
           "Particles": "particles/clouds/clouds.vpcf",
           "PlaybackSpeed": 1
@@ -3403,9 +3420,7 @@
         {
           "__type": "LegacyParticleSystem",
           "__enabled": true,
-          "ControlPoint1": null,
-          "ControlPoint2": null,
-          "ControlPoint3": null,
+          "ControlPoints": [],
           "Looped": false,
           "Particles": "particles/bird/eagle_01a.vpcf",
           "PlaybackSpeed": 1
@@ -3414,13 +3429,13 @@
     }
   ],
   "SceneProperties": {
+    "FixedUpdateFrequency": 50,
     "Lerping": true,
-    "UseFixedUpdate": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
     "ThreadedAnimation": true,
     "TimeScale": 1,
-    "MaxFixedUpdates": 5,
-    "FixedUpdateFrequency": 50,
-    "NetworkFrequency": 60
+    "UseFixedUpdate": true
   },
   "Title": "jumper",
   "Description": "",
