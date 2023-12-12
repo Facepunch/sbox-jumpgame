@@ -8,7 +8,7 @@
   "HasAssets": true,
   "AssetsPath": "",
   "Resources": "\nfonts/*\n*.scss",
-  "MenuResources": "\nfonts/*\nUI/mainmenu/*\nsounds/ui/*\nui/*\nsounds/test/*",
+  "MenuResources": "\nfonts/*\nUI/mainmenu/*\nsounds/ui/*\nui/*\nsounds/test/*\n*.object\n*.vpcf\n*.sndscape\n*.sound",
   "HasCode": true,
   "CodePath": "/code/",
   "PackageReferences": [],
@@ -98,6 +98,15 @@
     "CsProjName": "",
     "HttpAllowList": null,
     "TickRate": 50,
-    "StartupScene": "scenes/jumper.scene"
+    "StartupScene": "scenes/jumper.scene",
+    "Compiler": {
+      "RootNamespace": "Sandbox",
+      "DefineConstants": "SANDBOX;ADDON;DEBUG",
+      "NoWarn": "1701;1702;1591;",
+      "WarningsAsErrors": "",
+      "AssemblyReferences": [],
+      "IgnoreFolders": [],
+      "DistinctAssemblyReferences": []
+    }
   }
 }
