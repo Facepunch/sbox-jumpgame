@@ -23,7 +23,7 @@ public sealed class JumperCamera : Component
 			CameraObject = Scene.Components.Get<CameraComponent>(FindMode.InDescendants).GameObject;
 			if ( CameraObject.IsValid() && PlayerObject.IsValid() )
 			{
-				ZoomLevel += -Input.MouseWheel * RealTime.Delta * 1000.0f;
+				ZoomLevel += -Input.MouseWheel.y * RealTime.Delta * 1000.0f;
 				ZoomLevel = ZoomLevel.Clamp( MinDistance, MaxDistance );
 
 				var distanceA = distance.LerpInverse( MinDistance, MaxDistance );
