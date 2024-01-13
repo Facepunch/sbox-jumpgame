@@ -93,9 +93,9 @@ public class JumperCharacterController : Component, INetworkSerializable
 		Velocity *= newspeed;
 	}
 
-	PhysicsTraceBuilder BuildTrace( Vector3 from, Vector3 to ) => BuildTrace( Scene.PhysicsWorld.Trace.Ray( from, to ) );
+	SceneTrace BuildTrace( Vector3 from, Vector3 to ) => BuildTrace( Scene.Trace.Ray( from, to ) );
 
-	PhysicsTraceBuilder BuildTrace( PhysicsTraceBuilder source ) => source.Size( BoundingBox ).WithoutTags( IgnoreLayers );
+	SceneTrace BuildTrace( SceneTrace source ) => source.Size( BoundingBox ).WithoutTags( IgnoreLayers ).IgnoreGameObjectHierarchy( GameObject );
 
 
 	public Vector3 LastVelocity;
