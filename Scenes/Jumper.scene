@@ -97,6 +97,11 @@
           "Intensity": 0.8,
           "Roundness": 0,
           "Smoothness": 0.9
+        },
+        {
+          "__version": 0,
+          "__type": "AudioListener",
+          "__enabled": true
         }
       ]
     },
@@ -106,6 +111,63 @@
       "Position": "0,0,-15865.2",
       "Tags": "player",
       "__Prefab": "prefabs/player/playerjumper.prefab"
+    },
+    {
+      "Id": "448af2d3-886b-4a26-b59d-00487955e825",
+      "Name": "Screen - UI",
+      "Enabled": true,
+      "Components": [
+        {
+          "__version": 0,
+          "__type": "ScreenPanel",
+          "__enabled": true,
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__version": 0,
+          "__type": "JumperHeightBar",
+          "__enabled": false
+        },
+        {
+          "__version": 0,
+          "__type": "JumperFallMessage",
+          "__enabled": false
+        },
+        {
+          "__version": 0,
+          "__type": "JumperMenu",
+          "__enabled": false
+        },
+        {
+          "__version": 0,
+          "__type": "JumperControls",
+          "__enabled": false
+        },
+        {
+          "__version": 0,
+          "__type": "JumperSessionTimer",
+          "__enabled": false,
+          "JumperDistanceRuler": null
+        },
+        {
+          "__version": 0,
+          "__type": "JumperScoreboard",
+          "__enabled": false
+        },
+        {
+          "__version": 0,
+          "__type": "JumperEndUI",
+          "__enabled": false
+        },
+        {
+          "__version": 0,
+          "__type": "JumperChat",
+          "__enabled": true
+        }
+      ]
     },
     {
       "Id": "1032a1ad-8b52-4b01-842e-a1e3449be30e",

@@ -8,7 +8,7 @@
   "HasAssets": true,
   "AssetsPath": "",
   "Resources": "\nfonts/*\n*.scss",
-  "MenuResources": "\nfonts/*\nUI/mainmenu/*\nsounds/ui/*\nui/*\nsounds/test/*\n*.object\n*.vpcf\n*.sndscape\n*.sound",
+  "MenuResources": "\nfonts/*\nUI/mainmenu/*\nsounds/ui/*\nui/*\nsounds/test/*\n*.object\n*.vpcf\n*.sndscape\n*.sound\n*.prefab",
   "HasCode": true,
   "CodePath": "/code/",
   "PackageReferences": [],

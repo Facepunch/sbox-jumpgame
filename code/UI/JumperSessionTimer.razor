@@ -13,6 +13,13 @@
 	private string SessionTime;
 	bool IsOpen { get; set; }
 
+	protected override void OnEnabled()
+	{
+		base.OnEnabled();
+
+		JumperDistanceRuler = Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault();
+	}
+
 	protected override void OnUpdate()
 	{
 		if ( JumperDistanceRuler == null )

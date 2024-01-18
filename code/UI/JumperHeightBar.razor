@@ -1,40 +1,44 @@
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
+@if (Network.OwnerConnection is Connection owner && owner == Connection.Local)
+{
+    <root class=@(IsOpen ? "open" : "closed")>
+        <div class="bar">
+            <label class="heightbar"></label>
+            <label class="flag"></label>
 
-<root class=@(IsOpen ? "open" : "closed")>
-    <div class="bar">
-        <label class="heightbar"></label>
-        <label class="flag"></label>
+            <div class="heightbarpos" style="height:@(CalculateProgress(Height) * 100)%;">
+                <label class="heighttext" text="< @(Height)" />
+            </div>
 
-        <div class="heightbarpos" style="height:@(CalculateProgress(Height) * 100)%;">
-            <label class="heighttext" text="< @(Height)" />
+            <div class="maxheightbarpos" style="height:@(CalculateProgress(MaxHeight) * 100)%;">
+                <label class="maxheighttext" text="@(MaxHeight)>" />
+            </div>
+            @foreach (var player in Scene.GetAllComponents<JumperPlayerStuff>())
+            {
+                if (owner.SteamId != player.SteamId)
+                {
+                    <div class="maxheightotherbarpos" style="border-top: 4px solid @player.rndColor; height:@(player.Height.LerpInverse(0,TotalHeight) * 100)%">
+                        <img class="maxheightothertext" style=" box-shadow: 3px 3px @player.rndColor; background-image: url( avatar:@owner.SteamId )">
+                    </div>
+                }
+            }
+
         </div>
-
-        <div class="maxheightbarpos" style="height:@(CalculateProgress(MaxHeight) * 100)%;">
-            <label class="maxheighttext" text="@(MaxHeight)>" />
-        </div>
-        @* 
-        @foreach ( var player in Scene.GetAllComponents<JumperPlayerStuff>() )
-		{
-            <div class="maxheightotherbarpos" style="border-top: 4px solid @player.rndColor; height:@(player.Height.LerpInverse(0,TotalHeight) * 100)%">
-                <img class="maxheightothertext" style=" box-shadow: 3px 3px @player.rndColor" src=@($"{player.PlayerAvatar}")>
-			</div>
-        } *@
-    </div>
-</root>
-
+    </root>
+}
 @code
 {
     float TotalHeight { get; set; }
     float Height { get; set; }
     float MaxHeight { get; set; }
     bool IsOpen { get; set; }
-    [Property] GameObject Player { get; set; }
+    //[Property] GameObject Player { get; set; }
 
     // Find first player stats class that isn't owned by a proxy (is ours)
-    JumperPlayerStuff PlayerStats => Scene.GetAllComponents<JumperPlayerStuff>().FirstOrDefault(x => !x.Network.IsOwner);
-    [Property] JumperDistanceRuler Ruler { get; set; }
+    JumperPlayerStuff PlayerStats => GameObject.Components.Get<JumperPlayerStuff>(FindMode.InParent);
+    JumperDistanceRuler Ruler { get; set; }
 
     // public float StartHeight => JumperGame.Current.StartHeight;
     // public float EndHeight => JumperGame.Current.EndHeight;
@@ -44,6 +48,15 @@
     // bool IsOpen { get; set; }
     public Color32 rndColor = Color.Random;
     public string hexColor;
+
+    protected override void OnEnabled()
+    {
+        base.OnEnabled();
+
+        Ruler = Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault();
+
+        TotalHeight = Ruler.Distance;
+    }
 
     protected override void OnUpdate()
     {
@@ -61,8 +74,8 @@
     }
     protected override int BuildHash()
     {
-        IsOpen ^= Input.Pressed( "slot1" );
+        IsOpen ^= Input.Pressed("slot1");
 
-        return HashCode.Combine( Time.Now );
+        return HashCode.Combine(Time.Now);
     }
 }

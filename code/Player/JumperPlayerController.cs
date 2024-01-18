@@ -10,6 +10,7 @@ public class JumperPlayerController : Component
 	[Property] public GameObject Eye { get; set; }
 	[Property] public JumperCitizenAnimation AnimationHelper { get; set; }
 
+	[Property] public JumperCharacterController CharacterController { get; set; }
 	[Sync] public Angles EyeAngles { get; set; }
 	[Sync] public bool IsRunning { get; set; }
 
@@ -48,13 +49,10 @@ public class JumperPlayerController : Component
 			IsRunning = Input.Down( "Duck" );
 		}
 
-		var cc = GameObject.Components.Get<JumperCharacterController>();
-		if ( cc is null ) return;
-
 		// rotate body to look angles
 		if ( Body is not null )
 		{
-			if ( cc.IsOnGround )
+			if ( CharacterController.IsOnGround )
 			{
 				if ( WishVelocity.Length > 0 )
 				{
@@ -69,8 +67,8 @@ public class JumperPlayerController : Component
 
 		if ( AnimationHelper is not null )
 		{
-			AnimationHelper.WithVelocity( cc.Velocity );
-			AnimationHelper.IsGrounded = cc.IsOnGround;
+			AnimationHelper.WithVelocity( CharacterController.Velocity );
+			AnimationHelper.IsGrounded = CharacterController.IsOnGround;
 			AnimationHelper.FootShuffle = 0;
 			AnimationHelper.WithLook( EyeAngles.Forward, 1, 1, 1.0f );
 			AnimationHelper.MoveStyle = !IsRunning ? JumperCitizenAnimation.MoveStyles.Run : JumperCitizenAnimation.MoveStyles.Walk;
@@ -88,12 +86,10 @@ public class JumperPlayerController : Component
 		{
 			PlayerStats.TimePlayed += Time.Delta;
 		}
-
+		
 		BuildWishVelocity();
 
-		var cc = GameObject.Components.Get<JumperCharacterController>(FindMode.InSelf);
-
-		if ( cc.IsOnGround )
+		if ( CharacterController.IsOnGround )
 		{
 			TryJump();
 
@@ -111,39 +107,39 @@ public class JumperPlayerController : Component
 
 		if ( TimeSinceJumpDown > 0 )
 		{
-			cc.Velocity = 0;
+			CharacterController.Velocity = 0;
 			return;
 		}
 		else if ( TimeSinceJumpDown > 0 )
 		{
-			cc.ApplyFriction( 100, 10 );
+			CharacterController.ApplyFriction( 100, 10 );
 			return;
 		}
-		if ( cc.IsOnGround )
+		if ( CharacterController.IsOnGround )
 		{
 
-			cc.Velocity = cc.Velocity.WithZ( 0 );
-			cc.Accelerate( WishVelocity );
-			cc.ApplyFriction( IsRunning ? 4 : 10 );
+			CharacterController.Velocity = CharacterController.Velocity.WithZ( 0 );
+			CharacterController.Accelerate( WishVelocity );
+			CharacterController.ApplyFriction( IsRunning ? 4 : 10 );
 		}
 		else
 		{
 
-			cc.Velocity -= Gravity * Time.Delta * 0.5f;
+			CharacterController.Velocity -= Gravity * Time.Delta * 0.5f;
 			//cc.Accelerate( WishVelocity.ClampLength( 50 ) );
-			cc.ApplyFriction( 0.1f );
+			CharacterController.ApplyFriction( 0.1f );
 		}
 
-		cc.Move();
+		CharacterController.Move();
 
 		//Gravity
-		if ( !cc.IsOnGround )
+		if ( !CharacterController.IsOnGround )
 		{
-			cc.Velocity -= Gravity * Time.Delta * 0.5f;
+			CharacterController.Velocity -= Gravity * Time.Delta * 0.5f;
 		}
 		else
 		{
-			cc.Velocity = cc.Velocity.WithZ( 0 );
+			CharacterController.Velocity = CharacterController.Velocity.WithZ( 0 );
 		}
 	}
 
@@ -155,7 +151,6 @@ public class JumperPlayerController : Component
 
 	public void TryJump()
 	{
-		var cc = GameObject.Components.Get<JumperCharacterController>( FindMode.InSelf );
 
 		if ( Input.Down( "reload" ) )
 		{
@@ -182,10 +177,10 @@ public class JumperPlayerController : Component
 			jumpAlpha = ((int)(jumpAlpha * 10.0f)) / 10.0f;
 
 			if ( WishVelocity.Length > 0 )
-				cc.Velocity = Body.Transform.Rotation.Forward * jumpAlpha * MaxJumpStrength * 0.5f;
+				CharacterController.Velocity = Body.Transform.Rotation.Forward * jumpAlpha * MaxJumpStrength * 0.5f;
 
-			cc.Velocity = cc.Velocity.WithZ( jumpAlpha * MaxJumpStrength );
-			cc.IsOnGround = false;
+			CharacterController.Velocity = CharacterController.Velocity.WithZ( jumpAlpha * MaxJumpStrength );
+			CharacterController.IsOnGround = false;
 			//SceneUtility.Instantiate( JumpEffect, GameObject.Transform.Position, Rotation.LookAt( Vector3.Up * 100 ) );
 			Sound.Play( "jumper.jump", GameObject.Transform.Position );
 
@@ -209,28 +204,24 @@ public class JumperPlayerController : Component
 
 	public void TryBounce()
 	{
-		var cc = GameObject.Components.Get<JumperCharacterController>();
-
-		var tr = TraceBBox( Body.Transform.Position, Body.Transform.Position + cc.Velocity * Time.Delta );
+		var tr = TraceBBox( Body.Transform.Position, Body.Transform.Position + CharacterController.Velocity * Time.Delta );
 
 		if ( !tr.Hit || tr.Normal.Angle( Vector3.Up ) < 80.0f ) return;
 
-		var bounce = -tr.Normal * cc.Velocity.Dot( tr.Normal );
-		cc.Velocity = ClipVelocity( cc.Velocity, tr.Normal );
-		cc.Velocity += bounce;
+		var bounce = -tr.Normal * CharacterController.Velocity.Dot( tr.Normal );
+		CharacterController.Velocity = ClipVelocity( CharacterController.Velocity, tr.Normal );
+		CharacterController.Velocity += bounce;
 
 		var bounceAngles = Rotation.LookAt( bounce ).Angles();
 		TargetAngles = bounceAngles.WithRoll( 0f );
 
-		SceneUtility.Instantiate( HitEffect, Transform.Position + Vector3.Up * 32, Rotation.LookAt( tr.Normal ) );
+		//SceneUtility.Instantiate( HitEffect, Transform.Position + Vector3.Up * 32, Rotation.LookAt( tr.Normal ) );
 		Sound.Play( "jumper.impact.wall", Transform.Position );
 	}
 
 	public void TryWind( Vector3 winddir, float strength )
 	{
-		var cc = GameObject.Components.Get<JumperCharacterController>();
-
-		cc.Velocity += winddir * strength;
+		CharacterController.Velocity += winddir * strength;
 	}
 
 	PhysicsTraceResult TraceBBox( Vector3 start, Vector3 end, float liftFeet = 0.0f )
@@ -258,8 +249,7 @@ public class JumperPlayerController : Component
 
 	public void TriggerLandingEvent(float velocity)
 	{
-		var cc = GameObject.Components.Get<JumperCharacterController>(FindMode.EverythingInSelf );
-		if ( GetFallDamage( cc.LastVelocity.z ) >= 2 )
+		if ( GetFallDamage( CharacterController.LastVelocity.z ) >= 2 )
 		{
 			var fallMessage = Components.Get<JumperFallMessage>( FindMode.InChildren );
 			fallMessage.DisplayMessage( GetRandomFallMessage() );

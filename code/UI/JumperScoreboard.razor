@@ -1,39 +1,39 @@
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
-
-<root>
-    <div class="header">
-        <label class="name">Name</label>
-        <label class="score">Height</label>
-        <label class="ping">Ping</label>
-    </div>
-    <div class="entries">
-        @foreach (var player in Scene.Components.GetAll<JumperPlayerStuff>())
-        {
-            <div class=" entry">
-            <label class="name">@player.PlayerName</label>
-            <label class="score">@player.MaxHeight</label>
-            <label class="ping">0</label> 
-            </div>
-        }
-    </div>
-</root>
-
+@if (Network.OwnerConnection is Connection owner && owner == Connection.Local)
+{
+    <root>
+        <div class="header">
+            <label class="name">Name</label>
+            <label class="score">Height</label>
+            <label class="ping">Ping</label>
+        </div>
+        <div class="entries">
+            @foreach (var player in Scene.Components.GetAll<JumperPlayerStuff>())
+            {
+                <div class=" entry">
+                    <label class="name">@player.PlayerName</label>
+                    <label class="score">@player.MaxHeight</label>
+                    <label class="ping">0</label>
+                </div>
+            }
+        </div>
+    </root>
+}
 @code {
     bool IsOpen { get; set; }
 
-	
     protected override int BuildHash()
     {
         IsOpen ^= Input.Pressed("slot3");
-		
+
         var result = Input.Down("score").GetHashCode();
         foreach (var cl in GameObject.Components.GetAll<JumperPlayerStuff>())
         {
 
             result = HashCode.Combine(result, cl.MaxHeight);
         }
-        return HashCode.Combine(IsOpen, result);
+        return HashCode.Combine(IsOpen, result,Time.Delta);
     }
 }
