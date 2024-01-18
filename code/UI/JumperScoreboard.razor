@@ -1,8 +1,7 @@
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
-@if (Network.OwnerConnection is Connection owner && owner == Connection.Local)
-{
+
     <root>
         <div class="header">
             <label class="name">Name</label>
@@ -10,17 +9,16 @@
             <label class="ping">Ping</label>
         </div>
         <div class="entries">
-            @foreach (var player in Scene.Components.GetAll<JumperPlayerStuff>())
-            {
-                <div class=" entry">
-                    <label class="name">@player.PlayerName</label>
-                    <label class="score">@player.Height</label>
-                    <label class="ping">0</label>
-                </div>
-            }
+        @foreach (var player in Scene.Components.GetAll<JumperPlayerStuff>())
+        {
+            <div class=" entry">
+                <label class="name">@player.Network.OwnerConnection.DisplayName</label>
+                <label class="score">@player.Height</label>
+                <label class="ping">0</label>
+            </div>
+        }
         </div>
     </root>
-}
 @code {
     bool IsOpen { get; set; }
 
