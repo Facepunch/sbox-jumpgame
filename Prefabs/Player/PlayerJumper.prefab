@@ -1,0 +1,194 @@
+{
+  "RootObject": {
+    "Id": "ddacc5f9-5daf-4af5-b57e-ab3084bd2466",
+    "Name": "playerjumper",
+    "Tags": "player",
+    "Enabled": true,
+    "Components": [
+      {
+        "__version": 0,
+        "__type": "JumperCharacterController",
+        "__enabled": true,
+        "Acceleration": 10,
+        "GroundAngle": 45,
+        "Height": 64,
+        "IgnoreLayers": "player,trigger",
+        "Radius": 16,
+        "StepHeight": 18
+      },
+      {
+        "__version": 0,
+        "__type": "JumperPlayerController",
+        "__enabled": true,
+        "AnimationHelper": "58e6d267-ee18-4075-a163-258c428bd200",
+        "Body": "58e6d267-ee18-4075-a163-258c428bd200",
+        "Eye": "ff19642e-ac36-41b0-8044-5505bd80bc8a",
+        "Gravity": "0,0,800",
+        "HitEffect": "prefabs/player/impact/wall_impact.prefab",
+        "JumpEffect": "prefabs/player/jump/jump_effect.prefab",
+        "PlayerStats": "ddacc5f9-5daf-4af5-b57e-ab3084bd2466",
+        "TrailEffect": "prefabs/jump_trail.prefab"
+      },
+      {
+        "__version": 0,
+        "__type": "JumperCamera",
+        "__enabled": true,
+        "CameraObject": null,
+        "PlayerObject": "prefabs/player/playerjumper.prefab"
+      },
+      {
+        "__version": 0,
+        "__type": "JumperPlayerStuff",
+        "__enabled": true,
+        "DistanceRuler": null,
+        "Progress": "93e72152-39a8-4e16-942d-adc282d2604b"
+      },
+      {
+        "__version": 0,
+        "__type": "DropObjectOnFootstep",
+        "__enabled": true,
+        "Prefab": "prefabs/player/footstep/footstep.prefab",
+        "Source": "58e6d267-ee18-4075-a163-258c428bd200"
+      }
+    ],
+    "Children": [
+      {
+        "Id": "58e6d267-ee18-4075-a163-258c428bd200",
+        "Name": "Body",
+        "Enabled": true,
+        "Components": [
+          {
+            "__version": 0,
+            "__type": "SkinnedModelRenderer",
+            "__enabled": true,
+            "BodyGroups": 18446744073709551615,
+            "BoneMergeTarget": null,
+            "CreateBoneObjects": false,
+            "MaterialGroup": null,
+            "MaterialOverride": null,
+            "Model": "models/citizen/citizen.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          },
+          {
+            "__version": 0,
+            "__type": "HighlightOutline",
+            "__enabled": false,
+            "Color": "1,1,1,1",
+            "InsideColor": "0,0,0,0",
+            "InsideObscuredColor": "0,0,0,0",
+            "Material": null,
+            "ObscuredColor": "0,0,0,0.4",
+            "Width": 0.25
+          },
+          {
+            "__version": 0,
+            "__type": "JumperCitizenAnimation",
+            "__enabled": true,
+            "EyeSource": null,
+            "Height": 1,
+            "IkLeftFoot": null,
+            "IkLeftHand": null,
+            "IkRightFoot": null,
+            "IkRightHand": null,
+            "LookAtObject": null,
+            "Target": "58e6d267-ee18-4075-a163-258c428bd200"
+          }
+        ]
+      },
+      {
+        "Id": "ff19642e-ac36-41b0-8044-5505bd80bc8a",
+        "Name": "EyePos",
+        "Position": "0,0,64",
+        "Enabled": true
+      },
+      {
+        "Id": "ccf3d0b0-0ef6-4229-8803-bb62f6fc656b",
+        "Name": "Player Collider",
+        "Position": "0,0,26.11092",
+        "Enabled": true,
+        "Components": [
+          {
+            "__version": 0,
+            "__type": "SphereCollider",
+            "__enabled": true,
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Radius": 25,
+            "Static": false,
+            "Surface": null
+          }
+        ]
+      },
+      {
+        "Id": "c10255b4-d458-47bb-9a53-36c23144db7e",
+        "Name": "Screen - UI",
+        "Components": [
+          {
+            "__version": 0,
+            "__type": "ScreenPanel",
+            "__enabled": true,
+            "AutoScreenScale": true,
+            "Opacity": 1,
+            "Scale": 1,
+            "ZIndex": 100
+          },
+          {
+            "__version": 0,
+            "__type": "JumperHeightBar",
+            "__enabled": true,
+            "Player": "prefabs/player/playerjumper.prefab",
+            "Ruler": null
+          },
+          {
+            "__version": 0,
+            "__type": "JumperFallMessage",
+            "__enabled": true
+          },
+          {
+            "__version": 0,
+            "__type": "JumperMenu",
+            "__enabled": true
+          },
+          {
+            "__version": 0,
+            "__type": "JumperControls",
+            "__enabled": true
+          },
+          {
+            "__version": 0,
+            "__type": "JumperSessionTimer",
+            "__enabled": true,
+            "JumperDistanceRuler": null
+          },
+          {
+            "__version": 0,
+            "__type": "JumperScoreboard",
+            "__enabled": true
+          },
+          {
+            "__version": 0,
+            "__type": "JumperEndUI",
+            "__enabled": true
+          }
+        ]
+      },
+      {
+        "Id": "93e72152-39a8-4e16-942d-adc282d2604b",
+        "Name": "Progress",
+        "Enabled": true,
+        "Components": [
+          {
+            "__version": 0,
+            "__type": "JumperProgress",
+            "__enabled": true
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

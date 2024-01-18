@@ -1,6 +1,6 @@
 using Sandbox;
 
-public class JumperPlayerController : Component, INetworkSerializable
+public class JumperPlayerController : Component
 {
 	[Property] public Vector3 Gravity { get; set; } = new Vector3( 0, 0, 800 );
 
@@ -10,8 +10,8 @@ public class JumperPlayerController : Component, INetworkSerializable
 	[Property] public GameObject Eye { get; set; }
 	[Property] public JumperCitizenAnimation AnimationHelper { get; set; }
 
-	public Angles EyeAngles;
-	public bool IsRunning;
+	[Sync] public Angles EyeAngles { get; set; }
+	[Sync] public bool IsRunning { get; set; }
 
 	//JumperLogic
 	Vector3 Mins => new Vector3( -16, -16, 0 );
@@ -19,7 +19,7 @@ public class JumperPlayerController : Component, INetworkSerializable
 	public float TimeSinceJumpDown { get; set; }
 	public float TimeUntilMaxJump => 2.0f;
 	float MaxJumpStrength => 825.0f;
-	public Angles TargetAngles { get; set; }
+	[Sync] public Angles TargetAngles { get; set; }
 	private bool HasLanded { get; set; } = false;
 	[Property] JumperPlayerStuff PlayerStats { get; set; }
 	[Property] GameObject HitEffect { get; set; }
@@ -33,11 +33,17 @@ public class JumperPlayerController : Component, INetworkSerializable
 		// Eye input
 		if ( !IsProxy )
 		{
-			EyeAngles.pitch += Input.MouseDelta.y * 0.1f;
-			EyeAngles.yaw -= Input.MouseDelta.x * 0.1f;
-			EyeAngles.roll = 0;
+			var e = EyeAngles;
+			e += Input.AnalogLook;
+			e.pitch = e.pitch.Clamp( -89, 89 );
+			e.roll = 0;
+			//EyeAngles.pitch += Input.MouseDelta.y * 0.1f;
+			//EyeAngles.yaw -= Input.MouseDelta.x * 0.1f;
+			//EyeAngles.roll = 0;
 
-			EyeAngles.pitch = Math.Clamp( EyeAngles.pitch, -44.9f, 75.9f );
+			//EyeAngles.pitch = Math.Clamp( EyeAngles.pitch, -44.9f, 75.9f );
+
+			EyeAngles = e;
 
 			IsRunning = Input.Down( "Duck" );
 		}
@@ -180,11 +186,11 @@ public class JumperPlayerController : Component, INetworkSerializable
 
 			cc.Velocity = cc.Velocity.WithZ( jumpAlpha * MaxJumpStrength );
 			cc.IsOnGround = false;
-			SceneUtility.Instantiate( JumpEffect, GameObject.Transform.Position, Rotation.LookAt( Vector3.Up * 100 ) );
+			//SceneUtility.Instantiate( JumpEffect, GameObject.Transform.Position, Rotation.LookAt( Vector3.Up * 100 ) );
 			Sound.Play( "jumper.jump", GameObject.Transform.Position );
 
-			var _trailef = SceneUtility.Instantiate( TrailEffect, Vector3.Zero, Rotation.LookAt( cc.Velocity ) );
-			_trailef.Parent = GameObject;
+			//var _trailef = SceneUtility.Instantiate( TrailEffect, Vector3.Zero, Rotation.LookAt( cc.Velocity ) );
+			//_trailef.Parent = GameObject;
 			HasLanded = false;
 
 			PlayerStats.TotalJumps++;

@@ -2,337 +2,110 @@
   "Id": "ffb4de07-fe39-4866-bfc0-be1df0c5c792",
   "GameObjects": [
     {
+      "Id": "1de10792-fb1d-4798-a39d-5d31d80e0a16",
+      "Name": "Network",
+      "Position": "72.54695,32.92376,-15839.22",
+      "Enabled": true,
+      "Components": [
+        {
+          "__version": 0,
+          "__type": "NetworkHelper",
+          "__enabled": true,
+          "PlayerPrefab": "prefabs/player/playerjumper.prefab",
+          "SpawnPoints": [],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "Id": "ea43c4af-4c86-4385-aae3-04fd036200fe",
+      "Name": "Camera",
+      "Position": "-258,0,-15790.07",
+      "Rotation": "0,0.04930454,0,0.9987838",
+      "Enabled": true,
+      "Components": [
+        {
+          "__version": 0,
+          "__type": "CameraComponent",
+          "__enabled": true,
+          "BackgroundColor": "0.25292,0.26086,0.29703,1",
+          "ClearFlags": "All",
+          "FieldOfView": 90,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 1
+        },
+        {
+          "__version": 0,
+          "__type": "Sharpen",
+          "__enabled": true,
+          "Scale": 0.2
+        },
+        {
+          "__version": 0,
+          "__type": "Bloom",
+          "__enabled": true,
+          "BloomColor": {
+            "color": [
+              {
+                "c": "1,1,1,1"
+              },
+              {
+                "t": 1,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "BloomCurve": {
+            "rangey": "0,106.45",
+            "frames": [
+              {},
+              {
+                "x": 1,
+                "y": 1
+              }
+            ]
+          },
+          "Mode": "Screen",
+          "Strength": 0.2,
+          "Threshold": 0.23,
+          "ThresholdWidth": 0.96
+        },
+        {
+          "__version": 0,
+          "__type": "Tonemapping",
+          "__enabled": true,
+          "ExposureCompensation": 0,
+          "MaximumExposure": 2,
+          "MinimumExposure": 1.3,
+          "Rate": 0.69
+        },
+        {
+          "__version": 0,
+          "__type": "Vignette",
+          "__enabled": true,
+          "Center": "0.4999999,0.5",
+          "Color": "0,0,0,0.7",
+          "Intensity": 0.8,
+          "Roundness": 0,
+          "Smoothness": 0.9
+        }
+      ]
+    },
+    {
       "Id": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
       "Name": "Citizen",
       "Position": "0,0,-15865.2",
       "Tags": "player",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "JumperCharacterController",
-          "__enabled": true,
-          "Acceleration": 10,
-          "GroundAngle": 45,
-          "Height": 64,
-          "IgnoreLayers": "player,trigger",
-          "Radius": 16,
-          "StepHeight": 18
-        },
-        {
-          "__version": 0,
-          "__type": "JumperPlayerController",
-          "__enabled": true,
-          "AnimationHelper": "97241215-197d-493e-8970-02f3715ebbf0",
-          "Body": "97241215-197d-493e-8970-02f3715ebbf0",
-          "Eye": "e6179300-2f9d-4ca8-a97b-d7e3f6db63d9",
-          "Gravity": "0,0,800",
-          "HitEffect": "prefabs/player/impact/wall_impact.prefab",
-          "JumpEffect": "prefabs/player/jump/jump_effect.prefab",
-          "PlayerStats": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
-          "TrailEffect": "prefabs/jump_trail.prefab"
-        },
-        {
-          "__version": 0,
-          "__type": "JumperCamera",
-          "__enabled": true,
-          "CameraObject": "ea43c4af-4c86-4385-aae3-04fd036200fe",
-          "PlayerObject": "ead060a4-13b6-416a-8d09-cf8c86570eaa"
-        },
-        {
-          "__version": 0,
-          "__type": "JumperPlayerStuff",
-          "__enabled": true,
-          "DistanceRuler": "99a0519c-6744-486f-8919-8ff76bf11a9c",
-          "Progress": "e0e95034-52bb-408a-afe1-f242d3f8432b"
-        },
-        {
-          "__version": 0,
-          "__type": "DropObjectOnFootstep",
-          "__enabled": true,
-          "Prefab": "prefabs/player/footstep/footstep.prefab",
-          "Source": "97241215-197d-493e-8970-02f3715ebbf0"
-        }
-      ],
-      "Children": [
-        {
-          "Id": "97241215-197d-493e-8970-02f3715ebbf0",
-          "Name": "Body",
-          "Position": "0,0,0",
-          "Tags": "player",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SkinnedModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "BoneMergeTarget": null,
-              "CreateBoneObjects": false,
-              "MaterialGroup": null,
-              "MaterialOverride": null,
-              "Model": "models/citizen/citizen.vmdl",
-              "RenderType": "On",
-              "Tint": "1,1,1,1"
-            },
-            {
-              "__version": 0,
-              "__type": "HighlightOutline",
-              "__enabled": false,
-              "Color": "1,1,1,1",
-              "InsideColor": "0,0,0,0",
-              "InsideObscuredColor": "0,0,0,0",
-              "Material": null,
-              "ObscuredColor": "0,0,0,0.4",
-              "Width": 0.25
-            },
-            {
-              "__version": 0,
-              "__type": "JumperCitizenAnimation",
-              "__enabled": true,
-              "EyeSource": null,
-              "Height": 1,
-              "IkLeftFoot": null,
-              "IkLeftHand": null,
-              "IkRightFoot": null,
-              "IkRightHand": null,
-              "LookAtObject": null,
-              "Target": "97241215-197d-493e-8970-02f3715ebbf0"
-            }
-          ]
-        },
-        {
-          "Id": "ea43c4af-4c86-4385-aae3-04fd036200fe",
-          "Name": "Camera",
-          "Position": "-200,0,64",
-          "Tags": "player",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "CameraComponent",
-              "__enabled": true,
-              "BackgroundColor": "0.25292,0.26086,0.29703,1",
-              "ClearFlags": "All",
-              "FieldOfView": 69.32,
-              "IsMainCamera": true,
-              "Orthographic": false,
-              "OrthographicHeight": 1204,
-              "Priority": 1,
-              "RenderExcludeTags": "",
-              "RenderTags": "",
-              "TargetEye": "None",
-              "Viewport": "0,0,1,1",
-              "ZFar": 10000,
-              "ZNear": 1
-            },
-            {
-              "__version": 0,
-              "__type": "Sharpen",
-              "__enabled": true,
-              "Scale": 0.2
-            },
-            {
-              "__version": 0,
-              "__type": "Bloom",
-              "__enabled": true,
-              "BloomColor": {
-                "color": [
-                  {
-                    "c": "1,1,1,1"
-                  },
-                  {
-                    "t": 1,
-                    "c": "1,1,1,1"
-                  }
-                ],
-                "alpha": []
-              },
-              "BloomCurve": {
-                "rangey": "0,106.45",
-                "frames": [
-                  {},
-                  {
-                    "x": 1,
-                    "y": 1
-                  }
-                ]
-              },
-              "Mode": "Screen",
-              "Strength": 0.2,
-              "Threshold": 0.23,
-              "ThresholdWidth": 0.96
-            },
-            {
-              "__version": 0,
-              "__type": "Tonemapping",
-              "__enabled": true,
-              "ExposureCompensation": 0,
-              "MaximumExposure": 2,
-              "MinimumExposure": 1.3,
-              "Rate": 0.69
-            },
-            {
-              "__version": 0,
-              "__type": "Vignette",
-              "__enabled": true,
-              "Center": "0.4999999,0.5",
-              "Color": "0,0,0,0.7",
-              "Intensity": 0.8,
-              "Roundness": 0,
-              "Smoothness": 0.9
-            }
-          ]
-        },
-        {
-          "Id": "e6179300-2f9d-4ca8-a97b-d7e3f6db63d9",
-          "Name": "EyePos",
-          "Position": "0,0,64",
-          "Tags": "player",
-          "Enabled": true
-        },
-        {
-          "Id": "ae02c727-223a-4cd5-85ea-7b9e7136c007",
-          "Name": "Player Collider",
-          "Position": "0,0,26.11092",
-          "Tags": "player",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SphereCollider",
-              "__enabled": true,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Radius": 25,
-              "Static": false,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "e009ae14-f685-4741-85d8-755b098aaeb2",
-          "Name": "Screen - UI",
-          "Position": "0,0,0",
-          "Tags": "player",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ScreenPanel",
-              "__enabled": true,
-              "AutoScreenScale": true,
-              "Opacity": 1,
-              "Scale": 1,
-              "ZIndex": 100
-            },
-            {
-              "__version": 0,
-              "__type": "JumperHeightBar",
-              "__enabled": true,
-              "Player": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
-              "Ruler": "99a0519c-6744-486f-8919-8ff76bf11a9c"
-            },
-            {
-              "__version": 0,
-              "__type": "JumperFallMessage",
-              "__enabled": true
-            },
-            {
-              "__version": 0,
-              "__type": "JumperMenu",
-              "__enabled": true
-            },
-            {
-              "__version": 0,
-              "__type": "JumperControls",
-              "__enabled": true
-            },
-            {
-              "__version": 0,
-              "__type": "JumperSessionTimer",
-              "__enabled": true,
-              "JumperDistanceRuler": "99a0519c-6744-486f-8919-8ff76bf11a9c"
-            },
-            {
-              "__version": 0,
-              "__type": "JumperScoreboard",
-              "__enabled": true
-            },
-            {
-              "__version": 0,
-              "__type": "JumperEndUI",
-              "__enabled": true
-            }
-          ]
-        },
-        {
-          "Id": "e0e95034-52bb-408a-afe1-f242d3f8432b",
-          "Name": "Progress",
-          "Position": "0,0,0",
-          "Tags": "player",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "JumperProgress",
-              "__enabled": true
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Id": "92d05f50-f2af-49b5-8e9d-4120cf80aef3",
-      "Name": "2D Skybox",
-      "Position": "-35.36818,-0.000002108108,53.92188",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "SkyBox2D",
-          "__enabled": true,
-          "SkyMaterial": "materials/skybox/light_test_sky_sunny02.vmat",
-          "Tint": "1,1,1,1"
-        }
-      ]
-    },
-    {
-      "Id": "b583ca45-d72d-4515-9db1-8de4787df038",
-      "Name": "Sun",
-      "Position": "-42.05574,-0.0000121956,111.0407",
-      "Rotation": "-0.05473964,0.4024566,0.1231555,0.9054642",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "DirectionalLight",
-          "__enabled": true,
-          "LightColor": "0.91373,0.98039,1,1",
-          "Shadows": true,
-          "SkyColor": "0.05882,0.07451,0.08235,1"
-        }
-      ]
-    },
-    {
-      "Id": "60b2a3ea-6e53-495e-a514-c76dd3093b1a",
-      "Name": "Object",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "EnvmapProbe",
-          "__enabled": true,
-          "Bounds": {
-            "Mins": "-2048,-2048,-16000",
-            "Maxs": "2048,2048,16366.47"
-          },
-          "Feathering": 0.02,
-          "Projection": "Sphere",
-          "Texture": "textures/cubemaps/default2.vtex",
-          "TintColor": "1,1,1,1"
-        }
-      ]
+      "__Prefab": "prefabs/player/playerjumper.prefab"
     },
     {
       "Id": "1032a1ad-8b52-4b01-842e-a1e3449be30e",
@@ -2358,7 +2131,6 @@
       "Id": "99a0519c-6744-486f-8919-8ff76bf11a9c",
       "Name": "DistanceRuler",
       "Position": "-0.0003073972,0,0",
-      "Networked": true,
       "Enabled": true,
       "Components": [
         {
@@ -2430,534 +2202,6 @@
       "Enabled": true
     },
     {
-      "Id": "a0089d8d-1879-4a59-a8af-47cfb4669cac",
-      "Name": "Object",
-      "Position": "-1117.338,-412.8799,998.4602",
-      "Children": [
-        {
-          "Id": "b43a1a3b-bc28-4cf8-853a-b6e7b7c0b423",
-          "Name": "tube (2)",
-          "Position": "1178.882,704.2496,-945.2198",
-          "Rotation": "-0.7071065,-0.0000009161495,0.707107,-0.0000009161489",
-          "Scale": "3.875751,3.875751,3.875751",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": null,
-              "Model": "models/editor/tube.vmdl",
-              "RenderType": "On",
-              "Tint": "1,1,1,1"
-            }
-          ]
-        },
-        {
-          "Id": "862759a7-22da-481a-8a34-e5fb6691685c",
-          "Name": "Cube",
-          "Position": "1427.804,379.8955,-944.2122",
-          "Scale": "2.266668,2.266668,2.266668",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "0.07426,0.05498,0.02353,1"
-            },
-            {
-              "__version": 0,
-              "__type": "ModelCollider",
-              "__enabled": true,
-              "IsTrigger": false,
-              "Model": "models/dev/box.vmdl",
-              "Static": false,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "47d8988a-8444-47e8-b491-111408a2fd88",
-          "Name": "Cube (2)",
-          "Position": "1427.804,380.3202,-838.6874",
-          "Scale": "2.266668,2.266668,2.266668",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "0.07426,0.05498,0.02353,1"
-            },
-            {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "f7f74163-ceab-4023-88b3-9b35d6a5d4b8",
-          "Name": "Cube (3)",
-          "Position": "1427.804,380.3202,-728.8274",
-          "Scale": "2.266668,2.266668,2.266668",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "0.07426,0.05498,0.02353,1"
-            },
-            {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "127698f6-992d-4696-a87b-1c6da43674a3",
-          "Name": "Cube (4)",
-          "Position": "1427.804,380.3202,-616.459",
-          "Scale": "2.266668,2.266668,2.266668",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "0.07426,0.05498,0.02353,1"
-            },
-            {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "4b01442d-f9e9-44f2-a1dd-b0e337914770",
-          "Name": "Cube (12)",
-          "Position": "1427.804,380.3202,-559.765",
-          "Scale": "0.55,0.55,0.55",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/editor/prims/plane.vmdl",
-              "RenderType": "On",
-              "Tint": "0.16861,0.43564,0.10999,1"
-            }
-          ]
-        },
-        {
-          "Id": "ef902316-cd43-4661-afea-3f90c7783f99",
-          "Name": "Cube (5)",
-          "Position": "1427.804,730.4637,-942.0392",
-          "Scale": "2.266668,2.266668,2.266668",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "0.07426,0.05498,0.02353,1"
-            },
-            {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "a5dd0578-1bed-4e90-b420-8133c478173c",
-          "Name": "Cube (6)",
-          "Position": "1427.804,730.4637,-835.841",
-          "Scale": "2.266668,2.266668,2.266668",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "0.07426,0.05498,0.02353,1"
-            },
-            {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "9c25e683-d423-4320-a311-804ed2467243",
-          "Name": "Cube (10)",
-          "Position": "1427.804,730.4637,-778.3408",
-          "Scale": "0.55,0.55,0.55",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/editor/prims/plane.vmdl",
-              "RenderType": "On",
-              "Tint": "0.16861,0.43564,0.10999,1"
-            }
-          ]
-        },
-        {
-          "Id": "fd7d56af-484c-4841-9168-768dfa375c3e",
-          "Name": "Cube (11)",
-          "Position": "1142.575,730.4637,-778.5299",
-          "Scale": "0.55,0.55,0.55",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/editor/prims/plane.vmdl",
-              "RenderType": "On",
-              "Tint": "0.16861,0.43564,0.10999,1"
-            }
-          ]
-        },
-        {
-          "Id": "bfc659c7-d2ae-4ba1-b4eb-0d207e5378d3",
-          "Name": "Cube (7)",
-          "Position": "1142.575,730.4637,-835.841",
-          "Scale": "2.266668,2.266668,2.266668",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "0.07426,0.05498,0.02353,1"
-            },
-            {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "dfafbe9f-e954-40fa-84ca-adddd26d02cf",
-          "Name": "Cube (8)",
-          "Position": "1142.575,41.87476,-994.228",
-          "Scale": "2.266668,2.266668,2.266668",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "0.07426,0.05498,0.02353,1"
-            },
-            {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "f5f5cc99-d4c6-42cc-95bd-a70637f70138",
-          "Name": "Cube (1)",
-          "Position": "628.656,-52.09665,-998.2681",
-          "Scale": "0.3333346,0.3333346,0.3333346",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/room.vmdl",
-              "RenderType": "On",
-              "Tint": "0.21782,0.21782,0.21782,1"
-            },
-            {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": false,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "31c30431-0250-48d7-a91c-7b9160be40ff",
-          "Name": "Cube (15)",
-          "Position": "628.656,287.4948,-998.2681",
-          "Scale": "0.3333346,0.3333346,0.3333346",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/room.vmdl",
-              "RenderType": "On",
-              "Tint": "0.5396,0.12288,0.12288,1"
-            },
-            {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": false,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "a365dc21-c3a2-4c5c-a9df-daf6971bee7b",
-          "Name": "Cube (14)",
-          "Position": "1142.575,41.87476,-937.1312",
-          "Scale": "0.55,0.55,0.55",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/editor/prims/plane.vmdl",
-              "RenderType": "On",
-              "Tint": "0.16861,0.43564,0.10999,1"
-            }
-          ]
-        },
-        {
-          "Id": "009b922b-3c30-4d54-bcff-c0e45088ddb3",
-          "Name": "Cube (9)",
-          "Position": "1349.934,41.87476,-947.6262",
-          "Scale": "2.266668,2.266668,2.266668",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/dev/box.vmdl",
-              "RenderType": "On",
-              "Tint": "0.07426,0.05498,0.02353,1"
-            },
-            {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
-              "Center": "0,0,0",
-              "IsTrigger": false,
-              "Scale": "50,50,50",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        },
-        {
-          "Id": "a1219788-5519-446b-9f24-82128768a21b",
-          "Name": "Cube (13)",
-          "Position": "1349.934,41.87476,-890.522",
-          "Scale": "0.55,0.55,0.55",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": "materials/default/white.vmat",
-              "Model": "models/editor/prims/plane.vmdl",
-              "RenderType": "On",
-              "Tint": "0.16861,0.43564,0.10999,1"
-            }
-          ]
-        },
-        {
-          "Id": "2611036b-6966-4139-b462-0cd5b540e766",
-          "Name": "tube (1)",
-          "Position": "1135.567,704.2496,-945.2198",
-          "Rotation": "-0.7071065,-0.0000009161495,0.707107,-0.0000009161489",
-          "Scale": "3.875751,3.875751,3.875751",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": null,
-              "Model": "models/editor/tube.vmdl",
-              "RenderType": "On",
-              "Tint": "1,1,1,1"
-            }
-          ]
-        },
-        {
-          "Id": "3c36c0ee-eef5-4ba1-9415-f93e02c656db",
-          "Name": "tube",
-          "Position": "1099.372,704.2496,-945.2198",
-          "Rotation": "-0.7071065,-0.0000009161495,0.707107,-0.0000009161489",
-          "Scale": "3.875751,3.875751,3.875751",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": null,
-              "Model": "models/editor/tube.vmdl",
-              "RenderType": "On",
-              "Tint": "1,1,1,1"
-            }
-          ]
-        },
-        {
-          "Id": "0e5eb49f-bc7e-47ac-8b3a-6a6ceefb4909",
-          "Name": "Plane",
-          "Position": "0,0,0",
-          "Scale": "10,10,10",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "ModelRenderer",
-              "__enabled": true,
-              "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": null,
-              "Model": "models/editor/prims/plane.vmdl",
-              "RenderType": "On",
-              "Tint": "0.196,0.46535,0.10136,1"
-            },
-            {
-              "__version": 0,
-              "__type": "ModelCollider",
-              "__enabled": true,
-              "IsTrigger": false,
-              "Model": "models/editor/prims/plane.vmdl",
-              "Static": true,
-              "Surface": null
-            }
-          ]
-        }
-      ]
-    },
-    {
       "Id": "ca44583a-d88b-4549-bfdb-92d5805c48b1",
       "Name": "Map",
       "Position": "-914.2441,-785.4478,1086.708",
@@ -2970,7 +2214,12 @@
           "MapName": "facepunch/jumpermap",
           "OnMapLoaded": null,
           "OnMapUnloaded": null,
-          "UseMapFromLaunch": false
+          "UseMapFromLaunch": true
+        },
+        {
+          "__version": 0,
+          "__type": "MapPlayerSpawns",
+          "__enabled": true
         }
       ],
       "Children": []
@@ -3164,332 +2413,6 @@
               "Surface": null
             }
           ]
-        }
-      ]
-    },
-    {
-      "Id": "dbcad16d-4bcf-4f3d-a364-1993594643c4",
-      "Name": "Object",
-      "Enabled": true,
-      "Children": [
-        {
-          "Id": "03515748-7231-4f03-804f-2be285a7b57a",
-          "Name": "OutsideSS",
-          "Position": "0,-1014.483,16246.78",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "1000,500,500",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_end/area_end.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        },
-        {
-          "Id": "1b2aec28-b793-4ac6-8c8d-e319490e9ebe",
-          "Name": "OutsideSS",
-          "Position": "0,1018.8,16246.78",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "1000,500,500",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_end/area_end.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        },
-        {
-          "Id": "e5c6707d-952d-43ca-a6f0-c8bfef535d05",
-          "Name": "OutsideSS",
-          "Position": "-1042.495,-12.00348,16246.78",
-          "Rotation": "0,0,0.707107,0.7071065",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "1000,500,500",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_end/area_end.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        },
-        {
-          "Id": "cfb4ba03-ef5c-4c80-a61d-6e734fde68d3",
-          "Name": "OutsideSS",
-          "Position": "1029.044,-12.00348,16246.78",
-          "Rotation": "0,0,0.707107,0.7071065",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "1000,500,500",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_end/area_end.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        },
-        {
-          "Id": "0a297a6d-31ac-436a-9ce9-00ef4b013172",
-          "Name": "OutsideSS",
-          "Position": "0,-1014.483,16246.78",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "5000,500,500",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_end/area_end.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        },
-        {
-          "Id": "e9c2fc55-b5dd-4302-a18e-71a2f73cc317",
-          "Name": "Object",
-          "Position": "0,0,15093.7",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "500,500,3052.134",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_preend/area_pre.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        },
-        {
-          "Id": "6509f7fa-72d3-4f6a-9607-8c5c286e4297",
-          "Name": "Object (1)",
-          "Position": "0,0,9300.474",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "500,500,3097.331",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_5/area_5.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        },
-        {
-          "Id": "5a4de055-43d4-4d2e-a205-6b9c701b9dd5",
-          "Name": "Fan",
-          "Position": "0,0,3714.988",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "500,500,2370.337",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_4/area_4.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        },
-        {
-          "Id": "ed227a19-cb38-49ce-850d-5457e39b9a0e",
-          "Name": "Fan (1)",
-          "Position": "0,0,-965.856",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "500,500,2370.337",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_3/area_3.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        },
-        {
-          "Id": "ee19d4d5-673e-4912-85e1-173bdd5c3899",
-          "Name": "Fan (2)",
-          "Position": "0,0,-7709.032",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "500,500,4657.666",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_2/area_2.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        },
-        {
-          "Id": "1e3664e6-22db-495d-9c12-d5e09e3bf812",
-          "Name": "Fan (3)",
-          "Position": "0,0,-14363.71",
-          "Enabled": true,
-          "Components": [
-            {
-              "__version": 0,
-              "__type": "SoundscapeTrigger",
-              "__enabled": true,
-              "BoxSize": "750,750,1647.8",
-              "Radius": 500,
-              "Soundscape": "sounds/soundscape/area_1/area_1.sndscape",
-              "StayActiveOnExit": true,
-              "Type": "Box"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Id": "e2b67172-d397-40c9-8efb-79708ccc7914",
-      "Name": "Object",
-      "Position": "672.5083,1058.224,14556.78",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "LegacyParticleSystem",
-          "__enabled": true,
-          "ControlPoints": null,
-          "Looped": false,
-          "Particles": "particles/clouds/clouds_2.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "Id": "4e796e72-91b6-424d-96cf-3bbe4b7f9971",
-      "Name": "Object (1)",
-      "Position": "441.6746,-5473.447,14556.78",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "LegacyParticleSystem",
-          "__enabled": true,
-          "ControlPoints": null,
-          "Looped": false,
-          "Particles": "particles/clouds/clouds_2.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "Id": "db29a229-4aa1-4f5d-ba99-b68dbe58fe5b",
-      "Name": "Object (2)",
-      "Position": "-4174.187,-4967.985,14556.78",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "LegacyParticleSystem",
-          "__enabled": true,
-          "ControlPoints": null,
-          "Looped": false,
-          "Particles": "particles/clouds/clouds_2.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "Id": "430eda59-520b-4f9c-8dc6-8821314e5cc7",
-      "Name": "Object (3)",
-      "Position": "-5704.71,-1784.019,14556.78",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "LegacyParticleSystem",
-          "__enabled": true,
-          "ControlPoints": null,
-          "Looped": false,
-          "Particles": "particles/clouds/clouds_2.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "Id": "9eac67b2-2eea-4d63-8fa7-8c819c907764",
-      "Name": "Object (4)",
-      "Position": "-4471.134,2823.385,14556.79",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "LegacyParticleSystem",
-          "__enabled": true,
-          "ControlPoints": null,
-          "Looped": false,
-          "Particles": "particles/clouds/clouds_2.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "Id": "0c0fb24d-eb35-4c33-ad6e-cda411e2449b",
-      "Name": "Object",
-      "Position": "0,0,16542.78",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "LegacyParticleSystem",
-          "__enabled": true,
-          "ControlPoints": [],
-          "Looped": false,
-          "Particles": "particles/clouds/clouds.vpcf",
-          "PlaybackSpeed": 1
-        }
-      ]
-    },
-    {
-      "Id": "50a993b6-dc0e-4a6e-8ecf-421ffade09ab",
-      "Name": "Object",
-      "Position": "0,0,16228.12",
-      "Enabled": true,
-      "Components": [
-        {
-          "__version": 0,
-          "__type": "LegacyParticleSystem",
-          "__enabled": true,
-          "ControlPoints": [],
-          "Looped": false,
-          "Particles": "particles/bird/eagle_01a.vpcf",
-          "PlaybackSpeed": 1
         }
       ]
     }

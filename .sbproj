@@ -14,7 +14,7 @@
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {
-    "MaxPlayers": 2,
+    "MaxPlayers": 64,
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Official",
@@ -107,6 +107,8 @@
       "AssemblyReferences": [],
       "IgnoreFolders": [],
       "DistinctAssemblyReferences": []
-    }
+    },
+    "MapStartupScene": "scenes/jumper.scene",
+    "LaunchMode": "QuickPlay"
   }
 }

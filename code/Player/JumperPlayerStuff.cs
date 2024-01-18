@@ -1,6 +1,6 @@
 using Sandbox;
 
-public sealed class JumperPlayerStuff : Component, INetworkSerializable, Component.INetworkListener
+public sealed class JumperPlayerStuff : Component, Component.INetworkSpawn
 {
 	public string PlayerName { get; set; } = "bakscratch";
 	public ulong SteamId { get; set; }
@@ -21,12 +21,19 @@ public sealed class JumperPlayerStuff : Component, INetworkSerializable, Compone
 	[Property] JumperDistanceRuler DistanceRuler { get; set; }
 	[Property] JumperProgress Progress { get; set; }
 
+	public void OnNetworkSpawn( Connection owner )
+	{
+		PlayerName = owner.DisplayName;
+		PlayerAvatar = owner.SteamId.ToString();
+	}
+
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
 
 		rndColor = $"{Color.Random.Hex}";
-		
+
+		DistanceRuler = Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault();
 	}
 
 	public void SaveStats()

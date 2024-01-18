@@ -41,6 +41,9 @@ public sealed class JumperProgress : Component
 	}
 	protected override void OnStart()
 	{
+		if(IsProxy)
+			return;
+
 		Fetch();
 	}
 

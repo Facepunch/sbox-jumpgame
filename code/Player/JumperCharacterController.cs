@@ -1,12 +1,9 @@
-using Sandbox;
-using System;
-using System.Drawing;
 
 [Title( "Jumper - Character Controller" )]
 [Category( "Physics" )]
 [Icon( "directions_walk", "red", "white" )]
 [EditorHandle( "materials/gizmo/charactercontroller.png" )]
-public class JumperCharacterController : Component, INetworkSerializable
+public class JumperCharacterController : Component
 {
 	[Range( 0, 200 )]
 	[Property] public float Radius { get; set; } = 16.0f;
@@ -27,8 +24,10 @@ public class JumperCharacterController : Component, INetworkSerializable
 
 	public BBox BoundingBox => new BBox( new Vector3( -Radius, -Radius, 0 ), new Vector3( Radius, Radius, Height ) );
 
+	[Sync]
 	public Vector3 Velocity { get; set; }
 
+	[Sync]
 	public bool IsOnGround { get; set; }
 
 	protected override void DrawGizmos()
