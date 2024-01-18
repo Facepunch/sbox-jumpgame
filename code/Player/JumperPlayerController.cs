@@ -19,7 +19,7 @@ public class JumperPlayerController : Component
 	Vector3 Maxs => new Vector3( 16, 16, 62 );
 	public float TimeSinceJumpDown { get; set; }
 	public float TimeUntilMaxJump => 2.0f;
-	float MaxJumpStrength => 825.0f;
+	float MaxJumpStrength => 830.0f;
 	[Sync] public Angles TargetAngles { get; set; }
 	private bool HasLanded { get; set; } = false;
 	[Property] JumperPlayerStuff PlayerStats { get; set; }
