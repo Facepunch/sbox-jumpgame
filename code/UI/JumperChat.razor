@@ -1,4 +1,4 @@
-@using Sandbox;
+﻿@using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
 @implements Component.INetworkListener
@@ -88,7 +88,7 @@
         if (string.IsNullOrWhiteSpace(message))
             return;
 
-        Entries.Add(new Entry(0, "??", message, 0.0f));
+        Entries.Add(new Entry(0, "ℹ️", message, 0.0f));
         StateHasChanged();
     }
 

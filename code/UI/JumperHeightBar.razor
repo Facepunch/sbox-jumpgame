@@ -17,12 +17,10 @@
             </div>
             @foreach (var player in Scene.GetAllComponents<JumperPlayerStuff>())
             {
-                if (owner.SteamId != player.SteamId)
-                {
-                    <div class="maxheightotherbarpos" style="border-top: 4px solid @player.rndColor; height:@(player.Height.LerpInverse(0,TotalHeight) * 100)%">
-                        <img class="maxheightothertext" style=" box-shadow: 3px 3px @player.rndColor; background-image: url( avatar:@owner.SteamId )">
-                    </div>
-                }
+                if (!player.IsProxy) continue;
+                <div class="maxheightotherbarpos" style="border-top: 4px solid @player.rndColor; height:@(player.Height.LerpInverse(0,TotalHeight) * 100)%">
+                    <img class="maxheightothertext" style=" box-shadow: 3px 3px @player.rndColor; background-image: url( avatar:@owner.SteamId )">
+                </div>
             }
 
         </div>
@@ -34,24 +32,18 @@
     float Height { get; set; }
     float MaxHeight { get; set; }
     bool IsOpen { get; set; }
-    //[Property] GameObject Player { get; set; }
 
     // Find first player stats class that isn't owned by a proxy (is ours)
     JumperPlayerStuff PlayerStats => GameObject.Components.Get<JumperPlayerStuff>(FindMode.InParent);
     JumperDistanceRuler Ruler { get; set; }
 
-    // public float StartHeight => JumperGame.Current.StartHeight;
-    // public float EndHeight => JumperGame.Current.EndHeight;
-    // public float TotalHeight => JumperGame.Current.MapLength;
-    // public float Height => (Game.LocalPawn as JumperPawn)?.Height ?? 0;
-    // public float MaxHeight => (Game.LocalPawn as JumperPawn)?.MaxHeight ?? 0;
-    // bool IsOpen { get; set; }
     public Color32 rndColor = Color.Random;
     public string hexColor;
 
     protected override void OnEnabled()
     {
         base.OnEnabled();
+        if (IsProxy) return;
 
         Ruler = Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault();
 
@@ -61,6 +53,8 @@
     protected override void OnUpdate()
     {
         base.OnUpdate();
+
+        if (IsProxy) return;
 
         Height = PlayerStats.Height;
         MaxHeight = PlayerStats.MaxHeight;

@@ -190,14 +190,14 @@
             "__version": 0,
             "__type": "Voice",
             "__enabled": true,
-            "Loopback": false,
+            "Loopback": true,
             "Mode": "PushToTalk",
             "MorphScale": 3,
             "MorphSmoothTime": 0.1,
             "PushToTalkInput": "voice",
             "Renderer": "4153bba3-67c8-4a28-9cb9-2ccc238febea",
             "Volume": 1,
-            "WorldspacePlayback": true
+            "WorldspacePlayback": false
           }
         ]
       }

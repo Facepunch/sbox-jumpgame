@@ -115,6 +115,7 @@
     {
       "Id": "448af2d3-886b-4a26-b59d-00487955e825",
       "Name": "Screen - UI",
+      "Networked": true,
       "Enabled": true,
       "Components": [
         {

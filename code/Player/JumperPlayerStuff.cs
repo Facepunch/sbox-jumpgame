@@ -1,10 +1,10 @@
 using Sandbox;
 
-public sealed class JumperPlayerStuff : Component, Component.INetworkSpawn
+public sealed class JumperPlayerStuff : Component, Component.INetworkListener
 {
-	[Sync] public string PlayerName { get; set; } = Connection.Local.DisplayName;
-	[Sync] public ulong SteamId { get; set; } = Connection.Local.SteamId;
-	[Sync] public string PlayerAvatar { get; set; } = Connection.Local.SteamId.ToString();
+	[Sync] public string PlayerName { get; set; }
+	[Sync] public ulong SteamId { get; set; }
+	[Sync] public string PlayerAvatar { get; set; }
 	[Sync] public float Height { get; set; } 
 	[Sync] public float MaxHeight { get; set; }
 	public int TotalJumps { get; set; }
@@ -21,10 +21,18 @@ public sealed class JumperPlayerStuff : Component, Component.INetworkSpawn
 	JumperDistanceRuler DistanceRuler { get; set; }
 	[Property] JumperProgress Progress { get; set; }
 
-	public void OnNetworkSpawn( Connection owner )
+	void Component.INetworkListener.OnConnected( Sandbox.Connection channel )
 	{
-		PlayerName = owner.DisplayName.ToString();
-		PlayerAvatar = owner.SteamId.ToString();
+		PlayerName = channel.DisplayName.ToString();
+		PlayerAvatar = channel.SteamId.ToString();
+		SteamId = channel.SteamId;
+	}
+
+	void Component.INetworkListener.OnActive( Connection channel )
+	{
+		PlayerName = channel.DisplayName.ToString();
+		PlayerAvatar = channel.SteamId.ToString();
+		SteamId = channel.SteamId;
 	}
 
 	protected override void OnEnabled()
@@ -33,8 +41,6 @@ public sealed class JumperPlayerStuff : Component, Component.INetworkSpawn
 
 		rndColor = $"{Color.Random.Hex}";
 		DistanceRuler = Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault();
-
-		Log.Info( PlayerAvatar );
 	}
 
 	public void SaveStats()
@@ -78,14 +84,6 @@ public sealed class JumperPlayerStuff : Component, Component.INetworkSpawn
 
 	protected override void OnFixedUpdate()
 	{
-		if ( IsProxy ) return;
-
-		if ( DistanceRuler == null || DistanceRuler.StartObject == null )
-		{
-		//	Log.Warning( "No distance ruler / distance ruler object found." );
-			return;
-		}
-
 		Height = MathX.CeilToInt( Transform.Position.z - DistanceRuler.StartObject.Transform.Position.z );
 
 		MaxHeight = Math.Max( Height, MaxHeight );

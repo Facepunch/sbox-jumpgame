@@ -14,7 +14,7 @@
             {
                 <div class=" entry">
                     <label class="name">@player.PlayerName</label>
-                    <label class="score">@player.MaxHeight</label>
+                    <label class="score">@player.Height</label>
                     <label class="ping">0</label>
                 </div>
             }
@@ -23,6 +23,7 @@
 }
 @code {
     bool IsOpen { get; set; }
+
 
     protected override int BuildHash()
     {
