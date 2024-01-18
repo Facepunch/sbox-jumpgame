@@ -1,8 +1,7 @@
 JumperChat {
 	position: absolute;
-	top: 100px;
-	left: 200px;
-	bottom: 200px;
+	bottom: 10%;
+	left: 20%;
 	width: 600px;
 	justify-content: center;
 	align-items: center;
@@ -10,8 +9,8 @@ JumperChat {
 	border-radius: 20px;
 	flex-direction: column;
 	align-items: stretch;
-	font-size: 17px;
-	font-family: Poppins;
+	font-size: 12px;
+	font-family: "Press Start 2P";
 	gap: 10px;
 
 	.output {
@@ -33,11 +32,11 @@ JumperChat {
 				height: 32px;
 				background-position: center;
 				background-size: cover;
-				border-radius: 100px;
 			}
 
 			.author {
-				color: #2d95ce;
+				text-shadow: 3px 3px #000000;
+				color: #fab003;
 				white-space: nowrap;
 				flex-shrink: 0;
 			}
@@ -54,7 +53,8 @@ JumperChat {
 
 	&.open {
 		.input {
-			background-color: #db3984;
+			background-color:#00000026;
+			border-bottom: 4px solid #000000;
 		}
 	}
 }

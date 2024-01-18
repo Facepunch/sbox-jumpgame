@@ -9,10 +9,6 @@
 		@foreach (var entry in Entries)
 		{
             <div class="chat_entry">
-                @if (entry.steamid > 0)
-                {
-                    <div class="avatar" style="background-image: url( avatar:@entry.steamid )"></div>
-                }
 				<div class="author">@entry.author</div>
 				<div class="message">@entry.message</div>
 			</div>
@@ -43,6 +39,7 @@
         {
             InputBox.Focus();
         }
+
 
         if ( Entries.RemoveAll( x => x.timeSinceAdded > 20.0f ) > 0 )
         {
