@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "2d1a4e6f-cc2a-4f3b-85b8-be32e92c7921",
+    "Id": "fb5459a7-cb4b-4e7d-97fd-76aa5e51412b",
     "Name": "playerjumper",
     "Tags": "player",
     "Enabled": true,
@@ -20,14 +20,14 @@
         "__version": 0,
         "__type": "JumperPlayerController",
         "__enabled": true,
-        "AnimationHelper": "4153bba3-67c8-4a28-9cb9-2ccc238febea",
-        "Body": "4153bba3-67c8-4a28-9cb9-2ccc238febea",
-        "CharacterController": "2d1a4e6f-cc2a-4f3b-85b8-be32e92c7921",
-        "Eye": "10da6a93-23d0-45b2-b056-adeb2f068ef1",
+        "AnimationHelper": "c8a658c7-0dc7-4f32-bcaf-174ab793a578",
+        "Body": "c8a658c7-0dc7-4f32-bcaf-174ab793a578",
+        "CharacterController": "fb5459a7-cb4b-4e7d-97fd-76aa5e51412b",
+        "Eye": "470bfeff-a5dc-4839-bb89-8f28e4bf9fad",
         "Gravity": "0,0,800",
         "HitEffect": "prefabs/player/impact/wall_impact.prefab",
         "JumpEffect": "prefabs/player/jump/jump_effect.prefab",
-        "PlayerStats": "2d1a4e6f-cc2a-4f3b-85b8-be32e92c7921",
+        "PlayerStats": "fb5459a7-cb4b-4e7d-97fd-76aa5e51412b",
         "TrailEffect": "prefabs/jump_trail.prefab"
       },
       {
@@ -39,19 +39,19 @@
         "__version": 0,
         "__type": "JumperPlayerStuff",
         "__enabled": true,
-        "Progress": "c63f8edb-93fe-4fef-93cf-179e2302ec3e"
+        "Progress": "9550b460-d7fa-465e-b6e9-84296a29cede"
       },
       {
         "__version": 0,
         "__type": "DropObjectOnFootstep",
         "__enabled": true,
         "Prefab": "prefabs/player/footstep/footstep.prefab",
-        "Source": "4153bba3-67c8-4a28-9cb9-2ccc238febea"
+        "Source": "c8a658c7-0dc7-4f32-bcaf-174ab793a578"
       }
     ],
     "Children": [
       {
-        "Id": "4153bba3-67c8-4a28-9cb9-2ccc238febea",
+        "Id": "c8a658c7-0dc7-4f32-bcaf-174ab793a578",
         "Name": "Body",
         "Enabled": true,
         "Components": [
@@ -90,24 +90,24 @@
             "IkRightFoot": null,
             "IkRightHand": null,
             "LookAtObject": null,
-            "Target": "4153bba3-67c8-4a28-9cb9-2ccc238febea"
+            "Target": "c8a658c7-0dc7-4f32-bcaf-174ab793a578"
           },
           {
             "__version": 0,
             "__type": "JumperPlayerDresser",
             "__enabled": true,
-            "BodyRenderer": "4153bba3-67c8-4a28-9cb9-2ccc238febea"
+            "BodyRenderer": "c8a658c7-0dc7-4f32-bcaf-174ab793a578"
           }
         ]
       },
       {
-        "Id": "10da6a93-23d0-45b2-b056-adeb2f068ef1",
+        "Id": "470bfeff-a5dc-4839-bb89-8f28e4bf9fad",
         "Name": "EyePos",
         "Position": "0,0,64",
         "Enabled": true
       },
       {
-        "Id": "9bdd012d-df12-4928-9dfe-b462a787c5ab",
+        "Id": "902e4581-1af4-417a-88e4-6f90249b2cb6",
         "Name": "Player Collider",
         "Position": "0,0,26.11092",
         "Enabled": true,
@@ -125,7 +125,7 @@
         ]
       },
       {
-        "Id": "22be5bbe-431b-4f8c-b57a-e99d152ad345",
+        "Id": "9650c706-3131-4f33-b989-c73888b3d34f",
         "Name": "Screen - UI",
         "Enabled": true,
         "Components": [
@@ -146,7 +146,7 @@
           {
             "__version": 0,
             "__type": "JumperFallMessage",
-            "__enabled": false
+            "__enabled": true
           },
           {
             "__version": 0,
@@ -156,7 +156,7 @@
           {
             "__version": 0,
             "__type": "JumperControls",
-            "__enabled": false
+            "__enabled": true
           },
           {
             "__version": 0,
@@ -172,12 +172,12 @@
           {
             "__version": 0,
             "__type": "JumperEndUI",
-            "__enabled": false
+            "__enabled": true
           }
         ]
       },
       {
-        "Id": "c63f8edb-93fe-4fef-93cf-179e2302ec3e",
+        "Id": "9550b460-d7fa-465e-b6e9-84296a29cede",
         "Name": "Progress",
         "Enabled": true,
         "Components": [
@@ -190,14 +190,37 @@
             "__version": 0,
             "__type": "Voice",
             "__enabled": true,
-            "Loopback": true,
+            "Loopback": false,
             "Mode": "PushToTalk",
             "MorphScale": 3,
             "MorphSmoothTime": 0.1,
             "PushToTalkInput": "voice",
-            "Renderer": "4153bba3-67c8-4a28-9cb9-2ccc238febea",
+            "Renderer": "c8a658c7-0dc7-4f32-bcaf-174ab793a578",
             "Volume": 1,
             "WorldspacePlayback": false
+          }
+        ]
+      },
+      {
+        "Id": "42244600-4c08-4ca5-9e7f-d8ed7b3e8036",
+        "Name": "World",
+        "Position": "0,0,79.51631",
+        "Enabled": true,
+        "Components": [
+          {
+            "__version": 0,
+            "__type": "WorldPanel",
+            "__enabled": true,
+            "HorizontalAlign": "Center",
+            "LookAtCamera": true,
+            "PanelSize": "1024,512",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__version": 0,
+            "__type": "JumperNameTag",
+            "__enabled": true
           }
         ]
       }

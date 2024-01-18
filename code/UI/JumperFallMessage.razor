@@ -32,7 +32,8 @@
 			OutputText += c;
 			TimeSinceDisplayed = 0f;
 			await Task.DelaySeconds((float)GetRandomNumber(0.05f, 0.2f));
-			Sound.Play("beep1");
+			var snd = Sound.Play("beep1");
+			snd.Pitch = (float)GetRandomNumber(0.4f, 0.6f);
 		}
 	}
 
