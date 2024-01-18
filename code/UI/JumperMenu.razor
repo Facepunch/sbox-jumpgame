@@ -1,44 +1,45 @@
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
-
-<root>
-    <div class="container">
-        <div class="header">
-            <label class="title">JUMPER</label>
+@if (Network.OwnerConnection is Connection owner && owner == Connection.Local)
+{
+    <root>
+        <div class="container">
+            <div class="header">
+                <label class="title">JUMPER</label>
+            </div>
+            <div class="rows">
+                <div class="row">
+                    <label class="title">NAME</label>
+                    <label class="stat">@Name</label>
+                </div>
+                <div class="row">
+                    <label class="title">PLAYTIME</label>
+                    <label class="stat">@YourSessionTime</label>
+                </div>
+                <div class="row">
+                    <label class="title">JUMPS</label>
+                    <label class="stat">@Jumps</label>
+                </div>
+                <div class="row">
+                    <label class="title">BEST HEIGHT</label>
+                    <label class="stat">@MaxHeight</label>
+                </div>
+                <div class="row">
+                    <label class="title">FALLS</label>
+                    <label class="stat">@Falls</label>
+                </div>
+                <div class="row">
+                    <label class="title">COMPLETIONS</label>
+                    <label class="stat">@Completions</label>
+                </div>
+            </div>
+            <button onclick="@Restart">Restart</button>
         </div>
-        <div class="rows">
-            <div class="row">
-                <label class="title">NAME</label>
-                <label class="stat">@Name</label>
-            </div>
-            <div class="row">
-                <label class="title">PLAYTIME</label>
-                <label class="stat">@YourSessionTime</label>
-            </div>
-            <div class="row">
-                <label class="title">JUMPS</label>
-                <label class="stat">@Jumps</label>
-            </div>
-            <div class="row">
-                <label class="title">BEST HEIGHT</label>
-                <label class="stat">@MaxHeight</label>
-            </div>
-            <div class="row">
-                <label class="title">FALLS</label>
-                <label class="stat">@Falls</label>
-            </div>
-            <div class="row">
-                <label class="title">COMPLETIONS</label>
-                <label class="stat">@Completions</label>
-            </div>
-        </div>
-        <button onclick="@Restart">Restart</button>
-    </div>
-</root>
-
+    </root>
+}
 @code {
-    private string Name => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors).PlayerName;
+    private string Name => GameObject.Network.OwnerConnection.DisplayName;
     private float TimePlayed => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors).TimePlayed;
     private int? Jumps => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors)?.TotalJumps;
     private int? Falls => GameObject.Components.Get<JumperPlayerStuff>(FindMode.EverythingInAncestors)?.TotalFalls;

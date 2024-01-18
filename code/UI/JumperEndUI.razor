@@ -1,16 +1,17 @@
 @using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
-
-<root class="@(Open ? "open" : "closed")">
-    <image class="dance" src="@imageSequence" </image>
-    <label class="header">Congratulations!</label>
-    <label class="header" style="top: 37%; font-size:24px;">You made it to the top!</label>
-    <button onclick="@Restart">Restart</button>
-    <button onclick="@GoToTop">Go to top</button>
-    <label class="header" style="top: 60%; font-size:24px;">Completions @Completions</label>
-</root>
-
+@if (Network.OwnerConnection is Connection owner && owner == Connection.Local)
+{
+    <root class="@(Open ? "open" : "closed")">
+        <image class="dance" src="@imageSequence" </image>
+        <label class="header">Congratulations!</label>
+        <label class="header" style="top: 37%; font-size:24px;">You made it to the top!</label>
+        <button onclick="@Restart">Restart</button>
+        <button onclick="@GoToTop">Go to top</button>
+        <label class="header" style="top: 60%; font-size:24px;">Completions @Completions</label>
+    </root>
+}
 @code
 {
     public bool Open { get; set; }
