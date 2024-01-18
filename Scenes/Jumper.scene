@@ -102,6 +102,11 @@
           "__version": 0,
           "__type": "AudioListener",
           "__enabled": true
+        },
+        {
+          "__version": 0,
+          "__type": "Highlight",
+          "__enabled": false
         }
       ]
     },

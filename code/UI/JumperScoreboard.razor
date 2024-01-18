@@ -14,7 +14,7 @@
             <div class=" entry">
                 <label class="name">@player.Network.OwnerConnection.DisplayName</label>
                 <label class="score">@player.Height</label>
-                <label class="ping">0</label>
+                <label class="ping">@Ping(player.Network.OwnerConnection.Ping)</label>
             </div>
         }
         </div>
@@ -22,6 +22,10 @@
 @code {
     bool IsOpen { get; set; }
 
+    private float Ping(float ping)
+    {
+        return (ping * 1000).Floor();   
+    }
 
     protected override int BuildHash()
     {
