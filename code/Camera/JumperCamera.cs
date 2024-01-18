@@ -77,7 +77,7 @@ public sealed class JumperCamera : Component
 		a = Math.Max( a, .15f );
 		a = Sandbox.Utility.Easing.EaseOut( a );
 
-		var render = GameObject.Components.GetAll<SkinnedModelRenderer>( FindMode.EnabledInSelfAndChildren );
+		var render = GameObject.Components.GetAll<SkinnedModelRenderer>( FindMode.EnabledInSelfAndDescendants );
 
 		foreach ( var item in render )
 		{
