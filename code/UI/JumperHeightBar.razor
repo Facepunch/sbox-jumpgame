@@ -5,6 +5,7 @@
 {
     <root class=@(IsOpen ? "open" : "closed")>
         <div class="bar">
+
             <label class="heightbar"></label>
             <label class="flag"></label>
 
@@ -15,17 +16,18 @@
             <div class="maxheightbarpos" style="height:@(CalculateProgress(MaxHeight) * 100)%;">
                 <label class="maxheighttext" text="@(MaxHeight)>" />
             </div>
+
             @foreach (var player in Scene.GetAllComponents<JumperPlayerStuff>())
             {
-                if (!player.IsProxy) continue;
-                <div class="maxheightotherbarpos" style="border-top: 4px solid @player.rndColor; height:@(player.Height.LerpInverse(0,TotalHeight) * 100)%">
-                    <img class="maxheightothertext" style=" box-shadow: 3px 3px @player.rndColor; background-image: url( avatar:@owner.SteamId )">
+                if (owner == player.Network.OwnerConnection) continue;
+                <div class="maxheightotherbarpos" style="border-top: 4px solid @player.rndColor; height:@(CalculateProgress(player.Height) * 100)%;">
+                    <img class="maxheightothertext" style=" box-shadow: 3px 3px @player.rndColor; background-image: url( avatar:@player.Network.OwnerConnection.SteamId )">
                 </div>
             }
-
         </div>
     </root>
 }
+
 @code
 {
     float TotalHeight { get; set; }
@@ -40,16 +42,6 @@
     public Color32 rndColor = Color.Random;
     public string hexColor;
 
-    protected override void OnEnabled()
-    {
-        base.OnEnabled();
-        if (IsProxy) return;
-
-        Ruler = Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault();
-
-        TotalHeight = Ruler.Distance;
-    }
-
     protected override void OnUpdate()
     {
         base.OnUpdate();
@@ -58,18 +50,19 @@
 
         Height = PlayerStats.Height;
         MaxHeight = PlayerStats.MaxHeight;
+
+        TotalHeight = Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault().Distance;
     }
 
     private float CalculateProgress(float height)
     {
-        if (Ruler == null) return 0;
 
-        return height.LerpInverse(0, Ruler.Distance);
+        return height.LerpInverse(0, Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault().Distance);
     }
     protected override int BuildHash()
     {
         IsOpen ^= Input.Pressed("slot1");
 
-        return HashCode.Combine(Time.Now);
+        return HashCode.Combine(Time.Delta);
     }
 }
