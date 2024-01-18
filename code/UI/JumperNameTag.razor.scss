@@ -1,0 +1,43 @@
+
+JumperNameTag {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	white-space: nowrap;
+	justify-content: center;
+	align-items: center;
+
+	.card {
+		justify-content: center;
+		align-items: center;
+		gap: 10px;
+		font-size: 18px;
+
+		.avatar {
+			width: 56px;
+			height: 56px;
+			background-position: center;
+			background-size: cover;
+			box-shadow: 2px 2px 0px #c73920;
+		}
+
+		.name {
+			text-shadow: 2px 2px 0px #c73920;
+			font-family: "Press Start 2P";
+			color: white;
+		}
+
+		.voice {
+			position:absolute;
+			bottom: 30px;
+			width: 96px;
+			height: 96px;
+			padding: 4px;
+			background-image: url("ui/hud/mic.png");
+			background-position: center;
+			background-size: cover;
+		}
+	}
+}
