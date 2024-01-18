@@ -2,9 +2,6 @@ using Sandbox;
 
 public sealed class JumperPlayerStuff : Component, Component.INetworkListener
 {
-	[Sync] public string PlayerName { get; set; }
-	[Sync] public ulong SteamId { get; set; }
-	[Sync] public string PlayerAvatar { get; set; }
 	[Sync] public float Height { get; set; } 
 	[Sync] public float MaxHeight { get; set; }
 	public int TotalJumps { get; set; }
@@ -21,33 +18,29 @@ public sealed class JumperPlayerStuff : Component, Component.INetworkListener
 	JumperDistanceRuler DistanceRuler { get; set; }
 	[Property] JumperProgress Progress { get; set; }
 
-	void Component.INetworkListener.OnConnected( Sandbox.Connection channel )
-	{
-		PlayerName = channel.DisplayName.ToString();
-		PlayerAvatar = channel.SteamId.ToString();
-		SteamId = channel.SteamId;
-	}
-
-	void Component.INetworkListener.OnActive( Connection channel )
-	{
-		PlayerName = channel.DisplayName.ToString();
-		PlayerAvatar = channel.SteamId.ToString();
-		SteamId = channel.SteamId;
-	}
-
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
 
 		rndColor = $"{Color.Random.Hex}";
 		DistanceRuler = Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault();
+
+
+		/*
+		PlayerAvatar = GameObject.Network.OwnerConnection.SteamId.ToString();
+		SteamId = GameObject.Network.OwnerConnection.SteamId;
+		*/
+	}
+
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+
 	}
 
 	public void SaveStats()
 	{
 		if ( IsProxy ) return;
-
-		//Log.Info( "Saving stats" );
 
 		if ( Progress == null || Progress.Current == null )
 		{
