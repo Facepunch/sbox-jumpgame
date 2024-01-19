@@ -20,7 +20,7 @@
     {
       "Id": "ea43c4af-4c86-4385-aae3-04fd036200fe",
       "Name": "Camera",
-      "Position": "-258,0,-15790.07",
+      "Position": "-266.769,0,-15789.2",
       "Rotation": "0,0.04930454,0,0.9987838",
       "Enabled": true,
       "Components": [
