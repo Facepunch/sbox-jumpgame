@@ -181,8 +181,11 @@ public class JumperPlayerController : Component
 
 			CharacterController.Velocity = CharacterController.Velocity.WithZ( jumpAlpha * MaxJumpStrength );
 			CharacterController.IsOnGround = false;
-			//SceneUtility.Instantiate( JumpEffect, GameObject.Transform.Position, Rotation.LookAt( Vector3.Up * 100 ) );
-			Sound.Play( "jumper.jump", GameObject.Transform.Position );
+			var effect = JumpEffect.Clone();
+			effect.Transform.Position = Transform.Position;
+			effect.Transform.Rotation = Rotation.LookAt( CharacterController.Velocity );
+			var snd = Sound.Play( "jumper.jump", GameObject.Transform.Position );
+			snd.Pitch = 1.0f - (0.5f * jumpAlpha) * 1.5f;
 
 			//var _trailef = SceneUtility.Instantiate( TrailEffect, Vector3.Zero, Rotation.LookAt( cc.Velocity ) );
 			//_trailef.Parent = GameObject;
@@ -214,6 +217,10 @@ public class JumperPlayerController : Component
 
 		var bounceAngles = Rotation.LookAt( bounce ).Angles();
 		TargetAngles = bounceAngles.WithRoll( 0f );
+
+		var effect = HitEffect.Clone();
+		effect.Transform.Position = tr.EndPosition;
+		effect.Transform.Rotation = Rotation.LookAt( tr.Normal );
 
 		//SceneUtility.Instantiate( HitEffect, Transform.Position + Vector3.Up * 32, Rotation.LookAt( tr.Normal ) );
 		Sound.Play( "jumper.impact.wall", Transform.Position );
