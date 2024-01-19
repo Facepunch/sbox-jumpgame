@@ -1,0 +1,81 @@
+@using Sandbox;
+@using Sandbox.UI;
+@inherits PanelComponent
+
+<root class=@(Visible ? "visible" : "")>
+    <label class="message">@OutputText</label>
+    <label class="name">@NPCName</label>
+    <label class="background"></label>
+</root>
+
+@code {
+    public string Message { get; set; } = "";
+
+    private bool Visible => TimeSinceDisplayed < 4;
+    private TimeSince TimeSinceDisplayed;
+
+    public string OutputText { get; set; }
+    public float Delay { get; set; } = .1f;
+    public string NPCName { get; set; } = "Ben";
+    public string Voice { get; set; } = "beep1";
+
+    protected override void OnEnabled()
+    {
+        base.OnEnabled();
+
+        TimeSinceDisplayed = 5;
+    }
+
+    public static bool IsTalking()
+    {
+        return true;
+    }
+
+    private async Task RevealTextAsync(string message)
+    {
+        Random rand = new Random();
+        foreach (char c in message)
+        {
+            IsTalking();
+            OutputText += c;
+            TimeSinceDisplayed = 0f;
+            await Task.DelaySeconds((float)GetRandomNumber(0.05f, 0.2f));
+            var snd = Sound.Play(Voice);
+            snd.Pitch = (float)GetRandomNumber(0.9f, 1.1f);
+            snd.Volume = 0.25f;
+        }
+    }
+
+    static Random random = new Random();
+    public double GetRandomNumber(double minimum, double maximum)
+    {
+        return random.NextDouble() * (maximum - minimum) + minimum;
+    }
+
+    public void DisplayMessage(string message)
+    {
+        Message = message;
+        OutputText = null;
+    }
+
+    protected override void OnUpdate()
+    {
+        base.OnUpdate();
+        if (OutputText == Message)
+        {
+            return;
+        }
+
+        if (OutputText == null)
+        {
+            RevealTextAsync(Message);
+        }
+        Message = OutputText;
+    }
+
+    protected override int BuildHash()
+    {
+        return HashCode.Combine(OutputText, Visible ? 1 : 0);
+    }
+
+}

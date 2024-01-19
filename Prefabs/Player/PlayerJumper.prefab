@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "Id": "7e3a3fd1-9180-4158-af2c-6dbb9f961f87",
+    "Id": "25fece7b-58fd-4481-b528-e357b1696cad",
     "Name": "playerjumper",
     "Tags": "player",
     "Enabled": true,
@@ -20,14 +20,14 @@
         "__version": 0,
         "__type": "JumperPlayerController",
         "__enabled": true,
-        "AnimationHelper": "7ff56b3e-04ef-4412-96e0-009059926cd4",
-        "Body": "7ff56b3e-04ef-4412-96e0-009059926cd4",
-        "CharacterController": "7e3a3fd1-9180-4158-af2c-6dbb9f961f87",
-        "Eye": "144c41e3-abad-4852-ad8a-897b37ef99de",
+        "AnimationHelper": "5036046d-6b64-42c2-b392-ffd195c8104e",
+        "Body": "5036046d-6b64-42c2-b392-ffd195c8104e",
+        "CharacterController": "25fece7b-58fd-4481-b528-e357b1696cad",
+        "Eye": "c8b511e9-8c37-41b8-9268-ca836aa87d9d",
         "Gravity": "0,0,800",
         "HitEffect": "prefabs/player/impact/wall_impact.prefab",
         "JumpEffect": "prefabs/player/jump/jump_effect.prefab",
-        "PlayerStats": "7e3a3fd1-9180-4158-af2c-6dbb9f961f87",
+        "PlayerStats": "25fece7b-58fd-4481-b528-e357b1696cad",
         "TrailEffect": "prefabs/jump_trail.prefab"
       },
       {
@@ -39,19 +39,19 @@
         "__version": 0,
         "__type": "JumperPlayerStuff",
         "__enabled": true,
-        "Progress": "f81e0055-4461-452b-a1aa-2a6d3e7cebee"
+        "Progress": "b957a361-7594-41a0-986a-7f7109e52dea"
       },
       {
         "__version": 0,
         "__type": "DropObjectOnFootstep",
         "__enabled": true,
         "Prefab": "prefabs/player/footstep/footstep.prefab",
-        "Source": "7ff56b3e-04ef-4412-96e0-009059926cd4"
+        "Source": "5036046d-6b64-42c2-b392-ffd195c8104e"
       }
     ],
     "Children": [
       {
-        "Id": "7ff56b3e-04ef-4412-96e0-009059926cd4",
+        "Id": "5036046d-6b64-42c2-b392-ffd195c8104e",
         "Name": "Body",
         "Enabled": true,
         "Components": [
@@ -90,24 +90,24 @@
             "IkRightFoot": null,
             "IkRightHand": null,
             "LookAtObject": null,
-            "Target": "7ff56b3e-04ef-4412-96e0-009059926cd4"
+            "Target": "5036046d-6b64-42c2-b392-ffd195c8104e"
           },
           {
             "__version": 0,
             "__type": "JumperPlayerDresser",
             "__enabled": true,
-            "BodyRenderer": "7ff56b3e-04ef-4412-96e0-009059926cd4"
+            "BodyRenderer": "5036046d-6b64-42c2-b392-ffd195c8104e"
           }
         ]
       },
       {
-        "Id": "144c41e3-abad-4852-ad8a-897b37ef99de",
+        "Id": "c8b511e9-8c37-41b8-9268-ca836aa87d9d",
         "Name": "EyePos",
         "Position": "0,0,64",
         "Enabled": true
       },
       {
-        "Id": "71b6c51f-4298-4224-8711-2e05a30d4813",
+        "Id": "7c78ddc4-3cea-47b6-8faf-9d1fcfac939a",
         "Name": "Player Collider",
         "Position": "0,0,26.11092",
         "Enabled": true,
@@ -125,7 +125,7 @@
         ]
       },
       {
-        "Id": "31a0555d-7545-4c7b-b105-7080abbf5db4",
+        "Id": "7a89f94c-cde0-47c5-8df5-0453a8cf4005",
         "Name": "Screen - UI",
         "Enabled": true,
         "Components": [
@@ -173,11 +173,16 @@
             "__version": 0,
             "__type": "JumperEndUI",
             "__enabled": true
+          },
+          {
+            "__version": 0,
+            "__type": "JumperNPCTalker",
+            "__enabled": true
           }
         ]
       },
       {
-        "Id": "f81e0055-4461-452b-a1aa-2a6d3e7cebee",
+        "Id": "b957a361-7594-41a0-986a-7f7109e52dea",
         "Name": "Progress",
         "Enabled": true,
         "Components": [
@@ -195,14 +200,14 @@
             "MorphScale": 3,
             "MorphSmoothTime": 0.1,
             "PushToTalkInput": "voice",
-            "Renderer": "7ff56b3e-04ef-4412-96e0-009059926cd4",
+            "Renderer": "5036046d-6b64-42c2-b392-ffd195c8104e",
             "Volume": 1,
             "WorldspacePlayback": false
           }
         ]
       },
       {
-        "Id": "448a581a-a64b-4187-af9d-6e4008efe92d",
+        "Id": "8ecfde03-5618-47bc-aa63-f0f78d24d7e0",
         "Name": "World",
         "Position": "0,0,79.51631",
         "Enabled": true,

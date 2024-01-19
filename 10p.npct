@@ -1,0 +1,17 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		NPCName = "Major"
+		NPCText = 
+		[
+			"It\'s so bright here!",
+			"I could get a nice tan.",
+			"How are your legs holding up\?",
+			"Did you hear the story about the deer\?",
+			"Got a new car today, hopefully it works better than the last one.",
+			"Eye spy with my little eye...",
+		]
+		NPCVoice = resource:"sounds/npc/voice.frog.sound"
+	}
+}

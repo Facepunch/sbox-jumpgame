@@ -1,0 +1,72 @@
+$font-family-body: "Arial";
+$font-family-title: "Press Start 2P";
+$font-size-small: 10px;
+$font-size-medium: 14px;
+$font-size-large: 18px;
+
+$white: #FFFFFF;
+$black: #000000;
+$red: #c73920;
+$orange: #fab003;
+
+$text-shadow-black-orange: 2px 2px $black, -2px -2px $orange;
+$text-shadow-red: 3px 3px $red;
+$text-shadow-orange: 3px 3px $orange;
+$text-shadow-black: 2px 2px $black;
+
+JumperNPCTalker {
+	position: absolute;
+	bottom: 10%;
+	left: 50%;
+	opacity: 0;
+	width: 500px;
+	flex-direction: column;
+	font-weight: 100;
+	transition: all 1s ease-out;
+	transition: opacity .1s linear;
+	text-align: center;
+	align-content: center;
+	z-index: 12;
+	justify-content: center;
+
+
+	&.visible {
+		opacity: 1;
+		transition: all .1s ease-in;
+	}
+
+	.background {
+		position: absolute;
+		transform: translateX(-50%);
+		width: 600px;
+		height: 100px;
+		border-image: url( /ui/border.png ) 50 fill stretch;
+		border: 20px solid transparent;
+		z-index: 1;
+	}
+
+	.name {
+		font-family: $font-family-title;
+		text-shadow: $text-shadow-red;
+		color: $white;
+		font-size: $font-size-medium;
+		padding:10px;
+		bottom: 12%;
+		right: 0%;
+		transform: translateX(-50%);
+		width: 150px;
+		border-image: url( /ui/border.png ) 50 fill stretch;
+		border: 20px solid transparent;
+		z-index: 2;
+	}
+
+	.message {
+		font-family: $font-family-title;
+		text-shadow: $text-shadow-red;
+		color: $white;
+		font-size: $font-size-large;
+		position: absolute;
+		transform: translateX(-50%);
+		z-index: 5;
+	}
+}

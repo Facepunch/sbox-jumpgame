@@ -1,9 +1,7 @@
 {
   "RootObject": {
-    "Id": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8",
-    "Name": "Npc_Frog",
-    "Position": "-83.68546,279.9549,-15871",
-    "Rotation": "-0.000001638518,0.000002235174,0.000004915553,0.9999999",
+    "Id": "2e0c94a3-ea14-405a-a490-a8d5885c8c1c",
+    "Name": "npc_frog",
     "Tags": "trigger",
     "Enabled": true,
     "Components": [
@@ -35,7 +33,7 @@
         "IkRightHand": null,
         "LookAt": null,
         "LookAtEnabled": true,
-        "Target": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8"
+        "Target": "2e0c94a3-ea14-405a-a490-a8d5885c8c1c"
       },
       {
         "__version": 0,
@@ -51,16 +49,24 @@
         "__version": 0,
         "__type": "JumperNPCLooker",
         "__enabled": true,
-        "animhelp": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8",
-        "LookTarget": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8"
+        "animhelp": "2e0c94a3-ea14-405a-a490-a8d5885c8c1c",
+        "LookTarget": "138d6eef-4bbf-4a6a-856b-b72e416406e8",
+        "Resources": [
+          "resources/10p.npct",
+          "resources/almost.npct",
+          "resources/groundfloor.npct",
+          "resources/pipeman.npct",
+          "resources/wind.npct",
+          "resources/work.npct",
+          "resources/wrong.npct"
+        ]
       }
     ],
     "Children": [
       {
-        "Id": "02c2438f-cc81-4e8a-bd2d-2476bac25df6",
+        "Id": "138d6eef-4bbf-4a6a-856b-b72e416406e8",
         "Name": "lootatme",
         "Position": "26.64017,-0.0000009736541,60.06457",
-        "Tags": "trigger",
         "Enabled": true
       }
     ]
