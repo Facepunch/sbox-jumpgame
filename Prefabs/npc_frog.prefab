@@ -1,0 +1,72 @@
+{
+  "RootObject": {
+    "Id": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8",
+    "Name": "Npc_Frog",
+    "Position": "-83.68546,279.9549,-15871",
+    "Rotation": "-0.000001638518,0.000002235174,0.000004915553,0.9999999",
+    "Tags": "trigger",
+    "Enabled": true,
+    "Components": [
+      {
+        "__version": 0,
+        "__type": "SkinnedModelRenderer",
+        "__enabled": true,
+        "BodyGroups": 1365,
+        "BoneMergeTarget": null,
+        "CreateBoneObjects": false,
+        "MaterialGroup": null,
+        "MaterialOverride": null,
+        "Model": "models/frogfella/frog_test_subject_01a.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__version": 0,
+        "__type": "CitizenAnimationHelper",
+        "__enabled": true,
+        "BodyWeight": 1,
+        "EyeSource": null,
+        "EyesWeight": 1,
+        "HeadWeight": 1,
+        "Height": 1,
+        "IkLeftFoot": null,
+        "IkLeftHand": null,
+        "IkRightFoot": null,
+        "IkRightHand": null,
+        "LookAt": null,
+        "LookAtEnabled": true,
+        "Target": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8"
+      },
+      {
+        "__version": 0,
+        "__type": "SphereCollider",
+        "__enabled": true,
+        "Center": "0,0,34.26667",
+        "IsTrigger": true,
+        "Radius": 75,
+        "Static": false,
+        "Surface": null
+      },
+      {
+        "__version": 0,
+        "__type": "JumperNPCLooker",
+        "__enabled": true,
+        "animhelp": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8",
+        "LookTarget": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8"
+      }
+    ],
+    "Children": [
+      {
+        "Id": "02c2438f-cc81-4e8a-bd2d-2476bac25df6",
+        "Name": "lootatme",
+        "Position": "26.64017,-0.0000009736541,60.06457",
+        "Tags": "trigger",
+        "Enabled": true
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "__references": []
+}

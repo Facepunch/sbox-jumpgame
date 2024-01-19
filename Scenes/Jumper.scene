@@ -2262,6 +2262,12 @@
           "__version": 0,
           "__type": "MapPlayerSpawns",
           "__enabled": true
+        },
+        {
+          "__version": 0,
+          "__type": "MapOverrider",
+          "__enabled": true,
+          "FrogPrefab": "prefabs/npc_frog.prefab"
         }
       ],
       "Children": []
@@ -2457,6 +2463,15 @@
           ]
         }
       ]
+    },
+    {
+      "Id": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8",
+      "Name": "Npc_Frog",
+      "Position": "-328.8859,273.821,-15871",
+      "Rotation": "-0.000002329453,0.000001532889,-0.3448989,0.93864",
+      "Tags": "trigger",
+      "Enabled": true,
+      "__Prefab": "prefabs/npc_frog.prefab"
     }
   ],
   "SceneProperties": {
