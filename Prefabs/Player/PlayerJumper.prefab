@@ -10,7 +10,7 @@
         "__type": "JumperCharacterController",
         "__enabled": true,
         "Acceleration": 10,
-        "GroundAngle": 45,
+        "GroundAngle": 40,
         "Height": 64,
         "IgnoreLayers": "player,trigger",
         "Radius": 16,
