@@ -144,42 +144,6 @@
         },
         {
           "__version": 0,
-          "__type": "JumperHeightBar",
-          "__enabled": false
-        },
-        {
-          "__version": 0,
-          "__type": "JumperFallMessage",
-          "__enabled": false
-        },
-        {
-          "__version": 0,
-          "__type": "JumperMenu",
-          "__enabled": false
-        },
-        {
-          "__version": 0,
-          "__type": "JumperControls",
-          "__enabled": false
-        },
-        {
-          "__version": 0,
-          "__type": "JumperSessionTimer",
-          "__enabled": false,
-          "JumperDistanceRuler": null
-        },
-        {
-          "__version": 0,
-          "__type": "JumperScoreboard",
-          "__enabled": false
-        },
-        {
-          "__version": 0,
-          "__type": "JumperEndUI",
-          "__enabled": false
-        },
-        {
-          "__version": 0,
           "__type": "JumperChat",
           "__enabled": true
         }
