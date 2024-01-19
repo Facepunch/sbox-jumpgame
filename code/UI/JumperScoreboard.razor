@@ -1,4 +1,4 @@
-@using Sandbox;
+﻿@using Sandbox;
 @using Sandbox.UI;
 @inherits PanelComponent
 
@@ -6,15 +6,14 @@
         <div class="header">
             <label class="name">Name</label>
             <label class="score">Height</label>
-            <label class="ping">Ping</label>
         </div>
         <div class="entries">
         @foreach (var player in Scene.Components.GetAll<JumperPlayerStuff>())
         {
-            <div class=" entry">
+            <div class=@(player.Network.IsOwner ? "entry me" : "entry")>
+                <label class="you">You</label>
                 <label class="name">@player.Network.OwnerConnection.DisplayName</label>
                 <label class="score">@player.Height</label>
-                <label class="ping">@Ping(player.Network.OwnerConnection.Ping)</label>
             </div>
         }
         </div>
