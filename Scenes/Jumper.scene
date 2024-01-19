@@ -39,7 +39,7 @@
           "RenderTags": "",
           "TargetEye": "None",
           "Viewport": "0,0,1,1",
-          "ZFar": 10000,
+          "ZFar": 4096,
           "ZNear": 1
         },
         {
@@ -107,6 +107,16 @@
           "__version": 0,
           "__type": "Highlight",
           "__enabled": false
+        },
+        {
+          "__version": 0,
+          "__type": "CubemapFog",
+          "__enabled": true,
+          "Blur": 20,
+          "EndDistance": 4096,
+          "FalloffExponent": 1,
+          "Sky": "materials/skybox/skybox_workshop.vmat",
+          "StartDistance": 2048
         }
       ]
     },
