@@ -1,0 +1,21 @@
+{
+	"MasterVolume": "0.50,0.50,0",
+	"LoopedSounds":
+	[
+		{
+			"SoundFile": "sounds/soundscape/area_4/bg_freezer.vsnd",
+			"Volume": "0.50,0.50,0"
+		},
+		{
+			"SoundFile": "sounds/soundscape/area_4/bg_hum.vsnd",
+			"Volume": "0.50,0.50,0"
+		},
+		{
+			"SoundFile": "sounds/soundscape/area_4/bg_pump.vsnd",
+			"Volume": "0.50,0.50,0"
+		}
+	],
+	"StingSounds":
+	[
+	]
+}

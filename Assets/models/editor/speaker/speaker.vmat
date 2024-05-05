@@ -1,0 +1,8 @@
+"Layer0"
+{
+	"shader"		"shaders/generic.shader"
+	"F_UNLIT"		"1"
+	"g_vColorTint"		"[1.000000 1.000000 1.000000 0.000000]"
+	"TextureColor"		"models/editor/speaker/speaker_color.png"
+	"g_bFogEnabled"		"1"
+}

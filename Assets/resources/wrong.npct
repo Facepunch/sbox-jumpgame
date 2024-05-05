@@ -1,0 +1,12 @@
+{
+	"NPCName": "Dave",
+	"NPCText":
+	[
+		"I think I went the wrong way...",
+		"How do I get down from here...",
+		"Do you know the way off here?",
+		"It's nice not being alone for once...",
+		"I could really do with a drink and snack..."
+	],
+	"NPCVoice": "sounds/npc/voice.frog.2.sound"
+}

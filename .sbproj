@@ -5,12 +5,7 @@
   "Ident": "jumper",
   "Tags": "",
   "Schema": 1,
-  "HasAssets": true,
-  "AssetsPath": "",
   "Resources": "\nfonts/*\n*.scss",
-  "MenuResources": "\nfonts/*\nUI/mainmenu/*\nsounds/ui/*\nui/*\nsounds/test/*\n*.object\n*.vpcf\n*.sndscape\n*.sound\n*.prefab",
-  "HasCode": true,
-  "CodePath": "/code/",
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {
@@ -27,47 +22,6 @@
     "ProjectTemplate": null,
     "ParentPackage": "",
     "GameCategory": "Parkour",
-    "Collision": {
-      "Defaults": {
-        "solid": "Collide",
-        "trigger": "Trigger",
-        "ladder": "Ignore",
-        "water": "Trigger",
-        "jumpplayer": "Unset"
-      },
-      "Pairs": [
-        {
-          "a": "solid",
-          "b": "solid",
-          "r": "Collide"
-        },
-        {
-          "a": "trigger",
-          "b": "playerclip",
-          "r": "Ignore"
-        },
-        {
-          "a": "trigger",
-          "b": "solid",
-          "r": "Trigger"
-        },
-        {
-          "a": "solid",
-          "b": "trigger",
-          "r": "Collide"
-        },
-        {
-          "a": "playerclip",
-          "b": "solid",
-          "r": "Collide"
-        },
-        {
-          "a": "jumpplayer",
-          "b": "jumpplayer",
-          "r": "Ignore"
-        }
-      ]
-    },
     "Physics": {
       "SubSteps": 1,
       "TimeScale": 1,

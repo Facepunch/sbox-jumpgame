@@ -1,0 +1,21 @@
+{
+	"MasterVolume": "0.50,0.50,0",
+	"LoopedSounds":
+	[
+		{
+			"SoundFile": "sounds/ambience/cave-loop.vsnd",
+			"Volume": "0.10,0.10,0"
+		},
+		{
+			"SoundFile": "sounds/soundscape/area_3/bg_hum.vsnd",
+			"Volume": "0.20,0.20,0"
+		},
+		{
+			"SoundFile": "sounds/soundscape/area_3/bg_main.vsnd",
+			"Volume": "0.50,0.50,0"
+		}
+	],
+	"StingSounds":
+	[
+	]
+}

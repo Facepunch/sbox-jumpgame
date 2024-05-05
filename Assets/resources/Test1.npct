@@ -1,0 +1,9 @@
+{
+	"NPCName": "Craig",
+	"NPCText":
+	[
+		"Well you made it! Good Job!",
+		"All this way for nothing?"
+	],
+	"NPCVoice": "sounds/npc/voice.frog.sound"
+}

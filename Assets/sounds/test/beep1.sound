@@ -1,0 +1,15 @@
+{
+	"UI": true,
+	"Volume": 0.190000,
+	"VolumeRandom": 0,
+	"Pitch": 0.750000,
+	"PitchRandom": 0.150000,
+	"Decibels": 70,
+	"Sounds":
+	[
+		"sounds/test/beep5.vsnd"
+	],
+	"SelectionMode": "Random",
+	"MaximumDistance": 1143.933500,
+	"MinimumDistance": 57.196674
+}

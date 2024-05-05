@@ -1,0 +1,22 @@
+{
+	"UI": false,
+	"Volume": 1,
+	"VolumeRandom": 0,
+	"Pitch": 1,
+	"PitchRandom": 0.070000,
+	"Decibels": 70,
+	"Sounds":
+	[
+		"sounds/player/impact/sounds/impact.8.vsnd",
+		"sounds/player/impact/sounds/impact.7.vsnd",
+		"sounds/player/impact/sounds/impact.6.vsnd",
+		"sounds/player/impact/sounds/impact.5.vsnd",
+		"sounds/player/impact/sounds/impact.4.vsnd",
+		"sounds/player/impact/sounds/impact.3.vsnd",
+		"sounds/player/impact/sounds/impact.2.vsnd",
+		"sounds/player/impact/sounds/impact.1.vsnd"
+	],
+	"SelectionMode": "Random",
+	"MaximumDistance": 1143.933500,
+	"MinimumDistance": 57.196674
+}

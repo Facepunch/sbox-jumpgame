@@ -1,0 +1,15 @@
+{
+	"UI": true,
+	"Volume": 1,
+	"VolumeRandom": 0,
+	"Pitch": 1.310000,
+	"PitchRandom": 0.150000,
+	"Decibels": 70,
+	"Sounds":
+	[
+		"sounds/npc/voice.frog.vsnd"
+	],
+	"SelectionMode": "Random",
+	"MaximumDistance": 1143.933500,
+	"MinimumDistance": 57.196674
+}

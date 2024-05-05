@@ -1,0 +1,12 @@
+{
+	"NPCName": "Alan",
+	"NPCText":
+	[
+		"Oh hey, you made it...almost...",
+		"Why did they make this building so tall?!",
+		"I miss William.",
+		"I wonder what's for dinner...",
+		"And they call it a mine..."
+	],
+	"NPCVoice": "sounds/npc/voice.frog.2.sound"
+}

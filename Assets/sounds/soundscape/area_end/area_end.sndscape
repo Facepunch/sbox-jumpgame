@@ -1,0 +1,21 @@
+{
+	"MasterVolume": "0.50,0.50,0",
+	"LoopedSounds":
+	[
+		{
+			"SoundFile": "sounds/soundscape/area_end/bg_wind.vsnd",
+			"Volume": "0.50,0.50,0"
+		},
+		{
+			"SoundFile": "sounds/soundscape/area_end/bg_top.vsnd",
+			"Volume": "0.20,0.20,0"
+		},
+		{
+			"SoundFile": "sounds/soundscape/area_end/bg_gull.vsnd",
+			"Volume": "0.50,0.50,0"
+		}
+	],
+	"StingSounds":
+	[
+	]
+}

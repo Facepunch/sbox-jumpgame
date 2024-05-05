@@ -1,0 +1,12 @@
+{
+	"NPCName": "Warren",
+	"NPCText":
+	[
+		"Don't be late for work!",
+		"I've got a meeting in a few hours.",
+		"You don't happen to have the time?",
+		"I heard they are having construct done up there.",
+		"Why are there so many stairs..."
+	],
+	"NPCVoice": "sounds/npc/voice.frog.sound"
+}

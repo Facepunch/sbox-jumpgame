@@ -14,7 +14,7 @@ public class JumperProgressData
 
 public sealed class JumperProgress : Component
 {
-	static string FileName => $"{GameManager.ActiveScene.Title}_progress.json";
+	static string FileName => $"{Game.ActiveScene.Title}_progress.json";
 	public JumperProgressData Current { get; set; }
 
 	void Fetch()

@@ -1,0 +1,12 @@
+{
+	"NPCName": "William",
+	"NPCText":
+	[
+		"This explains why it's so cold!",
+		"Jim stepped in the fan and flew away!",
+		"You'd think they make this safer...",
+		"Dropped my pen earlier...",
+		"Could go for a nap around now."
+	],
+	"NPCVoice": "sounds/npc/voice.frog.sound"
+}

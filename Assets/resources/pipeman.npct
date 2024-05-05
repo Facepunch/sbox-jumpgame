@@ -1,0 +1,12 @@
+{
+	"NPCName": "Peter",
+	"NPCText":
+	[
+		"I hate working here...",
+		"WHY ARE THERE SO MANY PIPES!",
+		"ugh.... you're still here...",
+		"Please it's not safe here...",
+		"Just keep climbing"
+	],
+	"NPCVoice": "sounds/npc/voice.frog.sound"
+}
