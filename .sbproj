@@ -5,7 +5,7 @@
   "Ident": "jumper",
   "Tags": "",
   "Schema": 1,
-  "Resources": "\nfonts/*\n*.scss",
+  "Resources": "fonts/*\n*.scss\nAssets/ui/hud/*\nAssets/ui/*\nAssets/fonts/*\n/ui/hud/*\n/ui/*\n/fonts/*",
   "PackageReferences": [],
   "EditorReferences": null,
   "Metadata": {

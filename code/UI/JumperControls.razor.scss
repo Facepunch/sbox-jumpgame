@@ -10,7 +10,7 @@ JumperControls {
 	transition: all 0.2s ease-out;
 	text-shadow: 1px 1px #c73920;
 	opacity: 0;
-	border-image: url( ui/border.png ) 50 fill stretch;
+	border-image: url( "ui/border.png" ) 50 fill stretch;
 	border: 20px solid transparent;
 	flex-direction: column;
 	z-index: 69;
