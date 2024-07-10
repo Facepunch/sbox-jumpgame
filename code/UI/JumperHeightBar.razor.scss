@@ -47,6 +47,7 @@ JumperHeightBar {
 			border-top: 4px solid white;
 
 			.heighttext {
+				position: relative;
 				left: 10px;
 				bottom: 11px;
 				text-shadow: 3px 3px #c73920;
@@ -65,6 +66,7 @@ JumperHeightBar {
 			z-index: 10;
 
 			.maxheighttext {
+				position: relative;
 				right: 170px;
 				bottom: 9px;
 				color: #c73920;
@@ -87,6 +89,7 @@ JumperHeightBar {
 			opacity: 0.2;
 
 			.maxheightothertext {
+				position: relative;
 				right: 35px;
 				bottom: 18px;
 				flex-shrink: 0;
@@ -94,7 +97,7 @@ JumperHeightBar {
 				max-height: 32px;
 				width: 32px;
 				z-index: 1;
-				background-size:contain;
+				background-size: contain;
 				aspect-ratio: 1;
 			}
 		}
