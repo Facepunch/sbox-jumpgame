@@ -1,33 +1,36 @@
 {
-  "Id": "ffb4de07-fe39-4866-bfc0-be1df0c5c792",
+  "__guid": "ffb4de07-fe39-4866-bfc0-be1df0c5c792",
   "GameObjects": [
     {
-      "Id": "1de10792-fb1d-4798-a39d-5d31d80e0a16",
+      "__guid": "1de10792-fb1d-4798-a39d-5d31d80e0a16",
+      "Flags": 0,
       "Name": "Network",
       "Position": "72.54695,32.92376,-15839.22",
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
-          "__type": "NetworkHelper",
-          "__enabled": true,
-          "PlayerPrefab": "prefabs/player/playerjumper.prefab",
+          "__type": "Sandbox.NetworkHelper",
+          "__guid": "a6c13621-9b52-4eb8-b80a-736e33fff213",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player/playerjumper.prefab"
+          },
           "SpawnPoints": [],
           "StartServer": true
         }
       ]
     },
     {
-      "Id": "ea43c4af-4c86-4385-aae3-04fd036200fe",
+      "__guid": "ea43c4af-4c86-4385-aae3-04fd036200fe",
+      "Flags": 0,
       "Name": "Camera",
       "Position": "-266.769,0,-15789.2",
       "Rotation": "0,0.04930454,0,0.9987838",
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
-          "__type": "CameraComponent",
-          "__enabled": true,
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "aa9e5875-6274-40ed-8fd8-e50c21600ae2",
           "BackgroundColor": "0.25292,0.26086,0.29703,1",
           "ClearFlags": "All",
           "FieldOfView": 90,
@@ -43,15 +46,13 @@
           "ZNear": 1
         },
         {
-          "__version": 0,
-          "__type": "Sharpen",
-          "__enabled": true,
+          "__type": "Sandbox.Sharpen",
+          "__guid": "edf9619e-2500-450b-8965-880c4c918009",
           "Scale": 0.2
         },
         {
-          "__version": 0,
-          "__type": "Bloom",
-          "__enabled": true,
+          "__type": "Sandbox.Bloom",
+          "__guid": "9e25b2b8-299f-4f4d-9957-67bafc81226d",
           "BloomColor": {
             "color": [
               {
@@ -80,18 +81,20 @@
           "ThresholdWidth": 0.96
         },
         {
-          "__version": 0,
-          "__type": "Tonemapping",
-          "__enabled": true,
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "0e872050-8464-4873-abda-f5daf4d0c13c",
+          "__version": 1,
+          "ExposureBias": 2,
           "ExposureCompensation": 0,
+          "ExposureMethod": "RGB",
           "MaximumExposure": 2,
           "MinimumExposure": 1.3,
+          "Mode": "Legacy",
           "Rate": 0.69
         },
         {
-          "__version": 0,
-          "__type": "Vignette",
-          "__enabled": true,
+          "__type": "Sandbox.Vignette",
+          "__guid": "8d6aef85-fd62-4973-81b0-8e6c5c99dc76",
           "Center": "0.4999999,0.5",
           "Color": "0,0,0,0.7",
           "Intensity": 0.8,
@@ -99,58 +102,64 @@
           "Smoothness": 0.9
         },
         {
-          "__version": 0,
-          "__type": "AudioListener",
-          "__enabled": true
+          "__type": "Sandbox.AudioListener",
+          "__guid": "41617a58-08f1-49b7-bb5f-e32109d97a2f",
+          "UseCameraDirection": true
         },
         {
-          "__version": 0,
-          "__type": "Highlight",
+          "__type": "Sandbox.Highlight",
+          "__guid": "b98a5116-14fa-4446-b8e6-578a11e4d2ac",
           "__enabled": false
         },
         {
-          "__version": 0,
-          "__type": "CubemapFog",
-          "__enabled": true,
+          "__type": "Sandbox.CubemapFog",
+          "__guid": "c45c75aa-4f00-4549-af66-5333cf2bd6df",
           "Blur": 20,
           "EndDistance": 4096,
           "FalloffExponent": 1,
+          "HeightExponent": 2,
+          "HeightStart": 2000,
+          "HeightWidth": 0,
           "Sky": "materials/skybox/skybox_workshop.vmat",
-          "StartDistance": 2048
+          "StartDistance": 2048,
+          "Tint": "1,1,1,1"
         }
       ]
     },
     {
-      "Id": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
+      "__guid": "ead060a4-13b6-416a-8d09-cf8c86570eaa",
+      "Flags": 0,
       "Name": "Citizen",
       "Position": "0,0,-15865.2",
       "Tags": "player",
-      "__Prefab": "prefabs/player/playerjumper.prefab"
+      "__Prefab": "prefabs/player/playerjumper.prefab",
+      "__PrefabVariables": {}
     },
     {
-      "Id": "448af2d3-886b-4a26-b59d-00487955e825",
+      "__guid": "448af2d3-886b-4a26-b59d-00487955e825",
+      "Flags": 0,
       "Name": "Screen - UI",
-      "Networked": true,
       "Enabled": true,
+      "NetworkMode": 1,
       "Components": [
         {
-          "__version": 0,
-          "__type": "ScreenPanel",
-          "__enabled": true,
+          "__type": "Sandbox.ScreenPanel",
+          "__guid": "1be3959f-75b4-4961-96f9-23ba72853ab6",
           "AutoScreenScale": true,
           "Opacity": 1,
           "Scale": 1,
+          "ScaleStrategy": "ConsistentHeight",
           "ZIndex": 100
         },
         {
-          "__version": 0,
           "__type": "JumperChat",
-          "__enabled": true
+          "__guid": "d651a0f0-ea76-40e1-be73-e8104535f26b"
         }
       ]
     },
     {
-      "Id": "1032a1ad-8b52-4b01-842e-a1e3449be30e",
+      "__guid": "1032a1ad-8b52-4b01-842e-a1e3449be30e",
+      "Flags": 0,
       "Name": "Wind",
       "Position": "-336.1729,1.51743,1597.336",
       "Rotation": "0,-0.707107,0,0.7071065",
@@ -158,36 +167,34 @@
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperWindTunnel",
-          "__enabled": true,
+          "__guid": "d19fe731-b56e-4d5f-a4fe-a79761419745",
           "WindAirStrength": 15,
           "WindGroundedStrength": 25
         },
         {
-          "__version": 0,
-          "__type": "BoxCollider",
-          "__enabled": true,
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "18ae645a-c3bf-493c-ad98-6cec96ebef76",
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "401.0002,150,150",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
         {
-          "Id": "5cf697f4-2ad3-4802-a0d9-c19e4ffc0650",
+          "__guid": "5cf697f4-2ad3-4802-a0d9-c19e4ffc0650",
+          "Flags": 0,
           "Name": "Spray",
           "Position": "-148.4125,-0.000001329584,0",
           "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
-          "Tags": "trigger",
+          "Tags": "particles",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ParticleEffect",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleEffect",
+              "__guid": "4ce71337-b4a4-4e08-99fb-a58c40ed03bc",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -208,6 +215,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,
@@ -219,7 +227,6 @@
               },
               "Bumpiness": {},
               "Collision": false,
-              "CollisionIgnore": null,
               "CollisionRadius": 1,
               "Damping": {},
               "DieOnCollisionChance": {},
@@ -261,9 +268,12 @@
                 "Constants": "0.5,1,0,0"
               },
               "MaxParticles": 50,
+              "OrbitalForce": {},
+              "OrbitalPull": {},
               "PerParticleTimeScale": {
                 "Constants": "1,0.4,0,0"
               },
+              "Pitch": {},
               "PreWarm": 0,
               "PushStrength": {},
               "Roll": {
@@ -304,6 +314,7 @@
               },
               "SheetSequence": false,
               "Space": "World",
+              "StartDelay": {},
               "StartVelocity": {
                 "Type": "Range",
                 "Evaluation": "Particle",
@@ -313,13 +324,14 @@
                 "Constants": "1,0,0,0"
               },
               "TimeScale": 1,
-              "Tint": "1,1,1,1"
+              "Tint": "1,1,1,1",
+              "Yaw": {}
             },
             {
-              "__version": 0,
-              "__type": "ParticleSpriteRenderer",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleSpriteRenderer",
+              "__guid": "6ae85303-267c-4815-8a26-f6c2603722a8",
               "Additive": false,
+              "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
               "BlurSpacing": 0.73,
@@ -327,6 +339,7 @@
               "FaceVelocity": false,
               "FogStrength": 1,
               "LeadingTrail": true,
+              "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
               "RotationOffset": 90,
@@ -336,23 +349,24 @@
               "Texture": "materials/effects/lightcookies/blank.vtex"
             },
             {
-              "__version": 0,
               "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
+              "__guid": "305b2913-dccb-4498-bbd0-7ee3062401e0",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
               "Duration": 10,
               "Loop": true,
               "Radius": 63.46666,
-              "Rate": 100
+              "Rate": 100,
+              "RateOverDistance": 0
             }
           ]
         }
       ]
     },
     {
-      "Id": "d4f04838-66b4-4afa-b2f9-e10437f3ec3e",
+      "__guid": "d4f04838-66b4-4afa-b2f9-e10437f3ec3e",
+      "Flags": 0,
       "Name": "Wind (1)",
       "Position": "341.0678,1.51743,1597.336",
       "Rotation": "0,-0.707107,0,0.7071065",
@@ -360,36 +374,34 @@
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperWindTunnel",
-          "__enabled": true,
+          "__guid": "5f8bcdd0-ef4e-4dda-8fd6-fd3f5a4b4f11",
           "WindAirStrength": 15,
           "WindGroundedStrength": 25
         },
         {
-          "__version": 0,
-          "__type": "BoxCollider",
-          "__enabled": true,
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "5b6a5bfc-e59f-4fd3-a736-925b438f9f7f",
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "401.0002,150,150",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
         {
-          "Id": "3abe6667-2fbb-4651-aa4e-00c63521e783",
+          "__guid": "3abe6667-2fbb-4651-aa4e-00c63521e783",
+          "Flags": 0,
           "Name": "Spray",
           "Position": "-148.4125,-0.000001329584,0",
           "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
-          "Tags": "trigger",
+          "Tags": "particles",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ParticleEffect",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleEffect",
+              "__guid": "bfd388c9-7f71-45a6-89b2-79fe9819dfc3",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -410,6 +422,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,
@@ -421,7 +434,6 @@
               },
               "Bumpiness": {},
               "Collision": false,
-              "CollisionIgnore": null,
               "CollisionRadius": 1,
               "Damping": {},
               "DieOnCollisionChance": {},
@@ -463,9 +475,12 @@
                 "Constants": "0.5,1,0,0"
               },
               "MaxParticles": 50,
+              "OrbitalForce": {},
+              "OrbitalPull": {},
               "PerParticleTimeScale": {
                 "Constants": "1,0.4,0,0"
               },
+              "Pitch": {},
               "PreWarm": 0,
               "PushStrength": {},
               "Roll": {
@@ -506,6 +521,7 @@
               },
               "SheetSequence": false,
               "Space": "World",
+              "StartDelay": {},
               "StartVelocity": {
                 "Type": "Range",
                 "Evaluation": "Particle",
@@ -515,13 +531,14 @@
                 "Constants": "1,0,0,0"
               },
               "TimeScale": 1,
-              "Tint": "1,1,1,1"
+              "Tint": "1,1,1,1",
+              "Yaw": {}
             },
             {
-              "__version": 0,
-              "__type": "ParticleSpriteRenderer",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleSpriteRenderer",
+              "__guid": "ba1a5fbc-12d0-4f97-8478-3d19bec52451",
               "Additive": false,
+              "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
               "BlurSpacing": 0.73,
@@ -529,6 +546,7 @@
               "FaceVelocity": false,
               "FogStrength": 1,
               "LeadingTrail": true,
+              "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
               "RotationOffset": 90,
@@ -538,23 +556,24 @@
               "Texture": "materials/effects/lightcookies/blank.vtex"
             },
             {
-              "__version": 0,
               "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
+              "__guid": "fbfa0075-17c1-4348-a141-cab17af15989",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
               "Duration": 10,
               "Loop": true,
               "Radius": 63.46666,
-              "Rate": 100
+              "Rate": 100,
+              "RateOverDistance": 0
             }
           ]
         }
       ]
     },
     {
-      "Id": "2af3c1d6-ee64-492a-815e-9e061df0e161",
+      "__guid": "2af3c1d6-ee64-492a-815e-9e061df0e161",
+      "Flags": 0,
       "Name": "Wind (2)",
       "Position": "-7.155693,68.83384,2052.451",
       "Rotation": "0.5000006,-0.5000006,-0.4999994,0.4999994",
@@ -562,36 +581,34 @@
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperWindTunnel",
-          "__enabled": true,
+          "__guid": "e527b7d2-3090-4ba8-8fa9-c75d9bc63699",
           "WindAirStrength": 15,
           "WindGroundedStrength": 25
         },
         {
-          "__version": 0,
-          "__type": "BoxCollider",
-          "__enabled": true,
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "663b8e47-a1e9-4be5-9b9a-3dac1397640c",
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
         {
-          "Id": "f78dde4d-354f-4f8a-8dd7-08b6ef3440b7",
+          "__guid": "f78dde4d-354f-4f8a-8dd7-08b6ef3440b7",
+          "Flags": 0,
           "Name": "Spray",
           "Position": "-374.9197,-0.00001401933,3.172392",
           "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
-          "Tags": "trigger",
+          "Tags": "particles",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ParticleEffect",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleEffect",
+              "__guid": "5a2eef67-25cd-454d-8005-b8f1bba8c621",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -612,6 +629,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,
@@ -623,7 +641,6 @@
               },
               "Bumpiness": {},
               "Collision": false,
-              "CollisionIgnore": null,
               "CollisionRadius": 1,
               "Damping": {},
               "DieOnCollisionChance": {},
@@ -665,9 +682,12 @@
                 "Constants": "0.5,1,0,0"
               },
               "MaxParticles": 50,
+              "OrbitalForce": {},
+              "OrbitalPull": {},
               "PerParticleTimeScale": {
                 "Constants": "1,0.4,0,0"
               },
+              "Pitch": {},
               "PreWarm": 0,
               "PushStrength": {},
               "Roll": {
@@ -708,6 +728,7 @@
               },
               "SheetSequence": false,
               "Space": "World",
+              "StartDelay": {},
               "StartVelocity": {
                 "Type": "Range",
                 "Evaluation": "Particle",
@@ -717,13 +738,14 @@
                 "Constants": "1,0,0,0"
               },
               "TimeScale": 1,
-              "Tint": "1,1,1,1"
+              "Tint": "1,1,1,1",
+              "Yaw": {}
             },
             {
-              "__version": 0,
-              "__type": "ParticleSpriteRenderer",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleSpriteRenderer",
+              "__guid": "3b38590d-c37d-47e6-98b5-26da0290e68c",
               "Additive": false,
+              "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
               "BlurSpacing": 0.73,
@@ -731,6 +753,7 @@
               "FaceVelocity": false,
               "FogStrength": 1,
               "LeadingTrail": true,
+              "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
               "RotationOffset": 90,
@@ -740,23 +763,24 @@
               "Texture": "materials/effects/lightcookies/blank.vtex"
             },
             {
-              "__version": 0,
               "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
+              "__guid": "157e1a1b-ef8c-4689-a462-7c3ed9a32abb",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
               "Duration": 10,
               "Loop": true,
               "Radius": 104.066635,
-              "Rate": 210.23
+              "Rate": 210.23,
+              "RateOverDistance": 0
             }
           ]
         }
       ]
     },
     {
-      "Id": "2298ee45-4cc3-491b-9d98-764170baad2d",
+      "__guid": "2298ee45-4cc3-491b-9d98-764170baad2d",
+      "Flags": 0,
       "Name": "Wind (3)",
       "Position": "-7.156294,0.1545957,2412.377",
       "Rotation": "-0.0000004523779,0.7071081,0.7071055,-0.0000004523763",
@@ -764,36 +788,34 @@
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperWindTunnel",
-          "__enabled": true,
+          "__guid": "2683d62c-584d-427d-8d7e-39ea922d6a2e",
           "WindAirStrength": 15,
           "WindGroundedStrength": 25
         },
         {
-          "__version": 0,
-          "__type": "BoxCollider",
-          "__enabled": true,
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "267cf1d9-0762-4554-812f-b63d3a274c0e",
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
         {
-          "Id": "387a980d-c2ae-44f7-bc22-17421046a0a5",
+          "__guid": "387a980d-c2ae-44f7-bc22-17421046a0a5",
+          "Flags": 0,
           "Name": "Spray",
           "Position": "-374.9197,-0.00001401933,3.172392",
           "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
-          "Tags": "trigger",
+          "Tags": "particles",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ParticleEffect",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleEffect",
+              "__guid": "ea374d94-b807-4abb-97b4-c2e701986aeb",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -814,6 +836,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,
@@ -825,7 +848,6 @@
               },
               "Bumpiness": {},
               "Collision": false,
-              "CollisionIgnore": null,
               "CollisionRadius": 1,
               "Damping": {},
               "DieOnCollisionChance": {},
@@ -867,9 +889,12 @@
                 "Constants": "0.5,1,0,0"
               },
               "MaxParticles": 50,
+              "OrbitalForce": {},
+              "OrbitalPull": {},
               "PerParticleTimeScale": {
                 "Constants": "1,0.4,0,0"
               },
+              "Pitch": {},
               "PreWarm": 0,
               "PushStrength": {},
               "Roll": {
@@ -910,6 +935,7 @@
               },
               "SheetSequence": false,
               "Space": "World",
+              "StartDelay": {},
               "StartVelocity": {
                 "Type": "Range",
                 "Evaluation": "Particle",
@@ -919,13 +945,14 @@
                 "Constants": "1,0,0,0"
               },
               "TimeScale": 1,
-              "Tint": "1,1,1,1"
+              "Tint": "1,1,1,1",
+              "Yaw": {}
             },
             {
-              "__version": 0,
-              "__type": "ParticleSpriteRenderer",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleSpriteRenderer",
+              "__guid": "b5f8a60d-b265-4b29-b13e-fd3a20800b99",
               "Additive": false,
+              "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
               "BlurSpacing": 0.73,
@@ -933,6 +960,7 @@
               "FaceVelocity": false,
               "FogStrength": 1,
               "LeadingTrail": true,
+              "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
               "RotationOffset": 90,
@@ -942,23 +970,24 @@
               "Texture": "materials/effects/lightcookies/blank.vtex"
             },
             {
-              "__version": 0,
               "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
+              "__guid": "9a66108a-e895-4039-9199-5071497188bc",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
               "Duration": 10,
               "Loop": true,
               "Radius": 104.066635,
-              "Rate": 210.23
+              "Rate": 210.23,
+              "RateOverDistance": 0
             }
           ]
         }
       ]
     },
     {
-      "Id": "14e3ad84-ef4c-4ac3-b9f9-15d5408930f1",
+      "__guid": "14e3ad84-ef4c-4ac3-b9f9-15d5408930f1",
+      "Flags": 0,
       "Name": "Wind (4)",
       "Position": "0,-0.000387855,2926.37",
       "Rotation": "0.7071085,0,0,0.7071051",
@@ -966,36 +995,34 @@
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperWindTunnel",
-          "__enabled": true,
+          "__guid": "c8c736aa-e8b4-4cc8-ae92-5e9c7d9634db",
           "WindAirStrength": 15,
           "WindGroundedStrength": 25
         },
         {
-          "__version": 0,
-          "__type": "BoxCollider",
-          "__enabled": true,
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "e3649297-35ae-481e-a1b3-5995a4373e21",
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
         {
-          "Id": "a08ba126-c1fa-4d56-b6b0-31f2192261a7",
+          "__guid": "a08ba126-c1fa-4d56-b6b0-31f2192261a7",
+          "Flags": 0,
           "Name": "Spray",
           "Position": "-374.9197,-0.00001401933,3.172392",
           "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
-          "Tags": "trigger",
+          "Tags": "particles",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ParticleEffect",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleEffect",
+              "__guid": "fab0943a-6618-46c4-9327-154f7e77f931",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -1016,6 +1043,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,
@@ -1027,7 +1055,6 @@
               },
               "Bumpiness": {},
               "Collision": false,
-              "CollisionIgnore": null,
               "CollisionRadius": 1,
               "Damping": {},
               "DieOnCollisionChance": {},
@@ -1069,9 +1096,12 @@
                 "Constants": "0.5,1,0,0"
               },
               "MaxParticles": 50,
+              "OrbitalForce": {},
+              "OrbitalPull": {},
               "PerParticleTimeScale": {
                 "Constants": "1,0.4,0,0"
               },
+              "Pitch": {},
               "PreWarm": 0,
               "PushStrength": {},
               "Roll": {
@@ -1112,6 +1142,7 @@
               },
               "SheetSequence": false,
               "Space": "World",
+              "StartDelay": {},
               "StartVelocity": {
                 "Type": "Range",
                 "Evaluation": "Particle",
@@ -1121,13 +1152,14 @@
                 "Constants": "1,0,0,0"
               },
               "TimeScale": 1,
-              "Tint": "1,1,1,1"
+              "Tint": "1,1,1,1",
+              "Yaw": {}
             },
             {
-              "__version": 0,
-              "__type": "ParticleSpriteRenderer",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleSpriteRenderer",
+              "__guid": "9da4290d-4feb-47c6-88f3-974a4f83de8b",
               "Additive": false,
+              "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
               "BlurSpacing": 0.73,
@@ -1135,6 +1167,7 @@
               "FaceVelocity": false,
               "FogStrength": 1,
               "LeadingTrail": true,
+              "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
               "RotationOffset": 90,
@@ -1144,23 +1177,24 @@
               "Texture": "materials/effects/lightcookies/blank.vtex"
             },
             {
-              "__version": 0,
               "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
+              "__guid": "5f073222-cdf6-4381-82a1-ad1f4f5eab2f",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
               "Duration": 10,
               "Loop": true,
               "Radius": 104.066635,
-              "Rate": 210.23
+              "Rate": 210.23,
+              "RateOverDistance": 0
             }
           ]
         }
       ]
     },
     {
-      "Id": "22f22144-5ed1-414e-8706-a0b93e3e59a3",
+      "__guid": "22f22144-5ed1-414e-8706-a0b93e3e59a3",
+      "Flags": 0,
       "Name": "Wind (5)",
       "Position": "-67.1097,67.10521,3755.474",
       "Rotation": "0.6532837,-0.2705979,-0.2705984,0.6532791",
@@ -1168,36 +1202,34 @@
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperWindTunnel",
-          "__enabled": true,
+          "__guid": "222f803c-bd50-417b-9af8-0a7fa36f83d3",
           "WindAirStrength": 15,
           "WindGroundedStrength": 25
         },
         {
-          "__version": 0,
-          "__type": "BoxCollider",
-          "__enabled": true,
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "ffef3c9d-bd81-40b4-87dd-87fae8121a06",
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
         {
-          "Id": "b4e92efd-6c92-4753-b988-1ad7cdee9d8b",
+          "__guid": "b4e92efd-6c92-4753-b988-1ad7cdee9d8b",
+          "Flags": 0,
           "Name": "Spray",
           "Position": "-374.9197,-0.00001401933,3.172392",
           "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
-          "Tags": "trigger",
+          "Tags": "particles",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ParticleEffect",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleEffect",
+              "__guid": "2ad29a52-e27f-468f-ad6a-8561f61e99db",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -1218,6 +1250,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,
@@ -1229,7 +1262,6 @@
               },
               "Bumpiness": {},
               "Collision": false,
-              "CollisionIgnore": null,
               "CollisionRadius": 1,
               "Damping": {},
               "DieOnCollisionChance": {},
@@ -1271,9 +1303,12 @@
                 "Constants": "0.5,1,0,0"
               },
               "MaxParticles": 50,
+              "OrbitalForce": {},
+              "OrbitalPull": {},
               "PerParticleTimeScale": {
                 "Constants": "1,0.4,0,0"
               },
+              "Pitch": {},
               "PreWarm": 0,
               "PushStrength": {},
               "Roll": {
@@ -1314,6 +1349,7 @@
               },
               "SheetSequence": false,
               "Space": "World",
+              "StartDelay": {},
               "StartVelocity": {
                 "Type": "Range",
                 "Evaluation": "Particle",
@@ -1323,13 +1359,14 @@
                 "Constants": "1,0,0,0"
               },
               "TimeScale": 1,
-              "Tint": "1,1,1,1"
+              "Tint": "1,1,1,1",
+              "Yaw": {}
             },
             {
-              "__version": 0,
-              "__type": "ParticleSpriteRenderer",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleSpriteRenderer",
+              "__guid": "a03f6c00-f521-4f0c-a1c2-53dab3bd6bcb",
               "Additive": false,
+              "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
               "BlurSpacing": 0.73,
@@ -1337,6 +1374,7 @@
               "FaceVelocity": false,
               "FogStrength": 1,
               "LeadingTrail": true,
+              "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
               "RotationOffset": 90,
@@ -1346,23 +1384,24 @@
               "Texture": "materials/effects/lightcookies/blank.vtex"
             },
             {
-              "__version": 0,
               "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
+              "__guid": "17e4dafc-fb3b-4c17-a22a-5a8a37a895c5",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
               "Duration": 10,
               "Loop": true,
               "Radius": 104.066635,
-              "Rate": 210.23
+              "Rate": 210.23,
+              "RateOverDistance": 0
             }
           ]
         }
       ]
     },
     {
-      "Id": "bdc97f89-d0ff-485d-afeb-cae6f518f628",
+      "__guid": "bdc97f89-d0ff-485d-afeb-cae6f518f628",
+      "Flags": 0,
       "Name": "Wind (6)",
       "Position": "52.59146,-52.59912,4176.86",
       "Rotation": "0.2705977,0.6532844,0.6532789,0.2705978",
@@ -1370,36 +1409,34 @@
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperWindTunnel",
-          "__enabled": true,
+          "__guid": "eca5f5bc-16f7-49f4-bdf7-812984477fc8",
           "WindAirStrength": 15,
           "WindGroundedStrength": 25
         },
         {
-          "__version": 0,
-          "__type": "BoxCollider",
-          "__enabled": true,
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "a6f4c5cd-708d-437e-a363-6feaf8e65a9a",
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
         {
-          "Id": "c6e5c7d3-ba3c-4726-b509-efd8a2f8971a",
+          "__guid": "c6e5c7d3-ba3c-4726-b509-efd8a2f8971a",
+          "Flags": 0,
           "Name": "Spray",
           "Position": "-374.9197,-0.00001401933,3.172392",
           "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
-          "Tags": "trigger",
+          "Tags": "particles",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ParticleEffect",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleEffect",
+              "__guid": "53b4f560-11b2-47d6-bb51-1d6b03e4d7f3",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -1420,6 +1457,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,
@@ -1431,7 +1469,6 @@
               },
               "Bumpiness": {},
               "Collision": false,
-              "CollisionIgnore": null,
               "CollisionRadius": 1,
               "Damping": {},
               "DieOnCollisionChance": {},
@@ -1473,9 +1510,12 @@
                 "Constants": "0.5,1,0,0"
               },
               "MaxParticles": 50,
+              "OrbitalForce": {},
+              "OrbitalPull": {},
               "PerParticleTimeScale": {
                 "Constants": "1,0.4,0,0"
               },
+              "Pitch": {},
               "PreWarm": 0,
               "PushStrength": {},
               "Roll": {
@@ -1516,6 +1556,7 @@
               },
               "SheetSequence": false,
               "Space": "World",
+              "StartDelay": {},
               "StartVelocity": {
                 "Type": "Range",
                 "Evaluation": "Particle",
@@ -1525,13 +1566,14 @@
                 "Constants": "1,0,0,0"
               },
               "TimeScale": 1,
-              "Tint": "1,1,1,1"
+              "Tint": "1,1,1,1",
+              "Yaw": {}
             },
             {
-              "__version": 0,
-              "__type": "ParticleSpriteRenderer",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleSpriteRenderer",
+              "__guid": "8a335c97-191e-4947-9c7e-683feb46b78c",
               "Additive": false,
+              "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
               "BlurSpacing": 0.73,
@@ -1539,6 +1581,7 @@
               "FaceVelocity": false,
               "FogStrength": 1,
               "LeadingTrail": true,
+              "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
               "RotationOffset": 90,
@@ -1548,23 +1591,24 @@
               "Texture": "materials/effects/lightcookies/blank.vtex"
             },
             {
-              "__version": 0,
               "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
+              "__guid": "90915731-358e-4042-9562-9fe6cbb6bf6b",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
               "Duration": 10,
               "Loop": true,
               "Radius": 104.066635,
-              "Rate": 210.23
+              "Rate": 210.23,
+              "RateOverDistance": 0
             }
           ]
         }
       ]
     },
     {
-      "Id": "f7ef4f3d-8d6f-4f9b-a159-309be5d7b678",
+      "__guid": "f7ef4f3d-8d6f-4f9b-a159-309be5d7b678",
+      "Flags": 0,
       "Name": "Wind (7)",
       "Position": "255.3867,-258.5758,4964.153",
       "Rotation": "0.7071065,0.0000004390258,0.707107,-0.0000004390271",
@@ -1572,36 +1616,34 @@
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperWindTunnel",
-          "__enabled": true,
+          "__guid": "2ec07b28-ead2-4130-b558-da843f744835",
           "WindAirStrength": 15,
           "WindGroundedStrength": 25
         },
         {
-          "__version": 0,
-          "__type": "BoxCollider",
-          "__enabled": true,
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "48315577-bb42-4f80-abc8-f5ffcffda7b5",
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
         {
-          "Id": "9235c8ef-6514-4efc-b6e0-a03346be8669",
+          "__guid": "9235c8ef-6514-4efc-b6e0-a03346be8669",
+          "Flags": 0,
           "Name": "Spray",
           "Position": "-374.9197,-0.00001401933,3.172392",
           "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
-          "Tags": "trigger",
+          "Tags": "particles",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ParticleEffect",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleEffect",
+              "__guid": "9da1f691-d4dc-4b3d-8409-015f94c22d8d",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -1622,6 +1664,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,
@@ -1633,7 +1676,6 @@
               },
               "Bumpiness": {},
               "Collision": false,
-              "CollisionIgnore": null,
               "CollisionRadius": 1,
               "Damping": {},
               "DieOnCollisionChance": {},
@@ -1675,9 +1717,12 @@
                 "Constants": "0.5,1,0,0"
               },
               "MaxParticles": 50,
+              "OrbitalForce": {},
+              "OrbitalPull": {},
               "PerParticleTimeScale": {
                 "Constants": "1,0.4,0,0"
               },
+              "Pitch": {},
               "PreWarm": 0,
               "PushStrength": {},
               "Roll": {
@@ -1718,6 +1763,7 @@
               },
               "SheetSequence": false,
               "Space": "World",
+              "StartDelay": {},
               "StartVelocity": {
                 "Type": "Range",
                 "Evaluation": "Particle",
@@ -1727,13 +1773,14 @@
                 "Constants": "1,0,0,0"
               },
               "TimeScale": 1,
-              "Tint": "1,1,1,1"
+              "Tint": "1,1,1,1",
+              "Yaw": {}
             },
             {
-              "__version": 0,
-              "__type": "ParticleSpriteRenderer",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleSpriteRenderer",
+              "__guid": "96b8ec20-e904-47fd-ace3-bc450ce41925",
               "Additive": false,
+              "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
               "BlurSpacing": 0.73,
@@ -1741,6 +1788,7 @@
               "FaceVelocity": false,
               "FogStrength": 1,
               "LeadingTrail": true,
+              "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
               "RotationOffset": 90,
@@ -1750,23 +1798,24 @@
               "Texture": "materials/effects/lightcookies/blank.vtex"
             },
             {
-              "__version": 0,
               "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
+              "__guid": "be66213d-5c1a-4364-80ff-6b7788016028",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
               "Duration": 10,
               "Loop": true,
               "Radius": 104.066635,
-              "Rate": 210.23
+              "Rate": 210.23,
+              "RateOverDistance": 0
             }
           ]
         }
       ]
     },
     {
-      "Id": "6c9ddca6-5da5-41a9-a718-738068c07417",
+      "__guid": "6c9ddca6-5da5-41a9-a718-738068c07417",
+      "Flags": 0,
       "Name": "Wind (8)",
       "Position": "-255.6116,271.4123,4964.153",
       "Rotation": "0.7071065,0.0000004390258,0.707107,-0.0000004390271",
@@ -1774,36 +1823,34 @@
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperWindTunnel",
-          "__enabled": true,
+          "__guid": "7c5a0e61-2003-4a96-9f8c-bed144b8e775",
           "WindAirStrength": 15,
           "WindGroundedStrength": 25
         },
         {
-          "__version": 0,
-          "__type": "BoxCollider",
-          "__enabled": true,
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "9ab40f23-5fcd-44a9-9482-8b0d0443c9e6",
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
         {
-          "Id": "6ac1ccf1-993f-4edc-aa6c-222e8817a1e9",
+          "__guid": "6ac1ccf1-993f-4edc-aa6c-222e8817a1e9",
+          "Flags": 0,
           "Name": "Spray",
           "Position": "-374.9197,-0.00001401933,3.172392",
           "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
-          "Tags": "trigger",
+          "Tags": "particles",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ParticleEffect",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleEffect",
+              "__guid": "87de5e0f-9336-4933-afee-a11bd834d342",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -1824,6 +1871,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,
@@ -1835,7 +1883,6 @@
               },
               "Bumpiness": {},
               "Collision": false,
-              "CollisionIgnore": null,
               "CollisionRadius": 1,
               "Damping": {},
               "DieOnCollisionChance": {},
@@ -1877,9 +1924,12 @@
                 "Constants": "0.5,1,0,0"
               },
               "MaxParticles": 50,
+              "OrbitalForce": {},
+              "OrbitalPull": {},
               "PerParticleTimeScale": {
                 "Constants": "1,0.4,0,0"
               },
+              "Pitch": {},
               "PreWarm": 0,
               "PushStrength": {},
               "Roll": {
@@ -1920,6 +1970,7 @@
               },
               "SheetSequence": false,
               "Space": "World",
+              "StartDelay": {},
               "StartVelocity": {
                 "Type": "Range",
                 "Evaluation": "Particle",
@@ -1929,13 +1980,14 @@
                 "Constants": "1,0,0,0"
               },
               "TimeScale": 1,
-              "Tint": "1,1,1,1"
+              "Tint": "1,1,1,1",
+              "Yaw": {}
             },
             {
-              "__version": 0,
-              "__type": "ParticleSpriteRenderer",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleSpriteRenderer",
+              "__guid": "62e11722-58e5-414d-b634-9d18967fae07",
               "Additive": false,
+              "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
               "BlurSpacing": 0.73,
@@ -1943,6 +1995,7 @@
               "FaceVelocity": false,
               "FogStrength": 1,
               "LeadingTrail": true,
+              "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
               "RotationOffset": 90,
@@ -1952,23 +2005,24 @@
               "Texture": "materials/effects/lightcookies/blank.vtex"
             },
             {
-              "__version": 0,
               "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
+              "__guid": "484400f8-af93-4b7e-8089-5d429c7a01f1",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
               "Duration": 10,
               "Loop": true,
               "Radius": 104.066635,
-              "Rate": 210.23
+              "Rate": 210.23,
+              "RateOverDistance": 0
             }
           ]
         }
       ]
     },
     {
-      "Id": "e28237e9-4db6-4e17-a604-841fbd30f3c5",
+      "__guid": "e28237e9-4db6-4e17-a604-841fbd30f3c5",
+      "Flags": 0,
       "Name": "Wind (9)",
       "Position": "-0.472533,-4.899565,5463.612",
       "Rotation": "0.7071065,0.0000004390258,0.707107,-0.0000004390271",
@@ -1976,36 +2030,34 @@
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperWindTunnel",
-          "__enabled": true,
+          "__guid": "f4157318-6f03-4707-9f50-b0e02e406aa5",
           "WindAirStrength": 15,
           "WindGroundedStrength": 25
         },
         {
-          "__version": 0,
-          "__type": "BoxCollider",
-          "__enabled": true,
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "f912675b-37bb-4a68-8eb9-d7f4f91a1f13",
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false,
-          "Surface": null
+          "Static": false
         }
       ],
       "Children": [
         {
-          "Id": "067692be-4530-4c50-8ab6-5ae61932454c",
+          "__guid": "067692be-4530-4c50-8ab6-5ae61932454c",
+          "Flags": 0,
           "Name": "Spray",
           "Position": "-374.9197,-0.00001401933,3.172392",
           "Rotation": "-0.000000002258632,0.007002058,0.00000002960341,0.9999752",
-          "Tags": "trigger",
+          "Tags": "particles",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ParticleEffect",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleEffect",
+              "__guid": "88acf20a-dc13-4fd1-8f23-854601fa0a6b",
+              "__version": 1,
               "Alpha": {
                 "Type": "Curve",
                 "CurveA": [
@@ -2026,6 +2078,7 @@
                 ],
                 "Constants": "1,0,0,0"
               },
+              "ApplyAlpha": true,
               "ApplyColor": true,
               "ApplyRotation": false,
               "ApplyShape": true,
@@ -2037,7 +2090,6 @@
               },
               "Bumpiness": {},
               "Collision": false,
-              "CollisionIgnore": null,
               "CollisionRadius": 1,
               "Damping": {},
               "DieOnCollisionChance": {},
@@ -2079,9 +2131,12 @@
                 "Constants": "0.5,1,0,0"
               },
               "MaxParticles": 50,
+              "OrbitalForce": {},
+              "OrbitalPull": {},
               "PerParticleTimeScale": {
                 "Constants": "1,0.4,0,0"
               },
+              "Pitch": {},
               "PreWarm": 0,
               "PushStrength": {},
               "Roll": {
@@ -2122,6 +2177,7 @@
               },
               "SheetSequence": false,
               "Space": "World",
+              "StartDelay": {},
               "StartVelocity": {
                 "Type": "Range",
                 "Evaluation": "Particle",
@@ -2131,13 +2187,14 @@
                 "Constants": "1,0,0,0"
               },
               "TimeScale": 1,
-              "Tint": "1,1,1,1"
+              "Tint": "1,1,1,1",
+              "Yaw": {}
             },
             {
-              "__version": 0,
-              "__type": "ParticleSpriteRenderer",
-              "__enabled": true,
+              "__type": "Sandbox.ParticleSpriteRenderer",
+              "__guid": "1b196139-e244-4a9d-9413-6abd6a97ca3e",
               "Additive": false,
+              "Alignment": "LookAtCamera",
               "BlurAmount": 0.5,
               "BlurOpacity": 0.91,
               "BlurSpacing": 0.73,
@@ -2145,6 +2202,7 @@
               "FaceVelocity": false,
               "FogStrength": 1,
               "LeadingTrail": true,
+              "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
               "RotationOffset": 90,
@@ -2154,49 +2212,54 @@
               "Texture": "materials/effects/lightcookies/blank.vtex"
             },
             {
-              "__version": 0,
               "__type": "ParticleCircleForwardEmitter",
-              "__enabled": true,
+              "__guid": "b66d307c-affc-40e9-a0e9-65f4d7aea1e5",
               "Burst": 0,
               "Delay": 0,
               "DestroyOnEnd": false,
               "Duration": 10,
               "Loop": true,
               "Radius": 104.066635,
-              "Rate": 210.23
+              "Rate": 210.23,
+              "RateOverDistance": 0
             }
           ]
         }
       ]
     },
     {
-      "Id": "99a0519c-6744-486f-8919-8ff76bf11a9c",
+      "__guid": "99a0519c-6744-486f-8919-8ff76bf11a9c",
+      "Flags": 0,
       "Name": "DistanceRuler",
       "Position": "-0.0003073972,0,0",
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperDistanceRuler",
-          "__enabled": true,
-          "EndObject": "79ab38f5-6a12-434e-a61b-88bcb093f916",
-          "StartObject": "84ee6cec-d996-4d19-8318-2553e9d47f8f"
+          "__guid": "a9584a29-ca1b-496a-b33c-8f05bc43ae0d",
+          "EndObject": {
+            "_type": "gameobject",
+            "go": "79ab38f5-6a12-434e-a61b-88bcb093f916"
+          },
+          "StartObject": {
+            "_type": "gameobject",
+            "go": "84ee6cec-d996-4d19-8318-2553e9d47f8f"
+          }
         }
       ],
       "Children": [
         {
-          "Id": "84ee6cec-d996-4d19-8318-2553e9d47f8f",
+          "__guid": "84ee6cec-d996-4d19-8318-2553e9d47f8f",
+          "Flags": 0,
           "Name": "StartPoint",
           "Position": "0,0,-15872",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ModelRenderer",
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "9d5d2cfc-be92-4433-9312-a1f796ee70bf",
               "__enabled": false,
               "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": null,
               "Model": "models/editor/axis_helper_thick.vmdl",
               "RenderType": "On",
               "Tint": "1,1,1,1"
@@ -2204,18 +2267,17 @@
           ]
         },
         {
-          "Id": "79ab38f5-6a12-434e-a61b-88bcb093f916",
+          "__guid": "79ab38f5-6a12-434e-a61b-88bcb093f916",
+          "Flags": 0,
           "Name": "EndPoint",
           "Position": "0,0,15900",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "ModelRenderer",
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "9e1e07dd-9fec-4859-b8ad-4d3b77448970",
               "__enabled": false,
               "BodyGroups": 18446744073709551615,
-              "MaterialGroup": null,
-              "MaterialOverride": null,
               "Model": "models/editor/axis_helper_thick.vmdl",
               "RenderType": "On",
               "Tint": "1,1,1,1"
@@ -2225,86 +2287,94 @@
       ]
     },
     {
-      "Id": "9ce703a9-b71e-4183-afed-af3e9df33896",
+      "__guid": "9ce703a9-b71e-4183-afed-af3e9df33896",
+      "Flags": 0,
       "Name": "StartingPoint",
       "Position": "0,0,-15869.1",
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
           "__type": "JumperSpawnPoint",
-          "__enabled": true
+          "__guid": "cb9b031a-88cd-489f-a5b3-02ef8ab6f1ee"
         }
       ]
     },
     {
-      "Id": "4e410f9b-0637-4241-826a-af1d82ba7abd",
+      "__guid": "4e410f9b-0637-4241-826a-af1d82ba7abd",
+      "Flags": 0,
       "Name": "ImATop",
       "Position": "0,-762.6534,15900",
       "Enabled": true
     },
     {
-      "Id": "ca44583a-d88b-4549-bfdb-92d5805c48b1",
+      "__guid": "ca44583a-d88b-4549-bfdb-92d5805c48b1",
+      "Flags": 0,
       "Name": "Map",
       "Position": "-914.2441,-785.4478,1086.708",
       "Enabled": true,
       "Components": [
         {
-          "__version": 0,
-          "__type": "MapInstance",
-          "__enabled": true,
+          "__type": "Sandbox.MapInstance",
+          "__guid": "b6a99266-a831-4098-8e01-5c3ffedae562",
+          "__version": 1,
+          "EnableCollision": true,
           "MapName": "facepunch/jumpermap",
+          "NoOrigin": true,
           "OnMapLoaded": null,
           "OnMapUnloaded": null,
           "UseMapFromLaunch": true
         },
         {
-          "__version": 0,
           "__type": "MapPlayerSpawns",
-          "__enabled": true
+          "__guid": "136f61af-30a7-46ac-8ad1-a22ef55db24e"
         },
         {
-          "__version": 0,
           "__type": "MapOverrider",
-          "__enabled": true,
-          "FrogPrefab": "prefabs/npc_frog.prefab"
+          "__guid": "956ecbb0-2235-496f-9b52-896ca6a9a9cb",
+          "FrogPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/npc_frog.prefab"
+          }
         }
       ],
       "Children": []
     },
     {
-      "Id": "49f53d96-48f7-4c2d-b34e-88379c354173",
+      "__guid": "49f53d96-48f7-4c2d-b34e-88379c354173",
+      "Flags": 0,
       "Name": "Object",
       "Position": "-114.398,3425.495,16604.18",
       "Enabled": true,
       "Children": [
         {
-          "Id": "e9e9ad8f-bf86-448b-8201-c296da5f02f6",
+          "__guid": "e9e9ad8f-bf86-448b-8201-c296da5f02f6",
+          "Flags": 0,
           "Name": "FinishLine",
           "Position": "114.398,-4697.942,-1386.426",
           "Tags": "trigger",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "dd05a297-dff7-4213-81f4-c230514824a4",
               "Center": "0,0,0",
               "IsTrigger": true,
               "Scale": "3987.198,1418.598,360.3996",
-              "Static": false,
-              "Surface": null
+              "Static": false
             },
             {
-              "__version": 0,
               "__type": "JumperFinishLine",
-              "__enabled": true,
-              "TopPosition": "4e410f9b-0637-4241-826a-af1d82ba7abd"
+              "__guid": "ef1ac9ba-8cd2-4eff-becb-cce7d822ea24",
+              "TopPosition": {
+                "_type": "gameobject",
+                "go": "4e410f9b-0637-4241-826a-af1d82ba7abd"
+              }
             }
           ]
         },
         {
-          "Id": "cf0e12d0-8fbd-483c-a014-94a98bd9f781",
+          "__guid": "cf0e12d0-8fbd-483c-a014-94a98bd9f781",
+          "Flags": 0,
           "Name": "FinishLine (3)",
           "Position": "-1299.789,-3400.023,-1386.426",
           "Rotation": "0,0,0.707107,0.7071065",
@@ -2312,50 +2382,52 @@
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "6490b4a6-0c65-48a2-ab8d-92a8dc5858cf",
               "Center": "0,0,0",
               "IsTrigger": true,
               "Scale": "3987.198,1418.598,360.3996",
-              "Static": false,
-              "Surface": null
+              "Static": false
             },
             {
-              "__version": 0,
               "__type": "JumperFinishLine",
-              "__enabled": true,
-              "TopPosition": "4e410f9b-0637-4241-826a-af1d82ba7abd"
+              "__guid": "02691234-ac0e-4dc7-a942-e88148a09370",
+              "TopPosition": {
+                "_type": "gameobject",
+                "go": "4e410f9b-0637-4241-826a-af1d82ba7abd"
+              }
             }
           ]
         },
         {
-          "Id": "c667d125-5b47-479f-9ccd-512c6258e453",
+          "__guid": "c667d125-5b47-479f-9ccd-512c6258e453",
+          "Flags": 0,
           "Name": "FinishLine (1)",
           "Position": "114.398,-2173.136,-1386.426",
           "Tags": "trigger",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "dfa74560-21e9-46da-94cc-cc6ac05ccc69",
               "Center": "0,0,0",
               "IsTrigger": true,
               "Scale": "3987.198,1418.598,360.3996",
-              "Static": false,
-              "Surface": null
+              "Static": false
             },
             {
-              "__version": 0,
               "__type": "JumperFinishLine",
-              "__enabled": true,
-              "TopPosition": "4e410f9b-0637-4241-826a-af1d82ba7abd"
+              "__guid": "5af30bf0-eb39-4a7e-b26d-83774831b78c",
+              "TopPosition": {
+                "_type": "gameobject",
+                "go": "4e410f9b-0637-4241-826a-af1d82ba7abd"
+              }
             }
           ]
         },
         {
-          "Id": "30f97284-8a8d-4144-ab1c-951fa6486510",
+          "__guid": "30f97284-8a8d-4144-ab1c-951fa6486510",
+          "Flags": 0,
           "Name": "FinishLine (2)",
           "Position": "1362.868,-3400.021,-1386.426",
           "Rotation": "0,0,0.707107,0.7071065",
@@ -2363,127 +2435,199 @@
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "0b9eae01-645e-4b78-9383-390bc9120861",
               "Center": "0,0,0",
               "IsTrigger": true,
               "Scale": "3987.198,1418.598,360.3996",
-              "Static": false,
-              "Surface": null
+              "Static": false
             },
             {
-              "__version": 0,
               "__type": "JumperFinishLine",
-              "__enabled": true,
-              "TopPosition": "4e410f9b-0637-4241-826a-af1d82ba7abd"
+              "__guid": "af0887df-4824-4aa2-8d04-985ffde427f5",
+              "TopPosition": {
+                "_type": "gameobject",
+                "go": "4e410f9b-0637-4241-826a-af1d82ba7abd"
+              }
             }
           ]
         }
       ]
     },
     {
-      "Id": "541f75a5-da9b-4968-a8d4-5cd8f222a966",
+      "__guid": "541f75a5-da9b-4968-a8d4-5cd8f222a966",
+      "Flags": 0,
       "Name": "Object",
       "Position": "0,0,15242.87",
       "Enabled": true,
       "Children": [
         {
-          "Id": "efc1ba09-1868-4539-8554-15e517b42f73",
+          "__guid": "efc1ba09-1868-4539-8554-15e517b42f73",
+          "Flags": 0,
           "Name": "Object",
           "Position": "-1563.138,-0.0000158665,-203.3955",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "e0fe536d-577c-44ed-8201-cff97c9447a8",
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "2000,5000,50",
-              "Static": false,
-              "Surface": null
+              "Static": false
             }
           ]
         },
         {
-          "Id": "4ca7baf4-429a-48f8-801c-da0db0f714ab",
+          "__guid": "4ca7baf4-429a-48f8-801c-da0db0f714ab",
+          "Flags": 0,
           "Name": "Object (1)",
           "Position": "1588.536,-0.0000158665,-203.3955",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "703f9a2c-9797-46d8-afd8-6da1ac45f828",
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "2000,5000,50",
-              "Static": false,
-              "Surface": null
+              "Static": false
             }
           ]
         },
         {
-          "Id": "1c81cc29-f8c7-44fa-9968-1bfdcf585110",
+          "__guid": "1c81cc29-f8c7-44fa-9968-1bfdcf585110",
+          "Flags": 0,
           "Name": "Object (1)",
           "Position": "-3.996928,1510.459,-203.3955",
           "Rotation": "0,0,0.707107,0.7071065",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "b5b80f26-353c-4a3b-9ab0-666425381d44",
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "2000,5000,50",
-              "Static": false,
-              "Surface": null
+              "Static": false
             }
           ]
         },
         {
-          "Id": "81543d6d-aaac-44ea-a8f5-6618162743b2",
+          "__guid": "81543d6d-aaac-44ea-a8f5-6618162743b2",
+          "Flags": 0,
           "Name": "Object (1)",
           "Position": "-3.996928,-1556.202,-203.3955",
           "Rotation": "0,0,0.707107,0.7071065",
           "Enabled": true,
           "Components": [
             {
-              "__version": 0,
-              "__type": "BoxCollider",
-              "__enabled": true,
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "434b7f48-9ebe-4824-9f44-b0afc2177498",
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "2000,5000,50",
-              "Static": false,
-              "Surface": null
+              "Static": false
             }
           ]
         }
       ]
     },
     {
-      "Id": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8",
+      "__guid": "f7cc5d2c-7963-44cf-ad5d-24ee4cf926d8",
+      "Flags": 0,
       "Name": "Npc_Frog",
       "Position": "-328.8859,273.821,-15871",
       "Rotation": "-0.000002329453,0.000001532889,-0.3448989,0.93864",
       "Tags": "trigger",
       "Enabled": true,
-      "__Prefab": "prefabs/npc_frog.prefab"
+      "__Prefab": "prefabs/npc_frog.prefab",
+      "__PrefabVariables": {}
+    },
+    {
+      "__guid": "0cba4d7b-e081-462c-a984-5e9c07a286b5",
+      "Flags": 0,
+      "Name": "Ending Cheevo",
+      "Position": "0,879.0453,16019.83",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "22bddf4f-3fd0-4b35-9dbe-2ef3813cabb1",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "1000,1000,297.1998",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.EndingAchievement",
+          "__guid": "a9401321-7660-4316-b6dc-28ca9fe25862"
+        }
+      ]
+    },
+    {
+      "__guid": "408433db-fde1-47eb-8338-e6346fc51b3c",
+      "Flags": 0,
+      "Name": "Ending Cheevo (1)",
+      "Position": "0,-869.3284,16019.83",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "fb3d8693-5eeb-4a2b-8c81-eb8adcf85851",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "1000,1000,297.1998",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.EndingAchievement",
+          "__guid": "5ea16e3e-8dde-4019-98de-5fbf470d38e0"
+        }
+      ]
+    },
+    {
+      "__guid": "27fcc740-836f-41c2-aebc-8ff9f1cf8114",
+      "Flags": 0,
+      "Name": "Object",
+      "Position": "169.0909,0.000002038049,13400.08",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "2c4103a2-6137-4777-8bec-0318c7f3dfb4",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,515.9335,10.99999",
+          "Static": false
+        }
+      ]
     }
   ],
   "SceneProperties": {
     "FixedUpdateFrequency": 50,
-    "Lerping": true,
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 60,
+    "NetworkInterpolation": true,
     "ThreadedAnimation": true,
     "TimeScale": 1,
-    "UseFixedUpdate": true
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
   },
   "Title": "jumper",
   "Description": "",
-  "__references": []
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
 }

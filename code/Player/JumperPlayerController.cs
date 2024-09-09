@@ -1,4 +1,5 @@
 using Sandbox;
+using Sandbox.Services;
 
 public class JumperPlayerController : Component
 {
@@ -29,6 +30,9 @@ public class JumperPlayerController : Component
 
 	bool CanJump;
 
+	Vector3 LastGroundedPos { get; set; }
+	int BounceCount { get; set; }
+
 	protected override void OnUpdate()
 	{
 		// Eye input
@@ -47,6 +51,11 @@ public class JumperPlayerController : Component
 			EyeAngles = e;
 
 			IsRunning = Input.Down( "Duck" );
+		}
+
+		if(Input.Pressed("flashlight"))
+		{
+			GameObject.Transform.Position = new Vector3( -537.7548f, -811.9355f, 15872.03f );
 		}
 
 		// rotate body to look angles
@@ -98,7 +107,8 @@ public class JumperPlayerController : Component
 				PlayerStats?.SaveStats();
 				LastSave = 0;
 			}
-
+			LastGroundedPos = GameObject.Transform.Position;
+			BounceCount = 0;
 		}
 		else
 		{
@@ -117,14 +127,12 @@ public class JumperPlayerController : Component
 		}
 		if ( CharacterController.IsOnGround )
 		{
-
 			CharacterController.Velocity = CharacterController.Velocity.WithZ( 0 );
 			CharacterController.Accelerate( WishVelocity );
 			CharacterController.ApplyFriction( IsRunning ? 4 : 10 );
 		}
 		else
 		{
-
 			CharacterController.Velocity -= Gravity * Time.Delta * 0.5f;
 			//cc.Accelerate( WishVelocity.ClampLength( 50 ) );
 			CharacterController.ApplyFriction( 0.1f );
@@ -224,6 +232,18 @@ public class JumperPlayerController : Component
 
 		//SceneUtility.Instantiate( HitEffect, Transform.Position + Vector3.Up * 32, Rotation.LookAt( tr.Normal ) );
 		Sound.Play( "jumper.impact.wall", Transform.Position );
+
+		BounceCount++;
+
+		// if we bounce 5 times get achievement
+		if ( BounceCount >= 5 )
+		{
+			GetAchievement( "bounce_5" );
+		}
+		if ( BounceCount >= 10 )
+		{
+			GetAchievement( "bounce_10" );
+		}
 	}
 
 	public void TryWind( Vector3 winddir, float strength )
@@ -262,6 +282,11 @@ public class JumperPlayerController : Component
 			fallMessage.DisplayMessage( GetRandomFallMessage() );
 			PlayerStats.TotalFalls++;
 			HasLanded = true;
+		}
+
+		if( DistanceFell(LastGroundedPos, GameObject.Transform.Position ) > 5000 )
+		{
+			GetAchievement( "fall_5000" );
 		}
 	}
 	public int GetFallDamage( float fallspeed )
@@ -306,6 +331,11 @@ public class JumperPlayerController : Component
 		}
 
 		return o;
+	}
+
+	float DistanceFell(Vector3 Start, Vector3 End )
+	{
+		return Math.Abs( Start.z - End.z );
 	}
 	public void Write( ref ByteStream stream )
 	{
@@ -378,4 +408,14 @@ public class JumperPlayerController : Component
 		"Awoooo awoooo awoooo!",
 		"3 bags of rice,5 carrots and 2 apples!"
 	};
+
+	void GetAchievement(string cheevo)
+	{
+		if ( IsProxy )
+			return;
+
+		Achievements.Unlock( cheevo );
+
+		Log.Info($"Unlocked achievement: {cheevo}" );
+	}
 }
