@@ -53,11 +53,6 @@ public class JumperPlayerController : Component
 			IsRunning = Input.Down( "Duck" );
 		}
 
-		if(Input.Pressed("flashlight"))
-		{
-			GameObject.Transform.Position = new Vector3( -537.7548f, -811.9355f, 15872.03f );
-		}
-
 		// rotate body to look angles
 		if ( Body is not null )
 		{
