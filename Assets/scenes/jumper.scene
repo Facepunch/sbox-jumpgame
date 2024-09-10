@@ -2767,8 +2767,141 @@
           "Static": false
         },
         {
-          "__type": "Sandbox.EndingAchievement",
-          "__guid": "a9401321-7660-4316-b6dc-28ca9fe25862"
+          "__type": "Sandbox.AchievementTrigger",
+          "__guid": "b9d0f99f-d743-4968-8031-9462e75e0ff4",
+          "Achievement": "get_to_the_top"
+        }
+      ]
+    },
+    {
+      "__guid": "17fb0da4-7427-43f5-b0f9-7e60d3e307c5",
+      "Flags": 0,
+      "Name": "Entrance Cheevo",
+      "Position": "0,64,-12640",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "024ed52d-dcb7-414d-900c-63d97498cec3",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "1000,1000,297.1998",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.AchievementTrigger",
+          "__guid": "d250076d-7b14-4ad0-9bcc-f21cfc8dde07",
+          "Achievement": "clear_entrance"
+        }
+      ]
+    },
+    {
+      "__guid": "8e23e892-2991-4963-9c3b-2e263cf8e851",
+      "Flags": 0,
+      "Name": "Pipe Cheevo",
+      "Position": "0,32,-9600",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "11fc82bf-65c3-4327-ad50-50310ea4fb9a",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "1000,1000,297.1998",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.AchievementTrigger",
+          "__guid": "71828c9c-2090-417f-89ba-1af0f8785a23",
+          "Achievement": "clear_pipes"
+        }
+      ]
+    },
+    {
+      "__guid": "6d448759-4bae-4938-ae08-90b75bb99c91",
+      "Flags": 0,
+      "Name": "Boiler Cheevo",
+      "Position": "0,32,-2880",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "9ad1b814-ff90-4135-90ac-78ab263925b3",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "1000,1000,297.1998",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.AchievementTrigger",
+          "__guid": "5cd78492-9161-47b0-ba12-21d180d73496",
+          "Achievement": "clear_boiler"
+        }
+      ]
+    },
+    {
+      "__guid": "0b4aee9c-1179-41bd-a115-479a0653e26d",
+      "Flags": 0,
+      "Name": "Greenhouse Cheevo",
+      "Position": "0,32,672",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "c576f033-fda6-47dc-a554-e12fd24d788f",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "1000,1000,297.1998",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.AchievementTrigger",
+          "__guid": "021a7ad5-756d-4c05-872c-9d6302b444d3",
+          "Achievement": "clear_greenhouse"
+        }
+      ]
+    },
+    {
+      "__guid": "3ea658c3-6560-47f6-b1ea-b4192277ccc1",
+      "Flags": 0,
+      "Name": "Cooling Cheevo",
+      "Position": "0,32,6624",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "d4119bdf-8631-427f-b6f4-77c0be5ba05a",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "1000,1000,297.1998",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.AchievementTrigger",
+          "__guid": "91d37101-47ed-4730-b40e-3789ac9bb30f",
+          "Achievement": "clear_cooling"
+        }
+      ]
+    },
+    {
+      "__guid": "dde6e4bd-e27c-4c7d-a72a-f1b1bcc05692",
+      "Flags": 0,
+      "Name": "Auditorium Cheevo",
+      "Position": "0,32,13728",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "bb1d3f60-0eb9-47f2-a1f0-06282af1f1d9",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "1000,1000,297.1998",
+          "Static": false
+        },
+        {
+          "__type": "Sandbox.AchievementTrigger",
+          "__guid": "3acf0834-316e-46d2-a57c-678e1d550ebb",
+          "Achievement": "clear_auditorium"
         }
       ]
     },
@@ -2788,8 +2921,9 @@
           "Static": false
         },
         {
-          "__type": "Sandbox.EndingAchievement",
-          "__guid": "5ea16e3e-8dde-4019-98de-5fbf470d38e0"
+          "__type": "Sandbox.AchievementTrigger",
+          "__guid": "5c1aa46e-0885-4a1f-824c-d73643290832",
+          "Achievement": "get_to_the_top"
         }
       ]
     },

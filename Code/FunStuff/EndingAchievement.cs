@@ -2,8 +2,10 @@ using Sandbox.Services;
 
 namespace Sandbox;
 
-public sealed class EndingAchievement : Component, Component.ITriggerListener
+public sealed class AchievementTrigger : Component, Component.ITriggerListener
 {
+	[Property] public string Achievement { get; set; } = "";
+
 	void ITriggerListener.OnTriggerEnter( Collider other )
 	{
 
@@ -11,7 +13,7 @@ public sealed class EndingAchievement : Component, Component.ITriggerListener
 		{
 			if ( !other.Network.IsProxy )
 			{
-				Achievements.Unlock( "get_to_the_top" );
+				Achievements.Unlock( Achievement );
 			}
 		}
 	}
