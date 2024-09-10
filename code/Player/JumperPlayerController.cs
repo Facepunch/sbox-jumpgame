@@ -33,6 +33,17 @@ public class JumperPlayerController : Component
 	Vector3 LastGroundedPos { get; set; }
 	int BounceCount { get; set; }
 
+	protected override void OnStart()
+	{
+		base.OnStart();
+
+		if ( IsProxy )
+			return;
+
+		LastGroundedPos = GameObject.Transform.Position;
+	}
+
+
 	protected override void OnUpdate()
 	{
 		// Eye input
