@@ -314,7 +314,7 @@ public class JumperPlayerController : Component
 		WishVelocity = WishVelocity.WithZ( 0 );
 
 		bool isUsingKeyboard = Input.Down( "Forward" ) || Input.Down( "Backward" ) || Input.Down( "Left" ) || Input.Down( "Right" );
-		if(isUsingKeyboard && !WishVelocity.IsNearlyZero(.01f)) WishVelocity = WishVelocity.Normal;
+		if(isUsingKeyboard && !WishVelocity.IsNearlyZero(.5f)) WishVelocity = WishVelocity.Normal;
 
 		if ( Input.Down( "duck" ) ) WishVelocity *= 100.0f;
 		else WishVelocity *= 200.0f;
