@@ -310,12 +310,7 @@ public class JumperPlayerController : Component
 	{
 		var rot = EyeAngles.ToRotation();
 
-		WishVelocity = 0;
-
-		if ( Input.Down( "Forward" ) ) WishVelocity += rot.Forward;
-		if ( Input.Down( "Backward" ) ) WishVelocity += rot.Backward;
-		if ( Input.Down( "Left" ) ) WishVelocity += rot.Left;
-		if ( Input.Down( "Right" ) ) WishVelocity += rot.Right;
+		WishVelocity = Input.AnalogMove * rot;
 
 		WishVelocity = WishVelocity.WithZ( 0 );
 
