@@ -42,7 +42,8 @@ public sealed class DropObjectOnFootstep : Component
 
 		var sound = e.FootId == 0 ? tr.Surface.Sounds.FootLeft : tr.Surface.Sounds.FootRight;
 
-		Sound.Play( sound, Transform.Position );
+		if ( sound != null )
+			Sound.Play( sound, WorldPosition );
 	}
 
 }
