@@ -80,11 +80,11 @@ public class JumperPlayerController : Component
 			Body.Transform.Rotation = Rotation.Slerp( Body.Transform.Rotation, Rotation.From( TargetAngles ), 8f * Time.Delta );
 		}
 
-		if ( AnimationHelper is not null )
+		if ( AnimationHelper.IsValid() )
 		{
 			AnimationHelper.WithVelocity( CharacterController.Velocity );
 			AnimationHelper.IsGrounded = CharacterController.IsOnGround;
-			AnimationHelper.FootShuffle = 0;
+			AnimationHelper.MoveRotationSpeed = 0;
 			AnimationHelper.WithLook( EyeAngles.Forward, 1, 1, 1.0f );
 			AnimationHelper.MoveStyle = !IsRunning ? JumperCitizenAnimation.MoveStyles.Run : JumperCitizenAnimation.MoveStyles.Walk;
 		}
