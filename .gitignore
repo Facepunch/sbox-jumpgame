@@ -21,3 +21,4 @@ tools_asset_info.bin
 [Oo]bj/
 *_bakeresourcecache
 *_source
+*.sbox/
