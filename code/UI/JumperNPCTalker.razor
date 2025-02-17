@@ -12,7 +12,7 @@
     public string Message { get; set; } = "";
 
     private bool Visible => TimeSinceDisplayed < 4;
-    private TimeSince TimeSinceDisplayed;
+    private RealTimeSince TimeSinceDisplayed = 999;
 
     public string OutputText { get; set; }
     public float Delay { get; set; } = .1f;
@@ -22,8 +22,7 @@
     protected override void OnEnabled()
     {
         base.OnEnabled();
-
-        TimeSinceDisplayed = 5;
+        TimeSinceDisplayed = 999;
     }
 
     public static bool IsTalking()
