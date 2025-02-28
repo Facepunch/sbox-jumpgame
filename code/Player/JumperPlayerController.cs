@@ -310,16 +310,11 @@ public class JumperPlayerController : Component
 	{
 		var rot = EyeAngles.ToRotation();
 
-		WishVelocity = 0;
-
-		if ( Input.Down( "Forward" ) ) WishVelocity += rot.Forward;
-		if ( Input.Down( "Backward" ) ) WishVelocity += rot.Backward;
-		if ( Input.Down( "Left" ) ) WishVelocity += rot.Left;
-		if ( Input.Down( "Right" ) ) WishVelocity += rot.Right;
-
+		WishVelocity = Input.AnalogMove * Rotation.FromYaw(rot.Yaw());	//Ignore camera pitch
 		WishVelocity = WishVelocity.WithZ( 0 );
 
-		if ( !WishVelocity.IsNearZeroLength ) WishVelocity = WishVelocity.Normal;
+		bool isUsingKeyboard = Input.Down( "Forward" ) || Input.Down( "Backward" ) || Input.Down( "Left" ) || Input.Down( "Right" );
+		if(isUsingKeyboard && !WishVelocity.IsNearlyZero(.5f)) WishVelocity = WishVelocity.Normal;
 
 		if ( Input.Down( "duck" ) ) WishVelocity *= 100.0f;
 		else WishVelocity *= 200.0f;
