@@ -1,4 +1,5 @@
 using Sandbox;
+using Sandbox.UI;
 using System;
 using static Sandbox.PlayerController;
 
@@ -6,6 +7,7 @@ public sealed partial class PlayerInput : Component
 {
 	[RequireComponent]
 	public PlayerController Controller { get; set; }
+	[Property] JumperPlayerStuff PlayerStats { get; set; }
 
 	[Property, Feature( "Input" )] public float JumpSpeed { get; set; } = 300;
 
@@ -44,6 +46,8 @@ public sealed partial class PlayerInput : Component
 	[Property] GameObject JumpEffect { get; set; }
 	[Property] GameObject TrailEffect { get; set; }
 
+	TimeSince LastSave;
+
 	protected override void OnUpdate()
 	{
 		if ( IsProxy ) return;
@@ -55,11 +59,27 @@ public sealed partial class PlayerInput : Component
 	{
 		if ( IsProxy ) return;
 
+		if ( PlayerStats != null )
+		{
+			PlayerStats.TimePlayed += Time.Delta;
+		}
+
+		if ( Controller.TimeSinceGrounded < 0.2f )
+		{
+			TriggerLandingEvent( Controller.Velocity.z );
+		}
+
 		if ( Controller.IsOnGround )
 		{
 			TryJump();
+
+			if ( LastSave > 7 )
+			{
+				PlayerStats?.SaveStats();
+				LastSave = 0;
+			}
 		}
-		else
+		else if( Controller.TimeSinceGrounded > 0.2f )
 		{
 			TryBounce();
 		}
@@ -73,6 +93,28 @@ public sealed partial class PlayerInput : Component
 		}
 
 		InputMove();
+	}
+
+	public void TriggerLandingEvent( float velocity )
+	{
+		if ( GetFallDamage( Controller.Velocity.z ) >= 2 )
+		{
+			var fallMessage = GameObject.GetComponentInChildren<JumperFallMessage>();
+			fallMessage.DisplayMessage( GetRandomFallMessage() );
+			PlayerStats.TotalFalls++;
+			//HasLanded = true;
+		}
+	}
+	public int GetFallDamage( float fallspeed )
+	{
+		fallspeed = Math.Abs( fallspeed );
+
+		if ( fallspeed < 700 ) return 0;
+		if ( fallspeed < 1000 ) return 1;
+		if ( fallspeed < 1300 ) return 2;
+		if ( fallspeed < 1600 ) return 3;
+
+		return 4;
 	}
 
 	void UpdateEyeAngles()
@@ -262,4 +304,66 @@ public sealed partial class PlayerInput : Component
 			CanJump = true;
 		}
 	}
+
+	private int lastFallMessage;
+	private string GetRandomFallMessage()
+	{
+		var idx = Game.Random.Int( 0, fallMessages.Count - 1 );
+		while ( idx == lastFallMessage )
+			idx = Game.Random.Int( 0, fallMessages.Count - 1 );
+
+		lastFallMessage = idx;
+		return string.Format( fallMessages[idx] );
+	}
+
+	private List<string> fallMessages = new()
+	{
+		"Thats a big fall!!",
+		"Try not to fall so much next time!",
+		"Ouch! That looked painful!",
+		"Are you ok?",
+		"What a fall!",
+		"Don't fall again!",
+		"Don't give up!",
+		"Keep trying!",
+		"Try again!",
+		"It's like starting a new book...",
+		"One day you will be a winner!",
+		"One day you will look back to this and ask why...",
+		"Try to be more careful next time!",
+		"Where is your parachute?!",
+		"Can't you fly?!",
+		"Where are your wings?!",
+		"Do you like falling?!",
+		"And you call yourself a jumper?!",
+		"And where do you think you are going?!",
+		"Please don't fall again!",
+		"You remind me of a cat!",
+		"Try to visit a doctor!",
+		"Pain is temporary, glory is forever!",
+		"Peddle to the metal!",
+		"Uh oh!",
+		"Uh that wasn't good!",
+		"When can we expect you to be back?",
+		"When can we provide you with a new body?",
+		"When can we process your insurance claim?",
+		"One small step for man, one giant fall for mankind!",
+		"It's a new day!",
+		"Hello darkness my old friend!",
+		"Could you please stop falling?",
+		"Do you want to be a winner?",
+		"Are you a winner?",
+		"Are you a loser?",
+		"Are you a winner or a loser?",
+		"Damn it!",
+		"Damn it all!",
+		"Damn it all to hell!",
+		"Damn it all to hell and back!",
+		"Damn it all to hell and back again!",
+		"Use the jump button to jump!",
+		"I'll scratch your back if you scratch mine!",
+		"I'll be back!",
+		"Awoooo awoooo awoooo!",
+		"3 bags of rice,5 carrots and 2 apples!"
+	};
 }
