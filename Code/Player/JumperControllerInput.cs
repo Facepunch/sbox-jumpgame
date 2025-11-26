@@ -1,20 +1,6 @@
 using Sandbox;
-using Sandbox.UI;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using static Sandbox.Component;
-using static Sandbox.ModelPhysics;
+using System;
 using static Sandbox.PlayerController;
-using static Sandbox.Services.Stats;
-
-public interface IPlayerInputEvents : ISceneEvent<IPlayerInputEvents>
-{
-	public void OnPreJump( ref bool canJump ) { }
-	public void OnPreSprint( ref bool canSprint ) { }
-	public void StartHovering( IPressable hovered ) { }
-	public void StopHovering( IPressable hovered ) { }
-}
 
 public sealed partial class PlayerInput : Component
 {
@@ -53,6 +39,10 @@ public sealed partial class PlayerInput : Component
 
 	[RequireComponent] JumpControllerAnimator Animator { get; set; }
 	[Sync] public Angles TargetAngles { get; set; }
+
+	[Property] GameObject HitEffect { get; set; }
+	[Property] GameObject JumpEffect { get; set; }
+	[Property] GameObject TrailEffect { get; set; }
 
 	protected override void OnUpdate()
 	{
@@ -140,9 +130,9 @@ public sealed partial class PlayerInput : Component
 		var bounceAngles = Rotation.LookAt( bounce ).Angles();
 		TargetAngles = bounceAngles.WithRoll( 0f );
 
-		//var effect = HitEffect.Clone();
-		//effect.Transform.Position = tr.EndPosition;
-		//effect.Transform.Rotation = Rotation.LookAt( tr.Normal );
+		var effect = HitEffect.Clone();
+		effect.WorldPosition = tr.EndPosition;
+		effect.WorldRotation = Rotation.LookAt( tr.Normal );
 
 		//SceneUtility.Instantiate( HitEffect, Transform.Position + Vector3.Up * 32, Rotation.LookAt( tr.Normal ) );
 		Sound.Play( "jumper.impact.wall", WorldPosition );
@@ -256,8 +246,11 @@ public sealed partial class PlayerInput : Component
 
 			// Add vertical jump
 			Controller.Body.Velocity = Controller.Body.Velocity.WithZ( jumpAlpha * MaxJumpStrength );
-			Controller.PreventGrounding( 0.2f );
+			Controller.PreventGrounding( 0.1f );
 
+			var effect = JumpEffect.Clone();
+			effect.WorldPosition = WorldPosition;
+			effect.WorldRotation = Rotation.LookAt( Controller.Velocity );
 			var snd = Sound.Play( "jumper.jump", GameObject.WorldPosition );
 			snd.Pitch = 1.0f - (0.5f * jumpAlpha) * 1.5f;
 
