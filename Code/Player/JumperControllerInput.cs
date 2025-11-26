@@ -231,21 +231,19 @@ public sealed partial class PlayerInput : Component
 			jumpAlpha = Math.Min( 0.4f + jumpAlpha, 1.0f );
 			jumpAlpha = ((int)(jumpAlpha * 10.0f)) / 10.0f;
 
-			// Use the current look direction for the horizontal jump
-			var forward = Animator.Renderer.WorldRotation.Forward;
+			var vel = Vector3.Zero;
 
-			if ( !forward.IsNearlyZero( 0.001f ) )
+			if ( Input.AnalogMove.Length > 0.01f )
 			{
-				forward = forward.Normal;
-				Controller.Body.Velocity = forward * jumpAlpha * MaxJumpStrength * 0.5f;
-			}
-			else
-			{
-				Controller.Body.Velocity = 0;
+				vel += Animator.Renderer.WorldRotation.Forward
+					.WithZ( 0 )
+					.Normal * (jumpAlpha * MaxJumpStrength * 0.5f);
 			}
 
-			// Add vertical jump
-			Controller.Body.Velocity = Controller.Body.Velocity.WithZ( jumpAlpha * MaxJumpStrength );
+			// Always add vertical jump
+			vel = vel.WithZ( jumpAlpha * MaxJumpStrength );
+
+			Controller.Body.Velocity = vel;
 			Controller.PreventGrounding( 0.1f );
 
 			var effect = JumpEffect.Clone();
