@@ -14,7 +14,7 @@ public class JumperProgressData
 
 public sealed class JumperProgress : Component
 {
-	static string FileName => $"{Game.ActiveScene.Title}_progress.json";
+	string FileName => $"{Scene.Name}_progress.json";
 	public JumperProgressData Current { get; set; }
 
 	void Fetch()
@@ -30,9 +30,9 @@ public sealed class JumperProgress : Component
 			player.TimePlayed = Current.TimePlayed;
 			player.Completions = Current.NumberCompletions;
 			player.Position = Current.Position;
-			GameObject.Parent.Transform.Position = Current.Position;
-			var plycontroller = GameObject.Components.Get<JumperPlayerController>( FindMode.InAncestors );
-			plycontroller.TargetAngles = Current.Angles;
+			GameObject.Parent.WorldPosition = Current.Position;
+			var plycontroller = GameObject.Components.Get<PlayerController>( FindMode.InAncestors );
+			plycontroller.WorldRotation = Current.Angles;
 		}
 		else
 		{
