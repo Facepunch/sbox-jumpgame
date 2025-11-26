@@ -7,7 +7,7 @@ public sealed class MapOverrider : Component
 	protected override void OnEnabled()
 	{
 		base.OnEnabled();
-
+		/*
 		{
 			var obj = Scene.GetAllComponents<SkinnedModelRenderer>();
 
@@ -21,15 +21,14 @@ public sealed class MapOverrider : Component
 					item.MaterialGroup = ran == 1 ? "default" : "Orange";
 			}
 		}
-
+		*/
 		{
 			var npc = Scene.GetAllObjects( true ).Where( x => x.Name == "js_npc_text" ).ToList();
 
 			foreach ( var item in npc )
 			{
-				var frogobj = FrogPrefab.Clone();
-				frogobj.Transform.Position = item.Transform.Position;
-				frogobj.Transform.Rotation = item.Transform.Rotation;
+				item.DestroyImmediate();
+				Log.Info( "Destroyed" );
 			}
 		}
 	}

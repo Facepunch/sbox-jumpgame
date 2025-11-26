@@ -2,6 +2,21 @@
   "__guid": "ffb4de07-fe39-4866-bfc0-be1df0c5c792",
   "GameObjects": [
     {
+      "__guid": "a66857bf-f582-42fa-9941-58259bc6a178",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "0f4904f9-4f2e-4c34-b1f3-221d2997b6e2",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "jumper"
+        }
+      ]
+    },
+    {
       "__guid": "1de10792-fb1d-4798-a39d-5d31d80e0a16",
       "Flags": 0,
       "Name": "Network",
@@ -84,6 +99,7 @@
           "__type": "Sandbox.Tonemapping",
           "__guid": "0e872050-8464-4873-abda-f5daf4d0c13c",
           "__version": 1,
+          "AutoExposureEnabled": true,
           "ExposureBias": 2,
           "ExposureCompensation": 0,
           "ExposureMethod": "RGB",
@@ -178,7 +194,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "401.0002,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -342,6 +359,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -385,7 +409,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "401.0002,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -549,6 +574,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -592,7 +624,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "401.0002,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -756,6 +789,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -799,7 +839,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -963,6 +1004,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -1006,7 +1054,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -1170,6 +1219,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -1213,7 +1269,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -1377,6 +1434,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -1420,7 +1484,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -1584,6 +1649,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -1627,7 +1699,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -1791,6 +1864,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -1834,7 +1914,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -1998,6 +2079,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -2041,7 +2129,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -2205,6 +2294,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -2248,7 +2344,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "697.9337,150,150",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ],
       "Children": [
@@ -2412,6 +2509,13 @@
               "Lighting": false,
               "MotionBlur": true,
               "Opaque": false,
+              "Pivot": "0.5,0.5",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RotationOffset": 90,
               "Scale": 1,
               "Shadows": false,
@@ -2468,6 +2572,12 @@
               "__enabled": false,
               "BodyGroups": 18446744073709551615,
               "Model": "models/editor/axis_helper_thick.vmdl",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RenderType": "On",
               "Tint": "1,1,1,1"
             }
@@ -2486,6 +2596,12 @@
               "__enabled": false,
               "BodyGroups": 18446744073709551615,
               "Model": "models/editor/axis_helper_thick.vmdl",
+              "RenderOptions": {
+                "GameLayer": true,
+                "OverlayLayer": false,
+                "BloomLayer": false,
+                "AfterUILayer": false
+              },
               "RenderType": "On",
               "Tint": "1,1,1,1"
             }
@@ -2567,7 +2683,8 @@
               "Center": "0,0,0",
               "IsTrigger": true,
               "Scale": "3987.198,1418.598,360.3996",
-              "Static": false
+              "Static": false,
+              "SurfaceVelocity": "0,0,0"
             },
             {
               "__type": "JumperFinishLine",
@@ -2594,7 +2711,8 @@
               "Center": "0,0,0",
               "IsTrigger": true,
               "Scale": "3987.198,1418.598,360.3996",
-              "Static": false
+              "Static": false,
+              "SurfaceVelocity": "0,0,0"
             },
             {
               "__type": "JumperFinishLine",
@@ -2620,7 +2738,8 @@
               "Center": "0,0,0",
               "IsTrigger": true,
               "Scale": "3987.198,1418.598,360.3996",
-              "Static": false
+              "Static": false,
+              "SurfaceVelocity": "0,0,0"
             },
             {
               "__type": "JumperFinishLine",
@@ -2647,7 +2766,8 @@
               "Center": "0,0,0",
               "IsTrigger": true,
               "Scale": "3987.198,1418.598,360.3996",
-              "Static": false
+              "Static": false,
+              "SurfaceVelocity": "0,0,0"
             },
             {
               "__type": "JumperFinishLine",
@@ -2681,7 +2801,8 @@
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "2000,5000,50",
-              "Static": false
+              "Static": false,
+              "SurfaceVelocity": "0,0,0"
             }
           ]
         },
@@ -2698,7 +2819,8 @@
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "2000,5000,50",
-              "Static": false
+              "Static": false,
+              "SurfaceVelocity": "0,0,0"
             }
           ]
         },
@@ -2716,7 +2838,8 @@
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "2000,5000,50",
-              "Static": false
+              "Static": false,
+              "SurfaceVelocity": "0,0,0"
             }
           ]
         },
@@ -2734,7 +2857,8 @@
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "2000,5000,50",
-              "Static": false
+              "Static": false,
+              "SurfaceVelocity": "0,0,0"
             }
           ]
         }
@@ -2764,7 +2888,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "1000,1000,297.1998",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.AchievementTrigger",
@@ -2786,7 +2911,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "1000,1000,297.1998",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.AchievementTrigger",
@@ -2808,7 +2934,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "1000,1000,297.1998",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.AchievementTrigger",
@@ -2830,7 +2957,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "1000,1000,297.1998",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.AchievementTrigger",
@@ -2852,7 +2980,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "1000,1000,297.1998",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.AchievementTrigger",
@@ -2874,7 +3003,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "1000,1000,297.1998",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.AchievementTrigger",
@@ -2896,7 +3026,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "1000,1000,297.1998",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.AchievementTrigger",
@@ -2918,7 +3049,8 @@
           "Center": "0,0,0",
           "IsTrigger": true,
           "Scale": "1000,1000,297.1998",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         },
         {
           "__type": "Sandbox.AchievementTrigger",
@@ -2940,7 +3072,8 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,515.9335,10.99999",
-          "Static": false
+          "Static": false,
+          "SurfaceVelocity": "0,0,0"
         }
       ]
     }
@@ -2950,9 +3083,13 @@
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 60,
     "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "jumper"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -2966,9 +3103,9 @@
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "jumper",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [],
-  "__version": 1
+  "__version": 2
 }

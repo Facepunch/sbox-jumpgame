@@ -1,0 +1,17 @@
+{
+  "files.associations": {
+    "*.shader": "slang",
+    "*.hlsl": "slang"
+  },
+  "slang.additionalSearchPaths": [
+    "G:\\steamlibrary\\steamapps\\common\\sbox\\core\\shaders",
+    "G:\\SteamLibrary\\steamapps\\common\\sbox\\addons\\base\\Assets\\shaders",
+    "G:\\SteamLibrary\\steamapps\\common\\sbox\\addons\\tools\\Assets\\shaders",
+    "G:\\SteamLibrary\\steamapps\\common\\sbox\\editor\\ShaderGraph\\Assets\\shaders",
+    "G:\\SteamLibrary\\steamapps\\common\\sbox\\editor\\ActionGraph\\Assets\\shaders",
+    "G:\\SteamLibrary\\steamapps\\common\\sbox\\editor\\MovieMaker\\Assets\\shaders",
+    "G:\\SteamLibrary\\steamapps\\common\\sbox\\editor\\Hammer\\Assets\\shaders",
+    "G:\\SteamLibrary\\steamapps\\common\\sbox\\addons\\sbox-jumpgame\\Assets\\shaders"
+  ],
+  "slang.predefinedMacros": []
+}

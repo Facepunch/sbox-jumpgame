@@ -56,7 +56,6 @@
 
     private float CalculateProgress(float height)
     {
-
         return height.LerpInverse(0, Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault().Distance);
     }
     protected override int BuildHash()
