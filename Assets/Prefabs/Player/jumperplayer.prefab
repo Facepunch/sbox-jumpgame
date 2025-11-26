@@ -167,21 +167,6 @@
         "WorkshopItems": []
       },
       {
-        "__type": "MoveModeWalk",
-        "__guid": "9ece7242-4f18-4f8c-9d0e-05cc2c74bb19",
-        "__enabled": true,
-        "GroundAngle": 45,
-        "OnComponentDestroy": null,
-        "OnComponentDisabled": null,
-        "OnComponentEnabled": null,
-        "OnComponentFixedUpdate": null,
-        "OnComponentStart": null,
-        "OnComponentUpdate": null,
-        "Priority": 0,
-        "StepDownHeight": 18,
-        "StepUpHeight": 18
-      },
-      {
         "__type": "PlayerInput",
         "__guid": "1e79f19b-8440-4917-bde6-b25ab4138680",
         "__enabled": true,
@@ -263,6 +248,21 @@
           "go": "bdce9803-eb5b-4cd5-ae0b-b4f921cad4d9",
           "component_type": "JumperProgress"
         }
+      },
+      {
+        "__type": "Sandbox.Movement.MoveModeWalk",
+        "__guid": "449fae9f-aaac-459c-99fb-3d1e9f2edf59",
+        "__enabled": true,
+        "GroundAngle": 40,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "Priority": 0,
+        "StepDownHeight": 18,
+        "StepUpHeight": 18
       }
     ],
     "Children": [
@@ -583,6 +583,50 @@
             },
             "Volume": 1,
             "WorldspacePlayback": false
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "2c505359-ae4e-447e-8e2c-d87588d1fce5",
+        "__version": 1,
+        "Flags": 0,
+        "Name": "Collider",
+        "Position": "0,0,24",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.SphereCollider",
+            "__guid": "49e14347-72e0-4805-b56c-7048550d595e",
+            "__enabled": true,
+            "Center": "0,0,0",
+            "ColliderFlags": 0,
+            "Elasticity": null,
+            "Friction": null,
+            "IsTrigger": false,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "OnObjectTriggerEnter": null,
+            "OnObjectTriggerExit": null,
+            "OnTriggerEnter": null,
+            "OnTriggerExit": null,
+            "Radius": 15.366605,
+            "RollingResistance": null,
+            "Static": false,
+            "Surface": null,
+            "SurfaceVelocity": "0,0,0"
           }
         ],
         "Children": []
