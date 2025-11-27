@@ -170,6 +170,8 @@
         "__type": "PlayerInput",
         "__guid": "1e79f19b-8440-4917-bde6-b25ab4138680",
         "__enabled": true,
+        "DuckedHeight": 36,
+        "DuckedSpeed": 70,
         "EnablePressing": true,
         "HitEffect": {
           "_type": "gameobject",
@@ -195,8 +197,10 @@
           "component_type": "JumperPlayerStuff"
         },
         "ReachLength": 130,
+        "RunSpeed": 200,
         "TrailEffect": null,
-        "UseButton": "use"
+        "UseButton": "use",
+        "WalkSpeed": 100
       },
       {
         "__type": "Sandbox.JumpControllerAnimator",
@@ -627,6 +631,59 @@
             "Static": false,
             "Surface": null,
             "SurfaceVelocity": "0,0,0"
+          }
+        ],
+        "Children": []
+      },
+      {
+        "__guid": "b96239af-f562-44b9-94ff-30ee894ecde9",
+        "__version": 1,
+        "Flags": 0,
+        "Name": "World",
+        "Position": "0,0,80",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkInterpolation": true,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "23de86f2-682d-4a2b-a88d-0791194a5f6f",
+            "__enabled": true,
+            "HorizontalAlign": "Center",
+            "InteractionRange": 0,
+            "LookAtCamera": true,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "PanelSize": "1024,512",
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "Sandbox.UI.JumperNameTag",
+            "__guid": "6d1cafc7-cba6-4ec1-9dc2-bf9c463e689c",
+            "__enabled": true,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null
           }
         ],
         "Children": []
