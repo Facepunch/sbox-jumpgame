@@ -26,15 +26,16 @@ public sealed class JumperWindTunnel : Component, Component.ITriggerListener
 
 		foreach ( var player in Players )
 		{
-			var plycomp = player.Components.Get<JumperPlayerController>();
-			var cc = player.Components.Get<JumperCharacterController>();
-			if(cc.IsOnGround)
+			var plycomp = player.GetComponent<PlayerController>();
+			if( plycomp.IsOnGround)
 			{
-				plycomp.TryWind( Transform.Rotation.Forward, WindGroundedStrength );
+				//plycomp.TryWind( Transform.Rotation.Forward, WindGroundedStrength );
+				plycomp.Body.Velocity += WorldRotation.Forward * WindGroundedStrength * 0.25f;
 			}
 			else
 			{
-				plycomp.TryWind( Transform.Rotation.Forward, WindAirStrength );
+				plycomp.Body.Velocity += WorldRotation.Forward * WindAirStrength * 0.25f;
+				//plycomp.TryWind( Transform.Rotation.Forward, WindAirStrength );
 			}
 
 		}
@@ -43,14 +44,17 @@ public sealed class JumperWindTunnel : Component, Component.ITriggerListener
 	void ITriggerListener.OnTriggerEnter( Collider other )
 	{
 
-		if ( other.GameObject.Tags.Has( "player" ) )
+		if ( other.GameObject.Root.Tags.Has( "player" ) )
 		{
-
-			var ply = other.GameObject.Parent;
-			var plyComp = ply.Components.Get<JumperPlayerController>();
-			
-			plyComp.TryWind( Transform.Rotation.Forward, 15 );
-			Players.Add( ply );
+			var ply = other.GameObject.Root;
+			var plyComp = ply.GetComponent<PlayerController>();
+			if ( plyComp.IsValid() )
+			{
+				plyComp.PreventGrounding( 0.2f );
+				plyComp.Body.Velocity += WorldRotation.Forward * 15;
+				//plyComp.TryWind( Transform.Rotation.Forward, 15 );
+				Players.Add( ply );
+			}
 		}
 	}
 

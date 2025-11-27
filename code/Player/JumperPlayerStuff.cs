@@ -25,7 +25,6 @@ public sealed class JumperPlayerStuff : Component, Component.INetworkListener
 		rndColor = $"{Color.Random.Hex}";
 		DistanceRuler = Scene.GetAllComponents<JumperDistanceRuler>().FirstOrDefault();
 
-
 		/*
 		PlayerAvatar = GameObject.Network.OwnerConnection.SteamId.ToString();
 		SteamId = GameObject.Network.OwnerConnection.SteamId;
@@ -53,9 +52,9 @@ public sealed class JumperPlayerStuff : Component, Component.INetworkListener
 		Progress.Current.TotalFalls = TotalFalls;
 		Progress.Current.NumberCompletions = Completions;
 		Progress.Current.TimePlayed = TimePlayed;
-		Progress.Current.Position = GameObject.Transform.Position;
-		var plycontroller = GameObject.Components.Get<JumperPlayerController>(FindMode.EnabledInSelf);
-		Progress.Current.Angles = plycontroller.TargetAngles;
+		Progress.Current.Position = GameObject.WorldPosition;
+		var plycontroller = GameObject.Components.Get<PlayerController>(FindMode.EnabledInSelf);
+		Progress.Current.Angles = plycontroller.Body.WorldRotation.Angles();
 		Progress.Save();
 	}
 
@@ -70,14 +69,14 @@ public sealed class JumperPlayerStuff : Component, Component.INetworkListener
 		Progress.Current.TotalJumps = 0;
 		Progress.Current.TotalFalls = 0;
 		Progress.Current.TimePlayed = 0;
-		Progress.Current.Position = GameObject.Transform.Position;
-		Progress.Current.Angles = GameObject.Transform.Rotation.Angles();
+		Progress.Current.Position = GameObject.WorldPosition;
+		Progress.Current.Angles = GameObject.WorldRotation.Angles();
 		Progress.Save();
 	}
 
 	protected override void OnFixedUpdate()
 	{
-		Height = MathX.CeilToInt( Transform.Position.z - DistanceRuler.StartObject.Transform.Position.z );
+		Height = MathX.CeilToInt( WorldPosition.z - DistanceRuler.StartObject.WorldPosition.z );
 
 		MaxHeight = Math.Max( Height, MaxHeight );
 	}

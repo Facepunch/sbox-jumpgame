@@ -33,7 +33,7 @@ public sealed class MapPlayerSpawns : Component
 	{
 		var spawnPoints = Scene.GetAllComponents<SpawnPoint>().ToArray();
 
-		foreach ( var player in Scene.GetAllComponents<JumperPlayerController>().ToArray() )
+		foreach ( var player in Scene.GetAllComponents<PlayerController>().ToArray() )
 		{
 			if ( player.IsProxy )
 				continue;
@@ -41,11 +41,11 @@ public sealed class MapPlayerSpawns : Component
 			var randomSpawnPoint = Random.Shared.FromArray( spawnPoints );
 			if ( randomSpawnPoint is null ) continue;
 
-			player.Transform.Position = randomSpawnPoint.Transform.Position;
+			player.WorldPosition = randomSpawnPoint.WorldPosition;
 
-			if ( player.Components.TryGet<JumperPlayerController>( out var pc ) )
+			if ( player.Components.TryGet<PlayerController>( out var pc ) )
 			{
-				pc.EyeAngles = randomSpawnPoint.Transform.Rotation.Angles();
+				pc.EyeAngles = randomSpawnPoint.WorldRotation.Angles();
 			}
 
 		}

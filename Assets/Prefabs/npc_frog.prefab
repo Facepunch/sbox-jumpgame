@@ -1,56 +1,76 @@
 {
   "RootObject": {
-    "Id": "2e0c94a3-ea14-405a-a490-a8d5885c8c1c",
+    "__guid": "2e0c94a3-ea14-405a-a490-a8d5885c8c1c",
+    "Flags": 0,
     "Name": "npc_frog",
     "Tags": "trigger",
     "Enabled": true,
     "Components": [
       {
-        "__version": 0,
-        "__type": "SkinnedModelRenderer",
-        "__enabled": true,
+        "__type": "Sandbox.SkinnedModelRenderer",
+        "__guid": "a22db9b6-7da9-4a12-b9e8-652c9c48d843",
         "BodyGroups": 1365,
-        "BoneMergeTarget": null,
+        "CreateAttachments": false,
         "CreateBoneObjects": false,
-        "MaterialGroup": null,
-        "MaterialOverride": null,
         "Model": "models/frogfella/frog_test_subject_01a.vmdl",
+        "Morphs": {},
+        "Parameters": {
+          "bools": {},
+          "ints": {},
+          "floats": {},
+          "vectors": {},
+          "rotations": {}
+        },
+        "RenderOptions": {
+          "GameLayer": true,
+          "OverlayLayer": false,
+          "BloomLayer": false,
+          "AfterUILayer": false
+        },
         "RenderType": "On",
-        "Tint": "1,1,1,1"
+        "Sequence": {
+          "Name": null
+        },
+        "Tint": "1,1,1,1",
+        "UseAnimGraph": false
       },
       {
-        "__version": 0,
-        "__type": "CitizenAnimationHelper",
-        "__enabled": true,
+        "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+        "__guid": "9e6f9b8f-d9cc-4c1b-8804-98e60a29e752",
         "BodyWeight": 1,
-        "EyeSource": null,
         "EyesWeight": 1,
         "HeadWeight": 1,
         "Height": 1,
-        "IkLeftFoot": null,
-        "IkLeftHand": null,
-        "IkRightFoot": null,
-        "IkRightHand": null,
-        "LookAt": null,
         "LookAtEnabled": true,
-        "Target": "2e0c94a3-ea14-405a-a490-a8d5885c8c1c"
+        "Target": {
+          "_type": "component",
+          "component_id": "a22db9b6-7da9-4a12-b9e8-652c9c48d843",
+          "go": "2e0c94a3-ea14-405a-a490-a8d5885c8c1c",
+          "component_type": "SkinnedModelRenderer"
+        }
       },
       {
-        "__version": 0,
-        "__type": "SphereCollider",
-        "__enabled": true,
+        "__type": "Sandbox.SphereCollider",
+        "__guid": "199fe648-9ba9-4cff-bb2c-6c736b081bab",
         "Center": "0,0,34.26667",
         "IsTrigger": true,
         "Radius": 75,
         "Static": false,
-        "Surface": null
+        "SurfaceVelocity": "0,0,0"
       },
       {
-        "__version": 0,
         "__type": "JumperNPCLooker",
-        "__enabled": true,
-        "animhelp": "2e0c94a3-ea14-405a-a490-a8d5885c8c1c",
-        "LookTarget": "138d6eef-4bbf-4a6a-856b-b72e416406e8",
+        "__guid": "c0d02d00-af22-4e98-9383-aff207e5c902",
+        "animhelp": {
+          "_type": "component",
+          "component_id": "9e6f9b8f-d9cc-4c1b-8804-98e60a29e752",
+          "go": "2e0c94a3-ea14-405a-a490-a8d5885c8c1c",
+          "component_type": "CitizenAnimationHelper"
+        },
+        "LookTarget": {
+          "_type": "gameobject",
+          "go": "138d6eef-4bbf-4a6a-856b-b72e416406e8"
+        },
         "Resources": [
           "resources/10p.npct",
           "resources/almost.npct",
@@ -64,15 +84,43 @@
     ],
     "Children": [
       {
-        "Id": "138d6eef-4bbf-4a6a-856b-b72e416406e8",
+        "__guid": "138d6eef-4bbf-4a6a-856b-b72e416406e8",
+        "Flags": 0,
         "Name": "lootatme",
         "Position": "26.64017,-0.0000009736541,60.06457",
         "Enabled": true
       }
-    ]
+    ],
+    "__variables": [],
+    "__properties": {
+      "FixedUpdateFrequency": 50,
+      "MaxFixedUpdates": 5,
+      "NetworkFrequency": 30,
+      "NetworkInterpolation": true,
+      "PhysicsSubSteps": 1,
+      "ThreadedAnimation": true,
+      "TimeScale": 1,
+      "UseFixedUpdate": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": true,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": ""
+      }
+    }
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
-  "__references": []
+  "DontBreakAsTemplate": false,
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
 }
