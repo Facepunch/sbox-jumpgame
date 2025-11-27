@@ -51,6 +51,10 @@ public sealed partial class PlayerInput : Component
 	[Property] GameObject JumpEffect { get; set; }
 	[Property] GameObject TrailEffect { get; set; }
 
+	[Property] public float BounceBounciness { get; set; } = 0.9f; // 1 = perfectly elastic
+	[Property] public float MinWallDotUp { get; set; } = 0.6f;     // < 0.6 => steeper than ~53°, treated as wall
+
+
 	Vector3 LastGroundedPos { get; set; }
 	TimeSince LastSave;
 	int BounceCount { get; set; }
@@ -194,37 +198,67 @@ public sealed partial class PlayerInput : Component
 
 	public void TryBounce()
 	{
-		var tr = TraceBBox(WorldPosition, WorldPosition + Controller.Velocity * Time.Delta );
+		var vel = Controller.Body.Velocity;
+		if ( vel.Length < 50f )
+			return;
 
-		if ( !tr.Hit || tr.Normal.Angle( Vector3.Up ) < 80.0f ) return;
+		var tr = TraceBBox( WorldPosition, WorldPosition + vel * Time.Delta );
+		if ( !tr.Hit )
+			return;
 
-		var bounce = -tr.Normal * Controller.Body.Velocity.Dot( tr.Normal );
-		Controller.Body.Velocity = ClipVelocity( Controller.Body.Velocity, tr.Normal );
-		Controller.Body.Velocity += bounce;
+		var n = tr.Normal.Normal;
 
-		var bounceAngles = Rotation.LookAt( bounce ).Angles();
-		TargetAngles = bounceAngles.WithRoll( 0f );
+		float angle = n.Angle( Vector3.Up );
 
-		var effect = HitEffect.Clone();
-		effect.WorldPosition = tr.EndPosition;
-		effect.WorldRotation = Rotation.LookAt( tr.Normal );
+		const float groundMaxAngle = 60.0f;
+		const float slideMaxAngle = 80.0f;
 
-		//SceneUtility.Instantiate( HitEffect, Transform.Position + Vector3.Up * 32, Rotation.LookAt( tr.Normal ) );
+		if ( angle < groundMaxAngle )
+		{
+			return;
+		}
+
+		var into = Vector3.Dot( vel, n );
+		if ( into >= 0.0f )
+			return;
+
+		if ( angle <= slideMaxAngle )
+		{
+			Controller.Body.Velocity = ClipVelocity( vel, n, overbounce: 1.0f );
+			return;
+		}
+
+		float e = BounceBounciness; 
+
+		var reflected = vel - (1.0f + e) * into * n;
+
+		Controller.Body.Velocity = reflected;
+
+		var flatDir = reflected.WithZ( 0 );
+		if ( flatDir.Length > 0.1f )
+		{
+			var bounceAngles = Rotation.LookAt( flatDir ).Angles();
+			TargetAngles = bounceAngles.WithRoll( 0f );
+		}
+
+		// Effects & sound
+		if ( HitEffect.IsValid() )
+		{
+			var effect = HitEffect.Clone();
+			effect.WorldPosition = tr.EndPosition;
+			effect.WorldRotation = Rotation.LookAt( tr.Normal );
+		}
+
 		Sound.Play( "jumper.impact.wall", WorldPosition );
 
-		
+		// Bounce achievements
 		BounceCount++;
-
-		// if we bounce 5 times get achievement
 		if ( BounceCount >= 5 )
-		{
 			GetAchievement( "bounce_5" );
-		}
 		if ( BounceCount >= 10 )
-		{
 			GetAchievement( "bounce_10" );
-		}
 	}
+
 	Vector3 Mins => new Vector3( -16, -16, 0 );
 	Vector3 Maxs => new Vector3( 16, 16, 62 );
 	PhysicsTraceResult TraceBBox( Vector3 start, Vector3 end, float liftFeet = 0.0f )
@@ -242,7 +276,6 @@ public sealed partial class PlayerInput : Component
 
 		var tr = Scene.PhysicsWorld.Trace.Ray( start + TraceOffset * 10, end + TraceOffset )
 					.Size( mins, maxs )
-
 					.WithoutTags( "player", "trigger" )
 					.Run();
 
