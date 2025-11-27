@@ -1,4 +1,5 @@
 using Sandbox;
+using Sandbox.Services;
 using Sandbox.UI;
 using System;
 using static Sandbox.PlayerController;
@@ -10,6 +11,10 @@ public sealed partial class PlayerInput : Component
 	[Property] JumperPlayerStuff PlayerStats { get; set; }
 
 	[Property, Feature( "Input" )] public float JumpSpeed { get; set; } = 300;
+	[Property, Feature( "Input" )] public float WalkSpeed { get; set; } = 80;
+	[Property, Feature( "Input" )] public float RunSpeed { get; set; } = 110;
+	[Property, Feature( "Input" )] public float DuckedSpeed { get; set; } = 70;
+	[Property, Feature( "Input" )] public float DuckedHeight { get; set; } = 36;
 
 	/// <summary>
 	/// Allows to player to interact with things by "use"ing them. 
@@ -46,7 +51,24 @@ public sealed partial class PlayerInput : Component
 	[Property] GameObject JumpEffect { get; set; }
 	[Property] GameObject TrailEffect { get; set; }
 
+	Vector3 LastGroundedPos { get; set; }
 	TimeSince LastSave;
+	int BounceCount { get; set; }
+	protected override void OnStart()
+	{
+		base.OnStart();
+
+		if ( IsProxy )
+			return;
+
+		Controller.RunByDefault = true;
+
+		Controller.WalkSpeed = WalkSpeed;
+		Controller.RunSpeed = RunSpeed;
+		Controller.DuckedSpeed = DuckedSpeed;
+
+		LastGroundedPos = GameObject.WorldPosition;
+	}
 
 	protected override void OnUpdate()
 	{
@@ -78,6 +100,8 @@ public sealed partial class PlayerInput : Component
 				PlayerStats?.SaveStats();
 				LastSave = 0;
 			}
+			LastGroundedPos = GameObject.WorldPosition;
+			BounceCount = 0;
 		}
 		else if( Controller.TimeSinceGrounded > 0.2f )
 		{
@@ -104,6 +128,11 @@ public sealed partial class PlayerInput : Component
 			PlayerStats.TotalFalls++;
 			//HasLanded = true;
 		}
+
+		if ( DistanceFell( LastGroundedPos, GameObject.WorldPosition ) > 5000 )
+		{
+			GetAchievement( "fall_5000" );
+		}
 	}
 	public int GetFallDamage( float fallspeed )
 	{
@@ -115,6 +144,10 @@ public sealed partial class PlayerInput : Component
 		if ( fallspeed < 1600 ) return 3;
 
 		return 4;
+	}
+	float DistanceFell( Vector3 Start, Vector3 End )
+	{
+		return Math.Abs( Start.z - End.z );
 	}
 
 	void UpdateEyeAngles()
@@ -179,7 +212,7 @@ public sealed partial class PlayerInput : Component
 		//SceneUtility.Instantiate( HitEffect, Transform.Position + Vector3.Up * 32, Rotation.LookAt( tr.Normal ) );
 		Sound.Play( "jumper.impact.wall", WorldPosition );
 
-		/*
+		
 		BounceCount++;
 
 		// if we bounce 5 times get achievement
@@ -191,7 +224,6 @@ public sealed partial class PlayerInput : Component
 		{
 			GetAchievement( "bounce_10" );
 		}
-		*/
 	}
 	Vector3 Mins => new Vector3( -16, -16, 0 );
 	Vector3 Maxs => new Vector3( 16, 16, 62 );
@@ -252,7 +284,7 @@ public sealed partial class PlayerInput : Component
 		{
 			TimeSinceJumpDown = 0;
 			CanJump = false;
-
+			Animator.DuckLevel = 0;
 			return;
 		}
 
@@ -293,6 +325,8 @@ public sealed partial class PlayerInput : Component
 			effect.WorldRotation = Rotation.LookAt( Controller.Velocity );
 			var snd = Sound.Play( "jumper.jump", GameObject.WorldPosition );
 			snd.Pitch = 1.0f - (0.5f * jumpAlpha) * 1.5f;
+
+			PlayerStats.TotalJumps++;
 
 			Animator?.TriggerJump();
 		}
@@ -366,4 +400,13 @@ public sealed partial class PlayerInput : Component
 		"Awoooo awoooo awoooo!",
 		"3 bags of rice,5 carrots and 2 apples!"
 	};
+	void GetAchievement( string cheevo )
+	{
+		if ( IsProxy )
+			return;
+
+		Achievements.Unlock( cheevo );
+
+		Log.Info( $"Unlocked achievement: {cheevo}" );
+	}
 }
