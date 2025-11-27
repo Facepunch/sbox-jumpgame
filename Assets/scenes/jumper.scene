@@ -39,42 +39,6 @@
       "Children": []
     },
     {
-      "__guid": "1de10792-fb1d-4798-a39d-5d31d80e0a16",
-      "__version": 1,
-      "Flags": 0,
-      "Name": "Network",
-      "Position": "72.54695,32.92376,-15839.22",
-      "Rotation": "0,0,0,1",
-      "Scale": "1,1,1",
-      "Tags": "",
-      "Enabled": false,
-      "NetworkMode": 2,
-      "NetworkInterpolation": true,
-      "NetworkOrphaned": 0,
-      "NetworkTransmit": true,
-      "OwnerTransfer": 1,
-      "Components": [
-        {
-          "__type": "Sandbox.NetworkHelper",
-          "__guid": "a6c13621-9b52-4eb8-b80a-736e33fff213",
-          "__enabled": true,
-          "OnComponentDestroy": null,
-          "OnComponentDisabled": null,
-          "OnComponentEnabled": null,
-          "OnComponentFixedUpdate": null,
-          "OnComponentStart": null,
-          "OnComponentUpdate": null,
-          "PlayerPrefab": {
-            "_type": "gameobject",
-            "prefab": "prefabs/player/jumperplayer.prefab"
-          },
-          "SpawnPoints": [],
-          "StartServer": true
-        }
-      ],
-      "Children": []
-    },
-    {
       "__guid": "ea43c4af-4c86-4385-aae3-04fd036200fe",
       "__version": 1,
       "Flags": 0,
@@ -582,13 +546,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -616,6 +587,145 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "b347ac81-f410-4521-9c0c-8261395fe189",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "TubeEffect",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "e0416519-243a-4b1f-9764-db033f1fb3d9",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "-189.3361,0,0.0001296997",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.LineRenderer",
+                  "__guid": "5a8a0479-2543-4dbd-85a2-bb07f9cd4424",
+                  "__enabled": true,
+                  "Additive": false,
+                  "AutoCalculateNormals": true,
+                  "CastShadows": false,
+                  "Color": {
+                    "blend": "Linear",
+                    "color": [
+                      {
+                        "t": 0.9263158,
+                        "c": "0,0.98333,1,1"
+                      }
+                    ],
+                    "alpha": [
+                      {
+                        "t": 0.92421055,
+                        "a": 0.05
+                      }
+                    ]
+                  },
+                  "CylinderSegments": 12,
+                  "DepthFeather": 0,
+                  "EndCap": "None",
+                  "Face": "Cylinder",
+                  "FogStrength": 1,
+                  "Lighting": false,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opaque": false,
+                  "Points": [
+                    {
+                      "_type": "gameobject",
+                      "go": "e0416519-243a-4b1f-9764-db033f1fb3d9"
+                    },
+                    {
+                      "_type": "gameobject",
+                      "go": "3ed3ceaa-6151-4968-aa13-d031050fb7a1"
+                    }
+                  ],
+                  "RenderOptions": {
+                    "GameLayer": false,
+                    "OverlayLayer": false,
+                    "BloomLayer": true,
+                    "AfterUILayer": false
+                  },
+                  "SplineBias": 0,
+                  "SplineContinuity": 0,
+                  "SplineInterpolation": 0,
+                  "SplineTension": 0,
+                  "StartCap": "None",
+                  "Texturing": {
+                    "Texture": null,
+                    "Material": null,
+                    "WorldSpace": true,
+                    "UnitsPerTexture": 10,
+                    "Scale": 1,
+                    "Offset": 0,
+                    "Scroll": 0,
+                    "Clamp": false
+                  },
+                  "UseVectorPoints": false,
+                  "VectorPoints": [],
+                  "Width": {
+                    "rangey": "0,28",
+                    "frames": [
+                      {
+                        "x": 0.5,
+                        "y": 5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ]
+                  },
+                  "Wireframe": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "3ed3ceaa-6151-4968-aa13-d031050fb7a1",
+                  "__version": 1,
+                  "Flags": 0,
+                  "Name": "Object",
+                  "Position": "384,0,-0.000289917",
+                  "Rotation": "0,0,0,1",
+                  "Scale": "1,1,1",
+                  "Tags": "",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "NetworkOrphaned": 0,
+                  "NetworkTransmit": true,
+                  "OwnerTransfer": 1,
+                  "Components": [],
+                  "Children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -924,13 +1034,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -958,6 +1075,145 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "9a78b301-0559-4bf3-ae2a-da9894bb4ca8",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "TubeEffect",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "1438bb69-2ebd-4204-9090-7adb33dae2ea",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "-189.3361,0,0.0001296997",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.LineRenderer",
+                  "__guid": "a1552b5c-6335-4259-84b1-f49bf1496ed5",
+                  "__enabled": true,
+                  "Additive": false,
+                  "AutoCalculateNormals": true,
+                  "CastShadows": false,
+                  "Color": {
+                    "blend": "Linear",
+                    "color": [
+                      {
+                        "t": 0.9263158,
+                        "c": "0,0.98333,1,1"
+                      }
+                    ],
+                    "alpha": [
+                      {
+                        "t": 0.92421055,
+                        "a": 0.05
+                      }
+                    ]
+                  },
+                  "CylinderSegments": 12,
+                  "DepthFeather": 0,
+                  "EndCap": "None",
+                  "Face": "Cylinder",
+                  "FogStrength": 1,
+                  "Lighting": false,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opaque": false,
+                  "Points": [
+                    {
+                      "_type": "gameobject",
+                      "go": "1438bb69-2ebd-4204-9090-7adb33dae2ea"
+                    },
+                    {
+                      "_type": "gameobject",
+                      "go": "24404cbd-3219-4d46-a619-c9e34942b514"
+                    }
+                  ],
+                  "RenderOptions": {
+                    "GameLayer": false,
+                    "OverlayLayer": false,
+                    "BloomLayer": true,
+                    "AfterUILayer": false
+                  },
+                  "SplineBias": 0,
+                  "SplineContinuity": 0,
+                  "SplineInterpolation": 0,
+                  "SplineTension": 0,
+                  "StartCap": "None",
+                  "Texturing": {
+                    "Texture": null,
+                    "Material": null,
+                    "WorldSpace": true,
+                    "UnitsPerTexture": 10,
+                    "Scale": 1,
+                    "Offset": 0,
+                    "Scroll": 0,
+                    "Clamp": false
+                  },
+                  "UseVectorPoints": false,
+                  "VectorPoints": [],
+                  "Width": {
+                    "rangey": "0,28",
+                    "frames": [
+                      {
+                        "x": 0.5,
+                        "y": 5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ]
+                  },
+                  "Wireframe": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "24404cbd-3219-4d46-a619-c9e34942b514",
+                  "__version": 1,
+                  "Flags": 0,
+                  "Name": "Object",
+                  "Position": "384,0,-0.000289917",
+                  "Rotation": "0,0,0,1",
+                  "Scale": "1,1,1",
+                  "Tags": "",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "NetworkOrphaned": 0,
+                  "NetworkTransmit": true,
+                  "OwnerTransfer": 1,
+                  "Components": [],
+                  "Children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1266,13 +1522,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -1300,6 +1563,145 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "e35478f7-57b0-4f3f-82a8-e6c94fde2707",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "TubeEffect",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "83027a03-5481-4d28-b980-2b065b5ca577",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "-189.3361,0,0.0001296997",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.LineRenderer",
+                  "__guid": "74278135-1b78-4e92-a718-2f8347885168",
+                  "__enabled": true,
+                  "Additive": false,
+                  "AutoCalculateNormals": true,
+                  "CastShadows": false,
+                  "Color": {
+                    "blend": "Linear",
+                    "color": [
+                      {
+                        "t": 0.9263158,
+                        "c": "0,0.98333,1,1"
+                      }
+                    ],
+                    "alpha": [
+                      {
+                        "t": 0.92421055,
+                        "a": 0.05
+                      }
+                    ]
+                  },
+                  "CylinderSegments": 12,
+                  "DepthFeather": 0,
+                  "EndCap": "None",
+                  "Face": "Cylinder",
+                  "FogStrength": 1,
+                  "Lighting": false,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opaque": false,
+                  "Points": [
+                    {
+                      "_type": "gameobject",
+                      "go": "83027a03-5481-4d28-b980-2b065b5ca577"
+                    },
+                    {
+                      "_type": "gameobject",
+                      "go": "9216de3f-96e1-46b2-8245-d9e254c314e4"
+                    }
+                  ],
+                  "RenderOptions": {
+                    "GameLayer": false,
+                    "OverlayLayer": false,
+                    "BloomLayer": true,
+                    "AfterUILayer": false
+                  },
+                  "SplineBias": 0,
+                  "SplineContinuity": 0,
+                  "SplineInterpolation": 0,
+                  "SplineTension": 0,
+                  "StartCap": "None",
+                  "Texturing": {
+                    "Texture": null,
+                    "Material": null,
+                    "WorldSpace": true,
+                    "UnitsPerTexture": 10,
+                    "Scale": 1,
+                    "Offset": 0,
+                    "Scroll": 0,
+                    "Clamp": false
+                  },
+                  "UseVectorPoints": false,
+                  "VectorPoints": [],
+                  "Width": {
+                    "rangey": "0,28",
+                    "frames": [
+                      {
+                        "x": 0.5,
+                        "y": 5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ]
+                  },
+                  "Wireframe": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "9216de3f-96e1-46b2-8245-d9e254c314e4",
+                  "__version": 1,
+                  "Flags": 0,
+                  "Name": "Object",
+                  "Position": "384,0,-0.000289917",
+                  "Rotation": "0,0,0,1",
+                  "Scale": "1,1,1",
+                  "Tags": "",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "NetworkOrphaned": 0,
+                  "NetworkTransmit": true,
+                  "OwnerTransfer": 1,
+                  "Components": [],
+                  "Children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1608,13 +2010,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -1642,6 +2051,145 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "33bb1e87-b0fb-4e2e-b4ad-911fe6acc9c8",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "TubeEffect",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "a9693a23-b393-493e-a643-2c5bb649e8fd",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "-189.3361,0,0.0001296997",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.LineRenderer",
+                  "__guid": "7665f2e4-e4ab-4fb2-b4f3-5b33d38ceded",
+                  "__enabled": true,
+                  "Additive": false,
+                  "AutoCalculateNormals": true,
+                  "CastShadows": false,
+                  "Color": {
+                    "blend": "Linear",
+                    "color": [
+                      {
+                        "t": 0.9263158,
+                        "c": "0,0.98333,1,1"
+                      }
+                    ],
+                    "alpha": [
+                      {
+                        "t": 0.92421055,
+                        "a": 0.05
+                      }
+                    ]
+                  },
+                  "CylinderSegments": 12,
+                  "DepthFeather": 0,
+                  "EndCap": "None",
+                  "Face": "Cylinder",
+                  "FogStrength": 1,
+                  "Lighting": false,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opaque": false,
+                  "Points": [
+                    {
+                      "_type": "gameobject",
+                      "go": "a9693a23-b393-493e-a643-2c5bb649e8fd"
+                    },
+                    {
+                      "_type": "gameobject",
+                      "go": "064150bb-8c42-43bd-a590-8d210fba8c0d"
+                    }
+                  ],
+                  "RenderOptions": {
+                    "GameLayer": false,
+                    "OverlayLayer": false,
+                    "BloomLayer": true,
+                    "AfterUILayer": false
+                  },
+                  "SplineBias": 0,
+                  "SplineContinuity": 0,
+                  "SplineInterpolation": 0,
+                  "SplineTension": 0,
+                  "StartCap": "None",
+                  "Texturing": {
+                    "Texture": null,
+                    "Material": null,
+                    "WorldSpace": true,
+                    "UnitsPerTexture": 10,
+                    "Scale": 1,
+                    "Offset": 0,
+                    "Scroll": 0,
+                    "Clamp": false
+                  },
+                  "UseVectorPoints": false,
+                  "VectorPoints": [],
+                  "Width": {
+                    "rangey": "0,28",
+                    "frames": [
+                      {
+                        "x": 0.5,
+                        "y": 5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ]
+                  },
+                  "Wireframe": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "064150bb-8c42-43bd-a590-8d210fba8c0d",
+                  "__version": 1,
+                  "Flags": 0,
+                  "Name": "Object",
+                  "Position": "384,0,-0.000289917",
+                  "Rotation": "0,0,0,1",
+                  "Scale": "1,1,1",
+                  "Tags": "",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "NetworkOrphaned": 0,
+                  "NetworkTransmit": true,
+                  "OwnerTransfer": 1,
+                  "Components": [],
+                  "Children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1950,13 +2498,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -1984,6 +2539,284 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "2945cae9-0b02-4971-984f-9e049b31c818",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "TubeEffect",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "e2b94e8d-3ef8-4506-a179-9a0118027257",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "-189.3361,0,0.0001296997",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.LineRenderer",
+                  "__guid": "1c5bc5ab-76f0-4218-bea1-d1086d77456d",
+                  "__enabled": true,
+                  "Additive": false,
+                  "AutoCalculateNormals": true,
+                  "CastShadows": false,
+                  "Color": {
+                    "blend": "Linear",
+                    "color": [
+                      {
+                        "t": 0.9263158,
+                        "c": "0,0.98333,1,1"
+                      }
+                    ],
+                    "alpha": [
+                      {
+                        "t": 0.92421055,
+                        "a": 0.05
+                      }
+                    ]
+                  },
+                  "CylinderSegments": 12,
+                  "DepthFeather": 0,
+                  "EndCap": "None",
+                  "Face": "Cylinder",
+                  "FogStrength": 1,
+                  "Lighting": false,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opaque": false,
+                  "Points": [
+                    {
+                      "_type": "gameobject",
+                      "go": "e2b94e8d-3ef8-4506-a179-9a0118027257"
+                    },
+                    {
+                      "_type": "gameobject",
+                      "go": "45d63df3-8d65-403c-8383-1feac8560fd3"
+                    }
+                  ],
+                  "RenderOptions": {
+                    "GameLayer": false,
+                    "OverlayLayer": false,
+                    "BloomLayer": true,
+                    "AfterUILayer": false
+                  },
+                  "SplineBias": 0,
+                  "SplineContinuity": 0,
+                  "SplineInterpolation": 0,
+                  "SplineTension": 0,
+                  "StartCap": "None",
+                  "Texturing": {
+                    "Texture": null,
+                    "Material": null,
+                    "WorldSpace": true,
+                    "UnitsPerTexture": 10,
+                    "Scale": 1,
+                    "Offset": 0,
+                    "Scroll": 0,
+                    "Clamp": false
+                  },
+                  "UseVectorPoints": false,
+                  "VectorPoints": [],
+                  "Width": {
+                    "rangey": "0,28",
+                    "frames": [
+                      {
+                        "x": 0.5,
+                        "y": 5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ]
+                  },
+                  "Wireframe": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "45d63df3-8d65-403c-8383-1feac8560fd3",
+                  "__version": 1,
+                  "Flags": 0,
+                  "Name": "Object",
+                  "Position": "384,0,-0.000289917",
+                  "Rotation": "0,0,0,1",
+                  "Scale": "1,1,1",
+                  "Tags": "",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "NetworkOrphaned": 0,
+                  "NetworkTransmit": true,
+                  "OwnerTransfer": 1,
+                  "Components": [],
+                  "Children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "fbee6eab-ce17-410c-b044-39be315ea032",
+      "__version": 1,
+      "Flags": 0,
+      "Name": "TubeEffect",
+      "Position": "0,0,0",
+      "Rotation": "0,0,0,1",
+      "Scale": "1,1,1",
+      "Tags": "",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "NetworkInterpolation": true,
+      "NetworkOrphaned": 0,
+      "NetworkTransmit": true,
+      "OwnerTransfer": 1,
+      "Components": [],
+      "Children": [
+        {
+          "__guid": "7dbefba3-ad63-4f9a-946e-77fa6ad94fb0",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "Object",
+          "Position": "-189.3361,0,0.0001296997",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [
+            {
+              "__type": "Sandbox.LineRenderer",
+              "__guid": "8c319a0e-831f-4cf1-ab2e-96bcca22db83",
+              "__enabled": true,
+              "Additive": false,
+              "AutoCalculateNormals": true,
+              "CastShadows": false,
+              "Color": {
+                "blend": "Linear",
+                "color": [
+                  {
+                    "t": 0.9263158,
+                    "c": "0,0.98333,1,1"
+                  }
+                ],
+                "alpha": [
+                  {
+                    "t": 0.92421055,
+                    "a": 0.05
+                  }
+                ]
+              },
+              "CylinderSegments": 12,
+              "DepthFeather": 0,
+              "EndCap": "None",
+              "Face": "Cylinder",
+              "FogStrength": 1,
+              "Lighting": false,
+              "OnComponentDestroy": null,
+              "OnComponentDisabled": null,
+              "OnComponentEnabled": null,
+              "OnComponentFixedUpdate": null,
+              "OnComponentStart": null,
+              "OnComponentUpdate": null,
+              "Opaque": false,
+              "Points": [
+                {
+                  "_type": "gameobject",
+                  "go": "7dbefba3-ad63-4f9a-946e-77fa6ad94fb0"
+                },
+                {
+                  "_type": "gameobject",
+                  "go": "ad7218b2-aba1-489a-bd20-b30843ca3023"
+                }
+              ],
+              "RenderOptions": {
+                "GameLayer": false,
+                "OverlayLayer": false,
+                "BloomLayer": true,
+                "AfterUILayer": false
+              },
+              "SplineBias": 0,
+              "SplineContinuity": 0,
+              "SplineInterpolation": 0,
+              "SplineTension": 0,
+              "StartCap": "None",
+              "Texturing": {
+                "Texture": null,
+                "Material": null,
+                "WorldSpace": true,
+                "UnitsPerTexture": 10,
+                "Scale": 1,
+                "Offset": 0,
+                "Scroll": 0,
+                "Clamp": false
+              },
+              "UseVectorPoints": false,
+              "VectorPoints": [],
+              "Width": {
+                "rangey": "0,28",
+                "frames": [
+                  {
+                    "x": 0.5,
+                    "y": 5,
+                    "in": 0,
+                    "out": 0,
+                    "mode": "Mirrored"
+                  }
+                ]
+              },
+              "Wireframe": false
+            }
+          ],
+          "Children": [
+            {
+              "__guid": "ad7218b2-aba1-489a-bd20-b30843ca3023",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "384,0,-0.000289917",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [],
+              "Children": []
+            }
+          ]
         }
       ]
     },
@@ -2292,13 +3125,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -2634,13 +3474,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -2668,6 +3515,145 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "f5209a07-fd84-4aee-8c63-77156cf4e9fa",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "TubeEffect",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "f01f9610-d122-44b8-96c2-a4bcc594ffbb",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "-189.3361,0,0.0001296997",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.LineRenderer",
+                  "__guid": "74f285ed-64fc-47bf-ba18-3b2d4b030aba",
+                  "__enabled": true,
+                  "Additive": false,
+                  "AutoCalculateNormals": true,
+                  "CastShadows": false,
+                  "Color": {
+                    "blend": "Linear",
+                    "color": [
+                      {
+                        "t": 0.9263158,
+                        "c": "0,0.98333,1,1"
+                      }
+                    ],
+                    "alpha": [
+                      {
+                        "t": 0.92421055,
+                        "a": 0.05
+                      }
+                    ]
+                  },
+                  "CylinderSegments": 12,
+                  "DepthFeather": 0,
+                  "EndCap": "None",
+                  "Face": "Cylinder",
+                  "FogStrength": 1,
+                  "Lighting": false,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opaque": false,
+                  "Points": [
+                    {
+                      "_type": "gameobject",
+                      "go": "f01f9610-d122-44b8-96c2-a4bcc594ffbb"
+                    },
+                    {
+                      "_type": "gameobject",
+                      "go": "1e7be4d0-554f-4bb3-8cca-8970e044dcf1"
+                    }
+                  ],
+                  "RenderOptions": {
+                    "GameLayer": false,
+                    "OverlayLayer": false,
+                    "BloomLayer": true,
+                    "AfterUILayer": false
+                  },
+                  "SplineBias": 0,
+                  "SplineContinuity": 0,
+                  "SplineInterpolation": 0,
+                  "SplineTension": 0,
+                  "StartCap": "None",
+                  "Texturing": {
+                    "Texture": null,
+                    "Material": null,
+                    "WorldSpace": true,
+                    "UnitsPerTexture": 10,
+                    "Scale": 1,
+                    "Offset": 0,
+                    "Scroll": 0,
+                    "Clamp": false
+                  },
+                  "UseVectorPoints": false,
+                  "VectorPoints": [],
+                  "Width": {
+                    "rangey": "0,28",
+                    "frames": [
+                      {
+                        "x": 0.5,
+                        "y": 5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ]
+                  },
+                  "Wireframe": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "1e7be4d0-554f-4bb3-8cca-8970e044dcf1",
+                  "__version": 1,
+                  "Flags": 0,
+                  "Name": "Object",
+                  "Position": "384,0,-0.000289917",
+                  "Rotation": "0,0,0,1",
+                  "Scale": "1,1,1",
+                  "Tags": "",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "NetworkOrphaned": 0,
+                  "NetworkTransmit": true,
+                  "OwnerTransfer": 1,
+                  "Components": [],
+                  "Children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -2976,13 +3962,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -3010,6 +4003,145 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "c0a22acc-9bee-4e23-aef0-b689400a5a31",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "TubeEffect",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "9044e19e-33b7-43ed-9bc8-dc653c28bcd2",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "-189.3361,0,0.0001296997",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.LineRenderer",
+                  "__guid": "95a809bd-8898-40f3-a0c0-505e9059bc0c",
+                  "__enabled": true,
+                  "Additive": false,
+                  "AutoCalculateNormals": true,
+                  "CastShadows": false,
+                  "Color": {
+                    "blend": "Linear",
+                    "color": [
+                      {
+                        "t": 0.9263158,
+                        "c": "0,0.98333,1,1"
+                      }
+                    ],
+                    "alpha": [
+                      {
+                        "t": 0.92421055,
+                        "a": 0.05
+                      }
+                    ]
+                  },
+                  "CylinderSegments": 12,
+                  "DepthFeather": 0,
+                  "EndCap": "None",
+                  "Face": "Cylinder",
+                  "FogStrength": 1,
+                  "Lighting": false,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opaque": false,
+                  "Points": [
+                    {
+                      "_type": "gameobject",
+                      "go": "9044e19e-33b7-43ed-9bc8-dc653c28bcd2"
+                    },
+                    {
+                      "_type": "gameobject",
+                      "go": "c8dc7cf5-a2d8-4bfb-8655-7f493a2ba730"
+                    }
+                  ],
+                  "RenderOptions": {
+                    "GameLayer": false,
+                    "OverlayLayer": false,
+                    "BloomLayer": true,
+                    "AfterUILayer": false
+                  },
+                  "SplineBias": 0,
+                  "SplineContinuity": 0,
+                  "SplineInterpolation": 0,
+                  "SplineTension": 0,
+                  "StartCap": "None",
+                  "Texturing": {
+                    "Texture": null,
+                    "Material": null,
+                    "WorldSpace": true,
+                    "UnitsPerTexture": 10,
+                    "Scale": 1,
+                    "Offset": 0,
+                    "Scroll": 0,
+                    "Clamp": false
+                  },
+                  "UseVectorPoints": false,
+                  "VectorPoints": [],
+                  "Width": {
+                    "rangey": "0,28",
+                    "frames": [
+                      {
+                        "x": 0.5,
+                        "y": 5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ]
+                  },
+                  "Wireframe": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "c8dc7cf5-a2d8-4bfb-8655-7f493a2ba730",
+                  "__version": 1,
+                  "Flags": 0,
+                  "Name": "Object",
+                  "Position": "384,0,-0.000289917",
+                  "Rotation": "0,0,0,1",
+                  "Scale": "1,1,1",
+                  "Tags": "",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "NetworkOrphaned": 0,
+                  "NetworkTransmit": true,
+                  "OwnerTransfer": 1,
+                  "Components": [],
+                  "Children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -3318,13 +4450,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -3352,6 +4491,145 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "4c5f9712-4e25-429e-8857-6045d349f024",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "TubeEffect",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "6c4bc0ea-01d4-4463-8aae-c477d5b9cd42",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "-189.3361,0,0.0001296997",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.LineRenderer",
+                  "__guid": "278b66f4-8e2f-4ac4-8f98-45f9cfd3eeca",
+                  "__enabled": true,
+                  "Additive": false,
+                  "AutoCalculateNormals": true,
+                  "CastShadows": false,
+                  "Color": {
+                    "blend": "Linear",
+                    "color": [
+                      {
+                        "t": 0.9263158,
+                        "c": "0,0.98333,1,1"
+                      }
+                    ],
+                    "alpha": [
+                      {
+                        "t": 0.92421055,
+                        "a": 0.05
+                      }
+                    ]
+                  },
+                  "CylinderSegments": 12,
+                  "DepthFeather": 0,
+                  "EndCap": "None",
+                  "Face": "Cylinder",
+                  "FogStrength": 1,
+                  "Lighting": false,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opaque": false,
+                  "Points": [
+                    {
+                      "_type": "gameobject",
+                      "go": "6c4bc0ea-01d4-4463-8aae-c477d5b9cd42"
+                    },
+                    {
+                      "_type": "gameobject",
+                      "go": "e043cabe-0ae6-467a-b1d4-3014add6e622"
+                    }
+                  ],
+                  "RenderOptions": {
+                    "GameLayer": false,
+                    "OverlayLayer": false,
+                    "BloomLayer": true,
+                    "AfterUILayer": false
+                  },
+                  "SplineBias": 0,
+                  "SplineContinuity": 0,
+                  "SplineInterpolation": 0,
+                  "SplineTension": 0,
+                  "StartCap": "None",
+                  "Texturing": {
+                    "Texture": null,
+                    "Material": null,
+                    "WorldSpace": true,
+                    "UnitsPerTexture": 10,
+                    "Scale": 1,
+                    "Offset": 0,
+                    "Scroll": 0,
+                    "Clamp": false
+                  },
+                  "UseVectorPoints": false,
+                  "VectorPoints": [],
+                  "Width": {
+                    "rangey": "0,28",
+                    "frames": [
+                      {
+                        "x": 0.5,
+                        "y": 5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ]
+                  },
+                  "Wireframe": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "e043cabe-0ae6-467a-b1d4-3014add6e622",
+                  "__version": 1,
+                  "Flags": 0,
+                  "Name": "Object",
+                  "Position": "384,0,-0.000289917",
+                  "Rotation": "0,0,0,1",
+                  "Scale": "1,1,1",
+                  "Tags": "",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "NetworkOrphaned": 0,
+                  "NetworkTransmit": true,
+                  "OwnerTransfer": 1,
+                  "Components": [],
+                  "Children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -3660,13 +4938,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -3694,6 +4979,145 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "1abe8bef-2629-43cd-8ff5-1607c44ac7df",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "TubeEffect",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "b6d138cf-4630-4236-af64-5c53f1c9df41",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "-189.3361,0,0.0001296997",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.LineRenderer",
+                  "__guid": "a23d5b27-2ac9-467e-a594-0d7a1985ebe2",
+                  "__enabled": true,
+                  "Additive": false,
+                  "AutoCalculateNormals": true,
+                  "CastShadows": false,
+                  "Color": {
+                    "blend": "Linear",
+                    "color": [
+                      {
+                        "t": 0.9263158,
+                        "c": "0,0.98333,1,1"
+                      }
+                    ],
+                    "alpha": [
+                      {
+                        "t": 0.92421055,
+                        "a": 0.05
+                      }
+                    ]
+                  },
+                  "CylinderSegments": 12,
+                  "DepthFeather": 0,
+                  "EndCap": "None",
+                  "Face": "Cylinder",
+                  "FogStrength": 1,
+                  "Lighting": false,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opaque": false,
+                  "Points": [
+                    {
+                      "_type": "gameobject",
+                      "go": "b6d138cf-4630-4236-af64-5c53f1c9df41"
+                    },
+                    {
+                      "_type": "gameobject",
+                      "go": "96304044-6105-42dd-8f34-7647cf656e8a"
+                    }
+                  ],
+                  "RenderOptions": {
+                    "GameLayer": false,
+                    "OverlayLayer": false,
+                    "BloomLayer": true,
+                    "AfterUILayer": false
+                  },
+                  "SplineBias": 0,
+                  "SplineContinuity": 0,
+                  "SplineInterpolation": 0,
+                  "SplineTension": 0,
+                  "StartCap": "None",
+                  "Texturing": {
+                    "Texture": null,
+                    "Material": null,
+                    "WorldSpace": true,
+                    "UnitsPerTexture": 10,
+                    "Scale": 1,
+                    "Offset": 0,
+                    "Scroll": 0,
+                    "Clamp": false
+                  },
+                  "UseVectorPoints": false,
+                  "VectorPoints": [],
+                  "Width": {
+                    "rangey": "0,28",
+                    "frames": [
+                      {
+                        "x": 0.5,
+                        "y": 5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ]
+                  },
+                  "Wireframe": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "96304044-6105-42dd-8f34-7647cf656e8a",
+                  "__version": 1,
+                  "Flags": 0,
+                  "Name": "Object",
+                  "Position": "384,0,-0.000289917",
+                  "Rotation": "0,0,0,1",
+                  "Scale": "1,1,1",
+                  "Tags": "",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "NetworkOrphaned": 0,
+                  "NetworkTransmit": true,
+                  "OwnerTransfer": 1,
+                  "Components": [],
+                  "Children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -4002,13 +5426,20 @@
                       "LoopMode": "Loop",
                       "Frames": [
                         {
-                          "Texture": "materials/effects/lightcookies/blank.vtex",
+                          "Texture": {
+                            "$compiler": "texture",
+                            "$source": "color",
+                            "data": {
+                              "Color": "1,1,1,1"
+                            },
+                            "compiled": null
+                          },
                           "BroadcastMessages": []
                         }
                       ]
                     }
                   ],
-                  "__references": null
+                  "__references": []
                 },
                 "compiled": null
               },
@@ -4036,6 +5467,145 @@
             }
           ],
           "Children": []
+        },
+        {
+          "__guid": "48e4e18e-e320-4dca-baba-dbd47a3ca89f",
+          "__version": 1,
+          "Flags": 0,
+          "Name": "TubeEffect",
+          "Position": "0,0,0",
+          "Rotation": "0,0,0,1",
+          "Scale": "1,1,1",
+          "Tags": "",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "NetworkInterpolation": true,
+          "NetworkOrphaned": 0,
+          "NetworkTransmit": true,
+          "OwnerTransfer": 1,
+          "Components": [],
+          "Children": [
+            {
+              "__guid": "2a5df7cb-f096-45d2-9010-7b35815cb5c6",
+              "__version": 1,
+              "Flags": 0,
+              "Name": "Object",
+              "Position": "-189.3361,0,0.0001296997",
+              "Rotation": "0,0,0,1",
+              "Scale": "1,1,1",
+              "Tags": "",
+              "Enabled": true,
+              "NetworkMode": 2,
+              "NetworkInterpolation": true,
+              "NetworkOrphaned": 0,
+              "NetworkTransmit": true,
+              "OwnerTransfer": 1,
+              "Components": [
+                {
+                  "__type": "Sandbox.LineRenderer",
+                  "__guid": "76bf78e7-0b39-487d-8531-eb31f94a5773",
+                  "__enabled": true,
+                  "Additive": false,
+                  "AutoCalculateNormals": true,
+                  "CastShadows": false,
+                  "Color": {
+                    "blend": "Linear",
+                    "color": [
+                      {
+                        "t": 0.9263158,
+                        "c": "0,0.98333,1,1"
+                      }
+                    ],
+                    "alpha": [
+                      {
+                        "t": 0.92421055,
+                        "a": 0.05
+                      }
+                    ]
+                  },
+                  "CylinderSegments": 12,
+                  "DepthFeather": 0,
+                  "EndCap": "None",
+                  "Face": "Cylinder",
+                  "FogStrength": 1,
+                  "Lighting": false,
+                  "OnComponentDestroy": null,
+                  "OnComponentDisabled": null,
+                  "OnComponentEnabled": null,
+                  "OnComponentFixedUpdate": null,
+                  "OnComponentStart": null,
+                  "OnComponentUpdate": null,
+                  "Opaque": false,
+                  "Points": [
+                    {
+                      "_type": "gameobject",
+                      "go": "2a5df7cb-f096-45d2-9010-7b35815cb5c6"
+                    },
+                    {
+                      "_type": "gameobject",
+                      "go": "ac590b4e-f19c-486b-9c7e-f8d6243d4468"
+                    }
+                  ],
+                  "RenderOptions": {
+                    "GameLayer": false,
+                    "OverlayLayer": false,
+                    "BloomLayer": true,
+                    "AfterUILayer": false
+                  },
+                  "SplineBias": 0,
+                  "SplineContinuity": 0,
+                  "SplineInterpolation": 0,
+                  "SplineTension": 0,
+                  "StartCap": "None",
+                  "Texturing": {
+                    "Texture": null,
+                    "Material": null,
+                    "WorldSpace": true,
+                    "UnitsPerTexture": 10,
+                    "Scale": 1,
+                    "Offset": 0,
+                    "Scroll": 0,
+                    "Clamp": false
+                  },
+                  "UseVectorPoints": false,
+                  "VectorPoints": [],
+                  "Width": {
+                    "rangey": "0,28",
+                    "frames": [
+                      {
+                        "x": 0.5,
+                        "y": 5,
+                        "in": 0,
+                        "out": 0,
+                        "mode": "Mirrored"
+                      }
+                    ]
+                  },
+                  "Wireframe": false
+                }
+              ],
+              "Children": [
+                {
+                  "__guid": "ac590b4e-f19c-486b-9c7e-f8d6243d4468",
+                  "__version": 1,
+                  "Flags": 0,
+                  "Name": "Object",
+                  "Position": "384,0,-0.000289917",
+                  "Rotation": "0,0,0,1",
+                  "Scale": "1,1,1",
+                  "Tags": "",
+                  "Enabled": true,
+                  "NetworkMode": 2,
+                  "NetworkInterpolation": true,
+                  "NetworkOrphaned": 0,
+                  "NetworkTransmit": true,
+                  "OwnerTransfer": 1,
+                  "Components": [],
+                  "Children": []
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -4768,6 +6338,14 @@
             },
             "Property": "NetworkInterpolation",
             "Value": false
+          },
+          {
+            "Target": {
+              "Type": "Component",
+              "IdValue": "a22db9b6-7da9-4a12-b9e8-652c9c48d843"
+            },
+            "Property": "UseAnimGraph",
+            "Value": true
           }
         ],
         "MovedObjects": []
