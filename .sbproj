@@ -65,6 +65,7 @@
       "DistinctAssemblyReferences": []
     },
     "MapStartupScene": "scenes/jumper.scene",
-    "LaunchMode": "QuickPlay"
+    "LaunchMode": "QuickPlay",
+    "SystemScene": "scenes/engine.scene"
   }
 }
