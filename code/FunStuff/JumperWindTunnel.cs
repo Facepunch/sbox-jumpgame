@@ -30,11 +30,11 @@ public sealed class JumperWindTunnel : Component, Component.ITriggerListener
 			if( plycomp.IsOnGround)
 			{
 				//plycomp.TryWind( Transform.Rotation.Forward, WindGroundedStrength );
-				plycomp.Body.Velocity += WorldRotation.Forward * WindGroundedStrength;
+				plycomp.Body.Velocity += WorldRotation.Forward * WindGroundedStrength * 0.25f;
 			}
 			else
 			{
-				plycomp.Body.Velocity += WorldRotation.Forward * WindAirStrength;
+				plycomp.Body.Velocity += WorldRotation.Forward * WindAirStrength * 0.25f;
 				//plycomp.TryWind( Transform.Rotation.Forward, WindAirStrength );
 			}
 
