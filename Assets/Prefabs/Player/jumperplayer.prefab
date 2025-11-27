@@ -116,6 +116,21 @@
         "StartAsleep": false
       },
       {
+        "__type": "Sandbox.Movement.MoveModeWalk",
+        "__guid": "449fae9f-aaac-459c-99fb-3d1e9f2edf59",
+        "__enabled": true,
+        "GroundAngle": 40,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
+        "Priority": 0,
+        "StepDownHeight": 18,
+        "StepUpHeight": 18
+      },
+      {
         "__type": "Sandbox.Movement.MoveModeSwim",
         "__guid": "847ef2e5-0517-4f4e-b85c-97c1fdc7a1dc",
         "__enabled": true,
@@ -170,6 +185,7 @@
         "__type": "PlayerInput",
         "__guid": "1e79f19b-8440-4917-bde6-b25ab4138680",
         "__enabled": true,
+        "BounceBounciness": 0.9,
         "DuckedHeight": 36,
         "DuckedSpeed": 70,
         "EnablePressing": true,
@@ -183,6 +199,7 @@
         },
         "JumpSpeed": 300,
         "LookSensitivity": 1,
+        "MinWallDotUp": 0.6,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
@@ -252,21 +269,6 @@
           "go": "bdce9803-eb5b-4cd5-ae0b-b4f921cad4d9",
           "component_type": "JumperProgress"
         }
-      },
-      {
-        "__type": "Sandbox.Movement.MoveModeWalk",
-        "__guid": "449fae9f-aaac-459c-99fb-3d1e9f2edf59",
-        "__enabled": true,
-        "GroundAngle": 40,
-        "OnComponentDestroy": null,
-        "OnComponentDisabled": null,
-        "OnComponentEnabled": null,
-        "OnComponentFixedUpdate": null,
-        "OnComponentStart": null,
-        "OnComponentUpdate": null,
-        "Priority": 0,
-        "StepDownHeight": 18,
-        "StepUpHeight": 18
       }
     ],
     "Children": [

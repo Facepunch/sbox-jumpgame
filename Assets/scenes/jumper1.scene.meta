@@ -1,0 +1,22 @@
+{
+  "publish": {
+    "Enabled": true,
+    "ProjectConfig": {
+      "Title": "Jumper 1",
+      "Type": "map",
+      "Org": "baks",
+      "Ident": "jumper1test",
+      "Schema": 0,
+      "IncludeSourceFiles": false,
+      "Resources": null,
+      "PackageReferences": null,
+      "EditorReferences": null,
+      "Mounts": null,
+      "IsStandaloneOnly": false,
+      "Metadata": {
+        "SingleAssetSource": "scenes/jumper1.scene",
+        "ParentPackage": "facepunch.jumper"
+      }
+    }
+  }
+}
