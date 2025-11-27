@@ -3,7 +3,7 @@
     "__guid": "031101bf-154f-4f01-8d19-39e7b4caecf0",
     "__version": 1,
     "Flags": 0,
-    "Name": "JumperPlayer",
+    "Name": "jumperplayer",
     "Position": "0,0,0",
     "Rotation": "0,0,0,1",
     "Scale": "1,1,1",
