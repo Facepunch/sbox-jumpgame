@@ -111,6 +111,7 @@ public sealed partial class PlayerInput : Component
 		else if( Controller.TimeSinceGrounded > 0.2f )
 		{
 			TryBounce();
+			CheckEdgeStall();
 		}
 
 		// While charging jump: no movement, but input still updates & animator still runs
@@ -258,6 +259,36 @@ public sealed partial class PlayerInput : Component
 			GetAchievement( "bounce_5" );
 		if ( BounceCount >= 10 )
 			GetAchievement( "bounce_10" );
+	}
+
+	TimeSince timeSinceMoving;
+
+	/// <summary>
+	/// The capsule can come to rest on a corner where the ground probe misses: not grounded (so no jumping)
+	/// but not falling either. If we're airborne and stationary for a moment, slide off the edge.
+	/// </summary>
+	void CheckEdgeStall()
+	{
+		if ( Controller.Body.Velocity.Length > 20f )
+		{
+			timeSinceMoving = 0;
+			return;
+		}
+
+		if ( timeSinceMoving < 0.25f )
+			return;
+
+		timeSinceMoving = 0;
+
+		// Find what we're resting on and push horizontally away from the contact point
+		var tr = TraceBBox( WorldPosition + Vector3.Up * 2f, WorldPosition + Vector3.Down * 4f );
+		var dir = tr.Hit ? (WorldPosition - tr.HitPosition).WithZ( 0 ) : Vector3.Zero;
+
+		// Contact directly beneath, so pick any direction rather than pushing into nothing
+		if ( dir.Length < 0.5f )
+			dir = Controller.EyeAngles.Forward.WithZ( 0 );
+
+		Controller.Body.Velocity = dir.Normal * 150f + Vector3.Down * 50f;
 	}
 
 	Vector3 Mins => new Vector3( -16, -16, 0 );
