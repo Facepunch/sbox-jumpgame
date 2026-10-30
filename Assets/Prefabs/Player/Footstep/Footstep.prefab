@@ -1,44 +1,117 @@
 {
   "RootObject": {
-    "Id": "3cd3de68-b796-405d-abc9-de9c76596155",
+    "__guid": "3cd3de68-b796-405d-abc9-de9c76596155",
+    "__version": 2,
+    "Flags": 0,
     "Name": "footstep",
+    "Position": "0,0,0",
+    "Rotation": "0,0,0,1",
+    "Scale": "1,1,1",
+    "Tags": "",
     "Enabled": true,
+    "NetworkMode": 2,
+    "NetworkFlags": 0,
+    "NetworkOrphaned": 0,
+    "NetworkTransmit": true,
+    "OwnerTransfer": 1,
     "Components": [
       {
         "__type": "SoundEmitter",
+        "__guid": "76b4296b-32d8-4168-92ea-6314602897d0",
         "__enabled": true,
+        "Flags": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "SoundString": "sounds/footsteps/footstep-grass.sound"
       },
       {
         "__type": "SelfDestructComponent",
+        "__guid": "8d2edde8-5830-42ea-8094-1a97448ad8a9",
         "__enabled": true,
+        "Flags": 0,
+        "OnComponentDestroy": null,
+        "OnComponentDisabled": null,
+        "OnComponentEnabled": null,
+        "OnComponentFixedUpdate": null,
+        "OnComponentStart": null,
+        "OnComponentUpdate": null,
         "Seconds": 10
       }
     ],
     "Children": [
       {
-        "Id": "21cb3b04-8826-4d31-b8fd-3039cc3fba89",
+        "__guid": "21cb3b04-8826-4d31-b8fd-3039cc3fba89",
+        "__version": 2,
+        "Flags": 0,
         "Name": "Object",
-        "Position": "-0.000001176846,0,6.139579",
+        "Position": "-1.17684601E-06,0,6.13957882",
+        "Rotation": "0,0,0,1",
+        "Scale": "1,1,1",
+        "Tags": "",
         "Enabled": true,
+        "NetworkMode": 2,
+        "NetworkFlags": 0,
+        "NetworkOrphaned": 0,
+        "NetworkTransmit": true,
+        "OwnerTransfer": 1,
         "Components": [
           {
-            "__type": "DecalRenderer",
+            "__type": "Sandbox.DecalRenderer",
+            "__guid": "256a5fe9-ffc3-4153-ab9f-a4401712af61",
             "__enabled": false,
-            "CutoffAngle": 60,
-            "CutoffAngleSoftness": 5,
-            "Material": "materials/decals/facepunch-legacy.vmat",
-            "Mod2XBlending": false,
+            "Flags": 0,
+            "OnComponentDestroy": null,
+            "OnComponentDisabled": null,
+            "OnComponentEnabled": null,
+            "OnComponentFixedUpdate": null,
+            "OnComponentStart": null,
+            "OnComponentUpdate": null,
+            "RenderOptions": {
+              "GameLayer": true,
+              "OverlayLayer": false,
+              "BloomLayer": false,
+              "AfterUILayer": false
+            },
             "Size": "8,8,32",
             "TintColor": "1,1,1,1",
             "TriPlanar": false
           }
-        ]
+        ],
+        "Children": []
       }
-    ]
+    ],
+    "__properties": {
+      "NetworkInterpolation": true,
+      "PhysicsMode": "Physics3D",
+      "TimeScale": 1,
+      "WantsSystemScene": true,
+      "Metadata": {},
+      "NavMesh": {
+        "Enabled": false,
+        "IncludeStaticBodies": true,
+        "IncludeKeyframedBodies": true,
+        "EditorAutoUpdate": false,
+        "AgentHeight": 64,
+        "AgentRadius": 16,
+        "AgentStepSize": 18,
+        "AgentMaxSlope": 40,
+        "ExcludedBodies": "",
+        "IncludedBodies": "",
+        "DeferGeneration": false,
+        "CustomBounds": false
+      }
+    },
+    "__variables": []
   },
+  "ResourceVersion": 2,
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
-  "__references": []
+  "DontBreakAsTemplate": false,
+  "__references": [],
+  "__version": 2
 }
