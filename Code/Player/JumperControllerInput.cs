@@ -340,7 +340,7 @@ public sealed partial class PlayerInput : Component
 
 	public float TimeSinceJumpDown { get; set; }
 	public float TimeUntilMaxJump => 2.0f;
-	float MaxJumpStrength => 885.0f;
+	float MaxJumpStrength => 920.0f;
 
 	public void TryJump()
 	{

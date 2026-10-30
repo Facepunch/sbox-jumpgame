@@ -327,7 +327,7 @@
         "Friction": 4,
         "GroundAcceleration": 10,
         "GroundAngle": 44,
-        "MaxVelocity": 3500,
+        "MaxVelocity": 35000,
         "OnComponentDestroy": null,
         "OnComponentDisabled": null,
         "OnComponentEnabled": null,
