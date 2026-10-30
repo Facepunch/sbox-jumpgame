@@ -2022,7 +2022,7 @@
       "Children": []
     },
     {
-      "__guid": "0075e698-1aa9-4162-ba9e-74db212f6342",
+      "__guid": "8a91cd2c-ea87-49a4-8564-49f1742ef764",
       "__version": 1,
       "__Prefab": "prefabs/player/playerjumper.prefab",
       "__PrefabInstancePatch": {
@@ -2032,7 +2032,7 @@
         "MovedObjects": []
       },
       "__PrefabIdToInstanceId": {
-        "83d0b436-50bc-426c-8056-0c92d860b096": "df810704-fd48-487c-af5d-bd274596086a"
+        "ee7c61bc-9778-4302-8baa-f329a87e378d": "25c79483-9104-46d9-929a-0ea45053c98b"
       }
     },
     {
