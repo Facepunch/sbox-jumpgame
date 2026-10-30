@@ -35,6 +35,7 @@
                 </div>
             </div>
             <button onclick="@Restart">Restart</button>
+            <button onclick="@Unstuck">Unstuck</button>
         </div>
     </root>
 }
@@ -50,6 +51,11 @@
 
     // private JumperPawn Pawn => (Game.LocalPawn as JumperPawn);
 
+
+    private void Unstuck()
+    {
+        GameObject.Components.Get<PlayerInput>(FindMode.EverythingInAncestors)?.Unstuck();
+    }
 
     private void Restart()
     {
@@ -71,7 +77,8 @@
     {
         base.OnUpdate();
         
-        SetClass("open", Input.Down("menu"));
+        // Tab is bound to the "score" action, so open on either action
+        SetClass("open", Input.Down("menu") || Input.Down("score"));
 
         if (!HasClass("open"))
         {

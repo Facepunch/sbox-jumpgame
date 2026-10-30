@@ -79,6 +79,7 @@ public sealed partial class PlayerInput : Component
 		if ( IsProxy ) return;
 
 		UpdateEyeAngles();
+		CheckUnstuckInput();
 	}
 
 	protected override void OnFixedUpdate()
